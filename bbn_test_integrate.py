@@ -244,7 +244,7 @@ def t__he3__weak__wc12(rate_eval, tf):
 def p__n(rate_eval, tf):  
     # p --> n
     z=5.92989658*tf.T9i
-    rate=1/879.6*(5.252/z - 16.229/z**2 + 18.059/z**3 + 34.181/z**4 + 27.617/z**5)*np.exp(-Q/T)
+    rate=1/879.6*(5.252/z - 16.229/z**2 + 18.059/z**3 + 34.181/z**4 + 27.617/z**5)*np.exp(-2.530988*z)
     rate_eval.p__n = rate
 
 @numba.njit()
