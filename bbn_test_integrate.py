@@ -54,6 +54,8 @@ names.append("be7")
 @jitclass([
     ("n__p__weak__wc12", numba.float64),
     ("t__he3__weak__wc12", numba.float64),
+    ("p__n", numba.float64),
+    ("n__p", numba.float64),
     ("he3__t__weak__electron_capture", numba.float64),
     ("be7__li7__weak__electron_capture", numba.float64),
     ("d__n_p", numba.float64),
@@ -134,6 +136,8 @@ class RateEval:
     def __init__(self):
         self.n__p__weak__wc12 = np.nan
         self.t__he3__weak__wc12 = np.nan
+        self.p__n = np.nan
+        self.n__p = np.nan
         self.he3__t__weak__electron_capture = np.nan
         self.be7__li7__weak__electron_capture = np.nan
         self.d__n_p = np.nan
@@ -235,6 +239,22 @@ def t__he3__weak__wc12(rate_eval, tf):
     rate += np.exp(  -20.1456)
 
     rate_eval.t__he3__weak__wc12 = rate
+    
+@numba.njit()    
+def p__n(rate_eval, tf):  
+    # p --> n
+    z=5.92989658*tf.T9i
+    rate=1/879.6*(5.252/z - 16.229/z**2 + 18.059/z**3 + 34.181/z**4 + 27.617/z**5)*np.exp(-Q/T)
+    rate_eval.p__n = rate
+
+@numba.njit()
+def n__p(rate_eval, tf):
+    # n --> p
+    z=5.92989658*tf.T9i
+    rate = 1/879.6*(0.565/z - 6.382/z**2 + 11.108/z**3 + 36.492/z**4 + 27.512/z**5)
+
+    rate_eval.n__p = rate
+
 
 @numba.njit()
 def he3__t__weak__electron_capture(rate_eval, tf):
@@ -1158,6 +1178,8 @@ def rhs_eq(t, Y, rho, T, screen_func):
     # reaclib rates
     n__p__weak__wc12(rate_eval, tf)
     t__he3__weak__wc12(rate_eval, tf)
+    p__n(rate_eval, tf)
+    n__p(rate_eval, tf)
     he3__t__weak__electron_capture(rate_eval, tf)
     be7__li7__weak__electron_capture(rate_eval, tf)
     d__n_p(rate_eval, tf)
@@ -1368,6 +1390,7 @@ def rhs_eq(t, Y, rho, T, screen_func):
 
     dYdt[jn] = (
        -Y[jn]*rate_eval.n__p__weak__wc12
+       -Y[jn]*rate_eval.n__p
        -rho*Y[jn]*Y[jp]*rate_eval.n_p__d
        -rho*Y[jn]*Y[jd]*rate_eval.n_d__t
        -rho*Y[jn]*Y[jhe3]*rate_eval.n_he3__he4
@@ -1387,6 +1410,7 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -2*2.50000000000000e-01*rho**3*Y[jn]**2*Y[jhe4]**2*rate_eval.n_n_he4_he4__t_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
+       +Y[jp]*rate_eval.p__n
        +Y[jd]*rate_eval.d__n_p
        +Y[jt]*rate_eval.t__n_d
        +Y[jhe4]*rate_eval.he4__n_he3
@@ -1409,6 +1433,7 @@ def rhs_eq(t, Y, rho, T, screen_func):
        )
 
     dYdt[jp] = (
+       -Y[jp]*rate_eval.p__n
        -rho*Y[jn]*Y[jp]*rate_eval.n_p__d
        -2*5.00000000000000e-01*rho*Y[jp]**2*rate_eval.p_p__d__weak__bet_pos_
        -2*5.00000000000000e-01*rho**2*ye(Y)*Y[jp]**2*rate_eval.p_p__d__weak__electron_capture
@@ -1432,6 +1457,7 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
        -2*2.50000000000000e-01*rho**3*Y[jp]**2*Y[jhe4]**2*rate_eval.p_p_he4_he4__he3_be7
+       +Y[jn]*rate_eval.n__p
        +Y[jn]*rate_eval.n__p__weak__wc12
        +Y[jd]*rate_eval.d__n_p
        +Y[jhe3]*rate_eval.he3__p_d
