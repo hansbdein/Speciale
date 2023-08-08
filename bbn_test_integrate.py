@@ -239,22 +239,6 @@ def t__he3__weak__wc12(rate_eval, tf):
     rate += np.exp(  -20.1456)
 
     rate_eval.t__he3__weak__wc12 = rate
-    
-@numba.njit()    
-def p__n(rate_eval, tf):  
-    # p --> n
-    z=5.92989658*tf.T9i
-    rate=1/879.6*(5.252/z - 16.229/z**2 + 18.059/z**3 + 34.181/z**4 + 27.617/z**5)*np.exp(-2.530988*z)
-    rate_eval.p__n = rate
-
-@numba.njit()
-def n__p(rate_eval, tf):
-    # n --> p
-    z=5.92989658*tf.T9i
-    rate = 1/879.6*(0.565/z - 6.382/z**2 + 11.108/z**3 + 36.492/z**4 + 27.512/z**5)
-
-    rate_eval.n__p = rate
-
 
 @numba.njit()
 def he3__t__weak__electron_capture(rate_eval, tf):
@@ -277,6 +261,21 @@ def be7__li7__weak__electron_capture(rate_eval, tf):
                   + -0.0742132*tf.T9 + -0.00792386*tf.T953 + -0.650113*tf.lnT9)
 
     rate_eval.be7__li7__weak__electron_capture = rate
+
+@numba.njit()    
+def p__n(rate_eval, tf):  
+    # p --> n
+    z=5.92989658*tf.T9i
+    rate=1/879.6*(5.252/z - 16.229/z**2 + 18.059/z**3 + 34.181/z**4 + 27.617/z**5)*np.exp(-2.530988*z)
+    rate_eval.p__n = rate
+
+@numba.njit()
+def n__p(rate_eval, tf):
+    # n --> p
+    z=5.92989658*tf.T9i
+    rate = 1/879.6*(0.565/z - 6.382/z**2 + 11.108/z**3 + 36.492/z**4 + 27.512/z**5)
+
+    rate_eval.n__p = rate
 
 @numba.njit()
 def d__n_p(rate_eval, tf):
@@ -1457,8 +1456,8 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
        -2*2.50000000000000e-01*rho**3*Y[jp]**2*Y[jhe4]**2*rate_eval.p_p_he4_he4__he3_be7
-       +Y[jn]*rate_eval.n__p
        +Y[jn]*rate_eval.n__p__weak__wc12
+       +Y[jn]*rate_eval.n__p
        +Y[jd]*rate_eval.d__n_p
        +Y[jhe3]*rate_eval.he3__p_d
        +Y[jhe4]*rate_eval.he4__p_t
