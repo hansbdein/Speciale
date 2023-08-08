@@ -12,4 +12,4 @@ result = subprocess.run(["/home/hansbdein/Speciale/alterbbn_v2.2/alter_eta.x", i
 #print(result.stdout.decode("utf-8"))
 for info in result.stdout.decode("utf-8").split('\n')[6:11]:
     print(info)
-    print('lmao')
+    #print('lmao')
