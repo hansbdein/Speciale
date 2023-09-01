@@ -2,7 +2,7 @@ import numba
 import numpy as np
 from numba.experimental import jitclass
 
-from pynucastro.rates import Tfactors, _find_rate_file
+from pynucastro.rates import TableIndex, TableInterpolator, TabularRate, Tfactors
 from pynucastro.screening import PlasmaState, ScreenFactors
 
 jn = 0
@@ -138,6 +138,8 @@ def to_composition(Y):
     ("n_p_he4_he4__he3_li7", numba.float64),
     ("n_p_he4_he4__t_be7", numba.float64),
     ("p_p_he4_he4__he3_be7", numba.float64),
+    ("p__n", numba.float64),
+    ("n__p", numba.float64),
 ])
 class RateEval:
     def __init__(self):
@@ -218,6 +220,8 @@ class RateEval:
         self.n_p_he4_he4__he3_li7 = np.nan
         self.n_p_he4_he4__t_be7 = np.nan
         self.p_p_he4_he4__he3_be7 = np.nan
+        self.p__n = np.nan
+        self.n__p = np.nan
 
 @numba.njit()
 def ye(Y):
@@ -1153,6 +1157,67 @@ def p_p_he4_he4__he3_be7(rate_eval, tf):
 
     rate_eval.p_p_he4_he4__he3_be7 = rate
 
+
+b0 = -0.62173 
+b1 = 0.22211e2
+b2 = -0.72798e2
+b3 = 0.11571e3
+b4 = -0.11763e2
+b5 = 0.45521e2
+b6 = -3.7973 
+b7 = 0.41266 
+b8 = -0.026210
+b9 = 0.87934e-3
+b10 = -0.12016e-4
+qpn = 2.8602
+
+@numba.njit() 
+def p__n(rate_eval, tf):  
+    # p --> n
+    z=5.92989658*tf.T9i
+    rate=0
+    #rate from https://arxiv.org/pdf/astro-ph/0408076.pdf appendix C
+    b=[b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10]
+    if tf.T9>1.160451812:
+      for i in range(11):
+         rate+=1/880.2*np.exp(-qpn*z)*b[i]*z**-i 
+        
+    #Kawano rate
+    #rate=1/879.6*(5.252/z - 16.229/z**2 + 18.059/z**3 + 34.181/z**4 + 27.617/z**5)*np.exp(-2.530988*z)
+    rate_eval.p__n = rate
+
+
+a0 = 0 #1 to include free decay
+a1 = 0.15735 
+a2 = 4.6172
+a3 = -0.40520e2 
+a4 = 0.13875e3 
+a5 = -0.59898e2
+a6 = 0.66752e2 
+a7 = -0.16705e2 
+a8 = 3.8071
+a9 = -0.39140 
+a10 = 0.023590 
+a11 = -0.83696e-4
+a12 = -0.42095e-4 
+a13 = 0.17675e-5
+qnp = 0.33979 
+
+@numba.njit()
+def n__p(rate_eval, tf):
+    # n --> p
+    z=5.92989658*tf.T9i
+    #rate from https://arxiv.org/pdf/astro-ph/0408076.pdf appendix C
+    rate=0
+    a=[a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13]
+    for i in range(14):
+      rate+=1/880.2*np.exp(-qnp/z)*a[i]*z**-i
+
+    #Kawano rate
+    #rate = 1/879.6*(0.565/z - 6.382/z**2 + 11.108/z**3 + 36.492/z**4 + 27.512/z**5)
+
+    rate_eval.n__p = rate
+
 def rhs(t, Y, rho, T, screen_func=None):
     return rhs_eq(t, Y, rho, T, screen_func)
 
@@ -1240,6 +1305,10 @@ def rhs_eq(t, Y, rho, T, screen_func):
     n_p_he4_he4__he3_li7(rate_eval, tf)
     n_p_he4_he4__t_be7(rate_eval, tf)
     p_p_he4_he4__he3_be7(rate_eval, tf)
+
+    # custom rates
+    p__n(rate_eval, tf)
+    n__p(rate_eval, tf)
 
     if screen_func is not None:
         plasma_state = PlasmaState(T, rho, Y, Z)
@@ -1394,6 +1463,7 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -2*2.50000000000000e-01*rho**3*Y[jn]**2*Y[jhe4]**2*rate_eval.n_n_he4_he4__t_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
+       -Y[jn]*rate_eval.n__p
        +Y[jd]*rate_eval.d__n_p
        +Y[jt]*rate_eval.t__n_d
        +Y[jhe4]*rate_eval.he4__n_he3
@@ -1413,6 +1483,7 @@ def rhs_eq(t, Y, rho, T, screen_func):
        +2*rho*Y[jt]*Y[jli7]*rate_eval.t_li7__n_n_he4_he4
        +rho*Y[jhe3]*Y[jli7]*rate_eval.he3_li7__n_p_he4_he4
        +rho*Y[jt]*Y[jbe7]*rate_eval.t_be7__n_p_he4_he4
+       +Y[jp]*rate_eval.p__n
        )
 
     dYdt[jp] = (
@@ -1439,6 +1510,7 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
        -2*2.50000000000000e-01*rho**3*Y[jp]**2*Y[jhe4]**2*rate_eval.p_p_he4_he4__he3_be7
+       -Y[jp]*rate_eval.p__n
        +Y[jn]*rate_eval.n__p__weak__wc12
        +Y[jd]*rate_eval.d__n_p
        +Y[jhe3]*rate_eval.he3__p_d
@@ -1460,6 +1532,7 @@ def rhs_eq(t, Y, rho, T, screen_func):
        +rho*Y[jt]*Y[jbe7]*rate_eval.t_be7__n_p_he4_he4
        +2*rho*Y[jhe3]*Y[jbe7]*rate_eval.he3_be7__p_p_he4_he4
        +5.00000000000000e-01*rho**2*Y[jn]*Y[jp]**2*rate_eval.n_p_p__p_d
+       +Y[jn]*rate_eval.n__p
        )
 
     dYdt[jd] = (
@@ -1755,6 +1828,10 @@ def jacobian_eq(t, Y, rho, T, screen_func):
     n_p_he4_he4__t_be7(rate_eval, tf)
     p_p_he4_he4__he3_be7(rate_eval, tf)
 
+    # custom rates
+    p__n(rate_eval, tf)
+    n__p(rate_eval, tf)
+
     if screen_func is not None:
         plasma_state = PlasmaState(T, rho, Y, Z)
 
@@ -1908,6 +1985,7 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -2*2.50000000000000e-01*rho**3*2*Y[jn]*Y[jhe4]**2*rate_eval.n_n_he4_he4__t_li7
        -5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
+       -rate_eval.n__p
        )
 
     jac[jn, jp] = (
@@ -1920,6 +1998,7 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        +rho*Y[jt]*rate_eval.p_t__n_he3
        +rho*Y[jli7]*rate_eval.p_li7__n_be7
        +rho*Y[jd]*rate_eval.p_d__n_p_p
+       +rate_eval.p__n
        )
 
     jac[jn, jd] = (
@@ -1998,6 +2077,7 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        +rho*Y[jhe3]*rate_eval.n_he3__p_t
        +rho*Y[jbe7]*rate_eval.n_be7__p_li7
        +5.00000000000000e-01*rho**2*Y[jp]**2*rate_eval.n_p_p__p_d
+       +rate_eval.n__p
        )
 
     jac[jp, jp] = (
@@ -2024,6 +2104,7 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
        -2*2.50000000000000e-01*rho**3*2*Y[jp]*Y[jhe4]**2*rate_eval.p_p_he4_he4__he3_be7
+       -rate_eval.p__n
        +2*rho*Y[jd]*rate_eval.p_d__n_p_p
        +5.00000000000000e-01*rho**2*Y[jn]*2*Y[jp]*rate_eval.n_p_p__p_d
        )
