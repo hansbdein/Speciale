@@ -1113,7 +1113,7 @@ int nucl_single(struct relicparam* paramrelic, double ratioH[NNUC+1], struct err
     }
 
     // Print data to the file
-    
+    fprintf(file, "failsafe=%d\n", paramrelic->failsafe);
     fprintf(file, "Time\t\t\t\t");
 	fprintf(file, "Photon temperature\t\t");
 	fprintf(file, "Neutrino temperature\t\t");
@@ -1635,7 +1635,20 @@ fprintf(file, "\n");
 				}
 				
 				dt*=2.*0.9*min(1.,max(minprec,0.3));
-			
+
+
+fprintf(file, "%.18e\t", t);
+fprintf(file, "%.18e\t", T);
+fprintf(file, "%.18e\t", Tnu);
+
+// Print the list of numbers to the file
+
+for (i=1;i<=NNUC;i++) {
+    fprintf(file, "%.18e\t", Y[i]);
+    }
+fprintf(file, "\n");
+
+
 #ifdef CHECKINTERM
 				for (i=1;i<=NNUC;i++) if(Y[i]>Ylow) checklow[i]++;
 #endif
@@ -1665,7 +1678,6 @@ fprintf(file, "\n");
 	}
 	else if(paramrelic->failsafe<20) /* Runge-Kutta method of order 4 with adaptative stepsize */
 	{
-		fprintf(file, "line 1649.\n");
 		double dT_rk[12],dh_eta_rk[12],dphie_rk[12],dTnu_rk[12],dY_rk[NNUC+1][12],drhophi_rk[12],da_rk[12];
 
 		double T_sav,h_eta_sav,phie_sav,Tnu_sav,Y_sav[NNUC+1],t_sav,a_sav,dt0;
@@ -2024,6 +2036,18 @@ fprintf(file, "\n");
 				
 				dt*=2.*0.9*min(1.,max(minprec,0.3));
 
+fprintf(file, "%.18e\t", t);
+fprintf(file, "%.18e\t", T);
+fprintf(file, "%.18e\t", Tnu);
+
+// Print the list of numbers to the file
+
+for (i=1;i<=NNUC;i++) {
+    fprintf(file, "%.18e\t", Y[i]);
+    }
+fprintf(file, "\n");
+
+
 #ifdef CHECKINTERM
 				for (i=1;i<=NNUC;i++) if(Y[i]>Ylow) checklow[i]++;
 #endif
@@ -2052,7 +2076,6 @@ fprintf(file, "\n");
 	}
 	else /* Runge-Kutta of order 45 methods */
 	{
-		fprintf(file, "line 2036.\n");
 		double dT_rk[6],dh_eta_rk[6],dphie_rk[6],dTnu_rk[6],da_rk[6],dY_rk[NNUC+1][6],drhophi_rk[6];
 
 		double T_sav,h_eta_sav,phie_sav,Tnu_sav,a_sav,Y_sav[NNUC+1],rhophi_sav,t_sav,dt0;
@@ -2321,6 +2344,19 @@ fprintf(file, "\n");
 				t=t_sav+dt;
 				
 				dt*=min(1.1,max(2.,0.84*pow(prec*minprec,0.25)));
+
+
+fprintf(file, "%.18e\t", t);
+fprintf(file, "%.18e\t", T);
+fprintf(file, "%.18e\t", Tnu);
+
+// Print the list of numbers to the file
+
+for (i=1;i<=NNUC;i++) {
+    fprintf(file, "%.18e\t", Y[i]);
+    }
+fprintf(file, "\n");
+
 
 #ifdef CHECKINTERM
 				for (i=1;i<=NNUC;i++) if(Y[i]>Ylow) checklow[i]++;

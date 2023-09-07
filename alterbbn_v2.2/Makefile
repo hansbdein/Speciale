@@ -80,6 +80,7 @@ save:
 	mkdir alterbbn_$(VERSION);\
 	cp -p README alterbbn_$(VERSION)/;\
 	cp -p stand_cosmo.c alterbbn_$(VERSION)/;\
+	cp -p no_err_calc.c alterbbn_$(VERSION)/;\
 	cp -p alter_eta.c alterbbn_$(VERSION)/;\
 	cp -p alter_etannutau.c alterbbn_$(VERSION)/;\
 	cp -p alter_neutrinos.c alterbbn_$(VERSION)/;\
