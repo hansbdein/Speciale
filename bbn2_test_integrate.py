@@ -576,7 +576,7 @@ def n_he3__he4(rate_eval, tf):
                   + 1.0*tf.lnT9)
     # ka02n
     rate += np.exp(  5.51711)
-
+    rate = (tf.T9*905+1)*6.62
     rate_eval.n_he3__he4 = rate
 
 @numba.njit()
