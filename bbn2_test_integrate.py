@@ -65,7 +65,6 @@ def to_composition(Y):
     return comp
 
 @jitclass([
-    ("n__p__weak__wc12", numba.float64),
     ("t__he3__weak__wc12", numba.float64),
     ("he3__t__weak__electron_capture", numba.float64),
     ("be7__li7__weak__electron_capture", numba.float64),
@@ -156,7 +155,6 @@ def to_composition(Y):
 ])
 class RateEval:
     def __init__(self):
-        self.n__p__weak__wc12 = np.nan
         self.t__he3__weak__wc12 = np.nan
         self.he3__t__weak__electron_capture = np.nan
         self.be7__li7__weak__electron_capture = np.nan
@@ -248,16 +246,6 @@ class RateEval:
 @numba.njit()
 def ye(Y):
     return np.sum(Z * Y)/np.sum(A * Y)
-
-@numba.njit()
-def n__p__weak__wc12(rate_eval, tf):
-    # n --> p
-    rate = 0.0
-
-    # wc12w
-    rate += np.exp(  -6.78161)
-
-    rate_eval.n__p__weak__wc12 = rate
 
 @numba.njit()
 def t__he3__weak__wc12(rate_eval, tf):
@@ -1331,7 +1319,7 @@ def p__n(rate_eval, tf):
     rate_eval.p__n = rate
 
 
-a0 = 0 #1 to include free decay
+a0 = 1 #0 to exclude free decay
 a1 = 0.15735 
 a2 = 4.6172
 a3 = -0.40520e2 
@@ -1372,7 +1360,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
     rate_eval = RateEval()
 
     # reaclib rates
-    n__p__weak__wc12(rate_eval, tf)
     t__he3__weak__wc12(rate_eval, tf)
     he3__t__weak__electron_capture(rate_eval, tf)
     be7__li7__weak__electron_capture(rate_eval, tf)
@@ -1608,7 +1595,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
     dYdt = np.zeros((nnuc), dtype=np.float64)
 
     dYdt[jn] = (
-       -Y[jn]*rate_eval.n__p__weak__wc12
        -rho*Y[jn]*Y[jp]*rate_eval.n_p__d
        -rho*Y[jn]*Y[jd]*rate_eval.n_d__t
        -rho*Y[jn]*Y[jhe3]*rate_eval.n_he3__he4
@@ -1682,7 +1668,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
        -2*2.50000000000000e-01*rho**3*Y[jp]**2*Y[jhe4]**2*rate_eval.p_p_he4_he4__he3_be7
        -Y[jp]*rate_eval.p__n
-       +Y[jn]*rate_eval.n__p__weak__wc12
        +Y[jd]*rate_eval.d__n_p
        +Y[jhe3]*rate_eval.he3__p_d
        +Y[jhe4]*rate_eval.he4__p_t
@@ -1950,7 +1935,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
     rate_eval = RateEval()
 
     # reaclib rates
-    n__p__weak__wc12(rate_eval, tf)
     t__he3__weak__wc12(rate_eval, tf)
     he3__t__weak__electron_capture(rate_eval, tf)
     be7__li7__weak__electron_capture(rate_eval, tf)
@@ -2186,7 +2170,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
     jac = np.zeros((nnuc, nnuc), dtype=np.float64)
 
     jac[jn, jn] = (
-       -rate_eval.n__p__weak__wc12
        -rho*Y[jp]*rate_eval.n_p__d
        -rho*Y[jd]*rate_eval.n_d__t
        -rho*Y[jhe3]*rate_eval.n_he3__he4
@@ -2304,7 +2287,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho**2*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__t_he3
        -5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
-       +rate_eval.n__p__weak__wc12
        +rho*Y[jhe3]*rate_eval.n_he3__p_t
        +rho*Y[jbe7]*rate_eval.n_be7__p_li7
        +5.00000000000000e-01*rho**2*Y[jp]**2*rate_eval.n_p_p__p_d
