@@ -15,9 +15,7 @@ jli6 = 6
 jli7 = 7
 jli8 = 8
 jbe7 = 9
-jbe9 = 10
-jb8 = 11
-nnuc = 12
+nnuc = 10
 
 A = np.zeros((nnuc), dtype=np.int32)
 
@@ -31,8 +29,6 @@ A[jli6] = 6
 A[jli7] = 7
 A[jli8] = 8
 A[jbe7] = 7
-A[jbe9] = 9
-A[jb8] = 8
 
 Z = np.zeros((nnuc), dtype=np.int32)
 
@@ -46,8 +42,6 @@ Z[jli6] = 3
 Z[jli7] = 3
 Z[jli8] = 3
 Z[jbe7] = 4
-Z[jbe9] = 4
-Z[jb8] = 5
 
 names = []
 names.append("n")
@@ -60,8 +54,6 @@ names.append("li6")
 names.append("li7")
 names.append("li8")
 names.append("be7")
-names.append("be9")
-names.append("b8")
 
 def to_composition(Y):
     """Convert an array of molar fractions to a Composition object."""
@@ -89,10 +81,7 @@ def to_composition(Y):
     ("li8__he4_he4__weak__wc12", numba.float64),
     ("be7__p_li6", numba.float64),
     ("be7__he4_he3", numba.float64),
-    ("b8__p_be7", numba.float64),
-    ("b8__he4_he4__weak__wc12", numba.float64),
     ("li6__n_p_he4", numba.float64),
-    ("be9__n_he4_he4", numba.float64),
     ("n_p__d", numba.float64),
     ("p_p__d__weak__bet_pos_", numba.float64),
     ("p_p__d__weak__electron_capture", numba.float64),
@@ -108,7 +97,6 @@ def to_composition(Y):
     ("n_li6__li7", numba.float64),
     ("p_li6__be7", numba.float64),
     ("n_li7__li8", numba.float64),
-    ("p_be7__b8", numba.float64),
     ("d_d__n_he3", numba.float64),
     ("d_d__p_t", numba.float64),
     ("p_t__n_he3", numba.float64),
@@ -129,22 +117,16 @@ def to_composition(Y):
     ("p_li6__he4_he3", numba.float64),
     ("d_li6__n_be7", numba.float64),
     ("d_li6__p_li7", numba.float64),
-    ("he4_li6__p_be9", numba.float64),
     ("p_li7__n_be7", numba.float64),
     ("p_li7__d_li6", numba.float64),
     ("p_li7__he4_he4", numba.float64),
     ("d_li7__p_li8", numba.float64),
-    ("t_li7__n_be9", numba.float64),
     ("t_li7__d_li8", numba.float64),
     ("p_li8__d_li7", numba.float64),
-    ("d_li8__n_be9", numba.float64),
     ("d_li8__t_li7", numba.float64),
     ("n_be7__p_li7", numba.float64),
     ("n_be7__d_li6", numba.float64),
     ("n_be7__he4_he4", numba.float64),
-    ("n_be9__d_li8", numba.float64),
-    ("n_be9__t_li7", numba.float64),
-    ("p_be9__he4_li6", numba.float64),
     ("p_d__n_p_p", numba.float64),
     ("t_t__n_n_he4", numba.float64),
     ("t_he3__n_p_he4", numba.float64),
@@ -152,28 +134,21 @@ def to_composition(Y):
     ("d_li7__n_he4_he4", numba.float64),
     ("p_li8__n_he4_he4", numba.float64),
     ("d_be7__p_he4_he4", numba.float64),
-    ("p_be9__d_he4_he4", numba.float64),
-    ("n_b8__p_he4_he4", numba.float64),
     ("t_li7__n_n_he4_he4", numba.float64),
     ("he3_li7__n_p_he4_he4", numba.float64),
     ("t_be7__n_p_he4_he4", numba.float64),
     ("he3_be7__p_p_he4_he4", numba.float64),
-    ("p_be9__n_p_he4_he4", numba.float64),
     ("n_p_he4__li6", numba.float64),
-    ("n_he4_he4__be9", numba.float64),
     ("n_p_p__p_d", numba.float64),
     ("n_n_he4__t_t", numba.float64),
     ("n_p_he4__t_he3", numba.float64),
     ("p_p_he4__he3_he3", numba.float64),
     ("n_he4_he4__p_li8", numba.float64),
     ("n_he4_he4__d_li7", numba.float64),
-    ("p_he4_he4__n_b8", numba.float64),
     ("p_he4_he4__d_be7", numba.float64),
-    ("d_he4_he4__p_be9", numba.float64),
     ("n_n_he4_he4__t_li7", numba.float64),
     ("n_p_he4_he4__he3_li7", numba.float64),
     ("n_p_he4_he4__t_be7", numba.float64),
-    ("n_p_he4_he4__p_be9", numba.float64),
     ("p_p_he4_he4__he3_be7", numba.float64),
     ("p__n", numba.float64),
     ("n__p", numba.float64),
@@ -196,10 +171,7 @@ class RateEval:
         self.li8__he4_he4__weak__wc12 = np.nan
         self.be7__p_li6 = np.nan
         self.be7__he4_he3 = np.nan
-        self.b8__p_be7 = np.nan
-        self.b8__he4_he4__weak__wc12 = np.nan
         self.li6__n_p_he4 = np.nan
-        self.be9__n_he4_he4 = np.nan
         self.n_p__d = np.nan
         self.p_p__d__weak__bet_pos_ = np.nan
         self.p_p__d__weak__electron_capture = np.nan
@@ -215,7 +187,6 @@ class RateEval:
         self.n_li6__li7 = np.nan
         self.p_li6__be7 = np.nan
         self.n_li7__li8 = np.nan
-        self.p_be7__b8 = np.nan
         self.d_d__n_he3 = np.nan
         self.d_d__p_t = np.nan
         self.p_t__n_he3 = np.nan
@@ -236,22 +207,16 @@ class RateEval:
         self.p_li6__he4_he3 = np.nan
         self.d_li6__n_be7 = np.nan
         self.d_li6__p_li7 = np.nan
-        self.he4_li6__p_be9 = np.nan
         self.p_li7__n_be7 = np.nan
         self.p_li7__d_li6 = np.nan
         self.p_li7__he4_he4 = np.nan
         self.d_li7__p_li8 = np.nan
-        self.t_li7__n_be9 = np.nan
         self.t_li7__d_li8 = np.nan
         self.p_li8__d_li7 = np.nan
-        self.d_li8__n_be9 = np.nan
         self.d_li8__t_li7 = np.nan
         self.n_be7__p_li7 = np.nan
         self.n_be7__d_li6 = np.nan
         self.n_be7__he4_he4 = np.nan
-        self.n_be9__d_li8 = np.nan
-        self.n_be9__t_li7 = np.nan
-        self.p_be9__he4_li6 = np.nan
         self.p_d__n_p_p = np.nan
         self.t_t__n_n_he4 = np.nan
         self.t_he3__n_p_he4 = np.nan
@@ -259,28 +224,21 @@ class RateEval:
         self.d_li7__n_he4_he4 = np.nan
         self.p_li8__n_he4_he4 = np.nan
         self.d_be7__p_he4_he4 = np.nan
-        self.p_be9__d_he4_he4 = np.nan
-        self.n_b8__p_he4_he4 = np.nan
         self.t_li7__n_n_he4_he4 = np.nan
         self.he3_li7__n_p_he4_he4 = np.nan
         self.t_be7__n_p_he4_he4 = np.nan
         self.he3_be7__p_p_he4_he4 = np.nan
-        self.p_be9__n_p_he4_he4 = np.nan
         self.n_p_he4__li6 = np.nan
-        self.n_he4_he4__be9 = np.nan
         self.n_p_p__p_d = np.nan
         self.n_n_he4__t_t = np.nan
         self.n_p_he4__t_he3 = np.nan
         self.p_p_he4__he3_he3 = np.nan
         self.n_he4_he4__p_li8 = np.nan
         self.n_he4_he4__d_li7 = np.nan
-        self.p_he4_he4__n_b8 = np.nan
         self.p_he4_he4__d_be7 = np.nan
-        self.d_he4_he4__p_be9 = np.nan
         self.n_n_he4_he4__t_li7 = np.nan
         self.n_p_he4_he4__he3_li7 = np.nan
         self.n_p_he4_he4__t_be7 = np.nan
-        self.n_p_he4_he4__p_be9 = np.nan
         self.p_p_he4_he4__he3_be7 = np.nan
         self.p__n = np.nan
         self.n__p = np.nan
@@ -484,29 +442,6 @@ def be7__he4_he3(rate_eval, tf):
     rate_eval.be7__he4_he3 = rate
 
 @numba.njit()
-def b8__p_be7(rate_eval, tf):
-    # b8 --> p + be7
-    rate = 0.0
-
-    # nacrn
-    rate += np.exp(  35.8138 + -1.58982*tf.T9i + -10.264*tf.T913i + -0.203472*tf.T913
-                  + 0.121083*tf.T9 + -0.00700063*tf.T953 + 0.833333*tf.lnT9)
-    # nacrr
-    rate += np.exp(  31.0163 + -8.93482*tf.T9i)
-
-    rate_eval.b8__p_be7 = rate
-
-@numba.njit()
-def b8__he4_he4__weak__wc12(rate_eval, tf):
-    # b8 --> he4 + he4
-    rate = 0.0
-
-    # wc12w
-    rate += np.exp(  -0.105148)
-
-    rate_eval.b8__he4_he4__weak__wc12 = rate
-
-@numba.njit()
 def li6__n_p_he4(rate_eval, tf):
     # li6 --> n + p + he4
     rate = 0.0
@@ -516,20 +451,6 @@ def li6__n_p_he4(rate_eval, tf):
                   + 0.0454035*tf.T9 + 0.00471161*tf.T953 + 2.0*tf.lnT9)
 
     rate_eval.li6__n_p_he4 = rate
-
-@numba.njit()
-def be9__n_he4_he4(rate_eval, tf):
-    # be9 --> n + he4 + he4
-    rate = 0.0
-
-    # ac12r
-    rate += np.exp(  38.6902 + -19.2792*tf.T9i + -1.56673*tf.T913i + -5.43497*tf.T913
-                  + 0.673807*tf.T9 + -0.041014*tf.T953 + 1.5*tf.lnT9)
-    # ac12n
-    rate += np.exp(  37.273 + -18.2597*tf.T9i + -13.3317*tf.T913i + 13.2237*tf.T913
-                  + -9.06339*tf.T9 + 2.33333*tf.lnT9)
-
-    rate_eval.be9__n_he4_he4 = rate
 
 @numba.njit()
 def n_p__d(rate_eval, tf):
@@ -714,20 +635,6 @@ def n_li7__li8(rate_eval, tf):
                   + -0.540218*tf.T9 + 0.0265361*tf.T953 + -3.61209*tf.lnT9)
 
     rate_eval.n_li7__li8 = rate
-
-@numba.njit()
-def p_be7__b8(rate_eval, tf):
-    # be7 + p --> b8
-    rate = 0.0
-
-    # nacrn
-    rate += np.exp(  12.5315 + -10.264*tf.T913i + -0.203472*tf.T913
-                  + 0.121083*tf.T9 + -0.00700063*tf.T953 + -0.666667*tf.lnT9)
-    # nacrr
-    rate += np.exp(  7.73399 + -7.345*tf.T9i
-                  + -1.5*tf.lnT9)
-
-    rate_eval.p_be7__b8 = rate
 
 @numba.njit()
 def d_d__n_he3(rate_eval, tf):
@@ -981,23 +888,6 @@ def d_li6__p_li7(rate_eval, tf):
     rate_eval.d_li6__p_li7 = rate
 
 @numba.njit()
-def he4_li6__p_be9(rate_eval, tf):
-    # li6 + he4 --> p + be9
-    rate = 0.0
-
-    # cf88r
-    rate += np.exp(  19.8324 + -29.8312*tf.T9i
-                  + -0.75*tf.lnT9)
-    # cf88r
-    rate += np.exp(  19.4366 + -27.7172*tf.T9i
-                  + -1.0*tf.lnT9)
-    # cf88n
-    rate += np.exp(  25.5847 + -24.6712*tf.T9i + -10.359*tf.T913i + 0.102577*tf.T913
-                  + 4.43544*tf.T9 + -5.97105*tf.T953 + -0.666667*tf.lnT9)
-
-    rate_eval.he4_li6__p_be9 = rate
-
-@numba.njit()
 def p_li7__n_be7(rate_eval, tf):
     # li7 + p --> n + be7
     rate = 0.0
@@ -1051,20 +941,6 @@ def d_li7__p_li8(rate_eval, tf):
     rate_eval.d_li7__p_li8 = rate
 
 @numba.njit()
-def t_li7__n_be9(rate_eval, tf):
-    # li7 + t --> n + be9
-    rate = 0.0
-
-    # bk91 
-    rate += np.exp(  34.634 + -11.333*tf.T913i + -7.3964*tf.T913
-                  + 0.947759*tf.T9 + -0.0839008*tf.T953 + 0.333333*tf.lnT9)
-    # bk91 
-    rate += np.exp(  30.2619 + -11.333*tf.T913i + -0.170964*tf.T913
-                  + -6.30572*tf.T9 + 1.2248*tf.T953 + -0.666667*tf.lnT9)
-
-    rate_eval.t_li7__n_be9 = rate
-
-@numba.njit()
 def t_li7__d_li8(rate_eval, tf):
     # li7 + t --> d + li8
     rate = 0.0
@@ -1088,17 +964,6 @@ def p_li8__d_li7(rate_eval, tf):
                   + -1.5*tf.lnT9)
 
     rate_eval.p_li8__d_li7 = rate
-
-@numba.njit()
-def d_li8__n_be9(rate_eval, tf):
-    # li8 + d --> n + be9
-    rate = 0.0
-
-    # mafon
-    rate += np.exp(  26.4 + -5.94754e-12*tf.T9i + -10.259*tf.T913i + -2.53711e-09*tf.T913
-                  + 2.5234e-10*tf.T9 + -2.10055e-11*tf.T953 + -0.666667*tf.lnT9)
-
-    rate_eval.d_li8__n_be9 = rate
 
 @numba.njit()
 def d_li8__t_li7(rate_eval, tf):
@@ -1146,48 +1011,6 @@ def n_be7__he4_he4(rate_eval, tf):
                   + 0.000176541*tf.T9 + -1.36797e-05*tf.T953 + 1.00083*tf.lnT9)
 
     rate_eval.n_be7__he4_he4 = rate
-
-@numba.njit()
-def n_be9__d_li8(rate_eval, tf):
-    # be9 + n --> d + li8
-    rate = 0.0
-
-    # mafon
-    rate += np.exp(  27.8917 + -170.148*tf.T9i + -10.259*tf.T913i + -2.53711e-09*tf.T913
-                  + 2.5234e-10*tf.T9 + -2.10055e-11*tf.T953 + -0.666667*tf.lnT9)
-
-    rate_eval.n_be9__d_li8 = rate
-
-@numba.njit()
-def n_be9__t_li7(rate_eval, tf):
-    # be9 + n --> t + li7
-    rate = 0.0
-
-    # bk91 
-    rate += np.exp(  35.9049 + -121.123*tf.T9i + -11.333*tf.T913i + -7.3964*tf.T913
-                  + 0.947759*tf.T9 + -0.0839008*tf.T953 + 0.333333*tf.lnT9)
-    # bk91 
-    rate += np.exp(  31.5328 + -121.123*tf.T9i + -11.333*tf.T913i + -0.170964*tf.T913
-                  + -6.30572*tf.T9 + 1.2248*tf.T953 + -0.666667*tf.lnT9)
-
-    rate_eval.n_be9__t_li7 = rate
-
-@numba.njit()
-def p_be9__he4_li6(rate_eval, tf):
-    # be9 + p --> he4 + li6
-    rate = 0.0
-
-    # cf88r
-    rate += np.exp(  19.927 + -3.046*tf.T9i
-                  + -1.0*tf.lnT9)
-    # cf88n
-    rate += np.exp(  26.0751 + -10.359*tf.T913i + 0.102577*tf.T913
-                  + 4.43544*tf.T9 + -5.97105*tf.T953 + -0.666667*tf.lnT9)
-    # cf88r
-    rate += np.exp(  20.3228 + -5.16*tf.T9i
-                  + -0.75*tf.lnT9)
-
-    rate_eval.p_be9__he4_li6 = rate
 
 @numba.njit()
 def p_d__n_p_p(rate_eval, tf):
@@ -1279,34 +1102,6 @@ def d_be7__p_he4_he4(rate_eval, tf):
     rate_eval.d_be7__p_he4_he4 = rate
 
 @numba.njit()
-def p_be9__d_he4_he4(rate_eval, tf):
-    # be9 + p --> d + he4 + he4
-    rate = 0.0
-
-    # cf88r
-    rate += np.exp(  20.5607 + -5.8*tf.T9i
-                  + -0.75*tf.lnT9)
-    # cf88r
-    rate += np.exp(  20.1768 + -3.046*tf.T9i
-                  + -1.0*tf.lnT9)
-    # cf88n
-    rate += np.exp(  26.0751 + -10.359*tf.T913i + 0.103955*tf.T913
-                  + 4.4262*tf.T9 + -5.95664*tf.T953 + -0.666667*tf.lnT9)
-
-    rate_eval.p_be9__d_he4_he4 = rate
-
-@numba.njit()
-def n_b8__p_he4_he4(rate_eval, tf):
-    # b8 + n --> p + he4 + he4
-    rate = 0.0
-
-    #  wagn
-    rate += np.exp(  19.812 + -1.13869e-12*tf.T9i + 1.5368e-10*tf.T913i + -5.36043e-10*tf.T913
-                  + 5.80628e-11*tf.T9 + -5.23778e-12*tf.T953 + 1.77211e-10*tf.lnT9)
-
-    rate_eval.n_b8__p_he4_he4 = rate
-
-@numba.njit()
 def t_li7__n_n_he4_he4(rate_eval, tf):
     # li7 + t --> n + n + he4 + he4
     rate = 0.0
@@ -1351,20 +1146,6 @@ def he3_be7__p_p_he4_he4(rate_eval, tf):
     rate_eval.he3_be7__p_p_he4_he4 = rate
 
 @numba.njit()
-def p_be9__n_p_he4_he4(rate_eval, tf):
-    # be9 + p --> n + p + he4 + he4
-    rate = 0.0
-
-    # cf88r
-    rate += np.exp(  20.7431 + -26.725*tf.T9i + 1.40505e-06*tf.T913i + -1.47128e-06*tf.T913
-                  + 6.89313e-08*tf.T9 + -3.55179e-09*tf.T953 + -1.5*tf.lnT9)
-    # cf88n
-    rate += np.exp(  14.6035 + -21.4742*tf.T9i + -0.634849*tf.T913i + 4.82033*tf.T913
-                  + -0.257317*tf.T9 + 0.0134206*tf.T953 + -1.08885*tf.lnT9)
-
-    rate_eval.p_be9__n_p_he4_he4 = rate
-
-@numba.njit()
 def n_p_he4__li6(rate_eval, tf):
     # n + p + he4 --> li6
     rate = 0.0
@@ -1374,20 +1155,6 @@ def n_p_he4__li6(rate_eval, tf):
                   + 0.0454035*tf.T9 + 0.00471161*tf.T953 + -1.0*tf.lnT9)
 
     rate_eval.n_p_he4__li6 = rate
-
-@numba.njit()
-def n_he4_he4__be9(rate_eval, tf):
-    # n + he4 + he4 --> be9
-    rate = 0.0
-
-    # ac12r
-    rate += np.exp(  -6.81178 + -1.01953*tf.T9i + -1.56673*tf.T913i + -5.43497*tf.T913
-                  + 0.673807*tf.T9 + -0.041014*tf.T953 + -1.5*tf.lnT9)
-    # ac12n
-    rate += np.exp(  -8.22898 + -13.3317*tf.T913i + 13.2237*tf.T913
-                  + -9.06339*tf.T9 + -0.666667*tf.lnT9)
-
-    rate_eval.n_he4_he4__be9 = rate
 
 @numba.njit()
 def n_p_p__p_d(rate_eval, tf):
@@ -1468,17 +1235,6 @@ def n_he4_he4__d_li7(rate_eval, tf):
     rate_eval.n_he4_he4__d_li7 = rate
 
 @numba.njit()
-def p_he4_he4__n_b8(rate_eval, tf):
-    # p + he4 + he4 --> n + b8
-    rate = 0.0
-
-    #  wagn
-    rate += np.exp(  -1.93853 + -218.783*tf.T9i + 1.5368e-10*tf.T913i + -5.36043e-10*tf.T913
-                  + 5.80628e-11*tf.T9 + -5.23778e-12*tf.T953 + -1.5*tf.lnT9)
-
-    rate_eval.p_he4_he4__n_b8 = rate
-
-@numba.njit()
 def p_he4_he4__d_be7(rate_eval, tf):
     # p + he4 + he4 --> d + be7
     rate = 0.0
@@ -1488,23 +1244,6 @@ def p_he4_he4__d_be7(rate_eval, tf):
                   + -2.16667*tf.lnT9)
 
     rate_eval.p_he4_he4__d_be7 = rate
-
-@numba.njit()
-def d_he4_he4__p_be9(rate_eval, tf):
-    # d + he4 + he4 --> p + be9
-    rate = 0.0
-
-    # cf88r
-    rate += np.exp(  -2.68071 + -13.3545*tf.T9i
-                  + -2.25*tf.lnT9)
-    # cf88r
-    rate += np.exp(  -3.06461 + -10.6005*tf.T9i
-                  + -2.5*tf.lnT9)
-    # cf88n
-    rate += np.exp(  2.83369 + -7.55453*tf.T9i + -10.359*tf.T913i + 0.103955*tf.T913
-                  + 4.4262*tf.T9 + -5.95664*tf.T953 + -2.16667*tf.lnT9)
-
-    rate_eval.d_he4_he4__p_be9 = rate
 
 @numba.njit()
 def n_n_he4_he4__t_li7(rate_eval, tf):
@@ -1538,20 +1277,6 @@ def n_p_he4_he4__t_be7(rate_eval, tf):
                   + 2.89378e-10*tf.T9 + -2.40287e-11*tf.T953 + -3.66667*tf.lnT9)
 
     rate_eval.n_p_he4_he4__t_be7 = rate
-
-@numba.njit()
-def n_p_he4_he4__p_be9(rate_eval, tf):
-    # n + p + he4 + he4 --> p + be9
-    rate = 0.0
-
-    # cf88r
-    rate += np.exp(  -25.452 + -8.47112*tf.T9i + 1.40505e-06*tf.T913i + -1.47128e-06*tf.T913
-                  + 6.89313e-08*tf.T9 + -3.55179e-09*tf.T953 + -4.5*tf.lnT9)
-    # cf88n
-    rate += np.exp(  -31.5916 + -3.22032*tf.T9i + -0.634849*tf.T913i + 4.82033*tf.T913
-                  + -0.257317*tf.T9 + 0.0134206*tf.T953 + -4.08885*tf.lnT9)
-
-    rate_eval.n_p_he4_he4__p_be9 = rate
 
 @numba.njit()
 def p_p_he4_he4__he3_be7(rate_eval, tf):
@@ -1651,10 +1376,7 @@ def rhs_eq(t, Y, rho, T, screen_func):
     li8__he4_he4__weak__wc12(rate_eval, tf)
     be7__p_li6(rate_eval, tf)
     be7__he4_he3(rate_eval, tf)
-    b8__p_be7(rate_eval, tf)
-    b8__he4_he4__weak__wc12(rate_eval, tf)
     li6__n_p_he4(rate_eval, tf)
-    be9__n_he4_he4(rate_eval, tf)
     n_p__d(rate_eval, tf)
     p_p__d__weak__bet_pos_(rate_eval, tf)
     p_p__d__weak__electron_capture(rate_eval, tf)
@@ -1670,7 +1392,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
     n_li6__li7(rate_eval, tf)
     p_li6__be7(rate_eval, tf)
     n_li7__li8(rate_eval, tf)
-    p_be7__b8(rate_eval, tf)
     d_d__n_he3(rate_eval, tf)
     d_d__p_t(rate_eval, tf)
     p_t__n_he3(rate_eval, tf)
@@ -1691,22 +1412,16 @@ def rhs_eq(t, Y, rho, T, screen_func):
     p_li6__he4_he3(rate_eval, tf)
     d_li6__n_be7(rate_eval, tf)
     d_li6__p_li7(rate_eval, tf)
-    he4_li6__p_be9(rate_eval, tf)
     p_li7__n_be7(rate_eval, tf)
     p_li7__d_li6(rate_eval, tf)
     p_li7__he4_he4(rate_eval, tf)
     d_li7__p_li8(rate_eval, tf)
-    t_li7__n_be9(rate_eval, tf)
     t_li7__d_li8(rate_eval, tf)
     p_li8__d_li7(rate_eval, tf)
-    d_li8__n_be9(rate_eval, tf)
     d_li8__t_li7(rate_eval, tf)
     n_be7__p_li7(rate_eval, tf)
     n_be7__d_li6(rate_eval, tf)
     n_be7__he4_he4(rate_eval, tf)
-    n_be9__d_li8(rate_eval, tf)
-    n_be9__t_li7(rate_eval, tf)
-    p_be9__he4_li6(rate_eval, tf)
     p_d__n_p_p(rate_eval, tf)
     t_t__n_n_he4(rate_eval, tf)
     t_he3__n_p_he4(rate_eval, tf)
@@ -1714,28 +1429,21 @@ def rhs_eq(t, Y, rho, T, screen_func):
     d_li7__n_he4_he4(rate_eval, tf)
     p_li8__n_he4_he4(rate_eval, tf)
     d_be7__p_he4_he4(rate_eval, tf)
-    p_be9__d_he4_he4(rate_eval, tf)
-    n_b8__p_he4_he4(rate_eval, tf)
     t_li7__n_n_he4_he4(rate_eval, tf)
     he3_li7__n_p_he4_he4(rate_eval, tf)
     t_be7__n_p_he4_he4(rate_eval, tf)
     he3_be7__p_p_he4_he4(rate_eval, tf)
-    p_be9__n_p_he4_he4(rate_eval, tf)
     n_p_he4__li6(rate_eval, tf)
-    n_he4_he4__be9(rate_eval, tf)
     n_p_p__p_d(rate_eval, tf)
     n_n_he4__t_t(rate_eval, tf)
     n_p_he4__t_he3(rate_eval, tf)
     p_p_he4__he3_he3(rate_eval, tf)
     n_he4_he4__p_li8(rate_eval, tf)
     n_he4_he4__d_li7(rate_eval, tf)
-    p_he4_he4__n_b8(rate_eval, tf)
     p_he4_he4__d_be7(rate_eval, tf)
-    d_he4_he4__p_be9(rate_eval, tf)
     n_n_he4_he4__t_li7(rate_eval, tf)
     n_p_he4_he4__he3_li7(rate_eval, tf)
     n_p_he4_he4__t_be7(rate_eval, tf)
-    n_p_he4_he4__p_be9(rate_eval, tf)
     p_p_he4_he4__he3_be7(rate_eval, tf)
 
     # custom rates
@@ -1793,10 +1501,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
         rate_eval.p_li6__be7 *= scor
         rate_eval.p_li6__he4_he3 *= scor
 
-        scn_fac = ScreenFactors(1, 1, 4, 7)
-        scor = screen_func(plasma_state, scn_fac)
-        rate_eval.p_be7__b8 *= scor
-
         scn_fac = ScreenFactors(1, 2, 1, 3)
         scor = screen_func(plasma_state, scn_fac)
         rate_eval.d_t__n_he4 *= scor
@@ -1820,7 +1524,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
         scor = screen_func(plasma_state, scn_fac)
         rate_eval.he4_he4__n_be7 *= scor
         rate_eval.he4_he4__p_li7 *= scor
-        rate_eval.n_he4_he4__be9 *= scor
         rate_eval.n_he4_he4__p_li8 *= scor
         rate_eval.n_he4_he4__d_li7 *= scor
         rate_eval.n_n_he4_he4__t_li7 *= scor
@@ -1829,10 +1532,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
         scor = screen_func(plasma_state, scn_fac)
         rate_eval.d_li6__n_be7 *= scor
         rate_eval.d_li6__p_li7 *= scor
-
-        scn_fac = ScreenFactors(2, 4, 3, 6)
-        scor = screen_func(plasma_state, scn_fac)
-        rate_eval.he4_li6__p_be9 *= scor
 
         scn_fac = ScreenFactors(1, 1, 3, 7)
         scor = screen_func(plasma_state, scn_fac)
@@ -1847,7 +1546,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
 
         scn_fac = ScreenFactors(1, 3, 3, 7)
         scor = screen_func(plasma_state, scn_fac)
-        rate_eval.t_li7__n_be9 *= scor
         rate_eval.t_li7__d_li8 *= scor
         rate_eval.t_li7__n_n_he4_he4 *= scor
 
@@ -1858,14 +1556,7 @@ def rhs_eq(t, Y, rho, T, screen_func):
 
         scn_fac = ScreenFactors(1, 2, 3, 8)
         scor = screen_func(plasma_state, scn_fac)
-        rate_eval.d_li8__n_be9 *= scor
         rate_eval.d_li8__t_li7 *= scor
-
-        scn_fac = ScreenFactors(1, 1, 4, 9)
-        scor = screen_func(plasma_state, scn_fac)
-        rate_eval.p_be9__he4_li6 *= scor
-        rate_eval.p_be9__d_he4_he4 *= scor
-        rate_eval.p_be9__n_p_he4_he4 *= scor
 
         scn_fac = ScreenFactors(1, 3, 1, 3)
         scor = screen_func(plasma_state, scn_fac)
@@ -1897,15 +1588,9 @@ def rhs_eq(t, Y, rho, T, screen_func):
 
         scn_fac = ScreenFactors(1, 1, 2, 4)
         scor = screen_func(plasma_state, scn_fac)
-        rate_eval.p_he4_he4__n_b8 *= scor
         rate_eval.p_he4_he4__d_be7 *= scor
         rate_eval.n_p_he4_he4__he3_li7 *= scor
         rate_eval.n_p_he4_he4__t_be7 *= scor
-        rate_eval.n_p_he4_he4__p_be9 *= scor
-
-        scn_fac = ScreenFactors(1, 2, 2, 4)
-        scor = screen_func(plasma_state, scn_fac)
-        rate_eval.d_he4_he4__p_be9 *= scor
 
     dYdt = np.zeros((nnuc), dtype=np.float64)
 
@@ -1922,11 +1607,7 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -rho*Y[jn]*Y[jbe7]*rate_eval.n_be7__p_li7
        -rho*Y[jn]*Y[jbe7]*rate_eval.n_be7__d_li6
        -rho*Y[jn]*Y[jbe7]*rate_eval.n_be7__he4_he4
-       -rho*Y[jn]*Y[jbe9]*rate_eval.n_be9__d_li8
-       -rho*Y[jn]*Y[jbe9]*rate_eval.n_be9__t_li7
-       -rho*Y[jn]*Y[jb8]*rate_eval.n_b8__p_he4_he4
        -rho**2*Y[jn]*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__li6
-       -5.00000000000000e-01*rho**2*Y[jn]*Y[jhe4]**2*rate_eval.n_he4_he4__be9
        -5.00000000000000e-01*rho**2*Y[jn]*Y[jp]**2*rate_eval.n_p_p__p_d
        -2*5.00000000000000e-01*rho**2*Y[jn]**2*Y[jhe4]*rate_eval.n_n_he4__t_t
        -rho**2*Y[jn]*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__t_he3
@@ -1935,7 +1616,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -2*2.50000000000000e-01*rho**3*Y[jn]**2*Y[jhe4]**2*rate_eval.n_n_he4_he4__t_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
-       -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
        -Y[jn]*rate_eval.n__p
        +Y[jd]*rate_eval.d__n_p
        +Y[jt]*rate_eval.t__n_d
@@ -1943,7 +1623,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
        +Y[jli7]*rate_eval.li7__n_li6
        +Y[jli8]*rate_eval.li8__n_li7
        +Y[jli6]*rate_eval.li6__n_p_he4
-       +Y[jbe9]*rate_eval.be9__n_he4_he4
        +5.00000000000000e-01*rho*Y[jd]**2*rate_eval.d_d__n_he3
        +rho*Y[jp]*Y[jt]*rate_eval.p_t__n_he3
        +rho*Y[jd]*Y[jt]*rate_eval.d_t__n_he4
@@ -1951,8 +1630,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
        +5.00000000000000e-01*rho*Y[jhe4]**2*rate_eval.he4_he4__n_be7
        +rho*Y[jd]*Y[jli6]*rate_eval.d_li6__n_be7
        +rho*Y[jp]*Y[jli7]*rate_eval.p_li7__n_be7
-       +rho*Y[jt]*Y[jli7]*rate_eval.t_li7__n_be9
-       +rho*Y[jd]*Y[jli8]*rate_eval.d_li8__n_be9
        +rho*Y[jp]*Y[jd]*rate_eval.p_d__n_p_p
        +2*5.00000000000000e-01*rho*Y[jt]**2*rate_eval.t_t__n_n_he4
        +rho*Y[jt]*Y[jhe3]*rate_eval.t_he3__n_p_he4
@@ -1961,8 +1638,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
        +2*rho*Y[jt]*Y[jli7]*rate_eval.t_li7__n_n_he4_he4
        +rho*Y[jhe3]*Y[jli7]*rate_eval.he3_li7__n_p_he4_he4
        +rho*Y[jt]*Y[jbe7]*rate_eval.t_be7__n_p_he4_he4
-       +rho*Y[jp]*Y[jbe9]*rate_eval.p_be9__n_p_he4_he4
-       +5.00000000000000e-01*rho**2*Y[jp]*Y[jhe4]**2*rate_eval.p_he4_he4__n_b8
        +Y[jp]*rate_eval.p__n
        )
 
@@ -1974,7 +1649,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -rho*Y[jp]*Y[jt]*rate_eval.p_t__he4
        -rho*Y[jp]*Y[jhe3]*rate_eval.p_he3__he4__weak__bet_pos_
        -rho*Y[jp]*Y[jli6]*rate_eval.p_li6__be7
-       -rho*Y[jp]*Y[jbe7]*rate_eval.p_be7__b8
        -rho*Y[jp]*Y[jt]*rate_eval.p_t__n_he3
        -rho*Y[jp]*Y[jt]*rate_eval.p_t__d_d
        -rho*Y[jp]*Y[jhe4]*rate_eval.p_he4__d_he3
@@ -1983,27 +1657,21 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -rho*Y[jp]*Y[jli7]*rate_eval.p_li7__d_li6
        -rho*Y[jp]*Y[jli7]*rate_eval.p_li7__he4_he4
        -rho*Y[jp]*Y[jli8]*rate_eval.p_li8__d_li7
-       -rho*Y[jp]*Y[jbe9]*rate_eval.p_be9__he4_li6
        -rho*Y[jp]*Y[jd]*rate_eval.p_d__n_p_p
        -rho*Y[jp]*Y[jli8]*rate_eval.p_li8__n_he4_he4
-       -rho*Y[jp]*Y[jbe9]*rate_eval.p_be9__d_he4_he4
-       -rho*Y[jp]*Y[jbe9]*rate_eval.p_be9__n_p_he4_he4
        -rho**2*Y[jn]*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__li6
        -2*5.00000000000000e-01*rho**2*Y[jn]*Y[jp]**2*rate_eval.n_p_p__p_d
        -rho**2*Y[jn]*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__t_he3
        -2*5.00000000000000e-01*rho**2*Y[jp]**2*Y[jhe4]*rate_eval.p_p_he4__he3_he3
-       -5.00000000000000e-01*rho**2*Y[jp]*Y[jhe4]**2*rate_eval.p_he4_he4__n_b8
        -5.00000000000000e-01*rho**2*Y[jp]*Y[jhe4]**2*rate_eval.p_he4_he4__d_be7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
-       -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
        -2*2.50000000000000e-01*rho**3*Y[jp]**2*Y[jhe4]**2*rate_eval.p_p_he4_he4__he3_be7
        -Y[jp]*rate_eval.p__n
        +Y[jd]*rate_eval.d__n_p
        +Y[jhe3]*rate_eval.he3__p_d
        +Y[jhe4]*rate_eval.he4__p_t
        +Y[jbe7]*rate_eval.be7__p_li6
-       +Y[jb8]*rate_eval.b8__p_be7
        +Y[jli6]*rate_eval.li6__n_p_he4
        +5.00000000000000e-01*rho*Y[jd]**2*rate_eval.d_d__p_t
        +rho*Y[jn]*Y[jhe3]*rate_eval.n_he3__p_t
@@ -2011,22 +1679,17 @@ def rhs_eq(t, Y, rho, T, screen_func):
        +rho*Y[jhe3]*Y[jhe4]*rate_eval.he4_he3__p_li6
        +5.00000000000000e-01*rho*Y[jhe4]**2*rate_eval.he4_he4__p_li7
        +rho*Y[jd]*Y[jli6]*rate_eval.d_li6__p_li7
-       +rho*Y[jhe4]*Y[jli6]*rate_eval.he4_li6__p_be9
        +rho*Y[jd]*Y[jli7]*rate_eval.d_li7__p_li8
        +rho*Y[jn]*Y[jbe7]*rate_eval.n_be7__p_li7
        +2*rho*Y[jp]*Y[jd]*rate_eval.p_d__n_p_p
        +rho*Y[jt]*Y[jhe3]*rate_eval.t_he3__n_p_he4
        +2*5.00000000000000e-01*rho*Y[jhe3]**2*rate_eval.he3_he3__p_p_he4
        +rho*Y[jd]*Y[jbe7]*rate_eval.d_be7__p_he4_he4
-       +rho*Y[jn]*Y[jb8]*rate_eval.n_b8__p_he4_he4
        +rho*Y[jhe3]*Y[jli7]*rate_eval.he3_li7__n_p_he4_he4
        +rho*Y[jt]*Y[jbe7]*rate_eval.t_be7__n_p_he4_he4
        +2*rho*Y[jhe3]*Y[jbe7]*rate_eval.he3_be7__p_p_he4_he4
-       +rho*Y[jp]*Y[jbe9]*rate_eval.p_be9__n_p_he4_he4
        +5.00000000000000e-01*rho**2*Y[jn]*Y[jp]**2*rate_eval.n_p_p__p_d
        +5.00000000000000e-01*rho**2*Y[jn]*Y[jhe4]**2*rate_eval.n_he4_he4__p_li8
-       +5.00000000000000e-01*rho**2*Y[jd]*Y[jhe4]**2*rate_eval.d_he4_he4__p_be9
-       +5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
        +Y[jn]*rate_eval.n__p
        )
 
@@ -2044,12 +1707,10 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -rho*Y[jd]*Y[jli6]*rate_eval.d_li6__n_be7
        -rho*Y[jd]*Y[jli6]*rate_eval.d_li6__p_li7
        -rho*Y[jd]*Y[jli7]*rate_eval.d_li7__p_li8
-       -rho*Y[jd]*Y[jli8]*rate_eval.d_li8__n_be9
        -rho*Y[jd]*Y[jli8]*rate_eval.d_li8__t_li7
        -rho*Y[jp]*Y[jd]*rate_eval.p_d__n_p_p
        -rho*Y[jd]*Y[jli7]*rate_eval.d_li7__n_he4_he4
        -rho*Y[jd]*Y[jbe7]*rate_eval.d_be7__p_he4_he4
-       -5.00000000000000e-01*rho**2*Y[jd]*Y[jhe4]**2*rate_eval.d_he4_he4__p_be9
        +Y[jt]*rate_eval.t__n_d
        +Y[jhe3]*rate_eval.he3__p_d
        +2*Y[jhe4]*rate_eval.he4__d_d
@@ -2066,8 +1727,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
        +rho*Y[jt]*Y[jli7]*rate_eval.t_li7__d_li8
        +rho*Y[jp]*Y[jli8]*rate_eval.p_li8__d_li7
        +rho*Y[jn]*Y[jbe7]*rate_eval.n_be7__d_li6
-       +rho*Y[jn]*Y[jbe9]*rate_eval.n_be9__d_li8
-       +rho*Y[jp]*Y[jbe9]*rate_eval.p_be9__d_he4_he4
        +5.00000000000000e-01*rho**2*Y[jn]*Y[jp]**2*rate_eval.n_p_p__p_d
        +5.00000000000000e-01*rho**2*Y[jn]*Y[jhe4]**2*rate_eval.n_he4_he4__d_li7
        +5.00000000000000e-01*rho**2*Y[jp]*Y[jhe4]**2*rate_eval.p_he4_he4__d_be7
@@ -2083,7 +1742,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -rho*Y[jd]*Y[jt]*rate_eval.d_t__n_he4
        -rho*Y[jt]*Y[jhe4]*rate_eval.he4_t__n_li6
        -rho*Y[jt]*Y[jhe3]*rate_eval.t_he3__d_he4
-       -rho*Y[jt]*Y[jli7]*rate_eval.t_li7__n_be9
        -rho*Y[jt]*Y[jli7]*rate_eval.t_li7__d_li8
        -2*5.00000000000000e-01*rho*Y[jt]**2*rate_eval.t_t__n_n_he4
        -rho*Y[jt]*Y[jhe3]*rate_eval.t_he3__n_p_he4
@@ -2099,7 +1757,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
        +rho*Y[jd]*Y[jhe4]*rate_eval.d_he4__t_he3
        +rho*Y[jn]*Y[jli6]*rate_eval.n_li6__he4_t
        +rho*Y[jd]*Y[jli8]*rate_eval.d_li8__t_li7
-       +rho*Y[jn]*Y[jbe9]*rate_eval.n_be9__t_li7
        +2*5.00000000000000e-01*rho**2*Y[jn]**2*Y[jhe4]*rate_eval.n_n_he4__t_t
        +rho**2*Y[jn]*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__t_he3
        +2.50000000000000e-01*rho**3*Y[jn]**2*Y[jhe4]**2*rate_eval.n_n_he4_he4__t_li7
@@ -2150,29 +1807,22 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -rho*Y[jd]*Y[jhe4]*rate_eval.d_he4__t_he3
        -2*5.00000000000000e-01*rho*Y[jhe4]**2*rate_eval.he4_he4__n_be7
        -2*5.00000000000000e-01*rho*Y[jhe4]**2*rate_eval.he4_he4__p_li7
-       -rho*Y[jhe4]*Y[jli6]*rate_eval.he4_li6__p_be9
        -rho**2*Y[jn]*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__li6
-       -2*5.00000000000000e-01*rho**2*Y[jn]*Y[jhe4]**2*rate_eval.n_he4_he4__be9
        -5.00000000000000e-01*rho**2*Y[jn]**2*Y[jhe4]*rate_eval.n_n_he4__t_t
        -rho**2*Y[jn]*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__t_he3
        -5.00000000000000e-01*rho**2*Y[jp]**2*Y[jhe4]*rate_eval.p_p_he4__he3_he3
        -2*5.00000000000000e-01*rho**2*Y[jn]*Y[jhe4]**2*rate_eval.n_he4_he4__p_li8
        -2*5.00000000000000e-01*rho**2*Y[jn]*Y[jhe4]**2*rate_eval.n_he4_he4__d_li7
-       -2*5.00000000000000e-01*rho**2*Y[jp]*Y[jhe4]**2*rate_eval.p_he4_he4__n_b8
        -2*5.00000000000000e-01*rho**2*Y[jp]*Y[jhe4]**2*rate_eval.p_he4_he4__d_be7
-       -2*5.00000000000000e-01*rho**2*Y[jd]*Y[jhe4]**2*rate_eval.d_he4_he4__p_be9
        -2*2.50000000000000e-01*rho**3*Y[jn]**2*Y[jhe4]**2*rate_eval.n_n_he4_he4__t_li7
        -2*5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -2*5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
-       -2*5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
        -2*2.50000000000000e-01*rho**3*Y[jp]**2*Y[jhe4]**2*rate_eval.p_p_he4_he4__he3_be7
        +Y[jli6]*rate_eval.li6__he4_d
        +Y[jli7]*rate_eval.li7__he4_t
        +2*Y[jli8]*rate_eval.li8__he4_he4__weak__wc12
        +Y[jbe7]*rate_eval.be7__he4_he3
-       +2*Y[jb8]*rate_eval.b8__he4_he4__weak__wc12
        +Y[jli6]*rate_eval.li6__n_p_he4
-       +2*Y[jbe9]*rate_eval.be9__n_he4_he4
        +5.00000000000000e-01*rho*Y[jd]**2*rate_eval.d_d__he4
        +rho*Y[jp]*Y[jt]*rate_eval.p_t__he4
        +rho*Y[jn]*Y[jhe3]*rate_eval.n_he3__he4
@@ -2184,20 +1834,16 @@ def rhs_eq(t, Y, rho, T, screen_func):
        +rho*Y[jp]*Y[jli6]*rate_eval.p_li6__he4_he3
        +2*rho*Y[jp]*Y[jli7]*rate_eval.p_li7__he4_he4
        +2*rho*Y[jn]*Y[jbe7]*rate_eval.n_be7__he4_he4
-       +rho*Y[jp]*Y[jbe9]*rate_eval.p_be9__he4_li6
        +5.00000000000000e-01*rho*Y[jt]**2*rate_eval.t_t__n_n_he4
        +rho*Y[jt]*Y[jhe3]*rate_eval.t_he3__n_p_he4
        +5.00000000000000e-01*rho*Y[jhe3]**2*rate_eval.he3_he3__p_p_he4
        +2*rho*Y[jd]*Y[jli7]*rate_eval.d_li7__n_he4_he4
        +2*rho*Y[jp]*Y[jli8]*rate_eval.p_li8__n_he4_he4
        +2*rho*Y[jd]*Y[jbe7]*rate_eval.d_be7__p_he4_he4
-       +2*rho*Y[jp]*Y[jbe9]*rate_eval.p_be9__d_he4_he4
-       +2*rho*Y[jn]*Y[jb8]*rate_eval.n_b8__p_he4_he4
        +2*rho*Y[jt]*Y[jli7]*rate_eval.t_li7__n_n_he4_he4
        +2*rho*Y[jhe3]*Y[jli7]*rate_eval.he3_li7__n_p_he4_he4
        +2*rho*Y[jt]*Y[jbe7]*rate_eval.t_be7__n_p_he4_he4
        +2*rho*Y[jhe3]*Y[jbe7]*rate_eval.he3_be7__p_p_he4_he4
-       +2*rho*Y[jp]*Y[jbe9]*rate_eval.p_be9__n_p_he4_he4
        )
 
     dYdt[jli6] = (
@@ -2209,7 +1855,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -rho*Y[jp]*Y[jli6]*rate_eval.p_li6__he4_he3
        -rho*Y[jd]*Y[jli6]*rate_eval.d_li6__n_be7
        -rho*Y[jd]*Y[jli6]*rate_eval.d_li6__p_li7
-       -rho*Y[jhe4]*Y[jli6]*rate_eval.he4_li6__p_be9
        +Y[jli7]*rate_eval.li7__n_li6
        +Y[jbe7]*rate_eval.be7__p_li6
        +rho*Y[jd]*Y[jhe4]*rate_eval.he4_d__li6
@@ -2217,7 +1862,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
        +rho*Y[jhe3]*Y[jhe4]*rate_eval.he4_he3__p_li6
        +rho*Y[jp]*Y[jli7]*rate_eval.p_li7__d_li6
        +rho*Y[jn]*Y[jbe7]*rate_eval.n_be7__d_li6
-       +rho*Y[jp]*Y[jbe9]*rate_eval.p_be9__he4_li6
        +rho**2*Y[jn]*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__li6
        )
 
@@ -2229,7 +1873,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -rho*Y[jp]*Y[jli7]*rate_eval.p_li7__d_li6
        -rho*Y[jp]*Y[jli7]*rate_eval.p_li7__he4_he4
        -rho*Y[jd]*Y[jli7]*rate_eval.d_li7__p_li8
-       -rho*Y[jt]*Y[jli7]*rate_eval.t_li7__n_be9
        -rho*Y[jt]*Y[jli7]*rate_eval.t_li7__d_li8
        -rho*Y[jd]*Y[jli7]*rate_eval.d_li7__n_he4_he4
        -rho*Y[jt]*Y[jli7]*rate_eval.t_li7__n_n_he4_he4
@@ -2243,7 +1886,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
        +rho*Y[jp]*Y[jli8]*rate_eval.p_li8__d_li7
        +rho*Y[jd]*Y[jli8]*rate_eval.d_li8__t_li7
        +rho*Y[jn]*Y[jbe7]*rate_eval.n_be7__p_li7
-       +rho*Y[jn]*Y[jbe9]*rate_eval.n_be9__t_li7
        +5.00000000000000e-01*rho**2*Y[jn]*Y[jhe4]**2*rate_eval.n_he4_he4__d_li7
        +2.50000000000000e-01*rho**3*Y[jn]**2*Y[jhe4]**2*rate_eval.n_n_he4_he4__t_li7
        +5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
@@ -2253,13 +1895,11 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -Y[jli8]*rate_eval.li8__n_li7
        -Y[jli8]*rate_eval.li8__he4_he4__weak__wc12
        -rho*Y[jp]*Y[jli8]*rate_eval.p_li8__d_li7
-       -rho*Y[jd]*Y[jli8]*rate_eval.d_li8__n_be9
        -rho*Y[jd]*Y[jli8]*rate_eval.d_li8__t_li7
        -rho*Y[jp]*Y[jli8]*rate_eval.p_li8__n_he4_he4
        +rho*Y[jn]*Y[jli7]*rate_eval.n_li7__li8
        +rho*Y[jd]*Y[jli7]*rate_eval.d_li7__p_li8
        +rho*Y[jt]*Y[jli7]*rate_eval.t_li7__d_li8
-       +rho*Y[jn]*Y[jbe9]*rate_eval.n_be9__d_li8
        +5.00000000000000e-01*rho**2*Y[jn]*Y[jhe4]**2*rate_eval.n_he4_he4__p_li8
        )
 
@@ -2267,14 +1907,12 @@ def rhs_eq(t, Y, rho, T, screen_func):
        -rho*ye(Y)*Y[jbe7]*rate_eval.be7__li7__weak__electron_capture
        -Y[jbe7]*rate_eval.be7__p_li6
        -Y[jbe7]*rate_eval.be7__he4_he3
-       -rho*Y[jp]*Y[jbe7]*rate_eval.p_be7__b8
        -rho*Y[jn]*Y[jbe7]*rate_eval.n_be7__p_li7
        -rho*Y[jn]*Y[jbe7]*rate_eval.n_be7__d_li6
        -rho*Y[jn]*Y[jbe7]*rate_eval.n_be7__he4_he4
        -rho*Y[jd]*Y[jbe7]*rate_eval.d_be7__p_he4_he4
        -rho*Y[jt]*Y[jbe7]*rate_eval.t_be7__n_p_he4_he4
        -rho*Y[jhe3]*Y[jbe7]*rate_eval.he3_be7__p_p_he4_he4
-       +Y[jb8]*rate_eval.b8__p_be7
        +rho*Y[jhe3]*Y[jhe4]*rate_eval.he4_he3__be7
        +rho*Y[jp]*Y[jli6]*rate_eval.p_li6__be7
        +5.00000000000000e-01*rho*Y[jhe4]**2*rate_eval.he4_he4__n_be7
@@ -2283,29 +1921,6 @@ def rhs_eq(t, Y, rho, T, screen_func):
        +5.00000000000000e-01*rho**2*Y[jp]*Y[jhe4]**2*rate_eval.p_he4_he4__d_be7
        +5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
        +2.50000000000000e-01*rho**3*Y[jp]**2*Y[jhe4]**2*rate_eval.p_p_he4_he4__he3_be7
-       )
-
-    dYdt[jbe9] = (
-       -Y[jbe9]*rate_eval.be9__n_he4_he4
-       -rho*Y[jn]*Y[jbe9]*rate_eval.n_be9__d_li8
-       -rho*Y[jn]*Y[jbe9]*rate_eval.n_be9__t_li7
-       -rho*Y[jp]*Y[jbe9]*rate_eval.p_be9__he4_li6
-       -rho*Y[jp]*Y[jbe9]*rate_eval.p_be9__d_he4_he4
-       -rho*Y[jp]*Y[jbe9]*rate_eval.p_be9__n_p_he4_he4
-       +rho*Y[jhe4]*Y[jli6]*rate_eval.he4_li6__p_be9
-       +rho*Y[jt]*Y[jli7]*rate_eval.t_li7__n_be9
-       +rho*Y[jd]*Y[jli8]*rate_eval.d_li8__n_be9
-       +5.00000000000000e-01*rho**2*Y[jn]*Y[jhe4]**2*rate_eval.n_he4_he4__be9
-       +5.00000000000000e-01*rho**2*Y[jd]*Y[jhe4]**2*rate_eval.d_he4_he4__p_be9
-       +5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
-       )
-
-    dYdt[jb8] = (
-       -Y[jb8]*rate_eval.b8__p_be7
-       -Y[jb8]*rate_eval.b8__he4_he4__weak__wc12
-       -rho*Y[jn]*Y[jb8]*rate_eval.n_b8__p_he4_he4
-       +rho*Y[jp]*Y[jbe7]*rate_eval.p_be7__b8
-       +5.00000000000000e-01*rho**2*Y[jp]*Y[jhe4]**2*rate_eval.p_he4_he4__n_b8
        )
 
     return dYdt
@@ -2336,10 +1951,7 @@ def jacobian_eq(t, Y, rho, T, screen_func):
     li8__he4_he4__weak__wc12(rate_eval, tf)
     be7__p_li6(rate_eval, tf)
     be7__he4_he3(rate_eval, tf)
-    b8__p_be7(rate_eval, tf)
-    b8__he4_he4__weak__wc12(rate_eval, tf)
     li6__n_p_he4(rate_eval, tf)
-    be9__n_he4_he4(rate_eval, tf)
     n_p__d(rate_eval, tf)
     p_p__d__weak__bet_pos_(rate_eval, tf)
     p_p__d__weak__electron_capture(rate_eval, tf)
@@ -2355,7 +1967,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
     n_li6__li7(rate_eval, tf)
     p_li6__be7(rate_eval, tf)
     n_li7__li8(rate_eval, tf)
-    p_be7__b8(rate_eval, tf)
     d_d__n_he3(rate_eval, tf)
     d_d__p_t(rate_eval, tf)
     p_t__n_he3(rate_eval, tf)
@@ -2376,22 +1987,16 @@ def jacobian_eq(t, Y, rho, T, screen_func):
     p_li6__he4_he3(rate_eval, tf)
     d_li6__n_be7(rate_eval, tf)
     d_li6__p_li7(rate_eval, tf)
-    he4_li6__p_be9(rate_eval, tf)
     p_li7__n_be7(rate_eval, tf)
     p_li7__d_li6(rate_eval, tf)
     p_li7__he4_he4(rate_eval, tf)
     d_li7__p_li8(rate_eval, tf)
-    t_li7__n_be9(rate_eval, tf)
     t_li7__d_li8(rate_eval, tf)
     p_li8__d_li7(rate_eval, tf)
-    d_li8__n_be9(rate_eval, tf)
     d_li8__t_li7(rate_eval, tf)
     n_be7__p_li7(rate_eval, tf)
     n_be7__d_li6(rate_eval, tf)
     n_be7__he4_he4(rate_eval, tf)
-    n_be9__d_li8(rate_eval, tf)
-    n_be9__t_li7(rate_eval, tf)
-    p_be9__he4_li6(rate_eval, tf)
     p_d__n_p_p(rate_eval, tf)
     t_t__n_n_he4(rate_eval, tf)
     t_he3__n_p_he4(rate_eval, tf)
@@ -2399,28 +2004,21 @@ def jacobian_eq(t, Y, rho, T, screen_func):
     d_li7__n_he4_he4(rate_eval, tf)
     p_li8__n_he4_he4(rate_eval, tf)
     d_be7__p_he4_he4(rate_eval, tf)
-    p_be9__d_he4_he4(rate_eval, tf)
-    n_b8__p_he4_he4(rate_eval, tf)
     t_li7__n_n_he4_he4(rate_eval, tf)
     he3_li7__n_p_he4_he4(rate_eval, tf)
     t_be7__n_p_he4_he4(rate_eval, tf)
     he3_be7__p_p_he4_he4(rate_eval, tf)
-    p_be9__n_p_he4_he4(rate_eval, tf)
     n_p_he4__li6(rate_eval, tf)
-    n_he4_he4__be9(rate_eval, tf)
     n_p_p__p_d(rate_eval, tf)
     n_n_he4__t_t(rate_eval, tf)
     n_p_he4__t_he3(rate_eval, tf)
     p_p_he4__he3_he3(rate_eval, tf)
     n_he4_he4__p_li8(rate_eval, tf)
     n_he4_he4__d_li7(rate_eval, tf)
-    p_he4_he4__n_b8(rate_eval, tf)
     p_he4_he4__d_be7(rate_eval, tf)
-    d_he4_he4__p_be9(rate_eval, tf)
     n_n_he4_he4__t_li7(rate_eval, tf)
     n_p_he4_he4__he3_li7(rate_eval, tf)
     n_p_he4_he4__t_be7(rate_eval, tf)
-    n_p_he4_he4__p_be9(rate_eval, tf)
     p_p_he4_he4__he3_be7(rate_eval, tf)
 
     # custom rates
@@ -2478,10 +2076,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
         rate_eval.p_li6__be7 *= scor
         rate_eval.p_li6__he4_he3 *= scor
 
-        scn_fac = ScreenFactors(1, 1, 4, 7)
-        scor = screen_func(plasma_state, scn_fac)
-        rate_eval.p_be7__b8 *= scor
-
         scn_fac = ScreenFactors(1, 2, 1, 3)
         scor = screen_func(plasma_state, scn_fac)
         rate_eval.d_t__n_he4 *= scor
@@ -2505,7 +2099,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
         scor = screen_func(plasma_state, scn_fac)
         rate_eval.he4_he4__n_be7 *= scor
         rate_eval.he4_he4__p_li7 *= scor
-        rate_eval.n_he4_he4__be9 *= scor
         rate_eval.n_he4_he4__p_li8 *= scor
         rate_eval.n_he4_he4__d_li7 *= scor
         rate_eval.n_n_he4_he4__t_li7 *= scor
@@ -2514,10 +2107,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
         scor = screen_func(plasma_state, scn_fac)
         rate_eval.d_li6__n_be7 *= scor
         rate_eval.d_li6__p_li7 *= scor
-
-        scn_fac = ScreenFactors(2, 4, 3, 6)
-        scor = screen_func(plasma_state, scn_fac)
-        rate_eval.he4_li6__p_be9 *= scor
 
         scn_fac = ScreenFactors(1, 1, 3, 7)
         scor = screen_func(plasma_state, scn_fac)
@@ -2532,7 +2121,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
 
         scn_fac = ScreenFactors(1, 3, 3, 7)
         scor = screen_func(plasma_state, scn_fac)
-        rate_eval.t_li7__n_be9 *= scor
         rate_eval.t_li7__d_li8 *= scor
         rate_eval.t_li7__n_n_he4_he4 *= scor
 
@@ -2543,14 +2131,7 @@ def jacobian_eq(t, Y, rho, T, screen_func):
 
         scn_fac = ScreenFactors(1, 2, 3, 8)
         scor = screen_func(plasma_state, scn_fac)
-        rate_eval.d_li8__n_be9 *= scor
         rate_eval.d_li8__t_li7 *= scor
-
-        scn_fac = ScreenFactors(1, 1, 4, 9)
-        scor = screen_func(plasma_state, scn_fac)
-        rate_eval.p_be9__he4_li6 *= scor
-        rate_eval.p_be9__d_he4_he4 *= scor
-        rate_eval.p_be9__n_p_he4_he4 *= scor
 
         scn_fac = ScreenFactors(1, 3, 1, 3)
         scor = screen_func(plasma_state, scn_fac)
@@ -2582,15 +2163,9 @@ def jacobian_eq(t, Y, rho, T, screen_func):
 
         scn_fac = ScreenFactors(1, 1, 2, 4)
         scor = screen_func(plasma_state, scn_fac)
-        rate_eval.p_he4_he4__n_b8 *= scor
         rate_eval.p_he4_he4__d_be7 *= scor
         rate_eval.n_p_he4_he4__he3_li7 *= scor
         rate_eval.n_p_he4_he4__t_be7 *= scor
-        rate_eval.n_p_he4_he4__p_be9 *= scor
-
-        scn_fac = ScreenFactors(1, 2, 2, 4)
-        scor = screen_func(plasma_state, scn_fac)
-        rate_eval.d_he4_he4__p_be9 *= scor
 
     jac = np.zeros((nnuc, nnuc), dtype=np.float64)
 
@@ -2607,11 +2182,7 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho*Y[jbe7]*rate_eval.n_be7__p_li7
        -rho*Y[jbe7]*rate_eval.n_be7__d_li6
        -rho*Y[jbe7]*rate_eval.n_be7__he4_he4
-       -rho*Y[jbe9]*rate_eval.n_be9__d_li8
-       -rho*Y[jbe9]*rate_eval.n_be9__t_li7
-       -rho*Y[jb8]*rate_eval.n_b8__p_he4_he4
        -rho**2*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__li6
-       -5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.n_he4_he4__be9
        -5.00000000000000e-01*rho**2*Y[jp]**2*rate_eval.n_p_p__p_d
        -2*5.00000000000000e-01*rho**2*2*Y[jn]*Y[jhe4]*rate_eval.n_n_he4__t_t
        -rho**2*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__t_he3
@@ -2620,7 +2191,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -2*2.50000000000000e-01*rho**3*2*Y[jn]*Y[jhe4]**2*rate_eval.n_n_he4_he4__t_li7
        -5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
-       -5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
        -rate_eval.n__p
        )
 
@@ -2631,13 +2201,10 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho**2*Y[jn]*Y[jhe4]*rate_eval.n_p_he4__t_he3
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
-       -5.00000000000000e-01*rho**3*Y[jn]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
        +rho*Y[jt]*rate_eval.p_t__n_he3
        +rho*Y[jli7]*rate_eval.p_li7__n_be7
        +rho*Y[jd]*rate_eval.p_d__n_p_p
        +rho*Y[jli8]*rate_eval.p_li8__n_he4_he4
-       +rho*Y[jbe9]*rate_eval.p_be9__n_p_he4_he4
-       +5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.p_he4_he4__n_b8
        +rate_eval.p__n
        )
 
@@ -2647,7 +2214,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        +5.00000000000000e-01*rho*2*Y[jd]*rate_eval.d_d__n_he3
        +rho*Y[jt]*rate_eval.d_t__n_he4
        +rho*Y[jli6]*rate_eval.d_li6__n_be7
-       +rho*Y[jli8]*rate_eval.d_li8__n_be9
        +rho*Y[jp]*rate_eval.p_d__n_p_p
        +rho*Y[jli7]*rate_eval.d_li7__n_he4_he4
        )
@@ -2657,7 +2223,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        +rho*Y[jp]*rate_eval.p_t__n_he3
        +rho*Y[jd]*rate_eval.d_t__n_he4
        +rho*Y[jhe4]*rate_eval.he4_t__n_li6
-       +rho*Y[jli7]*rate_eval.t_li7__n_be9
        +2*5.00000000000000e-01*rho*2*Y[jt]*rate_eval.t_t__n_n_he4
        +rho*Y[jhe3]*rate_eval.t_he3__n_p_he4
        +2*rho*Y[jli7]*rate_eval.t_li7__n_n_he4_he4
@@ -2675,7 +2240,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
     jac[jn, jhe4] = (
        -rho*Y[jn]*rate_eval.n_he4__d_t
        -rho**2*Y[jn]*Y[jp]*rate_eval.n_p_he4__li6
-       -5.00000000000000e-01*rho**2*Y[jn]*2*Y[jhe4]*rate_eval.n_he4_he4__be9
        -2*5.00000000000000e-01*rho**2*Y[jn]**2*rate_eval.n_n_he4__t_t
        -rho**2*Y[jn]*Y[jp]*rate_eval.n_p_he4__t_he3
        -5.00000000000000e-01*rho**2*Y[jn]*2*Y[jhe4]*rate_eval.n_he4_he4__p_li8
@@ -2683,11 +2247,9 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -2*2.50000000000000e-01*rho**3*Y[jn]**2*2*Y[jhe4]*rate_eval.n_n_he4_he4__t_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*2*Y[jhe4]*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*2*Y[jhe4]*rate_eval.n_p_he4_he4__t_be7
-       -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*2*Y[jhe4]*rate_eval.n_p_he4_he4__p_be9
        +rate_eval.he4__n_he3
        +rho*Y[jt]*rate_eval.he4_t__n_li6
        +5.00000000000000e-01*rho*2*Y[jhe4]*rate_eval.he4_he4__n_be7
-       +5.00000000000000e-01*rho**2*Y[jp]*2*Y[jhe4]*rate_eval.p_he4_he4__n_b8
        )
 
     jac[jn, jli6] = (
@@ -2701,7 +2263,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho*Y[jn]*rate_eval.n_li7__li8
        +rate_eval.li7__n_li6
        +rho*Y[jp]*rate_eval.p_li7__n_be7
-       +rho*Y[jt]*rate_eval.t_li7__n_be9
        +rho*Y[jd]*rate_eval.d_li7__n_he4_he4
        +2*rho*Y[jt]*rate_eval.t_li7__n_n_he4_he4
        +rho*Y[jhe3]*rate_eval.he3_li7__n_p_he4_he4
@@ -2709,7 +2270,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
 
     jac[jn, jli8] = (
        +rate_eval.li8__n_li7
-       +rho*Y[jd]*rate_eval.d_li8__n_be9
        +rho*Y[jp]*rate_eval.p_li8__n_he4_he4
        )
 
@@ -2720,17 +2280,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        +rho*Y[jt]*rate_eval.t_be7__n_p_he4_he4
        )
 
-    jac[jn, jbe9] = (
-       -rho*Y[jn]*rate_eval.n_be9__d_li8
-       -rho*Y[jn]*rate_eval.n_be9__t_li7
-       +rate_eval.be9__n_he4_he4
-       +rho*Y[jp]*rate_eval.p_be9__n_p_he4_he4
-       )
-
-    jac[jn, jb8] = (
-       -rho*Y[jn]*rate_eval.n_b8__p_he4_he4
-       )
-
     jac[jp, jn] = (
        -rho*Y[jp]*rate_eval.n_p__d
        -rho**2*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__li6
@@ -2738,13 +2287,10 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho**2*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__t_he3
        -5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
-       -5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
        +rho*Y[jhe3]*rate_eval.n_he3__p_t
        +rho*Y[jbe7]*rate_eval.n_be7__p_li7
-       +rho*Y[jb8]*rate_eval.n_b8__p_he4_he4
        +5.00000000000000e-01*rho**2*Y[jp]**2*rate_eval.n_p_p__p_d
        +5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.n_he4_he4__p_li8
-       +5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
        +rate_eval.n__p
        )
 
@@ -2756,7 +2302,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho*Y[jt]*rate_eval.p_t__he4
        -rho*Y[jhe3]*rate_eval.p_he3__he4__weak__bet_pos_
        -rho*Y[jli6]*rate_eval.p_li6__be7
-       -rho*Y[jbe7]*rate_eval.p_be7__b8
        -rho*Y[jt]*rate_eval.p_t__n_he3
        -rho*Y[jt]*rate_eval.p_t__d_d
        -rho*Y[jhe4]*rate_eval.p_he4__d_he3
@@ -2765,26 +2310,19 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho*Y[jli7]*rate_eval.p_li7__d_li6
        -rho*Y[jli7]*rate_eval.p_li7__he4_he4
        -rho*Y[jli8]*rate_eval.p_li8__d_li7
-       -rho*Y[jbe9]*rate_eval.p_be9__he4_li6
        -rho*Y[jd]*rate_eval.p_d__n_p_p
        -rho*Y[jli8]*rate_eval.p_li8__n_he4_he4
-       -rho*Y[jbe9]*rate_eval.p_be9__d_he4_he4
-       -rho*Y[jbe9]*rate_eval.p_be9__n_p_he4_he4
        -rho**2*Y[jn]*Y[jhe4]*rate_eval.n_p_he4__li6
        -2*5.00000000000000e-01*rho**2*Y[jn]*2*Y[jp]*rate_eval.n_p_p__p_d
        -rho**2*Y[jn]*Y[jhe4]*rate_eval.n_p_he4__t_he3
        -2*5.00000000000000e-01*rho**2*2*Y[jp]*Y[jhe4]*rate_eval.p_p_he4__he3_he3
-       -5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.p_he4_he4__n_b8
        -5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.p_he4_he4__d_be7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
-       -5.00000000000000e-01*rho**3*Y[jn]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
        -2*2.50000000000000e-01*rho**3*2*Y[jp]*Y[jhe4]**2*rate_eval.p_p_he4_he4__he3_be7
        -rate_eval.p__n
        +2*rho*Y[jd]*rate_eval.p_d__n_p_p
-       +rho*Y[jbe9]*rate_eval.p_be9__n_p_he4_he4
        +5.00000000000000e-01*rho**2*Y[jn]*2*Y[jp]*rate_eval.n_p_p__p_d
-       +5.00000000000000e-01*rho**3*Y[jn]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
        )
 
     jac[jp, jd] = (
@@ -2797,7 +2335,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        +rho*Y[jli7]*rate_eval.d_li7__p_li8
        +2*rho*Y[jp]*rate_eval.p_d__n_p_p
        +rho*Y[jbe7]*rate_eval.d_be7__p_he4_he4
-       +5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.d_he4_he4__p_be9
        )
 
     jac[jp, jt] = (
@@ -2825,19 +2362,14 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho**2*Y[jn]*Y[jp]*rate_eval.n_p_he4__li6
        -rho**2*Y[jn]*Y[jp]*rate_eval.n_p_he4__t_he3
        -2*5.00000000000000e-01*rho**2*Y[jp]**2*rate_eval.p_p_he4__he3_he3
-       -5.00000000000000e-01*rho**2*Y[jp]*2*Y[jhe4]*rate_eval.p_he4_he4__n_b8
        -5.00000000000000e-01*rho**2*Y[jp]*2*Y[jhe4]*rate_eval.p_he4_he4__d_be7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*2*Y[jhe4]*rate_eval.n_p_he4_he4__he3_li7
        -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*2*Y[jhe4]*rate_eval.n_p_he4_he4__t_be7
-       -5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*2*Y[jhe4]*rate_eval.n_p_he4_he4__p_be9
        -2*2.50000000000000e-01*rho**3*Y[jp]**2*2*Y[jhe4]*rate_eval.p_p_he4_he4__he3_be7
        +rate_eval.he4__p_t
        +rho*Y[jhe3]*rate_eval.he4_he3__p_li6
        +5.00000000000000e-01*rho*2*Y[jhe4]*rate_eval.he4_he4__p_li7
-       +rho*Y[jli6]*rate_eval.he4_li6__p_be9
        +5.00000000000000e-01*rho**2*Y[jn]*2*Y[jhe4]*rate_eval.n_he4_he4__p_li8
-       +5.00000000000000e-01*rho**2*Y[jd]*2*Y[jhe4]*rate_eval.d_he4_he4__p_be9
-       +5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*2*Y[jhe4]*rate_eval.n_p_he4_he4__p_be9
        )
 
     jac[jp, jli6] = (
@@ -2845,7 +2377,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho*Y[jp]*rate_eval.p_li6__he4_he3
        +rate_eval.li6__n_p_he4
        +rho*Y[jd]*rate_eval.d_li6__p_li7
-       +rho*Y[jhe4]*rate_eval.he4_li6__p_be9
        )
 
     jac[jp, jli7] = (
@@ -2862,24 +2393,11 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        )
 
     jac[jp, jbe7] = (
-       -rho*Y[jp]*rate_eval.p_be7__b8
        +rate_eval.be7__p_li6
        +rho*Y[jn]*rate_eval.n_be7__p_li7
        +rho*Y[jd]*rate_eval.d_be7__p_he4_he4
        +rho*Y[jt]*rate_eval.t_be7__n_p_he4_he4
        +2*rho*Y[jhe3]*rate_eval.he3_be7__p_p_he4_he4
-       )
-
-    jac[jp, jbe9] = (
-       -rho*Y[jp]*rate_eval.p_be9__he4_li6
-       -rho*Y[jp]*rate_eval.p_be9__d_he4_he4
-       -rho*Y[jp]*rate_eval.p_be9__n_p_he4_he4
-       +rho*Y[jp]*rate_eval.p_be9__n_p_he4_he4
-       )
-
-    jac[jp, jb8] = (
-       +rate_eval.b8__p_be7
-       +rho*Y[jn]*rate_eval.n_b8__p_he4_he4
        )
 
     jac[jd, jn] = (
@@ -2888,7 +2406,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        +2*rho*Y[jhe3]*rate_eval.n_he3__d_d
        +rho*Y[jhe4]*rate_eval.n_he4__d_t
        +rho*Y[jbe7]*rate_eval.n_be7__d_li6
-       +rho*Y[jbe9]*rate_eval.n_be9__d_li8
        +5.00000000000000e-01*rho**2*Y[jp]**2*rate_eval.n_p_p__p_d
        +5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.n_he4_he4__d_li7
        )
@@ -2903,7 +2420,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        +rho*Y[jhe4]*rate_eval.p_he4__d_he3
        +rho*Y[jli7]*rate_eval.p_li7__d_li6
        +rho*Y[jli8]*rate_eval.p_li8__d_li7
-       +rho*Y[jbe9]*rate_eval.p_be9__d_he4_he4
        +5.00000000000000e-01*rho**2*Y[jn]*2*Y[jp]*rate_eval.n_p_p__p_d
        +5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.p_he4_he4__d_be7
        )
@@ -2922,12 +2438,10 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho*Y[jli6]*rate_eval.d_li6__n_be7
        -rho*Y[jli6]*rate_eval.d_li6__p_li7
        -rho*Y[jli7]*rate_eval.d_li7__p_li8
-       -rho*Y[jli8]*rate_eval.d_li8__n_be9
        -rho*Y[jli8]*rate_eval.d_li8__t_li7
        -rho*Y[jp]*rate_eval.p_d__n_p_p
        -rho*Y[jli7]*rate_eval.d_li7__n_he4_he4
        -rho*Y[jbe7]*rate_eval.d_be7__p_he4_he4
-       -5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.d_he4_he4__p_be9
        )
 
     jac[jd, jt] = (
@@ -2948,7 +2462,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
     jac[jd, jhe4] = (
        -rho*Y[jd]*rate_eval.he4_d__li6
        -rho*Y[jd]*rate_eval.d_he4__t_he3
-       -5.00000000000000e-01*rho**2*Y[jd]*2*Y[jhe4]*rate_eval.d_he4_he4__p_be9
        +2*rate_eval.he4__d_d
        +rho*Y[jn]*rate_eval.n_he4__d_t
        +rho*Y[jp]*rate_eval.p_he4__d_he3
@@ -2970,7 +2483,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        )
 
     jac[jd, jli8] = (
-       -rho*Y[jd]*rate_eval.d_li8__n_be9
        -rho*Y[jd]*rate_eval.d_li8__t_li7
        +rho*Y[jp]*rate_eval.p_li8__d_li7
        )
@@ -2980,17 +2492,11 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        +rho*Y[jn]*rate_eval.n_be7__d_li6
        )
 
-    jac[jd, jbe9] = (
-       +rho*Y[jn]*rate_eval.n_be9__d_li8
-       +rho*Y[jp]*rate_eval.p_be9__d_he4_he4
-       )
-
     jac[jt, jn] = (
        +rho*Y[jd]*rate_eval.n_d__t
        +rho*Y[jhe3]*rate_eval.n_he3__p_t
        +rho*Y[jhe4]*rate_eval.n_he4__d_t
        +rho*Y[jli6]*rate_eval.n_li6__he4_t
-       +rho*Y[jbe9]*rate_eval.n_be9__t_li7
        +2*5.00000000000000e-01*rho**2*2*Y[jn]*Y[jhe4]*rate_eval.n_n_he4__t_t
        +rho**2*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__t_he3
        +2.50000000000000e-01*rho**3*2*Y[jn]*Y[jhe4]**2*rate_eval.n_n_he4_he4__t_li7
@@ -3023,7 +2529,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho*Y[jd]*rate_eval.d_t__n_he4
        -rho*Y[jhe4]*rate_eval.he4_t__n_li6
        -rho*Y[jhe3]*rate_eval.t_he3__d_he4
-       -rho*Y[jli7]*rate_eval.t_li7__n_be9
        -rho*Y[jli7]*rate_eval.t_li7__d_li8
        -2*5.00000000000000e-01*rho*2*Y[jt]*rate_eval.t_t__n_n_he4
        -rho*Y[jhe3]*rate_eval.t_he3__n_p_he4
@@ -3055,7 +2560,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        )
 
     jac[jt, jli7] = (
-       -rho*Y[jt]*rate_eval.t_li7__n_be9
        -rho*Y[jt]*rate_eval.t_li7__d_li8
        -rho*Y[jt]*rate_eval.t_li7__n_n_he4_he4
        +rate_eval.li7__he4_t
@@ -3067,10 +2571,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
 
     jac[jt, jbe7] = (
        -rho*Y[jt]*rate_eval.t_be7__n_p_he4_he4
-       )
-
-    jac[jt, jbe9] = (
-       +rho*Y[jn]*rate_eval.n_be9__t_li7
        )
 
     jac[jhe3, jn] = (
@@ -3152,7 +2652,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
     jac[jhe4, jn] = (
        -rho*Y[jhe4]*rate_eval.n_he4__d_t
        -rho**2*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__li6
-       -2*5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.n_he4_he4__be9
        -5.00000000000000e-01*rho**2*2*Y[jn]*Y[jhe4]*rate_eval.n_n_he4__t_t
        -rho**2*Y[jp]*Y[jhe4]*rate_eval.n_p_he4__t_he3
        -2*5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.n_he4_he4__p_li8
@@ -3160,11 +2659,9 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -2*2.50000000000000e-01*rho**3*2*Y[jn]*Y[jhe4]**2*rate_eval.n_n_he4_he4__t_li7
        -2*5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -2*5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
-       -2*5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
        +rho*Y[jhe3]*rate_eval.n_he3__he4
        +rho*Y[jli6]*rate_eval.n_li6__he4_t
        +2*rho*Y[jbe7]*rate_eval.n_be7__he4_he4
-       +2*rho*Y[jb8]*rate_eval.n_b8__p_he4_he4
        )
 
     jac[jhe4, jp] = (
@@ -3172,26 +2669,20 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho**2*Y[jn]*Y[jhe4]*rate_eval.n_p_he4__li6
        -rho**2*Y[jn]*Y[jhe4]*rate_eval.n_p_he4__t_he3
        -5.00000000000000e-01*rho**2*2*Y[jp]*Y[jhe4]*rate_eval.p_p_he4__he3_he3
-       -2*5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.p_he4_he4__n_b8
        -2*5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.p_he4_he4__d_be7
        -2*5.00000000000000e-01*rho**3*Y[jn]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
        -2*5.00000000000000e-01*rho**3*Y[jn]*Y[jhe4]**2*rate_eval.n_p_he4_he4__t_be7
-       -2*5.00000000000000e-01*rho**3*Y[jn]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
        -2*2.50000000000000e-01*rho**3*2*Y[jp]*Y[jhe4]**2*rate_eval.p_p_he4_he4__he3_be7
        +rho*Y[jt]*rate_eval.p_t__he4
        +rho*Y[jhe3]*rate_eval.p_he3__he4__weak__bet_pos_
        +rho*Y[jli6]*rate_eval.p_li6__he4_he3
        +2*rho*Y[jli7]*rate_eval.p_li7__he4_he4
-       +rho*Y[jbe9]*rate_eval.p_be9__he4_li6
        +2*rho*Y[jli8]*rate_eval.p_li8__n_he4_he4
-       +2*rho*Y[jbe9]*rate_eval.p_be9__d_he4_he4
-       +2*rho*Y[jbe9]*rate_eval.p_be9__n_p_he4_he4
        )
 
     jac[jhe4, jd] = (
        -rho*Y[jhe4]*rate_eval.he4_d__li6
        -rho*Y[jhe4]*rate_eval.d_he4__t_he3
-       -2*5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.d_he4_he4__p_be9
        +5.00000000000000e-01*rho*2*Y[jd]*rate_eval.d_d__he4
        +rho*Y[jt]*rate_eval.d_t__n_he4
        +rho*Y[jhe3]*rate_eval.d_he3__p_he4
@@ -3238,26 +2729,20 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho*Y[jd]*rate_eval.d_he4__t_he3
        -2*5.00000000000000e-01*rho*2*Y[jhe4]*rate_eval.he4_he4__n_be7
        -2*5.00000000000000e-01*rho*2*Y[jhe4]*rate_eval.he4_he4__p_li7
-       -rho*Y[jli6]*rate_eval.he4_li6__p_be9
        -rho**2*Y[jn]*Y[jp]*rate_eval.n_p_he4__li6
-       -2*5.00000000000000e-01*rho**2*Y[jn]*2*Y[jhe4]*rate_eval.n_he4_he4__be9
        -5.00000000000000e-01*rho**2*Y[jn]**2*rate_eval.n_n_he4__t_t
        -rho**2*Y[jn]*Y[jp]*rate_eval.n_p_he4__t_he3
        -5.00000000000000e-01*rho**2*Y[jp]**2*rate_eval.p_p_he4__he3_he3
        -2*5.00000000000000e-01*rho**2*Y[jn]*2*Y[jhe4]*rate_eval.n_he4_he4__p_li8
        -2*5.00000000000000e-01*rho**2*Y[jn]*2*Y[jhe4]*rate_eval.n_he4_he4__d_li7
-       -2*5.00000000000000e-01*rho**2*Y[jp]*2*Y[jhe4]*rate_eval.p_he4_he4__n_b8
        -2*5.00000000000000e-01*rho**2*Y[jp]*2*Y[jhe4]*rate_eval.p_he4_he4__d_be7
-       -2*5.00000000000000e-01*rho**2*Y[jd]*2*Y[jhe4]*rate_eval.d_he4_he4__p_be9
        -2*2.50000000000000e-01*rho**3*Y[jn]**2*2*Y[jhe4]*rate_eval.n_n_he4_he4__t_li7
        -2*5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*2*Y[jhe4]*rate_eval.n_p_he4_he4__he3_li7
        -2*5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*2*Y[jhe4]*rate_eval.n_p_he4_he4__t_be7
-       -2*5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*2*Y[jhe4]*rate_eval.n_p_he4_he4__p_be9
        -2*2.50000000000000e-01*rho**3*Y[jp]**2*2*Y[jhe4]*rate_eval.p_p_he4_he4__he3_be7
        )
 
     jac[jhe4, jli6] = (
-       -rho*Y[jhe4]*rate_eval.he4_li6__p_be9
        +rate_eval.li6__he4_d
        +rate_eval.li6__n_p_he4
        +rho*Y[jn]*rate_eval.n_li6__he4_t
@@ -3285,18 +2770,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        +2*rho*Y[jhe3]*rate_eval.he3_be7__p_p_he4_he4
        )
 
-    jac[jhe4, jbe9] = (
-       +2*rate_eval.be9__n_he4_he4
-       +rho*Y[jp]*rate_eval.p_be9__he4_li6
-       +2*rho*Y[jp]*rate_eval.p_be9__d_he4_he4
-       +2*rho*Y[jp]*rate_eval.p_be9__n_p_he4_he4
-       )
-
-    jac[jhe4, jb8] = (
-       +2*rate_eval.b8__he4_he4__weak__wc12
-       +2*rho*Y[jn]*rate_eval.n_b8__p_he4_he4
-       )
-
     jac[jli6, jn] = (
        -rho*Y[jli6]*rate_eval.n_li6__li7
        -rho*Y[jli6]*rate_eval.n_li6__he4_t
@@ -3308,7 +2781,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho*Y[jli6]*rate_eval.p_li6__be7
        -rho*Y[jli6]*rate_eval.p_li6__he4_he3
        +rho*Y[jli7]*rate_eval.p_li7__d_li6
-       +rho*Y[jbe9]*rate_eval.p_be9__he4_li6
        +rho**2*Y[jn]*Y[jhe4]*rate_eval.n_p_he4__li6
        )
 
@@ -3327,7 +2799,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        )
 
     jac[jli6, jhe4] = (
-       -rho*Y[jli6]*rate_eval.he4_li6__p_be9
        +rho*Y[jd]*rate_eval.he4_d__li6
        +rho*Y[jt]*rate_eval.he4_t__n_li6
        +rho*Y[jhe3]*rate_eval.he4_he3__p_li6
@@ -3343,7 +2814,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho*Y[jp]*rate_eval.p_li6__he4_he3
        -rho*Y[jd]*rate_eval.d_li6__n_be7
        -rho*Y[jd]*rate_eval.d_li6__p_li7
-       -rho*Y[jhe4]*rate_eval.he4_li6__p_be9
        )
 
     jac[jli6, jli7] = (
@@ -3356,15 +2826,10 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        +rho*Y[jn]*rate_eval.n_be7__d_li6
        )
 
-    jac[jli6, jbe9] = (
-       +rho*Y[jp]*rate_eval.p_be9__he4_li6
-       )
-
     jac[jli7, jn] = (
        -rho*Y[jli7]*rate_eval.n_li7__li8
        +rho*Y[jli6]*rate_eval.n_li6__li7
        +rho*Y[jbe7]*rate_eval.n_be7__p_li7
-       +rho*Y[jbe9]*rate_eval.n_be9__t_li7
        +5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.n_he4_he4__d_li7
        +2.50000000000000e-01*rho**3*2*Y[jn]*Y[jhe4]**2*rate_eval.n_n_he4_he4__t_li7
        +5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__he3_li7
@@ -3386,7 +2851,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        )
 
     jac[jli7, jt] = (
-       -rho*Y[jli7]*rate_eval.t_li7__n_be9
        -rho*Y[jli7]*rate_eval.t_li7__d_li8
        -rho*Y[jli7]*rate_eval.t_li7__n_n_he4_he4
        +rho*Y[jhe4]*rate_eval.he4_t__li7
@@ -3417,7 +2881,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho*Y[jp]*rate_eval.p_li7__d_li6
        -rho*Y[jp]*rate_eval.p_li7__he4_he4
        -rho*Y[jd]*rate_eval.d_li7__p_li8
-       -rho*Y[jt]*rate_eval.t_li7__n_be9
        -rho*Y[jt]*rate_eval.t_li7__d_li8
        -rho*Y[jd]*rate_eval.d_li7__n_he4_he4
        -rho*Y[jt]*rate_eval.t_li7__n_n_he4_he4
@@ -3435,13 +2898,8 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        +rho*Y[jn]*rate_eval.n_be7__p_li7
        )
 
-    jac[jli7, jbe9] = (
-       +rho*Y[jn]*rate_eval.n_be9__t_li7
-       )
-
     jac[jli8, jn] = (
        +rho*Y[jli7]*rate_eval.n_li7__li8
-       +rho*Y[jbe9]*rate_eval.n_be9__d_li8
        +5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.n_he4_he4__p_li8
        )
 
@@ -3451,7 +2909,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        )
 
     jac[jli8, jd] = (
-       -rho*Y[jli8]*rate_eval.d_li8__n_be9
        -rho*Y[jli8]*rate_eval.d_li8__t_li7
        +rho*Y[jli7]*rate_eval.d_li7__p_li8
        )
@@ -3474,13 +2931,8 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rate_eval.li8__n_li7
        -rate_eval.li8__he4_he4__weak__wc12
        -rho*Y[jp]*rate_eval.p_li8__d_li7
-       -rho*Y[jd]*rate_eval.d_li8__n_be9
        -rho*Y[jd]*rate_eval.d_li8__t_li7
        -rho*Y[jp]*rate_eval.p_li8__n_he4_he4
-       )
-
-    jac[jli8, jbe9] = (
-       +rho*Y[jn]*rate_eval.n_be9__d_li8
        )
 
     jac[jbe7, jn] = (
@@ -3491,7 +2943,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        )
 
     jac[jbe7, jp] = (
-       -rho*Y[jbe7]*rate_eval.p_be7__b8
        +rho*Y[jli6]*rate_eval.p_li6__be7
        +rho*Y[jli7]*rate_eval.p_li7__n_be7
        +5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.p_he4_he4__d_be7
@@ -3534,7 +2985,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho*ye(Y)*rate_eval.be7__li7__weak__electron_capture
        -rate_eval.be7__p_li6
        -rate_eval.be7__he4_he3
-       -rho*Y[jp]*rate_eval.p_be7__b8
        -rho*Y[jn]*rate_eval.n_be7__p_li7
        -rho*Y[jn]*rate_eval.n_be7__d_li6
        -rho*Y[jn]*rate_eval.n_be7__he4_he4
@@ -3543,82 +2993,25 @@ def jacobian_eq(t, Y, rho, T, screen_func):
        -rho*Y[jhe3]*rate_eval.he3_be7__p_p_he4_he4
        )
 
-    jac[jbe7, jb8] = (
-       +rate_eval.b8__p_be7
-       )
-
-    jac[jbe9, jn] = (
-       -rho*Y[jbe9]*rate_eval.n_be9__d_li8
-       -rho*Y[jbe9]*rate_eval.n_be9__t_li7
-       +5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.n_he4_he4__be9
-       +5.00000000000000e-01*rho**3*Y[jp]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
-       )
-
-    jac[jbe9, jp] = (
-       -rho*Y[jbe9]*rate_eval.p_be9__he4_li6
-       -rho*Y[jbe9]*rate_eval.p_be9__d_he4_he4
-       -rho*Y[jbe9]*rate_eval.p_be9__n_p_he4_he4
-       +5.00000000000000e-01*rho**3*Y[jn]*Y[jhe4]**2*rate_eval.n_p_he4_he4__p_be9
-       )
-
-    jac[jbe9, jd] = (
-       +rho*Y[jli8]*rate_eval.d_li8__n_be9
-       +5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.d_he4_he4__p_be9
-       )
-
-    jac[jbe9, jt] = (
-       +rho*Y[jli7]*rate_eval.t_li7__n_be9
-       )
-
-    jac[jbe9, jhe4] = (
-       +rho*Y[jli6]*rate_eval.he4_li6__p_be9
-       +5.00000000000000e-01*rho**2*Y[jn]*2*Y[jhe4]*rate_eval.n_he4_he4__be9
-       +5.00000000000000e-01*rho**2*Y[jd]*2*Y[jhe4]*rate_eval.d_he4_he4__p_be9
-       +5.00000000000000e-01*rho**3*Y[jn]*Y[jp]*2*Y[jhe4]*rate_eval.n_p_he4_he4__p_be9
-       )
-
-    jac[jbe9, jli6] = (
-       +rho*Y[jhe4]*rate_eval.he4_li6__p_be9
-       )
-
-    jac[jbe9, jli7] = (
-       +rho*Y[jt]*rate_eval.t_li7__n_be9
-       )
-
-    jac[jbe9, jli8] = (
-       +rho*Y[jd]*rate_eval.d_li8__n_be9
-       )
-
-    jac[jbe9, jbe9] = (
-       -rate_eval.be9__n_he4_he4
-       -rho*Y[jn]*rate_eval.n_be9__d_li8
-       -rho*Y[jn]*rate_eval.n_be9__t_li7
-       -rho*Y[jp]*rate_eval.p_be9__he4_li6
-       -rho*Y[jp]*rate_eval.p_be9__d_he4_he4
-       -rho*Y[jp]*rate_eval.p_be9__n_p_he4_he4
-       )
-
-    jac[jb8, jn] = (
-       -rho*Y[jb8]*rate_eval.n_b8__p_he4_he4
-       )
-
-    jac[jb8, jp] = (
-       +rho*Y[jbe7]*rate_eval.p_be7__b8
-       +5.00000000000000e-01*rho**2*Y[jhe4]**2*rate_eval.p_he4_he4__n_b8
-       )
-
-    jac[jb8, jhe4] = (
-       +5.00000000000000e-01*rho**2*Y[jp]*2*Y[jhe4]*rate_eval.p_he4_he4__n_b8
-       )
-
-    jac[jb8, jbe7] = (
-       +rho*Y[jp]*rate_eval.p_be7__b8
-       )
-
-    jac[jb8, jb8] = (
-       -rate_eval.b8__p_be7
-       -rate_eval.b8__he4_he4__weak__wc12
-       -rho*Y[jn]*rate_eval.n_b8__p_he4_he4
-       )
-
     return jac
+
+
+
+from numba.pycc import CC
+
+cc = CC('AoT_net')
+# Uncomment the following line to print out the compilation steps
+#cc.verbose = True
+
+@cc.export('rhs', 'f8[:](f8, f8[:], f8, f8)')
+def rhsCC(t, Y, rho, T):
+    return rhs_eq(t, Y, rho, T, None)
+
+@cc.export('jacobian', '(f8, f8[:], f8, f8)')
+def jacobian(t, Y, rho, T):
+    return jacobian_eq(t, Y, rho, T, None)
+
+
+if __name__ == "__main__":
+    cc.compile()
+
