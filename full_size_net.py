@@ -1348,6 +1348,17 @@ def he4_t__li7(rate_eval, tf):
     rate += np.exp(  13.6162 + -8.0805*tf.T913i + -0.217514*tf.T913
                   + -0.114859*tf.T9 + 0.0470043*tf.T953 + -0.666667*tf.lnT9)
 
+    #Alterrate
+    '''
+    if (tf.T9<2.5):
+        rate=((0.094614248-4.9273133*tf.T9+99.358965*tf.T9*tf.T9-989.81236*tf.T9*tf.T9*tf.T9+4368.45*pow(tf.T9,4.)+931.93597*pow(tf.T9,5.)
+                -391.07855*pow(tf.T9,6.)+159.23101*pow(tf.T9,7.)-34.407594*pow(tf.T9,8.)+3.3919004*pow(tf.T9,9.)
+                +0.017556217*pow(tf.T9,10.)-0.036253427*pow(tf.T9,11.)+0.0031118827*pow(tf.T9,12.)
+                -0.00008714468*pow(tf.T9,13.))*pow(tf.T9,-1./2.))/(np.exp(8.4e-7*tf.T9)*pow(1.+1.78616593*tf.T9,3.))
+    
+    else: rate=807.406
+    '''
+
     rate_eval.he4_t__li7 = rate
 
 @numba.njit()
@@ -2083,6 +2094,25 @@ def p_li7__he4_he4(rate_eval, tf):
     # de04r
     rate += np.exp(  14.2538 + -4.478*tf.T9i
                   + -1.5*tf.lnT9)
+    '''
+    #Alterrate
+    if (tf.T9<2.5):
+        rate=((-8.9654123e7-2.5851582e8*tf.T9-2.6831252e7*tf.T9*tf.T9+3.8691673e8*pow(tf.T9,1./3.)+4.9721269e8*pow(tf.T9,2./3.)
+                +2.6444808e7*pow(tf.T9,4./3.)-1.2946419e6*pow(tf.T9,5./3.)-1.0941088e8*pow(tf.T9,7./3.)
+                +9.9899564e7*pow(tf.T9,8./3.))*pow(tf.T9,-2./3.))/np.exp(7.73389632*pow(tf.T9,-1./3.))
+        rate+=np.exp(-1.137519e0*tf.T9*tf.T9-8.6256687*pow(tf.T9,-1./3.))*(3.0014189e7-1.8366119e8*tf.T9+1.7688138e9*tf.T9*tf.T9
+                                                                -8.4772261e9*tf.T9*tf.T9*tf.T9+2.0237351e10*pow(tf.T9,4.)
+                                                                -1.9650068e10*pow(tf.T9,5.)+7.9452762e8*pow(tf.T9,6.)
+                                                                +1.3132468e10*pow(tf.T9,7.)-8.209351e9*pow(tf.T9,8.)
+                                                                -9.1099236e8*pow(tf.T9,9.)+2.7814079e9*pow(tf.T9,10.)
+                                                                -1.0785293e9*pow(tf.T9,11.)
+                                                                +1.3993392e8*pow(tf.T9,12.))*pow(tf.T9,-2./3.)
+    else:
+        rate=1.53403e6
+        rate+=84516.7
+
+    '''
+
 
     rate_eval.p_li7__he4_he4 = rate
 
@@ -7705,29 +7735,27 @@ def jacobian_eq(t, Y, rho, T, screen_func):
 
     return jac
 
-
 #For AoT compilation of the network
+def AoT(networkname):
+   from numba.pycc import CC
 
-from numba.pycc import CC
+   cc = CC(networkname)
+   # Uncomment the following line to print out the compilation steps
+   #cc.verbose = True
 
-cc = CC('full_AoT_net')
-# Uncomment the following line to print out the compilation steps
-#cc.verbose = True
+   #
+   @cc.export('nnuc','i4()')
+   def nNuc():
+      return nnuc
 
-#
-@cc.export('nnuc','i4()')
-def nNuc():
-    return nnuc
+   @cc.export('rhs', 'f8[:](f8, f8[:], f8, f8)')
+   def rhsCC(t, Y, rho, T):
+      return rhs_eq(t, Y, rho, T, None)
 
-@cc.export('rhs', 'f8[:](f8, f8[:], f8, f8)')
-def rhsCC(t, Y, rho, T):
-    return rhs_eq(t, Y, rho, T, None)
-
-@cc.export('jacobian', '(f8, f8[:], f8, f8)')
-def jacobian(t, Y, rho, T):
-    return jacobian_eq(t, Y, rho, T, None)
+   @cc.export('jacobian', '(f8, f8[:], f8, f8)')
+   def jacobian(t, Y, rho, T):
+      return jacobian_eq(t, Y, rho, T, None)
 
 
-if __name__ == "__main__":
-    cc.compile()
-
+   if __name__ == "__main__":
+      cc.compile()

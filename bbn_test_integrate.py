@@ -2997,27 +2997,26 @@ def jacobian_eq(t, Y, rho, T, screen_func):
 
 
 #For AoT compilation of the network
+def AoT(networkname):
+   from numba.pycc import CC
 
-from numba.pycc import CC
+   cc = CC(networkname)
+   # Uncomment the following line to print out the compilation steps
+   #cc.verbose = True
 
-cc = CC('AoT_net')
-# Uncomment the following line to print out the compilation steps
-#cc.verbose = True
+   #
+   @cc.export('nnuc','i4()')
+   def nNuc():
+      return nnuc
 
-#
-@cc.export('nnuc','i4()')
-def nNuc():
-    return nnuc
+   @cc.export('rhs', 'f8[:](f8, f8[:], f8, f8)')
+   def rhsCC(t, Y, rho, T):
+      return rhs_eq(t, Y, rho, T, None)
 
-@cc.export('rhs', 'f8[:](f8, f8[:], f8, f8)')
-def rhsCC(t, Y, rho, T):
-    return rhs_eq(t, Y, rho, T, None)
-
-@cc.export('jacobian', '(f8, f8[:], f8, f8)')
-def jacobian(t, Y, rho, T):
-    return jacobian_eq(t, Y, rho, T, None)
+   @cc.export('jacobian', '(f8, f8[:], f8, f8)')
+   def jacobian(t, Y, rho, T):
+      return jacobian_eq(t, Y, rho, T, None)
 
 
-if __name__ == "__main__":
-    cc.compile()
-
+   if __name__ == "__main__":
+      cc.compile()
