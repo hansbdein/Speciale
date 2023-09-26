@@ -2220,7 +2220,15 @@ def n_be7__p_li7(rate_eval, tf):
     # db18 
     rate += np.exp(  21.7899 + 0.000728098*tf.T9i + -0.30254*tf.T913i + -0.3602*tf.T913
                   + 0.17472*tf.T9 + -0.0223*tf.T953 + -0.4581*tf.lnT9)
+    #Alterrate
+    '''
+    if(tf.T9<2.5):
+        rate=(6.8423032e9+1.7674863e10*tf.T9+2.6622006e9*tf.T9*tf.T9-3.3561608e8*tf.T9*tf.T9*tf.T9-5.9309139e6*pow(tf.T9,4.)
+        -1.4987996e10*np.sqrt(tf.T9)-1.0576906e10*pow(tf.T9,3./2.)+2.7447598e8*pow(tf.T9,5./2.)
+        +7.6425157e7*pow(tf.T9,7./2.)-2.282944e7*pow(tf.T9,-3./2.) / np.exp(0.050351813/tf.T9))
 
+    else: rate=1.28039e9
+    '''
     rate_eval.n_be7__p_li7 = rate
 
 @numba.njit()
