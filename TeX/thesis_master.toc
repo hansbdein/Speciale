@@ -1,0 +1,13 @@
+\babel@toc {danish}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{Preface}{iii}{chapter*.2}%
+\contentsline {chapter}{Introduction}{v}{chapter*.4}%
+\contentsline {chapter}{\chapternumberline {1}Coffee as a Tool}{1}{chapter.5}%
+\contentsline {section}{\numberline {1.1}Types of Coffee}{1}{section.6}%
+\contentsline {subsection}{\numberline {1.1.1}Different Beans}{2}{subsection.7}%
+\contentsline {chapter}{\chapternumberline {2}Another name}{5}{chapter.8}%
+\contentsline {chapter}{\chapternumberline {3}Comparison with AlterBBN}{7}{chapter.10}%
+\contentsline {section}{\numberline {3.1}Types of Coffee}{7}{section.11}%
+\contentsline {chapter}{Bibliography}{9}{section*.13}%
