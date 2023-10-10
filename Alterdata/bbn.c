@@ -1054,8 +1054,8 @@ int nucl_single(struct relicparam* paramrelic, double ratioH[NNUC+1], struct err
 
     /* ############ FIND INITIAL TIME ########### */
     /* Strictly valid in the limit T->infty, but valid assumption for the high initial temp. here. */
-    double t=sqrt(12.*pi*G*sigma_SB)/pow(Ti,2.);
-
+    double t=1/(sqrt(192.*pi*G*sigma_SB)*pow(Ti,2.));
+	//
 	rhod=dark_density(Ti,paramrelic);
 
     if(paramrelic->wimp||rhod!=0.||rho_phi!=0.)
@@ -1084,7 +1084,7 @@ int nucl_single(struct relicparam* paramrelic, double ratioH[NNUC+1], struct err
         t=t*H_SBBN/H_WIMP;    
     }
     
-    t*=s_to_GeV;
+    
 	
     Y[3]=1./(reacparam[12][8])/0.987e10*Y[1]*Y[2]*(paramrelic->rhob0/g_to_GeV*pow(cm_to_GeV,3.))*exp(reacparam[12][9]*K_to_eV/T)/pow(T/K_to_eV,1.5); // Initial statistical equilibrium of deuterium formation pre-BBN
 		
@@ -1100,10 +1100,36 @@ int nucl_single(struct relicparam* paramrelic, double ratioH[NNUC+1], struct err
 
 /* --------------------------------------- Integration part ------------------------------------------------------------ */    
 
+	// Declare a file pointer
+    FILE *file;
+
+    // Open a file for writing (create if it doesn't exist, truncate if it does)
+    file = fopen("output.txt", "w");
+
+    // Check if the file was opened successfully
+    if (file == NULL) {
+        printf("Error opening the file.\n");
+        return 1; // Return an error code
+    }
+
+    // Print data to the file
+    fprintf(file, "failsafe=%d\n", paramrelic->failsafe);
+    fprintf(file, "Time\t\t\t\t");
+	fprintf(file, "Photon temperature\t\t");
+	fprintf(file, "Neutrino temperature\t\t");
+
+	for (i=1;i<=NNUC;i++) {
+    fprintf(file, "%s\t\t\t\t", name[i]);
+    }
+	fprintf(file, "\n");
+
+	// fprintf(file, "The number is: %lf\n", Ti);
+
 /* To be obtained recursively: T, h_eta, phie, Tnu, Y[i] */
 
 	if(paramrelic->failsafe<5) /* Original order 2 method for stiff equations */
 	{
+		//fprintf(file, "line 1124.\n");
 		int inc=100;
 		int ltime=0;
 		int is=1;
@@ -1275,6 +1301,17 @@ int nucl_single(struct relicparam* paramrelic, double ratioH[NNUC+1], struct err
 				if(paramrelic->err==0) fprintf(output,"%.5e\t%.5e\t%.5e\t%.5e\t%.5e\t%.5e\t%.5e\t%.5e\t%.5e\t%.5e\t%.5e\t%.5e\t%.5e\t%.5e\n",t/s_to_GeV,a,T/K_to_eV,Tnu/K_to_eV,pow(pi,2.)/15.*pow(T,4.),h_eta*pow(T,3.),neutdens(Tnu,paramrelic),rho_phi,Y[1],Y[2],Y[3],Y[6],Y[8],h_eta/(M_u*g_to_GeV*2.*zeta3/pow(pi,2.)));
 #endif
 
+fprintf(file, "%.18e\t", t);
+fprintf(file, "%.18e\t", T);
+fprintf(file, "%.18e\t", Tnu);
+
+// Print the list of numbers to the file
+
+for (i=1;i<=NNUC;i++) {
+    fprintf(file, "%.18e\t", Y[i]);
+    }
+fprintf(file, "\n");
+
 				}
 			}
 			
@@ -1285,6 +1322,7 @@ int nucl_single(struct relicparam* paramrelic, double ratioH[NNUC+1], struct err
 	}
 	else if(paramrelic->failsafe<10) /* Original order 2 method for stiff equations with improved adaptative timestep */
 	{
+		// fprintf(file, "line 1306.\n");
 		double T_sav,h_eta_sav,phie_sav,Tnu_sav,Y_sav[NNUC+1],t_sav,a_sav;
 			
 		double t_sav2;
@@ -1597,7 +1635,20 @@ int nucl_single(struct relicparam* paramrelic, double ratioH[NNUC+1], struct err
 				}
 				
 				dt*=2.*0.9*min(1.,max(minprec,0.3));
-			
+
+
+fprintf(file, "%.18e\t", t);
+fprintf(file, "%.18e\t", T);
+fprintf(file, "%.18e\t", Tnu);
+
+// Print the list of numbers to the file
+
+for (i=1;i<=NNUC;i++) {
+    fprintf(file, "%.18e\t", Y[i]);
+    }
+fprintf(file, "\n");
+
+
 #ifdef CHECKINTERM
 				for (i=1;i<=NNUC;i++) if(Y[i]>Ylow) checklow[i]++;
 #endif
@@ -1985,6 +2036,18 @@ int nucl_single(struct relicparam* paramrelic, double ratioH[NNUC+1], struct err
 				
 				dt*=2.*0.9*min(1.,max(minprec,0.3));
 
+fprintf(file, "%.18e\t", t);
+fprintf(file, "%.18e\t", T);
+fprintf(file, "%.18e\t", Tnu);
+
+// Print the list of numbers to the file
+
+for (i=1;i<=NNUC;i++) {
+    fprintf(file, "%.18e\t", Y[i]);
+    }
+fprintf(file, "\n");
+
+
 #ifdef CHECKINTERM
 				for (i=1;i<=NNUC;i++) if(Y[i]>Ylow) checklow[i]++;
 #endif
@@ -2282,6 +2345,19 @@ int nucl_single(struct relicparam* paramrelic, double ratioH[NNUC+1], struct err
 				
 				dt*=min(1.1,max(2.,0.84*pow(prec*minprec,0.25)));
 
+
+fprintf(file, "%.18e\t", t);
+fprintf(file, "%.18e\t", T);
+fprintf(file, "%.18e\t", Tnu);
+
+// Print the list of numbers to the file
+
+for (i=1;i<=NNUC;i++) {
+    fprintf(file, "%.18e\t", Y[i]);
+    }
+fprintf(file, "\n");
+
+
 #ifdef CHECKINTERM
 				for (i=1;i<=NNUC;i++) if(Y[i]>Ylow) checklow[i]++;
 #endif
@@ -2308,6 +2384,8 @@ int nucl_single(struct relicparam* paramrelic, double ratioH[NNUC+1], struct err
 #endif
 		}
 	}
+	// Close the file when you're done
+	fclose(file);
 
 	/* Post processing */
 
