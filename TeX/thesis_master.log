@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.10.3)  17 OCT 2023 13:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.10.3)  27 OCT 2023 17:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1293,7 +1293,7 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 22.0pt on input line 31.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 14.0pt on input line 35.
-<front/segla1b.pdf, id=36, 54.2025pt x 54.2025pt>
+<front/segla1b.pdf, id=40, 54.2025pt x 54.2025pt>
 File: front/segla1b.pdf Graphic file (type pdf)
 <use front/segla1b.pdf>
 Package pdftex.def Info: front/segla1b.pdf  used on input line 39.
@@ -1504,7 +1504,11 @@ FiXme Warning: 'This is a warning!' on input line 34.
 
 
 
-]) [5]
+]
+
+LaTeX Warning: Citation 'Gamov48' on page 5 undefined on input line 16.
+
+) [5]
 \openout2 = `main/Altercompare.aux'.
 
  (./main/Altercompare.tex [6
@@ -1539,19 +1543,14 @@ FiXme Summary: Number of notes: 0,
 
  (./thesis_master.aux (./front/frontpages.aux) (./front/preface.aux) (./front/intro.aux) (./main/chap1.aux) (./main/chap2.aux) (./main/Altercompare.aux))
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
 
+Package rerunfilecheck Info: File `thesis_master.out' has not changed.
+(rerunfilecheck)             Checksum: 0FE7243FDAFFBE6D0AD8BFB5C77CE9D5;1141.
 
-Package rerunfilecheck Warning: File `thesis_master.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `thesis_master.out':
-(rerunfilecheck)             Before: E4F55EFA8B0F2B01CBEA1D62AEF39805;972
-(rerunfilecheck)             After:  0FE7243FDAFFBE6D0AD8BFB5C77CE9D5;1141.
-
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                thesis_master
+(biblatex)                and rerun LaTeX afterwards.
 
 Package logreq Info: Writing requests to 'thesis_master.run.xml'.
 \openout1 = `thesis_master.run.xml'.
@@ -1559,19 +1558,17 @@ Package logreq Info: Writing requests to 'thesis_master.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  34076 strings out of 478287
- 650989 string characters out of 5849289
- 1506466 words of memory out of 5000000
- 51497 multiletter control sequences out of 15000+600000
+ 650990 string characters out of 5849289
+ 1506559 words of memory out of 5000000
+ 51498 multiletter control sequences out of 15000+600000
  656446 words of font info for 273 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  76i,12n,82p,1183b,2452s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{section*.17} has been referenced but does not exist, replaced by a fixed one
-
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusSYM.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertinust1math/LibertinusT1Math.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb>
-Output written on thesis_master.pdf (19 pages, 553331 bytes).
+Output written on thesis_master.pdf (19 pages, 554132 bytes).
 PDF statistics:
- 199 PDF objects out of 1000 (max. 8388607)
- 162 compressed objects within 2 object streams
- 40 named destinations out of 1000 (max. 500000)
- 104518 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 202 PDF objects out of 1000 (max. 8388607)
+ 165 compressed objects within 2 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 104526 words of extra memory for PDF output out of 106986 (max. 10000000)
 
