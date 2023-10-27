@@ -2348,8 +2348,16 @@
     <bcf:citekey order="1">kww</bcf:citekey>
     <bcf:citekey order="2">kww</bcf:citekey>
     <bcf:citekey order="3">Gamov48</bcf:citekey>
-    <bcf:citekey order="4">kww</bcf:citekey>
-    <bcf:citekey order="5">Gamov48</bcf:citekey>
+    <bcf:citekey order="4">Peebles66</bcf:citekey>
+    <bcf:citekey order="5">Wagoner67</bcf:citekey>
+    <bcf:citekey order="6">Wagoner69</bcf:citekey>
+    <bcf:citekey order="7">Wagoner72</bcf:citekey>
+    <bcf:citekey order="8">kww</bcf:citekey>
+    <bcf:citekey order="9">Gamov48</bcf:citekey>
+    <bcf:citekey order="10">Peebles66</bcf:citekey>
+    <bcf:citekey order="11">Wagoner67</bcf:citekey>
+    <bcf:citekey order="12">Wagoner69</bcf:citekey>
+    <bcf:citekey order="13">Wagoner72</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="ynt">

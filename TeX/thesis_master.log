@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.10.3)  27 OCT 2023 17:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.10.3)  27 OCT 2023 18:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1508,6 +1508,18 @@ FiXme Warning: 'This is a warning!' on input line 34.
 
 LaTeX Warning: Citation 'Gamov48' on page 5 undefined on input line 16.
 
+
+LaTeX Warning: Citation 'Peebles66' on page 5 undefined on input line 18.
+
+
+LaTeX Warning: Citation 'Wagoner67' on page 5 undefined on input line 18.
+
+
+LaTeX Warning: Citation 'Wagoner69' on page 5 undefined on input line 18.
+
+
+LaTeX Warning: Citation 'Wagoner72' on page 5 undefined on input line 18.
+
 ) [5]
 \openout2 = `main/Altercompare.aux'.
 
@@ -1557,15 +1569,15 @@ Package logreq Info: Writing requests to 'thesis_master.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34076 strings out of 478287
- 650990 string characters out of 5849289
- 1506559 words of memory out of 5000000
- 51498 multiletter control sequences out of 15000+600000
+ 34077 strings out of 478287
+ 651000 string characters out of 5849289
+ 1506601 words of memory out of 5000000
+ 51499 multiletter control sequences out of 15000+600000
  656446 words of font info for 273 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  76i,12n,82p,1183b,2452s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusSYM.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertinust1math/LibertinusT1Math.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb>
-Output written on thesis_master.pdf (19 pages, 554132 bytes).
+Output written on thesis_master.pdf (19 pages, 555540 bytes).
 PDF statistics:
  202 PDF objects out of 1000 (max. 8388607)
  165 compressed objects within 2 object streams
