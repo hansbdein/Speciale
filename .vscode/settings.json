@@ -63,8 +63,8 @@
             "env": {}
         },
         {
-            "name": "bibtex",
-            "command": "bibtex",
+            "name": "biber",
+            "command": "biber",
             "args": [
                 "%DOCFILE%"
             ],
@@ -127,5 +127,10 @@
             ],
             "env": {}
         }
-    ]
+    ],
+    "latex-workshop.intellisense.citation.backend": "biblatex",
+    "latex-workshop.intellisense.biblatexJSON.replace": {
+    
+    },
+    "latex-workshop.intellisense.bibtexJSON.replace": {}
 }

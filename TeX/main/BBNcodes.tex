@@ -1,0 +1,47 @@
+%% ============================================================================
+%%
+%%  Master's thesis
+%%
+%%  Author: FORNAVN EFTERNAVN
+%%
+%%  Chapter 2: Another topic....
+%% ============================================================================
+
+\chapter{BBN code}
+\label{chap:BBNcode}
+
+\section{History of BBN codes}
+\label{sec:BBN_history}
+
+The concept of Big Bang nucleosynthesis is almost as old as the Big Bang theory itself, with the with it first being proposed in the paper by \textcite{Gamov48}. This early model used neutron capture and subsequent beta decay as the mechanism for BBN, though its greatest problem was the inability to explain the unusually high abundance of oxygen and carbon in the present universe. And so, it was in large part supplanted by the new theory of stellar nucleosynthesis, as the main explanation for the origin of elements. 
+
+During the next decades it became clear that stars could not be the only explanation for the present element abundances, and with the discovery of the CMB in 1965, new attention was brought to the early universe. 
+Only a year later Peebles showed how simple BBN physics could be used to explain the high helium abundance, unaccounted for by stellar nucleosynthesis \cite{Peebles66}.
+
+In the following years Wagoner created and refined the first proper BBN code, described in a series of defining papers\cite{Wagoner67}\cite{Wagoner69}\cite{Wagoner72}. With the legacy of this code still heavily influencing the way BBN calculations are performed today.
+
+By the late 80s the Wagoner code was severely outdated. With multiple inefficiencies due to among other things, the fact that it was originally designed to run on punch cards. This inspired Lawrence Kawano to create the now ubiquitous NUC123, colloquially know as the Kawano code. Which set the gold Standard for all future BBN codes. 
+
+In current day and age, there exists multiple publicly available BBN codes, and a countless number of private codes. The most well know of these are PArthENoPE spiritual successor to NUC123, AlterBBN, and PRIMAT.
+
+
+\section{Structure of BBN codes}
+\label{sec:BBN_structure}
+
+The objective of any BBN code is to solve the system of differential equations described in chapter \ref{chap:theory}.
+
+\subsection{Wagoner}
+\label{sec:Wagoner}
+
+\subsection{Kawano}
+\label{sec:Kawano}
+
+\subsection{Modern codes}
+\label{sec:Modern_codes}
+PArthENoPE, AlterBBN, PRIMAT
+
+
+\subsection{AlterBBN}
+\label{sec:AlterBBN}
+
+AlterBBN is written in c and based on Kawano's NUC123. It maintains the same basic structure and integration method, though it uses natural units for everything but the reaction network. However, they define energy in GeV rather than MeV. What separates AlterBBN for other codes is that as the name implies, it allows the use of alternate cosmological models and parameters. Therefore, this code is especially well suited for testing the effects these alterations have on final abundances. Wot
