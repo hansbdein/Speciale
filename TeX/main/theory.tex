@@ -10,27 +10,85 @@
 \chapter{BBN physics and cosmology}
 \label{chap:theory}
 
-This will be about the physics of BBN.
+To understand the process of Big Bang nucleosynthesis, we must examine the intersection between Cosmology, thermodynamics, particle, and nuclear physics. Though this might seem daunting, it turns out that the unique conditions during this epoch allow for extensive simplifications of this otherwise monumental task.
+
+
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % SECTION
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\section{cosmology}
-\label{sec:cosmology}
+\section{Determining background parameters}
+\label{sec:Background}
 
-citation test\textcite{kww}
+\subsection{Temperature and scale factor}
+\label{ssec:cosmology}
 
-\subsection{Electron/positron density and pressure}
+BBN takes place after inflation while the universe is still radiation dominated. This can be described by the Friedman equation, which can be further simplified with the reasonable approximation, that both curvature and the cosmological constant are zero. 
+
+\begin{align}
+    H^2=\left(\frac{\dot{a}}{a}\right)^2=\frac{8\pi G}{3}\rho_{tot}
+\end{align}
+
+With $\rho_{tot}$ referring to the total energy density of photons, leptons and baryons.
+\begin{align}
+    \rho_{tot}=\rho_{\gamma}+\rho_{\nu}+(\rho_{e^-}+\rho_{e^+})+\rho_{b}
+\end{align}
+
+To find an expression for the temperature evolution, we use energy conservation. We can consider the neutrinos as decoupled during BBN, and so the photon temperature will be determined by the remaining components. Since this point the universe is very much homogeneous and isotropic, we utilize the fluid equation for adiabatic expansion. 
+
+\begin{align}
+    \dot{\rho_{set}}+3\frac{\dot{a}}{a}(\rho_{set} + P_{set})=0
+\end{align}
+
+With $\rho_{set}$ being the density of none-decoupled components and $P_{set}$ being their pressures.
+
+
+\begin{align}
+    \rho_{set}=\rho_{\gamma}+(\rho_{e^-}+\rho_{e^+})+\rho_{b}
+    \eqsep P_{set}=P_{\gamma}+(P_{e^-}+P_{e^+})+P_{b}
+\end{align}
+
+With this we can set up differential equations describing the time evolution of the scale factor and photon temperature. 
+
+
+\begin{align}
+    \diff{T}{t}=-3H\frac{\rho_{set}(T,a) + P_{set}(T,a)}{\diff{\rho_{set}(T,a)}{T}} \eqsep \diff{a}{t}=a\sqrt{\frac{8\pi G}{3}\rho_{tot}(T,a)}
+\end{align}
+
+\subsection{Additional parameters}
+
+h og $\phi$
+Neutrino temperature?
+
+
+\section{Energy densities and pressure}
+
+\subsection{Photons}
+
+\subsection{Neutrinos}
+
+\subsection{Electrons and positrons}
+
+\subsection{Baryons}
 
 \lipsum
+
+
 
 
 % ~~~~~~~~~~
 % SUBSECTION
 % ~~~~~~~~~~
-\subsection{Nuclear reactions}
+\section{Nuclear reactions}
 \label{sec:nucleartheory}
+
+\subsection{Proton $\leftrightharpoons$ neutron rate}
+
+
+
 
 Warning test\fxwarning{This is a warning!}
 
 \lipsum
+
+\section{Initial conditions}

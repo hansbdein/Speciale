@@ -245,7 +245,7 @@
   style=numeric,%=authoryear-comp,  % Citation style as (AUTHOR YEAR)
   sorting=ynt,            % Sort citations as YEAR-NAME-TITLE
   sortcites=true,
-  dashed=false,
+  %dashed=false,          % Doesn't work with numeric style
   maxcitenames=3,         % Increase/decrease to include more/fewer authors in cites
   maxbibnames=5,          % As above, but in the bibliography
   uniquelist=false,
@@ -356,9 +356,11 @@
 \newcommand\kepler{\textsl{Kepler}\xspace}
 
 % Diff
-\newcommand\diff[2]{\frac{\text{d}#1}{\text{d}#2}}
+%\newcommand\diff[2]{\frac{\text{d}#1}{\text{d}#2}}
+\newcommand\diff[2]{\frac{d#1}{d#2}}
 \newcommand\pdiff[2]{\frac{\partial #1}{\partial #2}}
-\newcommand\idiff[2]{\ensuremath{\text{d}#1/\text{d}#2}}
+%\newcommand\idiff[2]{\ensuremath{\text{d}#1/\text{d}#2}}
+\newcommand\idiff[2]{\ensuremath{d#1/d#2}}
 
 % More lazy stuff
 \newcommand\parname[2]{\left(#1\right)_{\textup{#2}}}
@@ -377,3 +379,8 @@
 % Specific things to be repeated often in the text
 \newcommand\teff{\ensuremath{T_{\textup{eff}}}\xspace}
 \newcommand\logg{\ensuremath{\log g}\xspace}
+
+% To make the bibliography work properly
+
+\newcommand\apj{The Astrophysical Journal}
+\newcommand\apjs{The Astrophysical Journal Supplement}
