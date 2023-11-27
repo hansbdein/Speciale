@@ -53,19 +53,55 @@ With this we can set up differential equations describing the time evolution of 
 
 \begin{align}
     \diff{T}{t}=-3H\frac{\rho_{set}(T,a) + P_{set}(T,a)}{\diff{\rho_{set}(T,a)}{T}} \eqsep \diff{a}{t}=a\sqrt{\frac{8\pi G}{3}\rho_{tot}(T,a)}
+    \label{eq:dBackground}
 \end{align}
 
 \subsection{Additional parameters}
+Most BBN codes are based on the original code by Wagoner described in section \ref{sec:BBN_history}. These don't track the scale factor, but instead use the quantity $h$.
 
-h og $\phi$
-Neutrino temperature?
+\begin{align}
+    h=M_u\frac{n_{b}}{T^3_9}
+\end{align}
+
+$M_u$ being atomic mass units, $n_b$ the baryon number density, and  $T_9$ the temperature in $10^9$ Kelvin. This quantity was useful since it stays approximately constant throughout BBN, while being easy to directly convert to baryon density. However, with modern computers this numerical simplicity is inconsequential, and as such it is more reasonable to track the scale factor.
+The electron chemical potential $\phi$ was also tracked by the Wagoner code and its successors. The only effect of this is ensuring a non-zero electron density after reheating. We can easily set this to 0, as the impact will be 3 orders of magnitude lower than the already miniscule impact of the baryon density.
+
+\textcolor{orange}{Neutrino temperature?}
 
 
 \section{Energy densities and pressure}
 
+
 \subsection{Photons}
 
+
+The energy density of photons as a function of temperature can be found by integrating over the energy distribution given by Planck's law. 
+
+
+\begin{align}
+    \rho_\gamma(T)=\int_{0}^{\infty} \frac{\omega^3}{\pi^2}\frac{1}{e^{\omega/T}-1}d\omega =  \frac{T^4}{\pi^2}\int_{0}^{\infty}\frac{u^3}{e^{u}-1}du
+\end{align}
+
+This integral is a well know representation of the Riemann Zeta function \cite[\href{https://dlmf.nist.gov/25.5.E1}{(25.5.1)}]{NIST:DLMF}.
+
+\begin{align}
+    \rho_\gamma(T)=\frac{T^4}{\pi^2}\Gamma(4)\zeta(4)=\frac{\pi^2}{15}T^4
+    \label[equation]{rhogamma}
+\end{align}
+
+From this we can easily define the pressure and temperature derivative.
+
+\begin{align}
+    \diff{\rho_\gamma(T)}{T}=\frac{4}{15}\pi^2T^3 \eqsep P_\gamma(T)=\frac{\rho_\gamma(T)}{3}
+\end{align}
+
+
+
+
 \subsection{Neutrinos}
+
+
+
 
 \subsection{Electrons and positrons}
 

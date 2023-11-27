@@ -2344,17 +2344,19 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliography.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">Gamov48</bcf:citekey>
+    <bcf:citekey order="1">NIST:DLMF</bcf:citekey>
     <bcf:citekey order="2">Gamov48</bcf:citekey>
-    <bcf:citekey order="3">Peebles66</bcf:citekey>
-    <bcf:citekey order="4">Wagoner67</bcf:citekey>
-    <bcf:citekey order="5">Wagoner69</bcf:citekey>
-    <bcf:citekey order="6">Wagoner72</bcf:citekey>
-    <bcf:citekey order="7">Gamov48</bcf:citekey>
-    <bcf:citekey order="8">Peebles66</bcf:citekey>
-    <bcf:citekey order="9">Wagoner67</bcf:citekey>
-    <bcf:citekey order="10">Wagoner69</bcf:citekey>
-    <bcf:citekey order="11">Wagoner72</bcf:citekey>
+    <bcf:citekey order="3">Gamov48</bcf:citekey>
+    <bcf:citekey order="4">Peebles66</bcf:citekey>
+    <bcf:citekey order="5">Wagoner67</bcf:citekey>
+    <bcf:citekey order="6">Wagoner69</bcf:citekey>
+    <bcf:citekey order="7">Wagoner72</bcf:citekey>
+    <bcf:citekey order="8">NIST:DLMF</bcf:citekey>
+    <bcf:citekey order="9">Gamov48</bcf:citekey>
+    <bcf:citekey order="10">Peebles66</bcf:citekey>
+    <bcf:citekey order="11">Wagoner67</bcf:citekey>
+    <bcf:citekey order="12">Wagoner69</bcf:citekey>
+    <bcf:citekey order="13">Wagoner72</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="ynt">
@@ -2382,39 +2384,11 @@
       <bcf:sortitem order="2">title</bcf:sortitem>
     </bcf:sort>
   </bcf:sortingtemplate>
-  <bcf:sortingtemplate name="nyt">
-    <bcf:sort order="1">
-      <bcf:sortitem order="1">presort</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="2" final="1">
-      <bcf:sortitem order="1">sortkey</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="3">
-      <bcf:sortitem order="1">sortname</bcf:sortitem>
-      <bcf:sortitem order="2">author</bcf:sortitem>
-      <bcf:sortitem order="3">editor</bcf:sortitem>
-      <bcf:sortitem order="4">translator</bcf:sortitem>
-      <bcf:sortitem order="5">sorttitle</bcf:sortitem>
-      <bcf:sortitem order="6">title</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="4">
-      <bcf:sortitem order="1">sortyear</bcf:sortitem>
-      <bcf:sortitem order="2">year</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="5">
-      <bcf:sortitem order="1">sorttitle</bcf:sortitem>
-      <bcf:sortitem order="2">title</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="6">
-      <bcf:sortitem order="1">volume</bcf:sortitem>
-      <bcf:sortitem literal="1" order="2">0</bcf:sortitem>
-    </bcf:sort>
-  </bcf:sortingtemplate>
   <!-- DATALISTS -->
   <bcf:datalist section="0"
-                name="nyt/global//global/global"
+                name="ynt/global//global/global"
                 type="entry"
-                sortingtemplatename="nyt"
+                sortingtemplatename="ynt"
                 sortingnamekeytemplatename="global"
                 labelprefix=""
                 uniquenametemplatename="global"

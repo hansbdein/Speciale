@@ -18,220 +18,6 @@
 
 
 \refsection{0}
-  \datalist[entry]{nyt/global//global/global}
-    \entry{Gamov48}{article}{}
-      \name{author}{3}{}{%
-        {{hash=f5d8efa7d949c3109d8517d2119c3be8}{%
-           family={Alpher},
-           familyi={A\bibinitperiod},
-           given={R.\bibnamedelimi A.},
-           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-        {{hash=edf7e1f0f9e42da57d807260b538c886}{%
-           family={Bethe},
-           familyi={B\bibinitperiod},
-           given={H.},
-           giveni={H\bibinitperiod}}}%
-        {{hash=2a8896fc47a5f8514570ee9430a35e0e}{%
-           family={Gamow},
-           familyi={G\bibinitperiod},
-           given={G.},
-           giveni={G\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {American Physical Society}%
-      }
-      \strng{namehash}{479ea82fd682136f3c8fc945c0513d51}
-      \strng{fullhash}{479ea82fd682136f3c8fc945c0513d51}
-      \strng{bibnamehash}{479ea82fd682136f3c8fc945c0513d51}
-      \strng{authorbibnamehash}{479ea82fd682136f3c8fc945c0513d51}
-      \strng{authornamehash}{479ea82fd682136f3c8fc945c0513d51}
-      \strng{authorfullhash}{479ea82fd682136f3c8fc945c0513d51}
-      \field{sortinit}{A}
-      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{issue}{7}
-      \field{journaltitle}{Phys. Rev.}
-      \field{month}{4}
-      \field{title}{The Origin of Chemical Elements}
-      \field{volume}{73}
-      \field{year}{1948}
-      \field{pages}{803\bibrangedash 804}
-      \range{pages}{2}
-      \verb{doi}
-      \verb 10.1103/PhysRev.73.803
-      \endverb
-      \verb{urlraw}
-      \verb https://link.aps.org/doi/10.1103/PhysRev.73.803
-      \endverb
-      \verb{url}
-      \verb https://link.aps.org/doi/10.1103/PhysRev.73.803
-      \endverb
-    \endentry
-    \entry{kww}{book}{}
-      \name{author}{3}{}{%
-        {{hash=761504b4cb4d7e753cf15b29a6f6a866}{%
-           family={{Kippenhahn}},
-           familyi={K\bibinitperiod},
-           given={R.},
-           giveni={R\bibinitperiod}}}%
-        {{hash=fb79d3ec4e44d98121eb7bed2c031729}{%
-           family={{Weigert}},
-           familyi={W\bibinitperiod},
-           given={A.},
-           giveni={A\bibinitperiod}}}%
-        {{hash=703cf27625ae48659a7f50169b5a9ac9}{%
-           family={{Weiss}},
-           familyi={W\bibinitperiod},
-           given={A.},
-           giveni={A\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{a7715f138eb7705fe2827a88cd1eda82}
-      \strng{fullhash}{a7715f138eb7705fe2827a88cd1eda82}
-      \strng{bibnamehash}{a7715f138eb7705fe2827a88cd1eda82}
-      \strng{authorbibnamehash}{a7715f138eb7705fe2827a88cd1eda82}
-      \strng{authornamehash}{a7715f138eb7705fe2827a88cd1eda82}
-      \strng{authorfullhash}{a7715f138eb7705fe2827a88cd1eda82}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{Second Edition}
-      \field{title}{{Stellar Structure and Evolution}}
-      \field{year}{2012}
-    \endentry
-    \entry{Peebles66}{article}{}
-      \name{author}{1}{}{%
-        {{hash=dd71b2b0e5f00721bd0cdf4a474674df}{%
-           family={{Peebles}},
-           familyi={P\bibinitperiod},
-           given={P.\bibnamedelimi J.\bibnamedelimi E.},
-           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-      }
-      \strng{namehash}{dd71b2b0e5f00721bd0cdf4a474674df}
-      \strng{fullhash}{dd71b2b0e5f00721bd0cdf4a474674df}
-      \strng{bibnamehash}{dd71b2b0e5f00721bd0cdf4a474674df}
-      \strng{authorbibnamehash}{dd71b2b0e5f00721bd0cdf4a474674df}
-      \strng{authornamehash}{dd71b2b0e5f00721bd0cdf4a474674df}
-      \strng{authorfullhash}{dd71b2b0e5f00721bd0cdf4a474674df}
-      \field{sortinit}{P}
-      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{\apj}
-      \field{month}{11}
-      \field{title}{{Primordial Helium Abundance and the Primordial Fireball. II}}
-      \field{volume}{146}
-      \field{year}{1966}
-      \field{pages}{542}
-      \range{pages}{1}
-      \verb{doi}
-      \verb 10.1086/148918
-      \endverb
-    \endentry
-    \entry{Wagoner72}{article}{}
-      \name{author}{1}{}{%
-        {{hash=dc0ee6c661c794f09a246538ea1c5783}{%
-           family={Wagoner},
-           familyi={W\bibinitperiod},
-           given={Robert},
-           giveni={R\bibinitperiod}}}%
-      }
-      \strng{namehash}{dc0ee6c661c794f09a246538ea1c5783}
-      \strng{fullhash}{dc0ee6c661c794f09a246538ea1c5783}
-      \strng{bibnamehash}{dc0ee6c661c794f09a246538ea1c5783}
-      \strng{authorbibnamehash}{dc0ee6c661c794f09a246538ea1c5783}
-      \strng{authornamehash}{dc0ee6c661c794f09a246538ea1c5783}
-      \strng{authorfullhash}{dc0ee6c661c794f09a246538ea1c5783}
-      \field{extraname}{1}
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{The Astrophysical Journal}
-      \field{month}{12}
-      \field{title}{Big-Bang Nucleosynthesis Revisited}
-      \field{volume}{179}
-      \field{year}{1972}
-      \field{pages}{343\bibrangedash 360}
-      \range{pages}{18}
-      \verb{doi}
-      \verb 10.1086/151873
-      \endverb
-    \endentry
-    \entry{Wagoner69}{article}{}
-      \name{author}{1}{}{%
-        {{hash=2fbb1da911dd4a48ad8a357d4ec3ef33}{%
-           family={{Wagoner}},
-           familyi={W\bibinitperiod},
-           given={Robert\bibnamedelima V.},
-           giveni={R\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
-      }
-      \strng{namehash}{2fbb1da911dd4a48ad8a357d4ec3ef33}
-      \strng{fullhash}{2fbb1da911dd4a48ad8a357d4ec3ef33}
-      \strng{bibnamehash}{2fbb1da911dd4a48ad8a357d4ec3ef33}
-      \strng{authorbibnamehash}{2fbb1da911dd4a48ad8a357d4ec3ef33}
-      \strng{authornamehash}{2fbb1da911dd4a48ad8a357d4ec3ef33}
-      \strng{authorfullhash}{2fbb1da911dd4a48ad8a357d4ec3ef33}
-      \field{extraname}{2}
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{\apjs}
-      \field{month}{6}
-      \field{title}{{Synthesis of the Elements Within Objects Exploding from Very High Temperatures}}
-      \field{volume}{18}
-      \field{year}{1969}
-      \field{pages}{247}
-      \range{pages}{1}
-      \verb{doi}
-      \verb 10.1086/190191
-      \endverb
-    \endentry
-    \entry{Wagoner67}{article}{}
-      \name{author}{3}{}{%
-        {{hash=2fbb1da911dd4a48ad8a357d4ec3ef33}{%
-           family={{Wagoner}},
-           familyi={W\bibinitperiod},
-           given={Robert\bibnamedelima V.},
-           giveni={R\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
-        {{hash=be578acfdd9fe779eaafc08c9b43e73c}{%
-           family={{Fowler}},
-           familyi={F\bibinitperiod},
-           given={William\bibnamedelima A.},
-           giveni={W\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-        {{hash=2196b23ff7728fcfd60b60e9109b9f2f}{%
-           family={{Hoyle}},
-           familyi={H\bibinitperiod},
-           given={F.},
-           giveni={F\bibinitperiod}}}%
-      }
-      \strng{namehash}{bae98b316ab0853ccb9261b38f9926f0}
-      \strng{fullhash}{bae98b316ab0853ccb9261b38f9926f0}
-      \strng{bibnamehash}{bae98b316ab0853ccb9261b38f9926f0}
-      \strng{authorbibnamehash}{bae98b316ab0853ccb9261b38f9926f0}
-      \strng{authornamehash}{bae98b316ab0853ccb9261b38f9926f0}
-      \strng{authorfullhash}{bae98b316ab0853ccb9261b38f9926f0}
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{\apj}
-      \field{month}{4}
-      \field{title}{{On the Synthesis of Elements at Very High Temperatures}}
-      \field{volume}{148}
-      \field{year}{1967}
-      \field{pages}{3}
-      \range{pages}{1}
-      \verb{doi}
-      \verb 10.1086/149126
-      \endverb
-    \endentry
-  \enddatalist
   \datalist[entry]{ynt/global//global/global}
     \entry{Gamov48}{article}{}
       \name{author}{3}{}{%
@@ -410,40 +196,20 @@
       \verb 10.1086/151873
       \endverb
     \endentry
-    \entry{kww}{book}{}
-      \name{author}{3}{}{%
-        {{hash=761504b4cb4d7e753cf15b29a6f6a866}{%
-           family={{Kippenhahn}},
-           familyi={K\bibinitperiod},
-           given={R.},
-           giveni={R\bibinitperiod}}}%
-        {{hash=fb79d3ec4e44d98121eb7bed2c031729}{%
-           family={{Weigert}},
-           familyi={W\bibinitperiod},
-           given={A.},
-           giveni={A\bibinitperiod}}}%
-        {{hash=703cf27625ae48659a7f50169b5a9ac9}{%
-           family={{Weiss}},
-           familyi={W\bibinitperiod},
-           given={A.},
-           giveni={A\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{a7715f138eb7705fe2827a88cd1eda82}
-      \strng{fullhash}{a7715f138eb7705fe2827a88cd1eda82}
-      \strng{bibnamehash}{a7715f138eb7705fe2827a88cd1eda82}
-      \strng{authorbibnamehash}{a7715f138eb7705fe2827a88cd1eda82}
-      \strng{authornamehash}{a7715f138eb7705fe2827a88cd1eda82}
-      \strng{authorfullhash}{a7715f138eb7705fe2827a88cd1eda82}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{Second Edition}
-      \field{title}{{Stellar Structure and Evolution}}
-      \field{year}{2012}
+    \entry{NIST:DLMF}{misc}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{shorttitle}
+      \field{howpublished}{\url{https://dlmf.nist.gov/}, Release 1.1.11 of 2023-09-15}
+      \field{note}{F.~W.~J. Olver, A.~B. {Olde Daalhuis}, D.~W. Lozier, B.~I. Schneider, R.~F. Boisvert, C.~W. Clark, B.~R. Miller, B.~V. Saunders, H.~S. Cohl, and M.~A. McClain, eds.}
+      \field{shorttitle}{{DLMF}}
+      \field{title}{{\textit{NIST Digital Library of Mathematical Functions}}}
+      \verb{urlraw}
+      \verb https://dlmf.nist.gov/
+      \endverb
+      \verb{url}
+      \verb https://dlmf.nist.gov/
+      \endverb
     \endentry
   \enddatalist
 \endrefsection
