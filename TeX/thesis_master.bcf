@@ -2345,18 +2345,21 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1">NIST:DLMF</bcf:citekey>
-    <bcf:citekey order="2">Gamov48</bcf:citekey>
-    <bcf:citekey order="3">Gamov48</bcf:citekey>
-    <bcf:citekey order="4">Peebles66</bcf:citekey>
-    <bcf:citekey order="5">Wagoner67</bcf:citekey>
-    <bcf:citekey order="6">Wagoner69</bcf:citekey>
-    <bcf:citekey order="7">Wagoner72</bcf:citekey>
-    <bcf:citekey order="8">NIST:DLMF</bcf:citekey>
-    <bcf:citekey order="9">Gamov48</bcf:citekey>
-    <bcf:citekey order="10">Peebles66</bcf:citekey>
-    <bcf:citekey order="11">Wagoner67</bcf:citekey>
-    <bcf:citekey order="12">Wagoner69</bcf:citekey>
-    <bcf:citekey order="13">Wagoner72</bcf:citekey>
+    <bcf:citekey order="2">NIST:DLMF</bcf:citekey>
+    <bcf:citekey order="3">Mangano_2005</bcf:citekey>
+    <bcf:citekey order="4">Gamov48</bcf:citekey>
+    <bcf:citekey order="5">Gamov48</bcf:citekey>
+    <bcf:citekey order="6">Peebles66</bcf:citekey>
+    <bcf:citekey order="7">Wagoner67</bcf:citekey>
+    <bcf:citekey order="8">Wagoner69</bcf:citekey>
+    <bcf:citekey order="9">Wagoner72</bcf:citekey>
+    <bcf:citekey order="10">NIST:DLMF</bcf:citekey>
+    <bcf:citekey order="11">Mangano_2005</bcf:citekey>
+    <bcf:citekey order="12">Gamov48</bcf:citekey>
+    <bcf:citekey order="13">Peebles66</bcf:citekey>
+    <bcf:citekey order="14">Wagoner67</bcf:citekey>
+    <bcf:citekey order="15">Wagoner69</bcf:citekey>
+    <bcf:citekey order="16">Wagoner72</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="ynt">

@@ -196,6 +196,71 @@
       \verb 10.1086/151873
       \endverb
     \endentry
+    \entry{Mangano_2005}{article}{}
+      \name{author}{6}{}{%
+        {{hash=011a3eed1eb3e6526b900b7c0a2e90ef}{%
+           family={Mangano},
+           familyi={M\bibinitperiod},
+           given={Gianpiero},
+           giveni={G\bibinitperiod}}}%
+        {{hash=971ad2683a6df95941fd652235efc102}{%
+           family={Miele},
+           familyi={M\bibinitperiod},
+           given={Gennaro},
+           giveni={G\bibinitperiod}}}%
+        {{hash=e9ebd9027c0c7396bb5415590e80b1c2}{%
+           family={Pastor},
+           familyi={P\bibinitperiod},
+           given={Sergio},
+           giveni={S\bibinitperiod}}}%
+        {{hash=2b933460d3ce00e108b0e9d555a16b2f}{%
+           family={Pinto},
+           familyi={P\bibinitperiod},
+           given={Teguayco},
+           giveni={T\bibinitperiod}}}%
+        {{hash=0368ffb2c1256d0b2fc74d87ef1204cd}{%
+           family={Pisanti},
+           familyi={P\bibinitperiod},
+           given={Ofelia},
+           giveni={O\bibinitperiod}}}%
+        {{hash=fc551b1fbe218494af3f6ddb43dfa59d}{%
+           family={Serpico},
+           familyi={S\bibinitperiod},
+           given={Pasquale\bibnamedelima D.},
+           giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier BV}%
+      }
+      \strng{namehash}{98f488957a9437b0aa97bcefcab1ee02}
+      \strng{fullhash}{6e7ea20811ca6d19e4c2675b10a63385}
+      \strng{bibnamehash}{98f488957a9437b0aa97bcefcab1ee02}
+      \strng{authorbibnamehash}{98f488957a9437b0aa97bcefcab1ee02}
+      \strng{authornamehash}{98f488957a9437b0aa97bcefcab1ee02}
+      \strng{authorfullhash}{6e7ea20811ca6d19e4c2675b10a63385}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0550-3213}
+      \field{journaltitle}{Nuclear Physics B}
+      \field{month}{11}
+      \field{number}{1–2}
+      \field{title}{Relic neutrino decoupling including flavour oscillations}
+      \field{volume}{729}
+      \field{year}{2005}
+      \field{pages}{221\bibrangedash 234}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1016/j.nuclphysb.2005.09.041
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1016/j.nuclphysb.2005.09.041
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1016/j.nuclphysb.2005.09.041
+      \endverb
+    \endentry
     \entry{NIST:DLMF}{misc}{}
       \field{sortinit}{D}
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}

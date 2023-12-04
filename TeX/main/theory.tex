@@ -10,7 +10,7 @@
 \chapter{BBN physics and cosmology}
 \label{chap:theory}
 
-To understand the process of Big Bang nucleosynthesis, we must examine the intersection between Cosmology, thermodynamics, particle, and nuclear physics. Though this might seem daunting, it turns out that the unique conditions during this epoch allow for extensive simplifications of this otherwise monumental task.
+To understand the process of Big Bang nucleosynthesis, we must examine the intersection between Cosmology, thermodynamics, particle, and nuclear physics. Though this might seem daunting, it turns out that the unique conditions during this epoch allow for extensive simplifications of this otherwise monumental task. Throughout this section we use $\hbar=c=k_B=1$.
 
 
 
@@ -24,33 +24,23 @@ To understand the process of Big Bang nucleosynthesis, we must examine the inter
 \label{ssec:cosmology}
 
 BBN takes place after inflation while the universe is still radiation dominated. This can be described by the Friedman equation, which can be further simplified with the reasonable approximation, that both curvature and the cosmological constant are zero. 
-
 \begin{align}
     H^2=\left(\frac{\dot{a}}{a}\right)^2=\frac{8\pi G}{3}\rho_{tot}
 \end{align}
-
 With $\rho_{tot}$ referring to the total energy density of photons, leptons and baryons.
 \begin{align}
     \rho_{tot}=\rho_{\gamma}+\rho_{\nu}+(\rho_{e^-}+\rho_{e^+})+\rho_{b}
 \end{align}
-
 To find an expression for the temperature evolution, we use energy conservation. We can consider the neutrinos as decoupled during BBN, and so the photon temperature will be determined by the remaining components. Since this point the universe is very much homogeneous and isotropic, we utilize the fluid equation for adiabatic expansion. 
-
 \begin{align}
     \dot{\rho_{set}}+3\frac{\dot{a}}{a}(\rho_{set} + P_{set})=0
 \end{align}
-
 With $\rho_{set}$ being the density of none-decoupled components and $P_{set}$ being their pressures.
-
-
 \begin{align}
     \rho_{set}=\rho_{\gamma}+(\rho_{e^-}+\rho_{e^+})+\rho_{b}
     \eqsep P_{set}=P_{\gamma}+(P_{e^-}+P_{e^+})+P_{b}
 \end{align}
-
 With this we can set up differential equations describing the time evolution of the scale factor and photon temperature. 
-
-
 \begin{align}
     \diff{T}{t}=-3H\frac{\rho_{set}(T,a) + P_{set}(T,a)}{\diff{\rho_{set}(T,a)}{T}} \eqsep \diff{a}{t}=a\sqrt{\frac{8\pi G}{3}\rho_{tot}(T,a)}
     \label{eq:dBackground}
@@ -58,11 +48,9 @@ With this we can set up differential equations describing the time evolution of 
 
 \subsection{Additional parameters}
 Most BBN codes are based on the original code by Wagoner described in section \ref{sec:BBN_history}. These don't track the scale factor, but instead use the quantity $h$.
-
 \begin{align}
     h=M_u\frac{n_{b}}{T^3_9}
 \end{align}
-
 $M_u$ being atomic mass units, $n_b$ the baryon number density, and  $T_9$ the temperature in $10^9$ Kelvin. This quantity was useful since it stays approximately constant throughout BBN, while being easy to directly convert to baryon density. However, with modern computers this numerical simplicity is inconsequential, and as such it is more reasonable to track the scale factor.
 The electron chemical potential $\phi$ was also tracked by the Wagoner code and its successors. The only effect of this is ensuring a non-zero electron density after reheating. We can easily set this to 0, as the impact will be 3 orders of magnitude lower than the already miniscule impact of the baryon density.
 
@@ -71,26 +59,71 @@ The electron chemical potential $\phi$ was also tracked by the Wagoner code and 
 
 \section{Energy densities and pressure}
 
+In the very early universe most particles were in thermal equilibrium, and can be described by the rules of statistical physics. The average number of particles in a given state is governed by the Fermi-Dirac distribution for fermions, and the Bose-Einstein distribution for bosons.
+\begin{align}
+    \bar{n}_{FD}=\frac{1}{e^{(E-\phi)/T}+1} \eqsep   \bar{n}_{BE}=\frac{1}{e^{(E-\phi)/T}-1}
+    \label[equation]{fermionboson}
+\end{align}
+With $E$ being the total energy each particle in the state and $\phi$ the chemical potential. The number density can be found generally by integrating over all possible momentum states. 
+\begin{align}
+    n(T)=\frac{g}{(2\pi)^3}\int_{0}^{\infty}\bar{n}(p,T)dp^3=\frac{g}{2\pi^2}\int_{0}^{\infty}\bar{n}(p,T)dp
+    \label[equation]{numberdensity}
+\end{align}
+With g being the degeneracy parameter. We can similarly find an expression for the energy density by multiplying the integrand by the relativistic energy $E^2=m^2+p^2$.
+\begin{align}
+    \rho(T)=\frac{g}{2\pi^2}\int_{0}^{\infty}\bar{n}(p,T)\sqrt{m^2+p^2}dp
+    \label[equation]{energydensity}
+\end{align}
+Pressure is defined as the force exerted per unit area. Consider a relativistic particle confined to a sphere of radius $r$. Whenever it collides with the surface, it will exert a force proportional to the change in momentum. 
+\begin{align}
+    F=\diff{p}{t}=\frac{\Delta p }{\Delta t}\eqsep
+    \Delta p = 2p \cos \theta
+\end{align}
+With $\theta$ being the incident angle. 
+
+The time between collisions can be deduced based on the distance traveled. 
+\begin{align}
+    \Delta t = \frac{L}{\mathrm{v}}=L\frac{\sqrt{m^2+p^2}}{p}
+\end{align}
+With distance between collisions $L$ and velocity $\mathrm{v}$.
+
+Next, consider the triangle created by the center of the sphere and two consecutive collision points. Using the law of cosines we can determine $L$.
+\begin{align}
+    r^2=L^2+r^2+2L r \cos \theta \Rightarrow
+    L = 2r \cos \theta
+\end{align}
+We can then determine the force and pressure exerted on the sphere by each particle. 
+\begin{align}
+    F = \frac{p^2}{r\sqrt{m^2+p^2}} \eqsep P = \frac{p^2}{4\pi r^3\sqrt{m^2+p^2}}
+\end{align}
+Generalizing this for any volume, we get the integral for the total pressure of a relativistic gas.
+\begin{align}
+    PV=\frac{p^2}{3\sqrt{m^2+p^2}} 
+    \label[equation]{Pcontribution}
+\end{align}
+\begin{align}
+    P(T)=\frac{g}{6\pi^2}\int_{0}^{\infty}\bar{n}(p,T)\frac{p^2}{\sqrt{m^2+p^2}}dp
+    \label[equation]{pressure}
+\end{align}
+Additionally, we see that the pressure of an ultra-relativistic gas follows a simple relation.
+\begin{align}
+    P(T)=\frac{\rho(T)}{3} \quad (\text{for } m\ll p)
+    \label[equation]{Prho3}
+\end{align}
 
 \subsection{Photons}
 
 
-The energy density of photons as a function of temperature can be found by integrating over the energy distribution given by Planck's law. 
-
-
+Photons are massless bosons with 2 distinct polarizations, for each momentum state. With $g=2$, we use \ref{energydensity} to determine the energy density. 
 \begin{align}
-    \rho_\gamma(T)=\int_{0}^{\infty} \frac{\omega^3}{\pi^2}\frac{1}{e^{\omega/T}-1}d\omega =  \frac{T^4}{\pi^2}\int_{0}^{\infty}\frac{u^3}{e^{u}-1}du
+    \rho_\gamma(T)=\int_{0}^{\infty} \frac{p^3}{\pi^2}\frac{1}{e^{p/T}-1}dp =  \frac{T^4}{\pi^2}\int_{0}^{\infty}\frac{u^3}{e^{u}-1}du
 \end{align}
-
 This integral is a well know representation of the Riemann Zeta function \cite[\href{https://dlmf.nist.gov/25.5.E1}{(25.5.1)}]{NIST:DLMF}.
-
 \begin{align}
     \rho_\gamma(T)=\frac{T^4}{\pi^2}\Gamma(4)\zeta(4)=\frac{\pi^2}{15}T^4
     \label[equation]{rhogamma}
 \end{align}
-
-From this we can easily define the pressure and temperature derivative.
-
+Now we can easily define the temperature derivative and pressure.
 \begin{align}
     \diff{\rho_\gamma(T)}{T}=\frac{4}{15}\pi^2T^3 \eqsep P_\gamma(T)=\frac{\rho_\gamma(T)}{3}
 \end{align}
@@ -100,10 +133,33 @@ From this we can easily define the pressure and temperature derivative.
 
 \subsection{Neutrinos}
 
+Neutrinos are massless fermions and so have 2 distinct spin states, as well as 3 flavors.
+\begin{align}
+    \rho_\nu(T_\nu)=N_\nu\int_{0}^{\infty} \frac{p^3}{\pi^2}\frac{1}{e^{p/T_\nu}+1}dp =  N_\nu\frac{T_\nu^4}{\pi^2}\int_{0}^{\infty}\frac{u^3}{e^{u}+1}du
+\end{align}
+This is also an integral representation of the Riemann Zeta function \cite[\href{https://dlmf.nist.gov/25.5.E3}{(25.5.3)}]{NIST:DLMF}.
+\begin{align}
+    \rho_\nu(T_\nu)=N_\nu\frac{T_\nu^4}{\pi^2}\Gamma(4)\zeta(4)(1-2^3)=N_\nu\frac{7}{8}\frac{\pi^2}{15}T_\nu^4
+    \label[equation]{rhonu}
+\end{align}
+The effective neutrino number is $N_\nu=3.046$ to take into account various QFT corrections\cite{Mangano_2005}.
+
+Tracking the neutrino temperature separately is quite troublesome, luckily we don't have to. Since neutrinos decouple very early, the only significant change in their energy density will be due to the expansion of the universe. Therefore, we can track the later evolution using the scale factor.
+\begin{align}
+    \rho_\nu(t)=\frac{\rho_\nu(T_0)}{a(t)^4}
+    \label[equation]{realrhonu}
+\end{align}
 
 
 
 \subsection{Electrons and positrons}
+Electrons and positrons unfortunately have mass, which makes soling for their density and pressure much more troublesome.
+
+
+
+
+
+
 
 \subsection{Baryons}
 
