@@ -2344,22 +2344,36 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliography.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">NIST:DLMF</bcf:citekey>
+    <bcf:citekey order="1">Ryden</bcf:citekey>
     <bcf:citekey order="2">NIST:DLMF</bcf:citekey>
-    <bcf:citekey order="3">Mangano_2005</bcf:citekey>
-    <bcf:citekey order="4">Gamov48</bcf:citekey>
-    <bcf:citekey order="5">Gamov48</bcf:citekey>
-    <bcf:citekey order="6">Peebles66</bcf:citekey>
-    <bcf:citekey order="7">Wagoner67</bcf:citekey>
-    <bcf:citekey order="8">Wagoner69</bcf:citekey>
-    <bcf:citekey order="9">Wagoner72</bcf:citekey>
+    <bcf:citekey order="3">NIST:DLMF</bcf:citekey>
+    <bcf:citekey order="4">Mangano_2005</bcf:citekey>
+    <bcf:citekey order="5">Chandrasekhar</bcf:citekey>
+    <bcf:citekey order="6">NIST:DLMF</bcf:citekey>
+    <bcf:citekey order="7">NIST:DLMF</bcf:citekey>
+    <bcf:citekey order="8">NIST:DLMF</bcf:citekey>
+    <bcf:citekey order="9">Kawano</bcf:citekey>
     <bcf:citekey order="10">NIST:DLMF</bcf:citekey>
-    <bcf:citekey order="11">Mangano_2005</bcf:citekey>
-    <bcf:citekey order="12">Gamov48</bcf:citekey>
-    <bcf:citekey order="13">Peebles66</bcf:citekey>
-    <bcf:citekey order="14">Wagoner67</bcf:citekey>
-    <bcf:citekey order="15">Wagoner69</bcf:citekey>
-    <bcf:citekey order="16">Wagoner72</bcf:citekey>
+    <bcf:citekey order="11">kolbturner</bcf:citekey>
+    <bcf:citekey order="12">Wagoner69</bcf:citekey>
+    <bcf:citekey order="13">Gamov48</bcf:citekey>
+    <bcf:citekey order="14">Gamov48</bcf:citekey>
+    <bcf:citekey order="15">Peebles66</bcf:citekey>
+    <bcf:citekey order="16">Wagoner67</bcf:citekey>
+    <bcf:citekey order="17">Wagoner69</bcf:citekey>
+    <bcf:citekey order="18">Wagoner72</bcf:citekey>
+    <bcf:citekey order="19">Kawano</bcf:citekey>
+    <bcf:citekey order="20">Ryden</bcf:citekey>
+    <bcf:citekey order="21">NIST:DLMF</bcf:citekey>
+    <bcf:citekey order="22">Mangano_2005</bcf:citekey>
+    <bcf:citekey order="23">Chandrasekhar</bcf:citekey>
+    <bcf:citekey order="24">Kawano</bcf:citekey>
+    <bcf:citekey order="25">kolbturner</bcf:citekey>
+    <bcf:citekey order="26">Wagoner69</bcf:citekey>
+    <bcf:citekey order="27">Gamov48</bcf:citekey>
+    <bcf:citekey order="28">Peebles66</bcf:citekey>
+    <bcf:citekey order="29">Wagoner67</bcf:citekey>
+    <bcf:citekey order="30">Wagoner72</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="ynt">

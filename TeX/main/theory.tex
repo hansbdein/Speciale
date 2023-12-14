@@ -31,7 +31,12 @@ With $\rho_{tot}$ referring to the total energy density of photons, leptons and 
 \begin{align}
     \rho_{tot}=\rho_{\gamma}+\rho_{\nu}+(\rho_{e^-}+\rho_{e^+})+\rho_{b}
 \end{align}
-To find an expression for the temperature evolution, we use energy conservation. We can consider the neutrinos as decoupled during BBN, and so the photon temperature will be determined by the remaining components. Since this point the universe is very much homogeneous and isotropic, we utilize the fluid equation for adiabatic expansion. 
+This equation can be rewritten as the differential equation explicitly describing the time evolution of the scale factor.
+\begin{align}
+    \diff{a}{t}=a\sqrt{\frac{8\pi G}{3}\rho_{tot}(T,a)}
+    \label{eq:dadt}
+\end{align}
+To find an expression for the temperature evolution, we use energy conservation. We can consider the neutrinos as decoupled during BBN, and so the photon temperature will be determined by the remaining components. Since this point the universe is very much homogeneous and isotropic, we utilize the fluid equation for adiabatic expansion \cite[{(4.44)}]{Ryden}. 
 \begin{align}
     \dot{\rho_{set}}+3\frac{\dot{a}}{a}(\rho_{set} + P_{set})=0
 \end{align}
@@ -40,10 +45,11 @@ With $\rho_{set}$ being the density of none-decoupled components and $P_{set}$ b
     \rho_{set}=\rho_{\gamma}+(\rho_{e^-}+\rho_{e^+})+\rho_{b}
     \eqsep P_{set}=P_{\gamma}+(P_{e^-}+P_{e^+})+P_{b}
 \end{align}
-With this we can set up differential equations describing the time evolution of the scale factor and photon temperature. 
+
+Using the chain rule we can then set up a differential equation describing the time evolution of the photon temperature. 
 \begin{align}
-    \diff{T}{t}=-3H\frac{\rho_{set}(T,a) + P_{set}(T,a)}{\diff{\rho_{set}(T,a)}{T}} \eqsep \diff{a}{t}=a\sqrt{\frac{8\pi G}{3}\rho_{tot}(T,a)}
-    \label{eq:dBackground}
+    \diff{T}{t}=-3\frac{\dot{a}}{a}\frac{\rho_{set}(T,a) + P_{set}(T,a)}{\diff{\rho_{set}(T,a)}{T}}
+    \label{eq:dTdt}
 \end{align}
 
 \subsection{Additional parameters}
@@ -52,7 +58,7 @@ Most BBN codes are based on the original code by Wagoner described in section \r
     h=M_u\frac{n_{b}}{T^3_9}
 \end{align}
 $M_u$ being atomic mass units, $n_b$ the baryon number density, and  $T_9$ the temperature in $10^9$ Kelvin. This quantity was useful since it stays approximately constant throughout BBN, while being easy to directly convert to baryon density. However, with modern computers this numerical simplicity is inconsequential, and as such it is more reasonable to track the scale factor.
-The electron chemical potential $\phi$ was also tracked by the Wagoner code and its successors. The only effect of this is ensuring a non-zero electron density after reheating. We can easily set this to 0, as the impact will be 3 orders of magnitude lower than the already miniscule impact of the baryon density.
+The electron chemical potential was also tracked by the Wagoner code and its successors. The only effect of this is ensuring a non-zero electron density after reheating. We can easily set this to 0, as the impact will be 3 orders of magnitude lower than the already miniscule impact of the baryon density.
 
 \textcolor{orange}{Neutrino temperature?}
 
@@ -61,17 +67,17 @@ The electron chemical potential $\phi$ was also tracked by the Wagoner code and 
 
 In the very early universe most particles were in thermal equilibrium, and can be described by the rules of statistical physics. The average number of particles in a given state is governed by the Fermi-Dirac distribution for fermions, and the Bose-Einstein distribution for bosons.
 \begin{align}
-    \bar{n}_{FD}=\frac{1}{e^{(E-\phi)/T}+1} \eqsep   \bar{n}_{BE}=\frac{1}{e^{(E-\phi)/T}-1}
+    \bar{n}_{FD}=\frac{1}{e^{(E-\mu)/T}+1} \eqsep   \bar{n}_{BE}=\frac{1}{e^{(E-\mu)/T}-1}
     \label[equation]{fermionboson}
 \end{align}
-With $E$ being the total energy each particle in the state and $\phi$ the chemical potential. The number density can be found generally by integrating over all possible momentum states. 
+With $E$ being the total energy each particle in the state and $\mu$ the chemical potential. The number density can be found generally by integrating over all possible momentum states. 
 \begin{align}
-    n(T)=\frac{g}{(2\pi)^3}\int_{0}^{\infty}\bar{n}(p,T)dp^3=\frac{g}{2\pi^2}\int_{0}^{\infty}\bar{n}(p,T)dp
+    n(T)=\frac{g}{(2\pi)^3}\int_{0}^{\infty}\bar{n}(p,T)dp^3=\frac{g}{2\pi^2}\int_{0}^{\infty}\bar{n}(p,T) p^2 dp
     \label[equation]{numberdensity}
 \end{align}
 With g being the degeneracy parameter. We can similarly find an expression for the energy density by multiplying the integrand by the relativistic energy $E^2=m^2+p^2$.
 \begin{align}
-    \rho(T)=\frac{g}{2\pi^2}\int_{0}^{\infty}\bar{n}(p,T)\sqrt{m^2+p^2}dp
+    \rho(T)=\frac{g}{2\pi^2}\int_{0}^{\infty}\bar{n}(p,T)\sqrt{m^2+p^2} p^2 dp
     \label[equation]{energydensity}
 \end{align}
 Pressure is defined as the force exerted per unit area. Consider a relativistic particle confined to a sphere of radius $r$. Whenever it collides with the surface, it will exert a force proportional to the change in momentum. 
@@ -102,7 +108,7 @@ Generalizing this for any volume, we get the integral for the total pressure of 
     \label[equation]{Pcontribution}
 \end{align}
 \begin{align}
-    P(T)=\frac{g}{6\pi^2}\int_{0}^{\infty}\bar{n}(p,T)\frac{p^2}{\sqrt{m^2+p^2}}dp
+    P(T)=\frac{g}{6\pi^2}\int_{0}^{\infty}\bar{n}(p,T)\frac{p^4}{\sqrt{m^2+p^2}}dp
     \label[equation]{pressure}
 \end{align}
 Additionally, we see that the pressure of an ultra-relativistic gas follows a simple relation.
@@ -153,21 +159,131 @@ Tracking the neutrino temperature separately is quite troublesome, luckily we do
 
 
 \subsection{Electrons and positrons}
-Electrons and positrons unfortunately have mass, which makes soling for their density and pressure much more troublesome.
 
 
+Electrons and positrons unfortunately have mass, which makes solving for their density and pressure much more troublesome.
+\begin{align}
+    \rho_\pm(T)=\frac{1}{\pi^2}\int_{0}^{\infty}\frac{\sqrt{m^2+p^2}}{e^{(E\pm\mu)/T}+1}p^2 dp
+    \label[equation]{rhoe}
+\end{align}
+\begin{align}
+    P_\pm(T)=\frac{1}{3\pi^2}\int_{0}^{\infty}\frac{1}{e^{(E\pm\mu)/T}+1}\frac{p^4}{\sqrt{m^2+p^2}} dp
+\end{align}
+Inspired by the derivation of Chandrasekhar \cite{Chandrasekhar}, we will solve these integrals by using the rapidity $\theta$.
+\begin{align}
+    \sinh \theta = \frac{p}{m}\eqsep \cosh \theta = \frac{E}{m}
+    \label[equation]{rapiditet}
+\end{align}
+After a simple change of variable we get a much nicer form of the integrals.
+\begin{align}
+    \rho_\pm(T)=\frac{m^4}{\pi^2}\int_{0}^{\infty}\frac{\sinh^2 \theta \cosh^2\theta}{e^{(m \cosh\theta\pm\mu)/T}+1} d\theta
+    \label[equation]{rhoet}
+\end{align}
+\begin{align}
+    P_\pm(T)=\frac{m^4}{3\pi^2}\int_{0}^{\infty}\frac{\sinh^4 \theta}{e^{(m \cosh\theta\pm\mu)/T}+1} d\theta
+    \label[equation]{Pet}
+\end{align}
+Before and during BBN $(E\pm\mu)/T $ will be strictly positive, and we can therefore perform a series expansion, which converges nicely for high temperatures.
+\begin{align}
+    \frac{1}{e^{(m \cosh\theta\pm\mu)/T}+1}=\sum_{n=1}^{n=\infty} (-1)^{n+1} e^{-n\frac{m }{T}\cosh\theta}e^{\mp n\frac{\mu}{T}}
+\end{align}
+The chemical potential does not depend on the rapidity, allowing us to get combined pressure of both electrons and positrons.
+\begin{align}
+    P_e(T)=P_-+P_+=\frac{2m^4}{3\pi^2}\sum_{n=1}^{n=\infty} (-1)^{n+1} \cosh{\left(n\frac{\mu}{T}\right)}  \int_{0}^{\infty}e^{-n\frac{m }{T}\cosh\theta}\sinh^4 \theta d\theta
+\end{align}
+These terms are integral representations of modified Bessel functions \cite[\href{https://dlmf.nist.gov/10.32.E8}{(10.32.8)}]{NIST:DLMF}.
+\begin{align}
+    \int_{0}^{\infty}e^{-z\cosh\theta}\sinh^4 \theta d\theta=4\frac{\Gamma(2+\frac{1}{2})}{\sqrt{\pi}z^2}K_2\left(z\right)=3z^{-2}K_2\left(z\right)
+\end{align}
+With $z=n\frac{m }{T}$, we can get the total pressure expressed as a sum of modified Bessel functions.
+\begin{align}
+    P_e(T)=\frac{2m^2}{\pi^2} T^2 \sum_{n=1}^{n=\infty} \frac{(-1)^{n+1}}{n^{2}} \cosh{\left(n\frac{\mu}{T}\right)}   K_2\left(n\frac{m }{T}\right)
+    \label{Pelectron}
+\end{align}
+The energy density can be found by the same way, by first utilizing the identity $cosh^2=sinh^2+1$, to get the energy density in terms of $\sinh\theta$.
+\begin{align}
+    \rho_e(T)=\rho_-+\rho_+=\frac{2m^4}{\pi^2}\sum_{n=1}^{n=\infty} (-1)^{n+1} \cosh{\left(n\frac{\mu}{T}\right)}  \int_{0}^{\infty}e^{-n\frac{m }{T}\cosh\theta}\left(\sinh^4\theta +\sinh^2\theta\right) d\theta
+\end{align}
+The $\sinh^4$ term is clearly the same as for the pressure up to a factor of 3. Comparing this to the results for massless particles, this term can be interpreted as the relativistic pressure of the electron gas. The second term also corresponds to a modified Bessel function, though of first rather than second order \cite[\href{https://dlmf.nist.gov/10.32.E8}{(10.32.8)}]{NIST:DLMF}. Combined this grants us the sum describing the total energy density of electrons and positrons.
+\begin{align}
+    \rho_e(T)=\frac{2m^2}{\pi^2} T^2 \sum_{n=1}^{n=\infty} \frac{(-1)^{n+1}}{n^{2}} \cosh{\left(n\frac{\mu}{T}\right)}  \left( 3 K_2\left(n\frac{m }{T}\right) + n\frac{m }{T} K_1\left(n\frac{m }{T}\right) \right)
+    \label{rhoelectron}
+\end{align}
+Using recursion relations for the modified Bessel functions \cite[\href{https://dlmf.nist.gov/10.29.E1}{(10.29.1)}]{NIST:DLMF}, we see that this is equivalent to the expression used in other BBN codes \cite{Kawano}.
+\begin{align}
+3K_{2}(z)+z K_{1}(z)=3\frac{z}{4}[K_{3}(z)-K_{1}(z)]+z K_{1}(z)=\frac{z}{4}[3K_{3}(z)+K_{1}(z)]
+\end{align}
+\begin{align}
+    \rho_e(T)=\frac{m^3}{2\pi^2} T \sum_{n=1}^{n=\infty} \frac{(-1)^{n+1}}{n} \cosh{\left(n\frac{\mu}{T}\right)}  \left( 3 K_3\left(n\frac{m }{T}\right) + K_1\left(n\frac{m }{T}\right) \right)
+\end{align}
+As mentioned many older BBN codes track the parameter $\phi_e=\frac{\mu}{T}$, but this is unnecessary, as the electron density after reheating is 3 orders of magnitude lower than the already negligible contribution of the baryons. So for the remaining calculation we set $\mu = 0$.
 
-
-
+Finding the temperature derivative of the electron energy density, can also be achieved using the recursion relations for Bessel functions \cite[\href{https://dlmf.nist.gov/10.29.E2}{(10.29.2)}]{NIST:DLMF}.
+\begin{align}
+    \diff{}{z} \frac{1}{z}[3K_{3}(z)+K_{1}(z)]&=-3[z^{-2} K_{3}(z)+z^{-1} K_{2}(z)+ 3z^{-2} K_{3}(z)]-z^{-1} K_{2}\\
+    &=-12 z^{-2} K_{3}(z)-4z^{-1} K_{2}(z)\\
+    &=-\frac{1}{z}[2K_{4}(z)-2K_{2}(z)+4 K_{2}(z)]\\
+    &=-\frac{2}{z}[K_{4}(z)+K_{2}(z)]
+\end{align}
+Multiplying by $\idiff{z}{T}$ we get the complete derivative.
+\begin{align}
+    \diff{\rho_e(T)}{T}=\frac{m^4}{\pi^2} \frac{1}{T} \sum_{n=1}^{n=\infty} (-1)^{n+1}   \left(K_4\left(n\frac{m }{T}\right) + K_2\left(n\frac{m }{T}\right) \right)
+\end{align}
 
 
 \subsection{Baryons}
 
-\lipsum
 
 
 
 
+The temperatures at which BBN takes place are too low for Baryon pair production. Therefore, the number density of baryons can be solely determined by the scale factor and some known density. 
+\begin{align}
+    n_b(a)=\frac{a_0^3}{a^3}n_{b}(a_0)
+\end{align}
+To determine baryon density $n_{b}(a_0)$, we use the baryon photon/ratio $\eta$. 
+\begin{align}
+    n_b=n_\gamma(T) \eta \eqsep n_\gamma(T)=\frac{T^3}{\pi^2}\Gamma(3)\zeta(3)
+\end{align}
+From the CMB we can measure the value of $\eta$, during recombination, but unlike baryons the number of photons does not remain unchanged from the start of BBN until recombination. The only significant source of photons is the annihilation of the electron-positron pairs. We can account for this using conservation of entropy. For a given species we define the entropy density \cite[(3.91)]{kolbturner}.
+\begin{align}
+    s=\frac{\rho+P}{T}
+\end{align}
+Setting $a=1$ at the start of our BBN calculations, we get a relation between the total entropy before and after annihilation.
+\begin{align}
+     s_{\gamma}(T_{0})a_{0}^3= s_e(T_{i})+s_{\gamma}(T_{i})
+    \label{eq:entropycon}
+\end{align}
+The photon number density is directly proportional to entropy density, both scaling with $T^3$. This allows us to restate \ref{eq:entropycon} only in terms of the initial entropy density.
+\begin{align}
+    n_{\gamma}(T_{o})a_{0}^3 = \frac{n_\gamma(T_{i})}{s_{\gamma}(T_{i})}\left(s_e(T_{i})+s_{\gamma}(T_{i})\right)
+\end{align}
+From this we get the baryon density as a function of the initial photon and electron density and pressure.
+\begin{align}
+    n_b(a_0){a_0^3}=n_\gamma(T_{i}) \left(1+\frac{\rho_e(T_{i})+P_{e}(T_{i})}{\rho_{\gamma}(T_{i})+P_{\gamma}(T_{i})}\right)\eta
+\end{align}
+\begin{align}
+    n_b(a)=\frac{1}{a^3}n_\gamma(T_{i}) \left(1+\frac{\rho_e(T_{i})+P_{e}(T_{i})}{\rho_{\gamma}(T_{i})+P_{\gamma}(T_{i})}\right)\eta
+\end{align}
+With $T_i$ being the initial temperature. Finally, to get the energy density we simply need to sum over all different nuclei. 
+\begin{align}
+    \rho_b(a)=n_b(a)\sum_{i}^{}Y_i m_i
+\end{align}
+For each isotope $m_i$ is the mass, and $Y_i$ is the ratio between the number of nuclei and the total number of nucleons. $Y_i$ is often defined as $Y_i=X_i/A_i$, with $X_i$ being the mass fraction, and $A_i$ the atomic weight \cite{Wagoner69}. The difference in per nucleon mass of different isotopes, causes these two definitions to have a relative difference of \num{1e-5}, which can be safely neglected. 
+
+The baryon pressure is found using the ideal gas law.
+\begin{align}
+    P_b(a)= n_b(a)T\sum_{i}^{}Y_i
+\end{align}
+Unlike for the relativistic particles, the baryon pressure is several orders of magnitude lower than the density. Since the baryon density is already comparatively low, the pressure will be completely negligible.
+%invm=A**2/m_Nucs
+%def altrho_bY_cgs(y):
+%return eta_ini*n_gamma_ini/y[1]**3*gcm3/np.dot(y[n_bparams:6+n_bparams],invm[:6])
+%plt.figure()
+%plt.plot(soltime/timeunit,np.array([a_cache(soltime[i])**3*rho_bY_cgs(np.array([T_cache(soltime[i]),a_cache(soltime[i])]+list(solY[:,i]))) for i in range(len(soltime))])/np.array([a_cache(soltime[i])**3*altrho_bY_cgs(np.array([T_cache(soltime[i]),a_cache(soltime[i])]+list(solY[:,i]))) for i in range(len(soltime))]),label='Normal density')
+
+%
+%
 % ~~~~~~~~~~
 % SUBSECTION
 % ~~~~~~~~~~
@@ -181,6 +297,6 @@ Electrons and positrons unfortunately have mass, which makes soling for their de
 
 Warning test\fxwarning{This is a warning!}
 
-\lipsum
+
 
 \section{Initial conditions}

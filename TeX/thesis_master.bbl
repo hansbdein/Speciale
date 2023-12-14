@@ -19,6 +19,31 @@
 
 \refsection{0}
   \datalist[entry]{ynt/global//global/global}
+    \entry{Chandrasekhar}{book}{}
+      \name{author}{1}{}{%
+        {{hash=a9e471e6ac911f861e43e742eac08423}{%
+           family={{Chandrasekhar}},
+           familyi={C\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {THE UNIVERSITY OF CHICAGO PRESS}%
+      }
+      \strng{namehash}{a9e471e6ac911f861e43e742eac08423}
+      \strng{fullhash}{a9e471e6ac911f861e43e742eac08423}
+      \strng{bibnamehash}{a9e471e6ac911f861e43e742eac08423}
+      \strng{authorbibnamehash}{a9e471e6ac911f861e43e742eac08423}
+      \strng{authornamehash}{a9e471e6ac911f861e43e742eac08423}
+      \strng{authorfullhash}{a9e471e6ac911f861e43e742eac08423}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{First Edition}
+      \field{title}{{An Introduction to the Study of Stellar Structure}}
+      \field{year}{1939}
+    \endentry
     \entry{Gamov48}{article}{}
       \name{author}{3}{}{%
         {{hash=f5d8efa7d949c3109d8517d2119c3be8}{%
@@ -195,6 +220,90 @@
       \verb{doi}
       \verb 10.1086/151873
       \endverb
+    \endentry
+    \entry{Kawano}{article}{}
+      \name{author}{1}{}{%
+        {{hash=1e15404b76f5241127b85ee4b04f3f4e}{%
+           family={Kawano},
+           familyi={K\bibinitperiod},
+           given={Lawrence},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{1e15404b76f5241127b85ee4b04f3f4e}
+      \strng{fullhash}{1e15404b76f5241127b85ee4b04f3f4e}
+      \strng{bibnamehash}{1e15404b76f5241127b85ee4b04f3f4e}
+      \strng{authorbibnamehash}{1e15404b76f5241127b85ee4b04f3f4e}
+      \strng{authornamehash}{1e15404b76f5241127b85ee4b04f3f4e}
+      \strng{authorfullhash}{1e15404b76f5241127b85ee4b04f3f4e}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{1}
+      \field{title}{{Let's go: Early universe. 2. Primordial nucleosynthesis: The Computer way}}
+      \field{year}{1992}
+    \endentry
+    \entry{kolbturner}{book}{}
+      \name{author}{2}{}{%
+        {{hash=513ffb91e361939c71940c03c7853ed1}{%
+           family={Kolb},
+           familyi={K\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=789294120135bd6c707cb8a088bd1635}{%
+           family={Turner},
+           familyi={T\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Avalon Publishing}%
+      }
+      \strng{namehash}{fba7831b23dafba8896e6418424f3f96}
+      \strng{fullhash}{fba7831b23dafba8896e6418424f3f96}
+      \strng{bibnamehash}{fba7831b23dafba8896e6418424f3f96}
+      \strng{authorbibnamehash}{fba7831b23dafba8896e6418424f3f96}
+      \strng{authornamehash}{fba7831b23dafba8896e6418424f3f96}
+      \strng{authorfullhash}{fba7831b23dafba8896e6418424f3f96}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780813346458}
+      \field{series}{Frontiers in physics}
+      \field{title}{The Early Universe}
+      \field{year}{1994}
+      \verb{urlraw}
+      \verb https://books.google.dk/books?id=Qwijr-HsvMMC
+      \endverb
+      \verb{url}
+      \verb https://books.google.dk/books?id=Qwijr-HsvMMC
+      \endverb
+    \endentry
+    \entry{Ryden}{book}{}
+      \name{author}{1}{}{%
+        {{hash=de52e4aaa6f5ba7e54dc5bebc47e8675}{%
+           family={{Ryden}},
+           familyi={R\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{de52e4aaa6f5ba7e54dc5bebc47e8675}
+      \strng{fullhash}{de52e4aaa6f5ba7e54dc5bebc47e8675}
+      \strng{bibnamehash}{de52e4aaa6f5ba7e54dc5bebc47e8675}
+      \strng{authorbibnamehash}{de52e4aaa6f5ba7e54dc5bebc47e8675}
+      \strng{authornamehash}{de52e4aaa6f5ba7e54dc5bebc47e8675}
+      \strng{authorfullhash}{de52e4aaa6f5ba7e54dc5bebc47e8675}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Second Edition}
+      \field{title}{{Introduction to cosmology}}
+      \field{year}{2002}
     \endentry
     \entry{Mangano_2005}{article}{}
       \name{author}{6}{}{%
