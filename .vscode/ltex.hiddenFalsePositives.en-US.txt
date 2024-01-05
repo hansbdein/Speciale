@@ -1,0 +1,1 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QBased on the result for neutrinos rhonu we ca test Wot\\E$"}
