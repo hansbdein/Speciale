@@ -8,3 +8,10 @@ integrand
 antibaryons
 prefactor
 pion
+polarizations
+Jacobian
+Mathematica
+Runge-Kutta
+pynucastro
+timesteps
+NSE

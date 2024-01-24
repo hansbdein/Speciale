@@ -25,18 +25,19 @@ To understand the process of Big Bang nucleosynthesis, we must examine the inter
 
 BBN takes place after inflation while the universe is still radiation dominated. This can be described by the Friedman equation, which can be further simplified with the reasonable approximation, that both curvature and the cosmological constant are zero. 
 \begin{align}
-    H^2=\left(\frac{\dot{a}}{a}\right)^2=\frac{8\pi G}{3}\rho_{tot}
+    H^2=\left(\frac{\dot{a}}{a}\right)^2=\frac{8\pi G}{3}\rho_{tot},
+    \label{Friedman}
 \end{align}
-With $\rho_{tot}$ referring to the total energy density of photons, leptons and baryons.
+with $\rho_{tot}$ referring to the total energy density of photons, leptons and baryons,
 \begin{align}
-    \rho_{tot}=\rho_{\gamma}+\rho_{\nu}+(\rho_{e^-}+\rho_{e^+})+\rho_{b}
+    \rho_{tot}=\rho_{\gamma}+\rho_{\nu}+(\rho_{e^-}+\rho_{e^+})+\rho_{b}.
 \end{align}
-This equation can be rewritten as the differential equation explicitly describing the time evolution of the scale factor.
+\eqref{Friedman} can be rearranged as a differential equation explicitly describing the time evolution of the scale factor.
 \begin{align}
     \diff{a}{t}=a\sqrt{\frac{8\pi G}{3}\rho_{tot}(T,a)}
     \label{eq:dadt}
 \end{align}
-To find an expression for the temperature evolution, we use energy conservation. We can consider the neutrinos as decoupled during BBN, and so the photon temperature will be determined by the remaining components. Since this point the universe is very much homogeneous and isotropic, we utilize the fluid equation for adiabatic expansion \cite[{(4.44)}]{Ryden}. 
+To find an expression for the temperature evolution, we utilize energy conservation. We can consider the neutrinos as decoupled during BBN, and so the photon temperature will be determined by the remaining components. Since this point the universe is very much homogeneous and isotropic, we utilize the fluid equation for adiabatic expansion \cite[{(4.44)}]{Ryden}. 
 \begin{align}
     \dot{\rho_{set}}+3\frac{\dot{a}}{a}(\rho_{set} + P_{set})=0
 \end{align}
@@ -57,8 +58,8 @@ Most BBN codes are based on the original code by Wagoner described in section \r
 \begin{align}
     h=M_u\frac{n_{b}}{T^3_9}
 \end{align}
-$M_u$ being atomic mass units, $n_b$ the baryon number density, and  $T_9$ the temperature in $10^9$ Kelvin. This quantity was useful since it stays approximately constant throughout BBN, while being easy to directly convert to baryon density. However, with modern computers this numerical simplicity is inconsequential, and as such it is more reasonable to track the scale factor.
-The electron chemical potential was also tracked by the Wagoner code and its successors. The only effect of this is ensuring a non-zero electron density after reheating. We can easily set this to 0, as the impact will be 3 orders of magnitude lower than the already miniscule impact of the baryon density.
+$M_u$ being atomic mass units, $n_b$ the baryon number density, and  $T_9$ the temperature in $10^9$ Kelvin. This quantity was useful since it stays approximately constant throughout BBN, while being easy to directly convert to baryon density. However, with modern computers this numerical simplicity is inconsequential, and as such it is more instructive to track the scale factor.
+The electron chemical potential was also tracked by the Wagoner code and its successors. The main effect of this is ensuring a non-zero electron density after reheating. We can easily set this to 0, as the impact will be 3 orders of magnitude lower than the already miniscule impact of the baryon density.
 
 \textcolor{orange}{Neutrino temperature?}
 
@@ -83,15 +84,15 @@ With g being the degeneracy parameter. We can similarly find an expression for t
 Pressure is defined as the force exerted per unit area. Consider a relativistic particle confined to a sphere of radius $r$. Whenever it collides with the surface, it will exert a force proportional to the change in momentum. 
 \begin{align}
     F=\diff{p}{t}=\frac{\Delta p }{\Delta t}\eqsep
-    \Delta p = 2p \cos \theta
+    \Delta p = 2p \cos \theta,
 \end{align}
-With $\theta$ being the incident angle. 
+with $\theta$ being the incident angle. 
 
 The time between collisions can be deduced based on the distance traveled. 
 \begin{align}
-    \Delta t = \frac{L}{\mathrm{v}}=L\frac{\sqrt{m^2+p^2}}{p}
+    \Delta t = \frac{L}{\mathrm{v}}=L\frac{\sqrt{m^2+p^2}}{p},
 \end{align}
-With distance between collisions $L$ and velocity $\mathrm{v}$.
+with distance between collisions $L$ and velocity $\mathrm{v}$.
 
 Next, consider the triangle created by the center of the sphere and two consecutive collision points. Using the law of cosines we can determine $L$.
 \begin{align}
@@ -120,7 +121,7 @@ Additionally, we see that the pressure of an ultra-relativistic gas follows a si
 \subsection{Photons}
 
 
-Photons are massless bosons with 2 distinct polarizations, for each momentum state. With $g=2$, we use \ref{energydensity} to determine the energy density. 
+Photons are massless bosons with 2 distinct polarizations for each momentum state. With $g=2$, we use \ref{energydensity} to determine the energy density. 
 \begin{align}
     \rho_\gamma(T)=\int_{0}^{\infty} \frac{p^3}{\pi^2}\frac{1}{e^{p/T}-1}dp =  \frac{T^4}{\pi^2}\int_{0}^{\infty}\frac{u^3}{e^{u}-1}du
 \end{align}
@@ -129,7 +130,7 @@ This integral is a well know representation of the Riemann Zeta function \cite[\
     \rho_\gamma(T)=\frac{T^4}{\pi^2}\Gamma(4)\zeta(4)=\frac{\pi^2}{15}T^4
     \label[equation]{rhogamma}
 \end{align}
-Now we can easily define the temperature derivative and pressure.
+From this we can easily determine the temperature derivative and pressure.
 \begin{align}
     \diff{\rho_\gamma(T)}{T}=\frac{4}{15}\pi^2T^3 \eqsep P_\gamma(T)=\frac{\rho_\gamma(T)}{3}
 \end{align}
@@ -148,7 +149,7 @@ This is also an integral representation of the Riemann Zeta function \cite[\href
     \rho_\nu(T_\nu)=N_\nu\frac{T_\nu^4}{\pi^2}\Gamma(4)\zeta(4)(1-2^3)=N_\nu\frac{7}{8}\frac{\pi^2}{15}T_\nu^4
     \label[equation]{rhonu}
 \end{align}
-The effective neutrino number is $N_\nu=3.046$ to take into account various QFT corrections\cite{Mangano_2005}.
+The effective neutrino number is $N_\nu=3.045$ to take into account the non-instantaneous decoupling of the neutrinos as well as QED plasma effects \cite{de_Salas_2016}.
 
 Tracking the neutrino temperature separately is quite troublesome, luckily we don't have to. Since neutrinos decouple very early, the only significant change in their energy density will be due to the expansion of the universe. Therefore, we can track the later evolution using the scale factor.
 \begin{align}
@@ -204,7 +205,7 @@ The energy density can be found by the same way, by first utilizing the identity
 \begin{align}
     \rho_e(T)=\rho_-+\rho_+=\frac{2m^4}{\pi^2}\sum_{n=1}^{n=\infty} (-1)^{n+1} \cosh{\left(n\frac{\mu}{T}\right)}  \int_{0}^{\infty}e^{-n\frac{m }{T}\cosh\theta}\left(\sinh^4\theta +\sinh^2\theta\right) d\theta
 \end{align}
-The $\sinh^4$ term is clearly the same as for the pressure up to a factor of 3. Comparing this to the results for massless particles, this term can be interpreted as the relativistic pressure of the electron gas. The second term also corresponds to a modified Bessel function, though of first rather than second order \cite[\href{https://dlmf.nist.gov/10.32.E8}{(10.32.8)}]{NIST:DLMF}. Combined this grants us the sum describing the total energy density of electrons and positrons.
+The $\sinh^4$ term is clearly the same as for the pressure up to a factor of 3. Comparing this to the results for massless particles, this term can be interpreted as the thermal energy of the electron gas. The second term also corresponds to a modified Bessel function, though of first rather than second order \cite[\href{https://dlmf.nist.gov/10.32.E8}{(10.32.8)}]{NIST:DLMF}. Combined this grants us the sum describing the total energy density of electrons and positrons.
 \begin{align}
     \rho_e(T)=\frac{2m^2}{\pi^2} T^2 \sum_{n=1}^{n=\infty} \frac{(-1)^{n+1}}{n^{2}} \cosh{\left(n\frac{\mu}{T}\right)}  \left( 3 K_2\left(n\frac{m }{T}\right) + n\frac{m }{T} K_1\left(n\frac{m }{T}\right) \right)
     \label{rhoelectron}
@@ -225,8 +226,9 @@ Finding the temperature derivative of the electron energy density, can also be a
     &=-\frac{1}{z}[2K_{4}(z)-2K_{2}(z)+4 K_{2}(z)]\\
     &=-\frac{2}{z}[K_{4}(z)+K_{2}(z)]
 \end{align}
-Multiplying by $\idiff{z}{T}$ we get the complete derivative.
+With this it is easy to determine the temperature derivative.
 \begin{align}
+    \diff{\rho_e(T)}{z}=-\frac{m^3}{\pi^2} T \sum_{n=1}^{n=\infty} \frac{(-1)^{n+1}}{n}  \left(K_4\left(n\frac{m }{T}\right) + K_2\left(n\frac{m }{T}\right) \right)\\
     \diff{\rho_e(T)}{T}=\frac{m^4}{\pi^2} \frac{1}{T} \sum_{n=1}^{n=\infty} (-1)^{n+1}   \left(K_4\left(n\frac{m }{T}\right) + K_2\left(n\frac{m }{T}\right) \right)
 \end{align}
 
@@ -254,7 +256,7 @@ Setting $a=1$ at the start of our BBN calculations, we get a relation between th
      s_{\gamma}(T_{CMB})a_{CMB}^3= s_e(T_{i})+s_{\gamma}(T_{i})
     \label{eq:entropycon}
 \end{align}
-The photon number density is directly proportional to entropy density, both scaling with $T^3$. This allows us to restate \ref{eq:entropycon} only in terms of the initial entropy density.
+The photon number density is directly proportional to entropy density, both scaling with $T^3$. This allows us to restate \eqref{eq:entropycon} only in terms of the initial entropy density.
 \begin{align}
     n_{\gamma}(T_{CMB})a_{CMB}^3 = \frac{n_\gamma(T_{i})}{s_{\gamma}(T_{i})}\left(s_e(T_{i})+s_{\gamma}(T_{i})\right)
 \end{align}
@@ -264,19 +266,30 @@ From this we get the baryon density as a function of the initial photon and elec
 \end{align}
 \begin{align}
     n_b(a)=\frac{1}{a^3}n_\gamma(T_{i}) \left(1+\frac{\rho_e(T_{i})+P_{e}(T_{i})}{\rho_{\gamma}(T_{i})+P_{\gamma}(T_{i})}\right)\eta
+    \label{n_b}
 \end{align}
 With $T_i$ being the initial temperature. Finally, to get the energy density we simply need to sum over all different nuclei. 
 \begin{align}
     \rho_b(a)=n_b(a)\sum_{i}^{}Y_i m_i
     \label{rhob}
 \end{align}
-For each isotope $m_i$ is the mass, and $Y_i$ is the ratio between the number of nuclei and the total number of nucleons. $Y_i$ is often defined as $Y_i=X_i/A_i$, with $X_i$ being the mass fraction, and $A_i$ the atomic weight \cite{Wagoner69}. The difference in per nucleon mass of different isotopes, causes these two definitions to have a relative difference of \num{1e-5}, which can be safely neglected. Furthermore, since eta is only known with an accuracy of $1\%$ \cite{Planck}, we can approximate that all baryons have the same mass as a lone proton reducing \ref{rhob} to $\rho_b(a) \approx n_b(a)m_p$.
+For each isotope $m_i$ is the mass, and $Y_i$ is the ratio between the number of nuclei and the total number of nucleons. $Y_i$ is often defined as $Y_i=X_i/A_i$, with $X_i$ being the mass fraction, and $A_i$ the atomic weight \cite{Wagoner69}. The difference in per nucleon mass of different isotopes, causes these two definitions to have a relative difference of \num{1e-5}, which can be safely neglected. Furthermore, since eta is only known with an accuracy of $1\%$ \cite{Planck}, we can approximate that all baryons have the same mass as a lone proton reducing \eqref{rhob} to $\rho_b(a) \approx n_b(a)m_p$.
 
 The baryon pressure can be found using the ideal gas law.
 \begin{align}
     P_b(a)= n_b(a)T\sum_{i}^{}Y_i
 \end{align}
 Unlike for the relativistic particles, the baryon pressure is several orders of magnitude lower than the density. Since the baryon density is already comparatively low, the pressure will be completely negligible.
+
+%Baryon density impact on abundance
+%array([1.0000975 , 1.00000049, 1.0000059 , 1.00000433, 1.00000195,
+%0.99999851, 1.00000364, 0.99999819, 1.00006305, 0.99999216,
+%1.00000415, 1.00025283, 1.00000866, 0.99994947, 1.00009333,
+%1.00027059, 0.99999412, 0.99999102, 0.99998706, 1.00063686,
+%1.00036322, 0.99998709, 0.99997431, 1.00077921, 1.00039927,
+%0.99998262])
+
+
 %invm=A**2/m_Nucs
 %def altrho_bY_cgs(y):
 %return eta_ini*n_gamma_ini/y[1]**3*gcm3/np.dot(y[n_bparams:6+n_bparams],invm[:6])
@@ -298,15 +311,37 @@ All relevant nuclear reactions involve at most 6 different nuclei. Generally we 
 where $N_i$ is the number of nuclei $X_i$, that enter the reaction. 
 The change in abundance $Y_i$ of any nuclei is given by the sum of all reactions that create or destroy it.
 \begin{align}
-    \diff{Y_i}{t}=\sum_\lambda\frac{N_i}{n_b}\left(\lambda_{n m l \rightarrow i j k} \frac{Y_n^{N_n}Y_m^{N_m}Y_l^{N_l}}{N_n!N_m!N_l!}n_b^{(N_n+N_m+N_l)}-\lambda_{i j k \rightarrow n m l}\frac{Y_i^{N_i}Y_j^{N_j}Y_l^{N_k}}{N_i!N_j!N_k!}n_b^{(N_i+N_j+N_k)}\right)
+    \diff{Y_i}{t}=\sum_{\lambda_i}\frac{N_i}{n_b}\left(\lambda_{n m l \rightarrow i j k} \frac{Y_n^{N_n}Y_m^{N_m}Y_l^{N_l}}{N_n!N_m!N_l!}n_b^{(N_n+N_m+N_l)}-\lambda_{i j k \rightarrow n m l}\frac{Y_i^{N_i}Y_j^{N_j}Y_l^{N_k}}{N_i!N_j!N_k!}n_b^{(N_i+N_j+N_k)}\right)
     \label{dYdt}
 \end{align}
-With $\lambda$ being the reaction rate, and $n_b$ the baryon number density. 
+With $\lambda$ being the reaction rate, and $n_b$ the baryon number density. The reaction rate $\lambda(T)$ only depends on the kinetic energy of the baryons and by extension the photon temperature. $n_b(a)$ only depends on the scale factor as shown in \eqref{n_b}. 
+
+From \eqref{dYdt} we can quite easily determine the partial derivatives required for the construction of a Jacobian. 
+\begin{align}
+    \pdiff{}{Y_j}\diff{Y_i}{t}&=-\sum_{\lambda_{ij\rightarrow}}N_i N_j\lambda_{i j k \rightarrow n m l}\frac{Y_i^{N_i}Y_j^{N_j-1}Y_l^{N_k}}{N_i!N_j!N_k!}n_b^{(N_i+N_j+N_k-1)}\label{eq:jacterms1}\\
+    \pdiff{}{Y_n}\diff{Y_i}{t}&=\sum_{\lambda_{n \rightarrow i }}N_i N_n\lambda_{n m l \rightarrow i j k} \frac{Y_n^{N_n-1}Y_m^{N_m}Y_l^{N_l}}{N_n!N_m!N_l!}n_b^{(N_n+N_m+N_l-1)}
+    \label{eq:jacterms2}
+\end{align}
+
 
 \subsection{Proton $\leftrightharpoons$ neutron rate}
-This section should probably be in the BBN code chapter
-
-
+At $T>10^{10}$K any created nuclei will be instantly destroyed by high energy photons. This leaves only the conversion between neutrons and positrons, which is governed by the following reactions
+\begin{align}
+    n &\leftrightarrow p+e^-+\bar{\nu}_e\\
+    n+e^+ &\leftrightarrow p+\bar{\nu}_e\\
+    n+\nu_e &\leftrightarrow p+e^-
+\end{align}
+The final reaction $p\leftrightarrow n+e^++\nu_e$ is not possible, as it would violate energy conservation, which is obvious if one considers the reaction from rest frame of the proton. For most other rates, we can measure $\lambda$ experimentally for the forward rate $Q>0$, and using detailed balance to estimate the corresponding reverse rate. The conditions required for maintaining nuclear statistical equilibrium between neutrons and protons cannot be achieved experimentally, and the rate therefore must be determined theoretically. This involves evaluating several integrals, which depend on both electron and neutrino density, in addition to the temperature and scale factor. Several corrections must also be made to account for the radiative, zero-temperature, corrections, finite nucleon mass corrections, finite temperature radiative corrections, weak-magnetism, and QED plasma effects\cite{PRIMAT}. 
+The final result mainly depends on temperature and experimentally determined mean neutron lifetime, $\tau_n$. Since it isn't affected by the later reactions, it is sensible to just fit the result as a function of temperature and mean lifetime. In this thesis I will use the result given in appendix C of \cite{Serpico_2004}, which is parametrized,
+\begin{align}
+    \lambda_{n\rightarrow p}&=\frac{1}{\tau_n}e^{-q_{np}/z}\sum_{i=0}^{13}a_i z^{-i}\quad\eqsep 0.01\leq T/\text{MeV} \leq 10 \\
+    \lambda_{p\rightarrow n}&=
+\begin{cases}
+    \frac{1}{\tau_n}e^{-q_{pn}\cdot z}\sum_{i=0}^{10}b_i z^{-i}&,\quad\ \ 0.1\leq T/\text{MeV} \leq 10\\
+        0&,\quad 0.01\leq T/\text{MeV} \leq 0.1
+\end{cases}
+\end{align}
+With the fitted parameters being the constants $a_i$ and $b_i$ as well as $q_{np}$ and $q_{pn}$. 
 
 %\chapter{Nuclear abundances}
 
@@ -321,9 +356,10 @@ Though none of the equations describing BBN, have any explicit time dependence, 
 \begin{align}
     %\diff{T}{t}=\mp\sqrt{24\pi G\rho_{tot}}\frac{\rho_{set}(T,a) + P_{set}(T,a)}{\diff{\rho_{set}(T,a)}{T}}\\
     \int_{0}^{t_i}dt=-\int_{\infty}^{T_i}(24\pi G\rho_{tot})^{-1/2}\frac{\diff{\rho_{set}(T)}{T}}{\rho_{set}(T) + P_{set}(T)}dT
+    \label{eq:ti_integral}
 \end{align}
 For high temperatures we can assume that the electrons are completely relativistic. Based on the result for neutrinos \eqref{rhonu}, we know that the energy of a massless fermion differs from that of a boson by a factor of $7/8$. Accounting for the g factors, we get $\rho_e=7/4 \rho_\gamma$. At temperatures above 2 MeV the relativistic approximation deviates by less than 1\%, see figure \ref{fig:rhoegammaT}.
-\begin{figure}[h!]
+\begin{figure}[h]
     %\centering
     \includegraphics[width=5.1in]{figures/rhoegammaT.pdf}
     \caption{Exact ratio of the electron-positron energy to the photon energy}
@@ -336,32 +372,48 @@ At these temperatures we can safely ignore the baryon contribution, which combin
 \end{align}
 For the total energy we simply add the contributions of all components, excluding baryons,
 \begin{align}
-    \rho_{tot}=\rho_\gamma+(2+N_\nu)\frac{7}{8}\rho_\gamma=\frac{43}{8}\rho_\gamma
+    \rho_{tot}=\rho_\gamma+(2+3)\frac{7}{8}\rho_\gamma=\frac{43}{8}\rho_\gamma
 \end{align}
-
+Inserting into \eqref{eq:ti_integral}, we get the initial time,
 \begin{align}
     t_i&=3(24\pi G\frac{43}{8}\frac{\pi^2}{15})^{-1/2}\int_{\infty}^{T_i}T^{-3}dT\\
     t_i&=\frac{3}{2}( \frac{43}{5}G\pi^3)^{-1/2}T_i^{-2}
     \label{eq:t_ini}
 \end{align}
-In units of \num{1e9} K, and seconds This can be written as,
+This relation is valid at all times before decoupling, and remains approximately true at later times, as shown on figure \ref{fig:Temperature}.
+\begin{figure}[h]
+    %\centering
+    \includegraphics[width=5.1in]{figures/Temperature.pdf}
+    \caption{The temperature of photons and neutrinos during the time period of BBN, as well as the approximate temperature given by \ref{eq:t_ini}}
+    \label{fig:Temperature}
+\end{figure}
+
+To get a sense of scale for this result we can rewrite it in units of $10^9K$ and seconds.
 \begin{align}
     T_9=( 43 \frac{4}{3}\pi\frac{a}{c^2}G)^{-1/4}t^{-1/2}=9.97t^{-1/2},
+    \label{eq:T9_ini}
 \end{align}
-with $a$ being the radiation constant, related to the Stefan–Boltzmann constant by $a=\frac{4}{c}\sigma$. This differs significantly from the expression derived by Wagoner\cite{Wagoner67},
+with $a$ being the radiation constant, related to the Stefan–Boltzmann constant by $a=\frac{4}{c}\sigma$. 
+Using this we can justify the omission of particles heavier than electrons. The lightest of these are the muon and pion, which both have masses above 100 MeV. Significant pair creation will occur at $T_9 \geq 10^3$, corresponding to $t\approx10^4$. As such they will have no significant impact on the initial time. 
+
+
+We note that \eqref{eq:T9_ini} differs significantly from the expression derived by Wagoner\cite{Wagoner67},
 \begin{align}
     T_9=(12\pi\frac{a}{c^2}G)^{1/4}t^{-1/2}=10.4t^{-1/2},
 \end{align}
-The analytical expression is wrong, but the numerical result is correct. A simple error which probably was the result of a small mistake when transcribing the notes used for the paper. This expression has been reproduced in several later BBN codes such as Kawano\cite{Kawano} and ALterBBN\cite{AlterBBN}. Though Kawano reproduced the equation in the documentation, in the actual NUC123 code, he used the numerical result and as such the code itself had no errors. In AlterBBN they used natural units, and therefore couldn't use the numerical value, and therefore the error affected their result. Additionally, they also confused the Stefan–Boltzmann and radiation constants leading to an additional error. Examining the code, one can see that their value is wrong by 14 orders of magnitude. %which they seemly discovered and erroneously corrected by doing an additional conversion from $\hbar/GeV$ to seconds. This brings the final value to a few mi
+The analytical expression is wrong, but the numerical result is correct. A simple error which probably was the result of a small mistake when transcribing the notes used for the paper. Unfortunately, this expression has been reproduced in several later BBN codes such as NUC123\cite{Kawano} and AlterBBN\cite{AlterBBN}. Though Kawano reproduced the equation in the documentation, in the actual NUC123 code he used the numerical result and as such the code itself had no errors. In AlterBBN they used natural units, and so couldn't use the numerical value, leading to the error affected the code. Additionally, they also confused the Stefan–Boltzmann and radiation constants leading to an additional error. Examining the code, one can see that their value is wrong by 14 orders of magnitude. %which they seemly discovered and erroneously corrected by doing an additional conversion from $\hbar/GeV$ to seconds. This brings the final value to a few mi
 Since it doesn't impact final abundances, this error was only very recently discovered. The first correction being released in 2021 by Sharpe \cite{sharpe2021big},
 \begin{align}
     T_9=(48\pi\frac{a_r}{c^2}G)^{-1/4}t^{-1/2}=10.4t^{-1/2},
 \end{align}
-However this still differs from \eqref{eq:t_ini}. This due to the fact that the original derivation was performed by Wagoner in 1967, a decade before the discovery of the Tau and corresponding neutrino. And though everyone correctly added the additional neutrino flavor when calculating the neutrino energy, it seems everyone forgot to consider the impact it has on the initial time. 
+However this still differs from \eqref{eq:T9_ini}. This due to the fact that the original derivation was performed by Wagoner in 1967, a decade before the discovery of the Tau and corresponding neutrino. And though later projects correctly added the additional neutrino flavor when calculating the neutrino energy, the impact it has on the initial time had been overlooked before this thesis. 
 
-Using \eqref{eq:t_ini} we can also justify the omission of particles heavier than electrons. The lightest of these are the muon and pion, which both have masses above 100 MeV. As such they will only start contributing at time less than a millisecond. 
+
 
 %Warning test\fxwarning{This is a warning!}
 
 
-\section{solving things}
+
+
+
+

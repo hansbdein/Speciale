@@ -10,7 +10,7 @@
 \chapter{BBN code}
 \label{chap:BBNcode}
 
-\section{History of BBN codes}
+\section{A brief history of BBN codes}
 \label{sec:BBN_history}
 
 The concept of Big Bang nucleosynthesis is almost as old as the Big Bang theory itself, with the with it first being proposed in the paper by \textcite{Gamov48}. This early model used neutron capture and subsequent beta decay as the mechanism for BBN, though its greatest problem was the inability to explain the unusually high abundance of oxygen and carbon in the present universe. And so, it was in large part supplanted by the new theory of stellar nucleosynthesis, as the main explanation for the origin of elements. 
@@ -22,26 +22,45 @@ In the following years Wagoner created and refined the first proper BBN code, de
 
 By the late 80s the Wagoner code was severely outdated. With multiple inefficiencies due to among other things, the fact that it was originally designed to run on punch cards. This inspired Lawrence Kawano to create the now ubiquitous NUC123, colloquially know as the Kawano code\cite{Kawano}. Which set the gold Standard for all future BBN codes. 
 
-In current day and age, there exists multiple publicly available BBN codes, and a countless number of private codes. The most well know of these are PArthENoPE spiritual successor to NUC123, AlterBBN, and PRIMAT.
-
-
-\section{Structure of BBN codes}
-\label{sec:BBN_structure}
-
-The objective of any BBN code is to solve the system of differential equations described in chapter \ref{chap:theory}.
-
-\subsection{Wagoner}
-\label{sec:Wagoner}
-
-\subsection{Kawano}
-\label{sec:Kawano}
-
 \subsection{Modern codes}
-\label{sec:Modern_codes}
-PArthENoPE, AlterBBN, PRIMAT
+\label{sec:newcodes}
+In current day and age, there exists multiple publicly available BBN codes, and a countless number of private codes. The most well know of these are PArthENoPE, AlterBBN, and PRIMAT.
+
+PArthENoPE\cite{PArthENoPE} is a spiritual successor to NUC123, and like the works of Wagoner and Kawano PArthENoPE uses FORTRAN. It retains the same structure, and can generally be seen as a continually updated version of these earlier works, with features such as updated reaction rates and a user-friendly GUI.
+
+PRIMAT\cite{PRIMAT} is a Mathematica code and unlike PArthENoPE and AlterBBN, it isn't directly based on the older BBN codes. The main focus of PRIMAT is improving the precision of BBN codes specifically the He4 abundance, which is mainly determined by the $p\leftrightharpoons n$ rates. 
+
+AlterBBN is written in c and based on Kawano's NUC123. It maintains the same basic structure and integration method, though it uses natural units for everything but the reaction network. However, they define energy in GeV rather than MeV. What separates AlterBBN for other codes is that as the name implies, it allows the use of alternate cosmological models and parameters. Therefore, this code is especially well suited for testing the effects these alterations have on final abundances.
 
 
-\subsection{AlterBBN}
-\label{sec:AlterBBN}
+\section{Integrating the system of equations}
+\label{sec:Solving}
 
-AlterBBN is written in c and based on Kawano's NUC123. It maintains the same basic structure and integration method, though it uses natural units for everything but the reaction network. However, they define energy in GeV rather than MeV. What separates AlterBBN for other codes is that as the name implies, it allows the use of alternate cosmological models and parameters. Therefore, this code is especially well suited for testing the effects these alterations have on final abundances. Wot
+The objective of any BBN code is to solve the system of differential equations described in chapter \ref{chap:theory}, which presents some numerical difficulties. 
+
+Most nuclear reactions have a linear or quadratic dependence on density, as well as an often exponential dependence on temperature. At high temperatures this is balanced by the corresponding reverse rate being equally high. The forward and reverse rates will only cancel at the precise abundance required by nuclear statistical equilibrium (NSE). Any slight deviation from NSE $\delta Y$, will cause one rate to be slightly larger, which due to its magnitude will cause a huge increase in the derivative $Y'$.
+
+Most numerical methods for solving differential equations are explicit and in their simplest form, calculate the next step by adding  $\Delta Y = \Delta t \cdot Y' $. 
+If $\Delta Y>2\delta Y$, the system will become unstable as each step will increase the absolute value of both. To avoid this instability an explicit method will have to use a minuscule step size $\Delta t$, which is often too small to allow for solution in reasonable time if ever.
+
+This and similar problems are called stiff, as they are completely inflexible when faced with approximate solutions. 
+
+\subsubsection{Integration methods}
+
+Wagoner and the later codes based on this work handle the stiffness by linearizing the system, which allows integration in an implicit form:
+\begin{align}
+    \tilde{Y}_{n+1}=(1+C \Delta t)\tilde{Y}_{n}\approx(1-C \Delta t)^{-1}\tilde{Y}_{n}.
+\end{align}
+Followed by a traditional second order Runge-Kutta integration, with AlterBBN having options for more advanced Runge-Kutta methods. 
+
+PRIMAT on the other hand uses a first order BDF scheme for $T>\num{1.25e9}$ K, switching to second order at lower temperatures for faster computation.
+
+I have chosen to use an implicit Runge-Kutta method of the Radau IIA family of order 5, as implemented in SciPy. This method is perfectly suited to handle stiff problems such as the reaction network, and is the most stable method available in SciPy.
+
+%Based on my testing this ensures maximum stability, while also being able to utilize the analytical Jacobian derived in equations\eqref{eq:jacterms1}\eqref{eq:jacterms2}.
+\subsection{Simplifications of the problem}
+Following the example of Wagoner, most BBN codes solve the background variables and abundances concurrently. This is necessary as they account for the change in baryon energy density and electron chemical potential caused by nucleosynthesis. Accounting for the baryon energy only results in a relative abundance change lower than $10^{-5}$ for the heavier nuclei, and even less for lighter ones. Accounting for baryons at all is questionable, and tracking the abundance of non-thermal electrons and energy changes caused by nucleosynthesis is completely unnecessary. Accordingly, the background variables can be treated as independent of the abundances.
+Unlike the abundances, the equations governing temperature and scale factor are not stiff in the slightest. This allows for the use of much faster integration methods, which is beneficial since terms such electron energy density \eqref{rhoelectron} are quite time-consuming to calculate. Barring reheating, $T$ and $a$ follow the simple power laws $T^{-2}\propto t$ and $a^2\propto t$, as seen on figure \ref{fig:Temperature}. This allows the use of simple linear interpolation in log space, which will have negligible impact on runtime compared to the evaluation of reaction rates.
+
+
+The equations governing the abundances are very stiff, %they require advanced integrations routines to ensure accurate results, requiring numerous evaluations of the derivatives with very small timesteps. 

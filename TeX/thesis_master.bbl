@@ -305,69 +305,157 @@
       \field{title}{{Introduction to cosmology}}
       \field{year}{2002}
     \endentry
-    \entry{Mangano_2005}{article}{}
+    \entry{Serpico_2004}{article}{}
       \name{author}{6}{}{%
-        {{hash=011a3eed1eb3e6526b900b7c0a2e90ef}{%
+        {{hash=669689ac60d89430fc38dd2b99b84e1d}{%
+           family={Serpico},
+           familyi={S\bibinitperiod},
+           given={P\bibnamedelima D},
+           giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=fdfc5b7f1251e69ae571df22f66a3e9f}{%
+           family={Esposito},
+           familyi={E\bibinitperiod},
+           given={S},
+           giveni={S\bibinitperiod}}}%
+        {{hash=6126d5f3c6c04c935525342496df4370}{%
+           family={Iocco},
+           familyi={I\bibinitperiod},
+           given={F},
+           giveni={F\bibinitperiod}}}%
+        {{hash=e66cd4e541e99c5e02ee153e459f1db5}{%
            family={Mangano},
            familyi={M\bibinitperiod},
-           given={Gianpiero},
+           given={G},
            giveni={G\bibinitperiod}}}%
-        {{hash=971ad2683a6df95941fd652235efc102}{%
+        {{hash=f9012eb6928b802caa62e9a70b953b89}{%
            family={Miele},
            familyi={M\bibinitperiod},
-           given={Gennaro},
+           given={G},
            giveni={G\bibinitperiod}}}%
+        {{hash=5979c16cba5048e43fc8f4374b8ef957}{%
+           family={Pisanti},
+           familyi={P\bibinitperiod},
+           given={O},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{de198b599782781ec44c8396de88cb82}
+      \strng{fullhash}{044e8817aec7dac33bd39d7acc8121b8}
+      \strng{bibnamehash}{de198b599782781ec44c8396de88cb82}
+      \strng{authorbibnamehash}{de198b599782781ec44c8396de88cb82}
+      \strng{authornamehash}{de198b599782781ec44c8396de88cb82}
+      \strng{authorfullhash}{044e8817aec7dac33bd39d7acc8121b8}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1475-7516}
+      \field{journaltitle}{Journal of Cosmology and Astroparticle Physics}
+      \field{month}{12}
+      \field{number}{12}
+      \field{title}{Nuclear reaction network for primordial nucleosynthesis: a detailed analysis of rates, uncertainties and light nuclei yields}
+      \field{volume}{2004}
+      \field{year}{2004}
+      \field{pages}{010\bibrangedash 010}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1475-7516/2004/12/010
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1088/1475-7516/2004/12/010
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1088/1475-7516/2004/12/010
+      \endverb
+    \endentry
+    \entry{de_Salas_2016}{article}{}
+      \name{author}{2}{}{%
+        {{hash=9f0870bfe50411d3e8a8581493237fdc}{%
+           family={Salas},
+           familyi={S\bibinitperiod},
+           given={Pablo\bibnamedelima F.},
+           giveni={P\bibinitperiod\bibinitdelim F\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
         {{hash=e9ebd9027c0c7396bb5415590e80b1c2}{%
            family={Pastor},
            familyi={P\bibinitperiod},
            given={Sergio},
            giveni={S\bibinitperiod}}}%
-        {{hash=2b933460d3ce00e108b0e9d555a16b2f}{%
-           family={Pinto},
-           familyi={P\bibinitperiod},
-           given={Teguayco},
-           giveni={T\bibinitperiod}}}%
-        {{hash=0368ffb2c1256d0b2fc74d87ef1204cd}{%
-           family={Pisanti},
-           familyi={P\bibinitperiod},
-           given={Ofelia},
-           giveni={O\bibinitperiod}}}%
-        {{hash=fc551b1fbe218494af3f6ddb43dfa59d}{%
-           family={Serpico},
-           familyi={S\bibinitperiod},
-           given={Pasquale\bibnamedelima D.},
-           giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Elsevier BV}%
+        {IOP Publishing}%
       }
-      \strng{namehash}{98f488957a9437b0aa97bcefcab1ee02}
-      \strng{fullhash}{6e7ea20811ca6d19e4c2675b10a63385}
-      \strng{bibnamehash}{98f488957a9437b0aa97bcefcab1ee02}
-      \strng{authorbibnamehash}{98f488957a9437b0aa97bcefcab1ee02}
-      \strng{authornamehash}{98f488957a9437b0aa97bcefcab1ee02}
-      \strng{authorfullhash}{6e7ea20811ca6d19e4c2675b10a63385}
+      \strng{namehash}{df9d06e31194cf760c914dea98e06efd}
+      \strng{fullhash}{df9d06e31194cf760c914dea98e06efd}
+      \strng{bibnamehash}{df9d06e31194cf760c914dea98e06efd}
+      \strng{authorbibnamehash}{df9d06e31194cf760c914dea98e06efd}
+      \strng{authornamehash}{df9d06e31194cf760c914dea98e06efd}
+      \strng{authorfullhash}{df9d06e31194cf760c914dea98e06efd}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{issn}{0550-3213}
-      \field{journaltitle}{Nuclear Physics B}
-      \field{month}{11}
-      \field{number}{1–2}
-      \field{title}{Relic neutrino decoupling including flavour oscillations}
-      \field{volume}{729}
-      \field{year}{2005}
-      \field{pages}{221\bibrangedash 234}
-      \range{pages}{14}
+      \field{issn}{1475-7516}
+      \field{journaltitle}{Journal of Cosmology and Astroparticle Physics}
+      \field{month}{7}
+      \field{number}{07}
+      \field{title}{Relic neutrino decoupling with flavour oscillations revisited}
+      \field{volume}{2016}
+      \field{year}{2016}
+      \field{pages}{051\bibrangedash 051}
+      \range{pages}{1}
       \verb{doi}
-      \verb 10.1016/j.nuclphysb.2005.09.041
+      \verb 10.1088/1475-7516/2016/07/051
       \endverb
       \verb{urlraw}
-      \verb http://dx.doi.org/10.1016/j.nuclphysb.2005.09.041
+      \verb http://dx.doi.org/10.1088/1475-7516/2016/07/051
       \endverb
       \verb{url}
-      \verb http://dx.doi.org/10.1016/j.nuclphysb.2005.09.041
+      \verb http://dx.doi.org/10.1088/1475-7516/2016/07/051
+      \endverb
+    \endentry
+    \entry{PRIMAT}{article}{}
+      \name{author}{4}{}{%
+        {{hash=fbf70ec8b88afa41c43992f8cfb10b66}{%
+           family={Pitrou},
+           familyi={P\bibinitperiod},
+           given={Cyril},
+           giveni={C\bibinitperiod}}}%
+        {{hash=4c0798dc866fb7ca7107e6c83c3b69c0}{%
+           family={Coc},
+           familyi={C\bibinitperiod},
+           given={Alain},
+           giveni={A\bibinitperiod}}}%
+        {{hash=2c608dc353a581fa276bc9c7dd9d38bd}{%
+           family={Uzan},
+           familyi={U\bibinitperiod},
+           given={Jean-Philippe},
+           giveni={J\bibinithyphendelim P\bibinitperiod}}}%
+        {{hash=e36bf56c02dfb17695260931531dcf69}{%
+           family={Vangioni},
+           familyi={V\bibinitperiod},
+           given={Elisabeth},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{2cbfb57c871383ccb84d92f80e3e5de8}
+      \strng{fullhash}{ab267e0b212ed79e5fcde866f71751b9}
+      \strng{bibnamehash}{ab267e0b212ed79e5fcde866f71751b9}
+      \strng{authorbibnamehash}{ab267e0b212ed79e5fcde866f71751b9}
+      \strng{authornamehash}{2cbfb57c871383ccb84d92f80e3e5de8}
+      \strng{authorfullhash}{ab267e0b212ed79e5fcde866f71751b9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Submitted to Phys. Rept.}
+      \field{title}{Precision big bang nucleosynthesis with improved Helium-4 predictions}
+      \field{year}{2018}
+      \verb{eprint}
+      \verb 1801.08023
       \endverb
     \endentry
     \entry{AlterBBN}{misc}{}
@@ -1384,6 +1472,60 @@
       \field{year}{2021}
       \verb{eprint}
       \verb 2104.10311
+      \endverb
+    \endentry
+    \entry{PArthENoPE}{article}{}
+      \name{author}{4}{}{%
+        {{hash=bc69bcc789d2b19edcab799ff75d959b}{%
+           family={Gariazzo},
+           familyi={G\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=55157f3667e7fd85296efb4b01e2d637}{%
+           family={F.\bibnamedelimi de\bibnamedelima Salas},
+           familyi={F\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=5979c16cba5048e43fc8f4374b8ef957}{%
+           family={Pisanti},
+           familyi={P\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod}}}%
+        {{hash=742b379a29fcc79051e049f96f03c87a}{%
+           family={Consiglio},
+           familyi={C\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier BV}%
+      }
+      \strng{namehash}{8938b4d61dfe3ed0c1b7294d49faf251}
+      \strng{fullhash}{3b6271cd80001de17e4ae9ba24599a49}
+      \strng{bibnamehash}{3b6271cd80001de17e4ae9ba24599a49}
+      \strng{authorbibnamehash}{3b6271cd80001de17e4ae9ba24599a49}
+      \strng{authornamehash}{8938b4d61dfe3ed0c1b7294d49faf251}
+      \strng{authorfullhash}{3b6271cd80001de17e4ae9ba24599a49}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0010-4655}
+      \field{journaltitle}{Computer Physics Communications}
+      \field{month}{2}
+      \field{title}{PArthENoPE revolutions}
+      \field{volume}{271}
+      \field{year}{2022}
+      \field{pages}{108205}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.cpc.2021.108205
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1016/j.cpc.2021.108205
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1016/j.cpc.2021.108205
       \endverb
     \endentry
     \entry{NIST:DLMF}{misc}{}
