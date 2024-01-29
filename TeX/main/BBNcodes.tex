@@ -41,26 +41,41 @@ The objective of any BBN code is to solve the system of differential equations d
 Most nuclear reactions have a linear or quadratic dependence on density, as well as an often exponential dependence on temperature. At high temperatures this is balanced by the corresponding reverse rate being equally high. The forward and reverse rates will only cancel at the precise abundance required by nuclear statistical equilibrium (NSE). Any slight deviation from NSE $\delta Y$, will cause one rate to be slightly larger, which due to its magnitude will cause a huge increase in the derivative $Y'$.
 
 Most numerical methods for solving differential equations are explicit and in their simplest form, calculate the next step by adding  $\Delta Y = \Delta t \cdot Y' $. 
-If $\Delta Y>2\delta Y$, the system will become unstable as each step will increase the absolute value of both. To avoid this instability an explicit method will have to use a minuscule step size $\Delta t$, which is often too small to allow for solution in reasonable time if ever.
+If $\Delta Y>2\delta Y$, the system will become unstable as each step will increase the absolute value of both. To avoid this instability an explicit method will have to use a minuscule step size $\Delta t$, which in practice makes the problem unsolvable. 
 
-This and similar problems are called stiff, as they are completely inflexible when faced with approximate solutions. 
+This and similar problems are called stiff, since they are very inflexible when faced with slight deviations from the "true" solution. 
+
 
 \subsubsection{Integration methods}
 
-Wagoner and the later codes based on this work handle the stiffness by linearizing the system, which allows integration in an implicit form:
+Wagoner and the later codes based on this work handle the stiffness by first linearizing the system, which allows integration in an implicit form:
 \begin{align}
     \tilde{Y}_{n+1}=(1+C \Delta t)\tilde{Y}_{n}\approx(1-C \Delta t)^{-1}\tilde{Y}_{n}.
 \end{align}
-Followed by a traditional second order Runge-Kutta integration, with AlterBBN having options for more advanced Runge-Kutta methods. 
+This is then followed by a traditional second order Runge-Kutta integration, with AlterBBN having options for more advanced Runge-Kutta methods. 
 
 PRIMAT on the other hand uses a first order BDF scheme for $T>\num{1.25e9}$ K, switching to second order at lower temperatures for faster computation.
 
-I have chosen to use an implicit Runge-Kutta method of the Radau IIA family of order 5, as implemented in SciPy. This method is perfectly suited to handle stiff problems such as the reaction network, and is the most stable method available in SciPy.
+I have chosen to use an implicit Runge-Kutta method of the Radau IIA family of order 5, as implemented in SciPy. This method is perfectly suited to handle stiff problems such as the reaction network, and based on testing it is the most stable method among those available in SciPy.
 
 %Based on my testing this ensures maximum stability, while also being able to utilize the analytical Jacobian derived in equations\eqref{eq:jacterms1}\eqref{eq:jacterms2}.
 \subsection{Simplifications of the problem}
 Following the example of Wagoner, most BBN codes solve the background variables and abundances concurrently. This is necessary as they account for the change in baryon energy density and electron chemical potential caused by nucleosynthesis. Accounting for the baryon energy only results in a relative abundance change lower than $10^{-5}$ for the heavier nuclei, and even less for lighter ones. Accounting for baryons at all is questionable, and tracking the abundance of non-thermal electrons and energy changes caused by nucleosynthesis is completely unnecessary. Accordingly, the background variables can be treated as independent of the abundances.
-Unlike the abundances, the equations governing temperature and scale factor are not stiff in the slightest. This allows for the use of much faster integration methods, which is beneficial since terms such electron energy density \eqref{rhoelectron} are quite time-consuming to calculate. Barring reheating, $T$ and $a$ follow the simple power laws $T^{-2}\propto t$ and $a^2\propto t$, as seen on figure \ref{fig:Temperature}. This allows the use of simple linear interpolation in log space, which will have negligible impact on runtime compared to the evaluation of reaction rates.
+
+This is beneficial, as unlike the abundances the equations governing temperature and scale factor are not stiff in the slightest. This allows faster integration, with fewer evaluations of computationally demanding terms such as the sum in electron energy density \eqref{rhoelectron}. Barring reheating, $T$ and $a$ follow the simple power laws $T^{-2}\propto t$ and $a^2\propto t$, as seen on figure \ref{fig:Temperature}. This allows the use of simple linear interpolation in log space, which will have negligible impact on runtime compared to the evaluation of reaction rates.
+
+Compared to the background parameters, evaluating reaction rates is quite simple, with the most time-consuming part being the sheer number of rates, which can be mitigated somewhat with parallelization. Here the main problem is the aforementioned stiffness, but this is also aided by precomputing the background variables, as this demonstrably improves stability. 
 
 
-The equations governing the abundances are very stiff, %they require advanced integrations routines to ensure accurate results, requiring numerous evaluations of the derivatives with very small timesteps. 
+\section{Creating a reaction network}
+\label{sec:pna}
+To create the reaction network I use pynucastro\cite{pynucastro2}, which is an open source python interface designed for nuclear astrophysics. The reaction rates themselves are provided by the REACLIB database\cite{REACLIB}. These rates are based on fits of experimental results using the following parametrization 
+\begin{align}
+    \lambda = \exp\left(a_0+\sum_{i=1}^{5}a_i T_9^{\frac{2i-5}{3}}+a_6 \log{T_9}\right).
+\end{align}
+T9 is the temperature in \num{1e9} K, and the molar density must be provided in cgs units of $\text{mol}/\text{cm}^3$. 
+
+
+
+\section{Code structure}
+\label{sec:structure}

@@ -370,6 +370,97 @@
       \verb http://dx.doi.org/10.1088/1475-7516/2004/12/010
       \endverb
     \endentry
+    \entry{REACLIB}{article}{}
+      \name{author}{13}{}{%
+        {{hash=e66aaca6e35e81108b6e50dc46334994}{%
+           family={{Cyburt}},
+           familyi={C\bibinitperiod},
+           given={Richard\bibnamedelima H.},
+           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=9a76b8774909401d9e9fd500ce3792e6}{%
+           family={{Amthor}},
+           familyi={A\bibinitperiod},
+           given={A.\bibnamedelimi Matthew},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=cff7db33592860923062c849c4646aee}{%
+           family={{Ferguson}},
+           familyi={F\bibinitperiod},
+           given={Ryan},
+           giveni={R\bibinitperiod}}}%
+        {{hash=3461d1637010981296981dae0e04ae92}{%
+           family={{Meisel}},
+           familyi={M\bibinitperiod},
+           given={Zach},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=e7794f31cd9847a666e66fd849007343}{%
+           family={{Smith}},
+           familyi={S\bibinitperiod},
+           given={Karl},
+           giveni={K\bibinitperiod}}}%
+        {{hash=1da09808e905c18b3351f7ded7360dec}{%
+           family={{Warren}},
+           familyi={W\bibinitperiod},
+           given={Scott},
+           giveni={S\bibinitperiod}}}%
+        {{hash=aca4d418e5715586b442fc403362c1d6}{%
+           family={{Heger}},
+           familyi={H\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=694491303318bc9371fe79dcc5d22690}{%
+           family={{Hoffman}},
+           familyi={H\bibinitperiod},
+           given={R.\bibnamedelimi D.},
+           giveni={R\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=fb8ad93b09bfd77e20c99762d81cb7f1}{%
+           family={{Rauscher}},
+           familyi={R\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=1ab47149501b6cb2cf4ae5a9bef0ac82}{%
+           family={{Sakharuk}},
+           familyi={S\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ac3b09b7bb90092648ec95ddbeffc757}{%
+           family={{Schatz}},
+           familyi={S\bibinitperiod},
+           given={Hendrik},
+           giveni={H\bibinitperiod}}}%
+        {{hash=ebf7ffa81b4a3a658e71f67963bc2fc9}{%
+           family={{Thielemann}},
+           familyi={T\bibinitperiod},
+           given={F.\bibnamedelimi K.},
+           giveni={F\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=400eafa1a21fb09743e92ca85edaa9bc}{%
+           family={{Wiescher}},
+           familyi={W\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{e5e4e1ed9aa2d4ae4d9a86329534c334}
+      \strng{fullhash}{ddf4087cb8341b1c350f409f751bba78}
+      \strng{bibnamehash}{e5e4e1ed9aa2d4ae4d9a86329534c334}
+      \strng{authorbibnamehash}{e5e4e1ed9aa2d4ae4d9a86329534c334}
+      \strng{authornamehash}{e5e4e1ed9aa2d4ae4d9a86329534c334}
+      \strng{authorfullhash}{ddf4087cb8341b1c350f409f751bba78}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{\apjs}
+      \field{month}{7}
+      \field{number}{1}
+      \field{title}{{The JINA REACLIB Database: Its Recent Updates and Impact on Type-I X-ray Bursts}}
+      \field{volume}{189}
+      \field{year}{2010}
+      \field{pages}{240\bibrangedash 252}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1088/0067-0049/189/1/240
+      \endverb
+      \keyw{nuclear reactions,nucleosynthesis,abundances,X-rays: bursts}
+    \endentry
     \entry{de_Salas_2016}{article}{}
       \name{author}{2}{}{%
         {{hash=9f0870bfe50411d3e8a8581493237fdc}{%
@@ -1526,6 +1617,86 @@
       \endverb
       \verb{url}
       \verb http://dx.doi.org/10.1016/j.cpc.2021.108205
+      \endverb
+    \endentry
+    \entry{pynucastro2}{article}{}
+      \name{author}{9}{}{%
+        {{hash=fed280faec792c98df45c513226bb877}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Alexander\bibnamedelima I.},
+           giveni={A\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+        {{hash=b3b35564a3ba3e345951fc869ccd7cb1}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={Eric\bibnamedelima T.},
+           giveni={E\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=5c069394326941cace3c2b60358b9423}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Zhi},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=234a4869c89c4b7e1d940edb91b66a9a}{%
+           family={Eiden},
+           familyi={E\bibinitperiod},
+           given={Kiran},
+           giveni={K\bibinitperiod}}}%
+        {{hash=b98ef4b48e55090054ec848ddf820ef0}{%
+           family={Willcox},
+           familyi={W\bibinitperiod},
+           given={Donald\bibnamedelima E.},
+           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=514989d890c793f90aa9d4e77fc411a3}{%
+           family={Boyd},
+           familyi={B\bibinitperiod},
+           given={Brendan},
+           giveni={B\bibinitperiod}}}%
+        {{hash=15666bb3eecd7d821be0db1ec412cf15}{%
+           family={Cao},
+           familyi={C\bibinitperiod},
+           given={Lyra},
+           giveni={L\bibinitperiod}}}%
+        {{hash=2b7141d400ff8936cea6ab00519d7b9b}{%
+           family={DeGrendele},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima J.},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=60171c0602ae49629c307014fa44c670}{%
+           family={Zingale},
+           familyi={Z\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {The American Astronomical Society}%
+      }
+      \strng{namehash}{728fa1412662cb7618e3324380b0c7de}
+      \strng{fullhash}{70a58c5edf06ebaac171496089560b4e}
+      \strng{bibnamehash}{728fa1412662cb7618e3324380b0c7de}
+      \strng{authorbibnamehash}{728fa1412662cb7618e3324380b0c7de}
+      \strng{authornamehash}{728fa1412662cb7618e3324380b0c7de}
+      \strng{authorfullhash}{70a58c5edf06ebaac171496089560b4e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We describe pynucastro 2.0, an open-source library for interactively creating and exploring astrophysical nuclear reaction networks. We demonstrate new methods for approximating rates and use detailed balance to create reverse rates, show how to build networks and determine whether they are appropriate for a particular science application, and discuss the changes made to the library over the past few years. Finally, we demonstrate the validity of the networks produced and share how we use pynucastro networks in simulation codes.}
+      \field{journaltitle}{The Astrophysical Journal}
+      \field{month}{4}
+      \field{number}{2}
+      \field{title}{pynucastro: A Python Library for Nuclear Astrophysics}
+      \field{volume}{947}
+      \field{year}{2023}
+      \field{pages}{65}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3847/1538-4357/acbaff
+      \endverb
+      \verb{urlraw}
+      \verb https://dx.doi.org/10.3847/1538-4357/acbaff
+      \endverb
+      \verb{url}
+      \verb https://dx.doi.org/10.3847/1538-4357/acbaff
       \endverb
     \endentry
     \entry{NIST:DLMF}{misc}{}
