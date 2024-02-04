@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.10.3)  29 JAN 2024 19:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.10.3)  4 FEB 2024 21:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1169,7 +1169,7 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
- (./thesis_master.aux (./front/frontpages.aux) (./front/preface.aux) (./front/intro.aux) (./main/theory.aux) (./main/BBNcodes.aux) (./main/Altercompare.aux))
+ (./thesis_master.aux (./front/frontpages.aux) (./front/preface.aux) (./front/intro.aux) (./main/theory.aux) (./main/BBNcodes.aux) (./main/results.aux))
 \openout1 = `thesis_master.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
@@ -1309,7 +1309,7 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 22.0pt on input line 31.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 14.0pt on input line 35.
-<front/segla1b.pdf, id=68, 54.2025pt x 54.2025pt>
+<front/segla1b.pdf, id=80, 54.2025pt x 54.2025pt>
 File: front/segla1b.pdf Graphic file (type pdf)
 <use front/segla1b.pdf>
 Package pdftex.def Info: front/segla1b.pdf  used on input line 39.
@@ -1532,23 +1532,19 @@ LaTeX Font Info:    Font shape `LS1/libertinust1math/b/n' will be
 LaTeX Font Info:    Font shape `LS1/libertinust1math/b/it' will be
 (Font)              scaled to size 12.0pt on input line 327.
  [8]
-<figures/rhoegammaT.pdf, id=280, 368.57701pt x 144.54pt>
+<figures/rhoegammaT.pdf, id=295, 368.57701pt x 144.54pt>
 File: figures/rhoegammaT.pdf Graphic file (type pdf)
 <use figures/rhoegammaT.pdf>
 Package pdftex.def Info: figures/rhoegammaT.pdf  used on input line 364.
 (pdftex.def)             Requested size: 368.57744pt x 144.54404pt.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/sc' will be
 (Font)              scaled to size 10.95pt on input line 365.
-<figures/Temperature.pdf, id=284, 368.57701pt x 216.81pt>
+<figures/Temperature.pdf, id=299, 368.57701pt x 216.81pt>
 File: figures/Temperature.pdf Graphic file (type pdf)
 <use figures/Temperature.pdf>
 Package pdftex.def Info: figures/Temperature.pdf  used on input line 386.
 (pdftex.def)             Requested size: 368.57744pt x 216.81607pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[9 <./figures/rhoegammaT.pdf>] [10 <./figures/Temperature.pdf>]) [11]
+ [9 <./figures/rhoegammaT.pdf>] [10 <./figures/Temperature.pdf>]) [11]
 \openout2 = `main/BBNcodes.aux'.
 
  (./main/BBNcodes.tex [12
@@ -1556,31 +1552,67 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-] [13] [14]) [15]
-\openout2 = `main/Altercompare.aux'.
+] [13] [14] [15]
+<figures/lillenet.pdf, id=423, 578.16pt x 289.08pt>
+File: figures/lillenet.pdf Graphic file (type pdf)
+<use figures/lillenet.pdf>
+Package pdftex.def Info: figures/lillenet.pdf  used on input line 91.
+(pdftex.def)             Requested size: 368.57744pt x 184.28716pt.
+<figures/stornet.pdf, id=425, 722.7pt x 361.35pt>
+File: figures/stornet.pdf Graphic file (type pdf)
+<use figures/stornet.pdf>
+Package pdftex.def Info: figures/stornet.pdf  used on input line 100.
+(pdftex.def)             Requested size: 368.57744pt x 184.28606pt.
+LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF on input line 109.
+ (/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd
+File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/LinuxLibertineT-TLF.
+)
+LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 10.95pt on input line 109.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `LinuxLibertineT-TLF' (encoding: TS1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [16 <./figures/lillenet.pdf>]) [17 <./figures/stornet.pdf>]
+\openout2 = `main/results.aux'.
 
- (./main/Altercompare.tex [16
+ (./main/results.tex [18
 
 
 
 
-] [17] [18
-
-]) [19] [20
+]
+<figures/abundancelight.pdf, id=484, 368.57701pt x 289.08pt>
+File: figures/abundancelight.pdf Graphic file (type pdf)
+<use figures/abundancelight.pdf>
+Package pdftex.def Info: figures/abundancelight.pdf  used on input line 5.
+(pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
+<figures/smallnet5minutes.pdf, id=486, 578.16pt x 433.62pt>
+File: figures/smallnet5minutes.pdf Graphic file (type pdf)
+<use figures/smallnet5minutes.pdf>
+Package pdftex.def Info: figures/smallnet5minutes.pdf  used on input line 12.
+(pdftex.def)             Requested size: 368.57744pt x 276.43074pt.
+ [19 <./figures/abundancelight.pdf>]
+<figures/abundanceheavy.pdf, id=506, 368.57701pt x 361.35pt>
+File: figures/abundanceheavy.pdf Graphic file (type pdf)
+<use figures/abundanceheavy.pdf>
+Package pdftex.def Info: figures/abundanceheavy.pdf  used on input line 24.
+(pdftex.def)             Requested size: 368.57744pt x 361.36014pt.
+) [20 <./figures/smallnet5minutes.pdf>] [21 <./figures/abundanceheavy.pdf>] [22
 
 
 
 
 ]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 114.
- [21]
-LaTeX Font Info:    Trying to load font information for T1+newtxtt on input line 114.
+(Font)              scaled to size 10.95pt on input line 116.
+ [23]
+LaTeX Font Info:    Trying to load font information for T1+newtxtt on input line 116.
  (/usr/share/texlive/texmf-dist/tex/latex/newtxtt/t1newtxtt.fd
 File: t1newtxtt.fd 2020/02/15 Font definitions for T1/newtxtt.
 )
 LaTeX Font Info:    Font shape `T1/newtxtt/m/n' will be
-(Font)              scaled to size 10.40245pt on input line 114.
+(Font)              scaled to size 10.40245pt on input line 116.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `newtxtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1593,33 +1625,33 @@ FiXme Summary: Number of notes: 0,
 (FiXme)        Number of fatal errors: 0,
 (FiXme)        Total: 0.
 
-[22]
+[24]
 \tf@lox=\write6
 \openout6 = `thesis_master.lox'.
 
 \tf@toc=\write7
 \openout7 = `thesis_master.toc'.
 
- (./thesis_master.aux (./front/frontpages.aux) (./front/preface.aux) (./front/intro.aux) (./main/theory.aux) (./main/BBNcodes.aux) (./main/Altercompare.aux))
+ (./thesis_master.aux (./front/frontpages.aux) (./front/preface.aux) (./front/intro.aux) (./main/theory.aux) (./main/BBNcodes.aux) (./main/results.aux))
 Package rerunfilecheck Info: File `thesis_master.out' has not changed.
-(rerunfilecheck)             Checksum: 6A5F905EE25842275412661C11DEB7E2;2646.
+(rerunfilecheck)             Checksum: 40734A091AEDA4BDA7BEA36672742207;3107.
 Package logreq Info: Writing requests to 'thesis_master.run.xml'.
 \openout1 = `thesis_master.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34811 strings out of 478287
- 669749 string characters out of 5849289
- 1538018 words of memory out of 5000000
- 52034 multiletter control sequences out of 15000+600000
- 671206 words of font info for 330 fonts, out of 8000000 for 9000
+ 34939 strings out of 478287
+ 672883 string characters out of 5849289
+ 1540803 words of memory out of 5000000
+ 52109 multiletter control sequences out of 15000+600000
+ 673844 words of font info for 349 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 76i,16n,82p,1183b,2452s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtxtt/txttAec.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_omcwp2.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusSYM.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusEX.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusMI.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusMR.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertinust1math/LibertinusT1Math.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtxtt/newtxtt.pfb>
-Output written on thesis_master.pdf (30 pages, 1328617 bytes).
+ 76i,16n,82p,1510b,2452s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtxtt/txttAec.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_omcwp2.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusSYM.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusEX.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusMI.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusMR.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertinust1math/LibertinusT1Math.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtxtt/newtxtt.pfb>
+Output written on thesis_master.pdf (32 pages, 1508542 bytes).
 PDF statistics:
- 529 PDF objects out of 1000 (max. 8388607)
- 464 compressed objects within 5 object streams
- 152 named destinations out of 1000 (max. 500000)
- 105104 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 672 PDF objects out of 1000 (max. 8388607)
+ 590 compressed objects within 6 object streams
+ 168 named destinations out of 1000 (max. 500000)
+ 109249 words of extra memory for PDF output out of 128383 (max. 10000000)
 

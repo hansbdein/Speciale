@@ -59,7 +59,7 @@ Most BBN codes are based on the original code by Wagoner described in section \r
     h=M_u\frac{n_{b}}{T^3_9}
 \end{align}
 $M_u$ being atomic mass units, $n_b$ the baryon number density, and  $T_9$ the temperature in $10^9$ Kelvin. This quantity was useful since it stays approximately constant throughout BBN, while being easy to directly convert to baryon density. However, with modern computers this numerical simplicity is inconsequential, and as such it is more instructive to track the scale factor.
-The electron chemical potential was also tracked by the Wagoner code and its successors. The main effect of this is ensuring a non-zero electron density after reheating. We can easily set this to 0, as the impact will be 3 orders of magnitude lower than the already miniscule impact of the baryon density.
+The electron chemical potential was also tracked by the Wagoner code and its successors. The main effect of this is ensuring a non-zero electron density after $e^-$ $e^+$ annihilation. We can easily set this to 0, as the impact will be 3 orders of magnitude lower than the already miniscule impact of the baryon density.
 
 \textcolor{orange}{Neutrino temperature?}
 
@@ -217,7 +217,7 @@ Using recursion relations for the modified Bessel functions \cite[\href{https://
 \begin{align}
     \rho_e(T)=\frac{m^3}{2\pi^2} T \sum_{n=1}^{n=\infty} \frac{(-1)^{n+1}}{n} \cosh{\left(n\frac{\mu}{T}\right)}  \left( 3 K_3\left(n\frac{m }{T}\right) + K_1\left(n\frac{m }{T}\right) \right)
 \end{align}
-As mentioned many older BBN codes track the parameter $\phi_e=\frac{\mu}{T}$, but this is unnecessary, as the electron density after reheating is 3 orders of magnitude lower than the already negligible contribution of the baryons. So for the remaining calculation we set $\mu = 0$.
+As mentioned many older BBN codes track the parameter $\phi_e=\frac{\mu}{T}$, but this is unnecessary, as the electron density after $e^-$ $e^+$ annihilation is 3 orders of magnitude lower than the already negligible contribution of the baryons. So for the remaining calculation we set $\mu = 0$.
 
 Finding the temperature derivative of the electron energy density, can also be achieved using the recursion relations for Bessel functions \cite[\href{https://dlmf.nist.gov/10.29.E2}{(10.29.2)}]{NIST:DLMF}.
 \begin{align}
@@ -359,7 +359,7 @@ Though none of the equations describing BBN, have any explicit time dependence, 
     \label{eq:ti_integral}
 \end{align}
 For high temperatures we can assume that the electrons are completely relativistic. Based on the result for neutrinos \eqref{rhonu}, we know that the energy of a massless fermion differs from that of a boson by a factor of $7/8$. Accounting for the g factors, we get $\rho_e=7/4 \rho_\gamma$. At temperatures above 2 MeV the relativistic approximation deviates by less than 1\%, see figure \ref{fig:rhoegammaT}.
-\begin{figure}[h]
+\begin{figure}[ht]
     %\centering
     \includegraphics[width=5.1in]{figures/rhoegammaT.pdf}
     \caption{Exact ratio of the electron-positron energy to the photon energy}
@@ -381,7 +381,7 @@ Inserting into \eqref{eq:ti_integral}, we get the initial time,
     \label{eq:t_ini}
 \end{align}
 This relation is valid at all times before decoupling, and remains approximately true at later times, as shown on figure \ref{fig:Temperature}.
-\begin{figure}[h]
+\begin{figure}[ht]
     %\centering
     \includegraphics[width=5.1in]{figures/Temperature.pdf}
     \caption{The temperature of photons and neutrinos during the time period of BBN, as well as the approximate temperature given by \ref{eq:t_ini}}

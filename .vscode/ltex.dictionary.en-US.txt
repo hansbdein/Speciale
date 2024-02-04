@@ -16,3 +16,4 @@ pynucastro
 timesteps
 NSE
 REACLIB
+cgs
