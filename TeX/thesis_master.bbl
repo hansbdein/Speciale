@@ -280,6 +280,43 @@
       \verb https://books.google.dk/books?id=Qwijr-HsvMMC
       \endverb
     \endentry
+    \entry{Hannestad:1995rs}{article}{}
+      \name{author}{2}{}{%
+        {{hash=949816eddbc224c8b4e829dafb573102}{%
+           family={Hannestad},
+           familyi={H\bibinitperiod},
+           given={Steen},
+           giveni={S\bibinitperiod}}}%
+        {{hash=8716d6bc5ce738843ffda9995e282ed4}{%
+           family={Madsen},
+           familyi={M\bibinitperiod},
+           given={Jes},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{250f9a9f4395aff7c385da74738ea853}
+      \strng{fullhash}{250f9a9f4395aff7c385da74738ea853}
+      \strng{bibnamehash}{250f9a9f4395aff7c385da74738ea853}
+      \strng{authorbibnamehash}{250f9a9f4395aff7c385da74738ea853}
+      \strng{authornamehash}{250f9a9f4395aff7c385da74738ea853}
+      \strng{authorfullhash}{250f9a9f4395aff7c385da74738ea853}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Phys. Rev. D}
+      \field{title}{{Neutrino decoupling in the early universe}}
+      \field{volume}{52}
+      \field{year}{1995}
+      \field{pages}{1764\bibrangedash 1769}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.52.1764
+      \endverb
+      \verb{eprint}
+      \verb astro-ph/9506015
+      \endverb
+    \endentry
     \entry{Ryden}{book}{}
       \name{author}{1}{}{%
         {{hash=de52e4aaa6f5ba7e54dc5bebc47e8675}{%

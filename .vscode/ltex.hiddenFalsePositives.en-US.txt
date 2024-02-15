@@ -1,3 +1,5 @@
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QBased on the result for neutrinos rhonu we ca test Wot\\E$"}
 {"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QAt very high temperatures deuterium is readily destroyed by high energy photons, inhibiting the production of any nuclei.\\E$"}
 {"rule":"HYPOTHESIS_TYPOGRAPHY","sentence":"^\\QDespite this \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q is still the strongest reaction, followed by reactions creating He3 and H3.\\E$"}
+{"rule":"COLLECTIVE_NOUN_VERB_AGREEMENT_VBP","sentence":"^\\QThough no particular reaction is exceptionally strong, a disproportionate amount of reactions produce \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\QHe rather\\E$"}
+{"rule":"COLLECTIVE_NOUN_VERB_AGREEMENT_VBP","sentence":"^\\QThough no particular reaction is exceptionally strong, a disproportionate amount of reactions produce rather than consume \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\QHe.\\E$"}

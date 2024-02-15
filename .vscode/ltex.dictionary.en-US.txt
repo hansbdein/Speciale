@@ -17,3 +17,7 @@ timesteps
 NSE
 REACLIB
 cgs
+photofission
+ultrarelativistic
+freezeout
+unphysical
