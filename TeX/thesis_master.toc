@@ -29,15 +29,19 @@
 \contentsline {section}{\numberline {2.4}Running the code}{16}{section.102}%
 \contentsline {chapter}{\chapternumberline {3}Output}{19}{chapter.103}%
 \contentsline {section}{\numberline {3.1}Precision}{22}{section.107}%
-\contentsline {subsection}{\numberline {3.1.1}Electron energy}{22}{subsection.108}%
-\contentsline {subsection}{\numberline {3.1.2}Interpolation}{23}{subsection.110}%
-\contentsline {subsection}{\numberline {3.1.3}Network timings}{23}{subsection.111}%
-\contentsline {subsubsection}{Full network}{23}{section*.112}%
-\contentsline {subsubsection}{Light network}{23}{section*.114}%
-\contentsline {subsubsection}{$p\leftrightharpoons n$ network}{25}{section*.116}%
-\contentsline {subsection}{\numberline {3.1.4}Neutrino decoupling}{25}{subsection.118}%
-\contentsline {section}{\numberline {3.2}Comparison with AlterBBN}{27}{section.121}%
-\contentsline {subsection}{\numberline {3.2.1}Background}{28}{subsection.123}%
-\contentsline {section}{\numberline {3.3}Final abundances}{29}{section.126}%
-\contentsline {section}{\numberline {3.4}Nuclear solutions to the Lithium problem?}{29}{section.127}%
-\contentsline {chapter}{Bibliography}{31}{section*.129}%
+\contentsline {subsection}{\numberline {3.1.1}Tolerances}{22}{subsection.108}%
+\contentsline {subsection}{\numberline {3.1.2}Electron energy}{22}{subsection.109}%
+\contentsline {subsection}{\numberline {3.1.3}Interpolation}{22}{subsection.111}%
+\contentsline {subsection}{\numberline {3.1.4}Network timings}{23}{subsection.112}%
+\contentsline {subsubsection}{Full network}{23}{section*.113}%
+\contentsline {subsubsection}{Light network}{24}{section*.115}%
+\contentsline {subsubsection}{$p\leftrightharpoons n$ network}{25}{section*.117}%
+\contentsline {subsection}{\numberline {3.1.5}Neutrino decoupling}{26}{subsection.119}%
+\contentsline {section}{\numberline {3.2}Comparison with AlterBBN}{27}{section.122}%
+\contentsline {subsection}{\numberline {3.2.1}Background}{28}{subsection.124}%
+\contentsline {subsection}{\numberline {3.2.2}Reaction network}{30}{subsection.127}%
+\contentsline {subsubsection}{Modifying the Network with AlterBBN rates}{31}{section*.129}%
+\contentsline {section}{\numberline {3.3}Final abundances}{32}{section.132}%
+\contentsline {section}{\numberline {3.4}Nuclear solutions to the Lithium problem?}{32}{section.133}%
+\contentsline {chapter}{Bibliography}{33}{section*.135}%
+\contentsline {appendix}{\chapternumberline {A}Additional plots}{35}{appendix.136}%

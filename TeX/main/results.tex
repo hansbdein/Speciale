@@ -32,6 +32,10 @@ The most striking effect of the high ${}^4$He binding energy is the lack of stab
 
 Throughout the code there are several places where numerical accuracy must be balanced by the need for swift computation. As a baseline I aim for a relative precision on final abundances of $10^{-5}$ due to numerical uncertainty. This is much lower than the error introduced by the experimental determination of reaction rates, as well as that of astronomical observations of primordial abundances. 
 
+\subsection{Tolerances}
+For the integration itself I use the solve\_ivp method from scipy.integrate\cite{SciPy}. Here ensuring numerical accuracy is a simple matter of specifying the desired relative and absolute tolerances as optional parameters, which I have set as  rtol=1e-6 and atol=1e-80. The absolute tolerance might seem exorbitantly low, but this helps improve stability since some heavy nuclei can cause detrimental transients if not tracked accurately at even minute abundances. However, for the tests this section I use rtol=1e-8, to ensure any inaccuracy is caused be whatever parameter is being tested.
+
+
 \subsection{Electron energy}
 Most calculations for the background have nice analytical expressions that can be computed with arbitrary precision. The electron energy density is the main exception, as it is given by an infinite sum \eqref{eq:rhoelectron} of which a finite number of terms must be calculated. Electrons annihilate very early, so any error in the energy density will only affect the $p\leftrightharpoons n$ rate. This will lead to a small change in neutron abundance, which results in a similar (within one order of magnitude) relative change in the abundance of all subsequent nuclei. 
 Testing shows that small changes to the energy density, cause a change in neutron abundance of roughly the same relative magnitude if not slightly lower. So to achieve the requested accuracy in abundance, I will also aim for a $10^{-5}$ relative error in total energy density. 
@@ -43,13 +47,13 @@ Testing shows that small changes to the energy density, cause a change in neutro
 
 Figure \ref{fig:Besselaccuracy} shows the deviation from the reference energy at select temperatures before and during e$^-$ e$^+$ annihilation. For low temperatures the sum converges quickly, which should come as no surprise as the series in \eqref{eq:electronseries}, converges more rapidly as $e^{-(E\pm\mu)/T}$ approaches 0. At high temperatures the sum converges at a much slower rate, but it still achieves sufficient accuracy with only 20 terms, which is the number I will use moving forward.
 
-
 \subsection{Interpolation}
 \label{sec:interpolation}
 For the interpolation on background variables an appropriate number of points must be selected. These points are spaced uniformly in log(t). Tests show that $10^4$ points is sufficient to achieve the required accuracy in final abundances. However, a low number of points cause the small discontinuities in the derivatives of temperature and scale factor. Due to the stiffness of the system this leads to instabilities, which have a major impact on the runtime. At the required resolution of $10^4$ the integration routine has to make twice as many call to the RHS, compared to smoother integration. At $2\times 10^5$ points the interpolations is smooth enough as to not cause issues for integration.
 
 
 \subsection{Network timings}
+\label{sec:networktiming}
 As  mentioned in section \ref{sec:pna}, we cannot calculate the abundance of all nuclei from the beginning, and have to add them gradually as the y become relevant. To find this point we can plot the deviation in final abundance as a function of the time at which we switch between networks.
 \subsubsection{Full network}
 We start by looking at the full network shown on figure \ref{fig:bignettime}, which has three distinct points. As long as the heavy nuclei are added before 2 minutes corresponding to $T>10^9$K they have time to reach the same abundance as they would if they were added earlier. Adding them later will delay the initial production, which will slowly lower the resulting final abundance. They will however still reach approximately the same final abundance until the late stages of BBN at around 7 minutes. Here the temperature will be to low for their formation, resulting in an increase in Lithium and Beryllium, as these are no longer consumed to produce heavy nuclei. The reaction involving ${}^{11}$C however come into effect much later than most other reactions and remain relevant even an hour after BBN. If ${}^{11}$C is added after this point, it will never achieve a significant final abundance, leading to a drop in its indirect daughter nuclei ${}^{9}$Be and ${}^{6}$Li. 
@@ -85,10 +89,10 @@ Unlike the heavier nuclei the at which we start calculating neutrons and protons
 
 \subsection{Neutrino decoupling}
 
-The main source of inaccuracy in this code is the assumption of complete neutrino decoupling. This assumption is reasonable as the only net transfer of energy between different particles is annihilation of electrons and positrons, which begins at around 1 MeV as shown on figure \ref{fig:rhoegammaT}. This is long after the neutrinos have decoupled, and therefore the energy is transferred to the photons, which are heated relative to the neutrinos by the well known factor $\sqrt[3]{11/4}$. There is however a small transfer of energy before the neutrinos completely decouple from the other particles. The result of this is a small increase in neutrino temperature relative to photon temperature of less than 1\% \cite{Hannestad:1995rs}. As both neutrinos and photons are ultrarelativistic, this change is inconsequential to the time evolution of the early universe, and should intuitively not have a significant impact on final abundances. This is however not the case, as is apparent from figure \ref{fig:initime}. The reason for this is that the higher photon temperature caused by instantaneous decoupling, effectively delays the onset of nucleosynthesis, since the baryons take longer to cool sufficiently. This has two main effects, the first being slightly lower baryon density at any given temperature, and the second that the universe will remain in any given temperature range for longer. Additionally, neutrino decoupling also affects the $p\leftrightharpoons n$ rates directly, as these rely on both exact temperature and non-thermal energy distribution of the neutrinos. When assuming complete neutrino decoupling, these effects lowers the abundance of ${}^4$He by 0.05\%, ${}^3$He by 0.1\%, and deuterium by 0.5\%, and increase ${}^7$Be by 0.5\%, (PRIMAT table V\cite{PRIMAT}). 
+The main source of inaccuracy in this code is the assumption of complete neutrino decoupling. This assumption is reasonable as the only net transfer of energy between different particles is annihilation of electrons and positrons, which begins at around 1 MeV as shown on figure \ref{fig:rhoegammaT}. This is long after the neutrinos have decoupled, and therefore the energy is transferred to the photons, which are heated relative to the neutrinos by the well known factor $\sqrt[3]{11/4}$. There is however a small transfer of energy before the neutrinos completely decouple from the other particles. The result of this is a small increase in neutrino temperature relative to photon temperature of less than 1\% \cite{Hannestad:1995rs}. As both neutrinos and photons are ultrarelativistic, this change is inconsequential to the time evolution of the early universe, and should intuitively not have a significant impact on final abundances. This is however not the case, as is apparent from figure \ref{fig:initime}. The reason for this is that the higher photon temperature caused by instantaneous decoupling, effectively delays the onset of nucleosynthesis, since the baryons take longer to cool sufficiently. This has two main effects, the first being slightly lower baryon density at any given temperature, and the second that the universe will remain in any given temperature range for longer. Additionally, neutrino decoupling also affects the $p\leftrightharpoons n$ reactions directly, as these rely on both exact temperature and non-thermal energy distribution of the neutrinos. When assuming complete neutrino decoupling, these effects lowers the abundance of ${}^4$He by 0.05\%, ${}^3$He by 0.1\%, and deuterium by 0.5\%, and increase ${}^7$Be by 0.5\%, (PRIMAT table V\cite{PRIMAT}). 
 
 
-Since my implementation uses estimated $p\leftrightharpoons n$ rates which do take into account incomplete neutrino decoupling, my results are primarily affected by the delaying of nucleosynthesis, caused by the inaccurate $T_\nu/T\gamma$ ratio. To reduce the deviation in $T_\nu/T\gamma$ ratio, we can decouple the neutrinos as close as possible to the point at which they actually decouple. This still assumes an instant rather than gradual decoupling, but nonetheless improves predicted abundances. The point at which neutrinos decouple obviously coincide with the freezeout of $p\leftrightharpoons n$ rates, and as shown on \ref{fig:npnettime}, we can safely begin both background and network integration at 27 GK corresponding to 2.3 MeV. 
+Since my implementation uses estimated $p\leftrightharpoons n$ rates which do take into account incomplete neutrino decoupling, my results are primarily affected by the delaying of nucleosynthesis, caused by the inaccurate $T_\nu/T\gamma$ ratio. To reduce the deviation in $T_\nu/T\gamma$ ratio, we can decouple the neutrinos as close as possible to the point at which they actually decouple. This still assumes an instant rather than gradual decoupling, but nonetheless improves predicted abundances. The point at which neutrinos decouple obviously coincide with the freezeout of $p\leftrightharpoons n$ reactions, and as shown on \ref{fig:npnettime}, we can safely begin both background and network integration at 27 GK corresponding to 2.3 MeV. 
 \begin{table}[ht]
     \begin{tabular}{l|llllll}
         & $Y_p \times 10$ & \hspace{-0.34em}$^{2}$H$ \times 10^{5}$ & \hspace{-0.34em}$^{3}$He$ \times 10^{5}$ & \hspace{-0.34em}$^{7}$Li $ \times 10^{10}$& \hspace{-0.34em}$^{6}$Li $ \times 10^{15}$& \hspace{-0.34em}$^{7}$Be $ \times 10^{10}$\\ \hline
@@ -100,7 +104,7 @@ Since my implementation uses estimated $p\leftrightharpoons n$ rates which do ta
     \label{tab:earlylatedecoup}
 \end{table}
 
-From table \ref{tab:earlylatedecoup} we clearly see the impact of neutrino decoupling. Compared to the expected changes determined by PRIMAT\cite{PRIMAT}, we see an increased impact on ${}^4$He and a reduced impact on ${}^7$Be and ${}^3$He. This can mostly be explained by the $p\leftrightharpoons n$ rates not being directly impacted in my implementation. The direct effect on $p\leftrightharpoons n$ increases the neutron abundance subsequently the abundance of all other nuclei, counteracting the effects on everything but ${}^7$Be, as well as ${}^3$He since its abundance actually increases as neutron abundance drops.%The direct effect only changes the neutron proton ratio, which partially cancels the changes introduced by the delay of nucleosynthesis, particularly in ${}^4$He abundance. Therefore, the theoretical systematic error in ${}^4$He is slightly higher, which we will explore further in section \ref{sec:Altercompare}.
+From table \ref{tab:earlylatedecoup} we clearly see the impact of neutrino decoupling. Compared to the expected changes determined by PRIMAT\cite{PRIMAT}, we see an increased impact on ${}^4$He and a reduced impact on ${}^7$Be and ${}^3$He. This can mostly be explained by the $p\leftrightharpoons n$ reactions not being directly impacted in my implementation. The direct effect on $p\leftrightharpoons n$ increases the neutron abundance subsequently the abundance of all other nuclei, counteracting the effects on everything but ${}^7$Be, as well as ${}^3$He since its abundance actually increases as neutron abundance drops.%The direct effect only changes the neutron proton ratio, which partially cancels the changes introduced by the delay of nucleosynthesis, particularly in ${}^4$He abundance. Therefore, the theoretical systematic error in ${}^4$He is slightly higher, which we will explore further in section \ref{sec:Altercompare}.
 \begin{figure}[ht]
     \includegraphics[width=5.1in]{figures/initime.pdf}
     \caption{Relative deviation on final abundances based on the initial time for background calculations. By construction the initial time coincides with the time of neutrino decoupling}
@@ -115,8 +119,8 @@ Though the errors associated neutrino decoupling are much greater than the achie
 To compare the results of this code to that of other contemporary BBN codes, I have chosen AlterBBN. The main reason for this is that my code is written in Python with much of the heavy computation being done directly in C. This makes it easier to interface with the C based AlterBBN than PArthENoPE or PRIMAT, which as previously mentioned are written in FORTRAN and Mathematica. 
 \begin{table}[ht]
     \begin{tabular}{l|llllll}
-        & $Y_p \times 10$ & \hspace{-0.34em}$^{2}$H$ \times 10^{5}$ & \hspace{-0.34em}$^{3}$He$ \times 10^{5}$ & \hspace{-0.34em}$^{7}$Li $ \times 10^{10}$& \hspace{-0.34em}$^{6}$Li $ \times 10^{15}$& \hspace{-0.34em}$^{7}$Be $ \times 10^{10}$\\ \hline
-    This work & 2.472            & 2.536 & 1.040 & 4.706 & 7.523 & 4.404   \\ \hline
+        & $Y_p \times 10$ & \hspace{-0.34em}$^{2}$H$ \times 10^{5}$ & \hspace{-0.34em}$^{3}$He$ \times 10^{5}$ & \hspace{-0.34em}$^{7}$Li $ \times 10^{10}$& \hspace{-0.34em}$^{6}$Li $ \times 10^{14}$& \hspace{-0.34em}$^{7}$Be $ \times 10^{10}$\\ \hline
+    This work & 2.472            & 2.536 & 1.040 & 4.706 & 0.752 & 4.404   \\ \hline
     AlterBBN & 2.474            & 2.467 & 1.034 & 5.363 & 1.087 & 5.075   \\ %\hline
     $\quad +/-$ & 0.003           & 0.038 & 0.016 & 0.352 & 1.085 & 0.343      
     \end{tabular}
@@ -138,21 +142,85 @@ To rule out cosmological differences, we can compare the predicted background pa
 To see the impact of these background differences we can integrate the reaction network using the background parameters from AlterBBN. At its highest precision setting AlterBBN takes 64421 discreet time steps, which based the test in section \ref{sec:interpolation} is sufficient to achieve high accuracy with the existing interpolation routine. AlterBBN does however not directly track the scale factor, so we must instead track the baryon density using the neutrino temperature. Since the tabulated $p\leftrightharpoons n$ rates used in this network only depend on temperature, we don't need to know the exact value of $n_b$ before the other reactions become relevant at around 100 seconds, (figure \ref{fig:midnettime}). At this time neutrinos have actually decoupled completely, and therefore the relation $T_\nu \propto a^{-1}$ holds exactly. This allows the baryon number density to be determined by $n_b= C \cdot T_\nu^3$ with the constant $C$ being set by requiring $\eta=6.1$e-$10$ at late times.
 \begin{table}[ht]
     \begin{tabular}{l|llllll}
-               & $Y_p \times 10$ & \hspace{-0.34em}$^{2}$H$ \times 10^{5}$ & \hspace{-0.34em}$^{3}$He$ \times 10^{5}$ & \hspace{-0.34em}$^{7}$Li $ \times 10^{10}$& \hspace{-0.34em}$^{6}$Li $ \times 10^{15}$& \hspace{-0.34em}$^{7}$Be $ \times 10^{10}$\\ \hline
-    100 MeV & 2.470            & 2.532 & 1.040 & 4.712 & 7.503 & 4.411     \\ \hline
-    2.3 MeV  & 2.472            & 2.536 & 1.040 & 4.706 & 7.523 & 4.404    \\ \hline
-    \begin{tabular}[c]{@{}l@{}}This work using \\ AlterBBN $T_\gamma$ \& $T_\nu$ \end{tabular} & 2.473            & 2.540 & 1.041 & 4.699 & 7.539 & 4.398   \\ \hline
+               & $Y_p \times 10$ & \hspace{-0.34em}$^{2}$H$ \times 10^{5}$ & \hspace{-0.34em}$^{3}$He$ \times 10^{5}$ & \hspace{-0.34em}$^{7}$Li $ \times 10^{10}$& \hspace{-0.34em}$^{6}$Li $ \times 10^{14}$& \hspace{-0.34em}$^{7}$Be $ \times 10^{10}$\\ \hline
+    100 MeV & 2.470            & 2.532 & 1.040 & 4.712 & 0.750 & 4.411     \\ \hline
+    2.3 MeV  & 2.472            & 2.536 & 1.040 & 4.706 & 0.752 & 4.404    \\ \hline
+    \begin{tabular}[c]{@{}l@{}}This work using \\ AlterBBN $T_\gamma$ \& $T_\nu$ \end{tabular} & 2.473            & 2.540 & 1.041 & 4.699 & 0.754 & 4.398   \\ \hline
     AlterBBN & 2.474            & 2.467 & 1.034 & 5.363 & 1.087 & 5.075   \\ %\hline
     $\quad +/-$ & 0.003           & 0.038 & 0.016 & 0.352 & 1.085 & 0.343     
     \end{tabular}
-    \caption{Comparison of final abundances for various background parameters, together with result from AlterBBN}
+    \caption{Comparison of final abundances for various background parameters. Showing results of this network using early and late instant neutrino decoupling, as well as the AlterBBN background which accounts for incomplete decoupling. The last row shows result from the AlterBBN background using their own abundance calculations}
     \label{tab:longAlterabun}
 \end{table}
 
-The result of using the background parameters of AlterBBN are displayed on Table \ref{tab:longAlterabun}. Though somewhat obscured by the lack of significant digits, relative change caused by using the AlterBBN background is almost the exact same as that caused by changing the timing of instant neutrino decoupling. This supports the previous assumption, that the only major difference between the cosmological calculation of AlterBBN and this code, is their inclusion of incomplete neutrino decoupling.
+The result of using the background parameters of AlterBBN are displayed on Table \ref{tab:longAlterabun}. Though somewhat obscured by the lack of significant digits, relative change caused by using the AlterBBN background is equal to 90\% of the change caused by changing the timing of instant neutrino decoupling. This is due to the increase in $T_\nu/T_\gamma$ predicted by full incomplete decoupling, being 1.9 times greater than what is achieved by simply delaying instant decoupling. ${}^4$He however only increases by 68\% of that caused by delayed decoupling. This is due to ${}^4$He being governed by the $p\leftrightharpoons n$ reactions, which take place while $T_\nu/T_\gamma$ is still increasing. This supports the previous assumption, that the only major difference between the cosmological calculation of AlterBBN and this code, is their inclusion of incomplete neutrino decoupling.
+
+\subsection{Reaction network}
+
+Since the difference in background introduces minimal abundance corrections, the discrepancy between the AlterBBN results and mine must unsurprisingly be due to differences in the reaction network. To see where these differences are we can plot the relative difference between abundances as they evolve during BBN, displayed on figure \ref{fig:AlterBBNdeltaY}. 
+\begin{figure}[ht]
+    \includegraphics[width=5.1in]{figures/AlterBBNdeltaY.pdf}
+    \caption{Relative deviation on abundances between this code and AlterBBN, during the various stages of BBN. To rule out cosmological differences, the AlterBBN background parameters are used for both calculations. Plot is linear in the region $\pm 10^{-3}$ and logarithmic outside}
+    \label{fig:AlterBBNdeltaY}
+\end{figure}
+Staring with the lightest nuclei, we see the small difference in neutron proton ratio, and how this despite everything else, winds up resulting in an almost identical difference in $Y_p$. However, the most striking feature are the periodic spikes in relative abundance, affecting almost every single nuclei. This jaggedness originates in AlterBBN, and is caused by their implementation of certain reaction rates. As described in section \ref{sec:pna}, I use smooth fits of experimental data to obtain appropriate values for the reaction rates at any temperature. With every one of these rates stemming from the most recent snapshot of the REACLIB database\cite{REACLIB} available in pynucastro\cite{pynucastro2}. AlterBBN on the other hand uses a manually curated list of reaction rates, with a myriad of different sources and implementations. A few of these rates are tabulated, and to obtain values between the tabulated temperature steps, AlterBBN simply uses nearest neighbor interpolation. This is hard coded as a series of consecutive else/if statements, which return the value of the reaction rate in discreet steps according to the nearest tabulated value. The spikes happen whenever these rates assume a new value. As an example AlterBBN uses a tabulated ${}^2\text{H}+p\rightarrow {}^3\text{He}$ rate from \textcite{Coc_et_al_2015}, which is responsible for the small early spikes in ${}^3\text{He}$, and other nuclei that depend on its abundance. This can be confirmed by noting that the early spikes peak at 1.875, 1.625, 1.375, and 1.125 GK, which happen to be the exact midpoints between the tabulated values which are at 2, 1.75, 1.50, 1.25, and 1 GK. 
+
+Another notable difference is the relative increase and subsequent drop in ${}^4\text{He}$ abundances, which takes place between 2 and 20 seconds. This is caused by the ${}^3\text{He}+n\rightarrow {}^4\text{He}$ rate. Here AlterBBN uses a linear approximation for the rate, which stems from the original Wagoner code\cite{Wagoner69}. Though inaccurate, this doesn't actually have a significant impact on final abundances since the reaction only dominates ${}^4\text{He}$ production at very early times. 
 
 
-\section{Reaction network}
+
+
+
+This leaves the main outliers, namely ${}^7\text{Li}$ and thereby ${}^7\text{Be}$. The primary reactions responsible for creating and destroying ${}^7\text{Li}$ are ${}^3\text{H}+{}^4\text{He}\rightarrow {}^7\text{Li}$ and ${}^7\text{Li} + p\rightarrow 2{}^4\text{He}$, with ${}^7\text{Be}$ being governed by ${}^3\text{He}+{}^4\text{He}\rightarrow {}^7\text{Be}$ and ${}^7\text{Be} + n\rightarrow {}^7\text{Li} + p$. Compared to these, all other reactions are completely insignificant, which can be seen on \cref{fig:Be7destruct,fig:Be7create,fig:Li7destruct,fig:Li7create}. Since AlterBBN and my network use different rates for each one of these reactions, 
+
+
+For each of these four reactions a different rate is used by . 
+
+\subsubsection{Modifying the Network with AlterBBN rates}
+Due to the modular nature of my reaction network it is quite easy to simply swap the relevant reaction rates for those used by AlterBBN. Using the four ${}^7\text{Li}$ and ${}^7\text{Be}$ rates from AlterBBN as well as the previously mentioned ${}^3\text{He}+n\rightarrow {}^4\text{He}$ rate, a new set of final abundances can be obtained, \cref{tab:Alterratesabun}. 
+\begin{table}[ht]
+    \begin{tabular}{l|llllll}
+               & $Y_p \times 10$ & \hspace{-0.34em}$^{2}$H$ \times 10^{5}$ & \hspace{-0.34em}$^{3}$He$ \times 10^{5}$ & \hspace{-0.34em}$^{7}$Li $ \times 10^{10}$& \hspace{-0.34em}$^{6}$Li $ \times 10^{14}$& \hspace{-0.34em}$^{7}$Be $ \times 10^{10}$\\ \hline
+    Default rates  & 2.473    & 2.540 & 1.041 & 4.699 & 0.754 & 4.398    \\ \hline
+    \begin{tabular}[c]{@{}l@{}}Rates from  \\ AlterBBN \end{tabular} & 2.473    & 2.540 & 1.041 & 5.133 & 0.754 & 4.837    \\ \hline
+    AlterBBN & 2.474            & 2.467 & 1.034 & 5.363 & 1.087 & 5.075   \\ %\hline
+    $\quad +/-$ & 0.003           & 0.038 & 0.016 & 0.352 & 1.085 & 0.343     
+    \end{tabular}
+    \caption{Final abundances for the default network, the network using select AlterBBN rates, and the results from AlterBBN}
+    \label{tab:Alterratesabun}
+\end{table}
+As expected only the abundances of ${}^7\text{Li}$ and ${}^7\text{Be}$ are affected, since the total abundances of light nuclei involved in the four reactions are much higher. 
+Though the modified rates bring ${}^7\text{Li}$ and ${}^7\text{Be}$ abundances within the estimated uncertainty of AlterBBN, they still deviate significantly. To explain this figure \ref{fig:AlterBBNdeltaY} can be recreated using the modified reaction network. 
+
+
+Furthermore, the "new" ${}^3\text{He}+n\rightarrow {}^4\text{He}$ rate doesn't affect the final abundances. 
+
+
+The abundances still deviate from that of AlterBBN, which is 
+
+
+Using the major ${}^7\text{Li}$ and ${}^7\text{Be}$ rates from AlterBBN, we get updated final abundance
+
+
+\begin{figure}[ht]
+    \includegraphics[width=5.1in]{figures/AlterratesBBNdeltaY.pdf}
+    \caption{Same as \cref{fig:AlterBBNdeltaY}, but with the network using the same rates as AlterBBN for the reactions ${}^3\text{He}+n\rightarrow {}^4\text{He}$, ${}^7\text{Li}$ are ${}^3\text{H}+{}^4\text{He}\rightarrow {}^7\text{Li}$, ${}^7\text{Li} + p\rightarrow 2{}^4\text{He}$, ${}^3\text{He}+{}^4\text{He}\rightarrow {}^7\text{Be}$, and ${}^7\text{Be} + n\rightarrow {}^7\text{Li} + p$}
+    \label{fig:AlterratesBBNdeltaY}
+\end{figure}
+
+
+
+
+I recreate figure \ref{fig:AlterBBNdeltaY} resulting in figure \ref{fig:AlterratesBBNdeltaY}. Looking at the early abundances we confirm that the initial difference in light nuclei abundance was indeed caused by the ${}^3\text{He}+n\rightarrow {}^4\text{He}$ rate. For the 
+
+
+
+Comparing the swapping out the 
+
+
+
+
+AlterBBN uses a different rate for each of these which 
 
 
 
@@ -160,6 +228,5 @@ The result of using the background parameters of AlterBBN are displayed on Table
 \section{Final abundances}
 
 
-1 dimensional nearest neighbor interpolation. 
-Hard coded as a series of sometimes more than a hundred consecutive else/if statements which return the value of reaction rate in discreet steps.
+
 \section{Nuclear solutions to the Lithium problem?}

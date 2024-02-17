@@ -56,7 +56,7 @@ This is then followed by a traditional second order Runge-Kutta integration, wit
 
 PRIMAT on the other hand uses a first order BDF scheme for $T>\num{1.25e9}$ K, switching to second order at lower temperatures for faster computation.
 
-I have chosen to use an implicit Runge-Kutta method of the Radau IIA family of order 5, as implemented in SciPy. This method is perfectly suited to handle stiff problems such as the reaction network, and based on testing it is the most stable method among those available in SciPy.
+I have chosen to use an implicit Runge-Kutta method of the Radau IIA family of order 5, as implemented in SciPy\cite{SciPy}. This method is perfectly suited to handle stiff problems such as the reaction network, and based on testing it is the most stable method among those available in SciPy.
 
 %Based on my testing this ensures maximum stability, while also being able to utilize the analytical Jacobian derived in equations\eqref{eq:jacterms1}\eqref{eq:jacterms2}.
 \subsection{Simplifications of the problem}
