@@ -1343,7 +1343,7 @@ def p_t__he4(rate_eval, tf):
 def he4_t__li7(rate_eval, tf):
     # t + he4 --> li7
     rate = 0.0
-    '''
+    
     # de04 
     rate += np.exp(  13.6162 + -8.0805*tf.T913i + -0.217514*tf.T913
                   + -0.114859*tf.T9 + 0.0470043*tf.T953 + -0.666667*tf.lnT9)
@@ -1357,7 +1357,7 @@ def he4_t__li7(rate_eval, tf):
                 -0.00008714468*pow(tf.T9,13.))*pow(tf.T9,-1./2.))/(np.exp(8.4e-7*tf.T9)*pow(1.+1.78616593*tf.T9,3.))
     
     else: rate=807.406
-    
+    '''
 
     rate_eval.he4_t__li7 = rate
 
@@ -1389,7 +1389,7 @@ def p_he3__he4__weak__bet_pos_(rate_eval, tf):
 def he4_he3__be7(rate_eval, tf):
     # he3 + he4 --> be7
     rate = 0.0
-    '''
+    
     # cd08n
     rate += np.exp(  17.7075 + -12.8271*tf.T913i + -3.8126*tf.T913
                   + 0.0942285*tf.T9 + -0.00301018*tf.T953 + 1.33333*tf.lnT9)
@@ -1399,7 +1399,7 @@ def he4_he3__be7(rate_eval, tf):
     
     '''
     rate +=np.exp(15.609867-(12.82707707/pow(tf.T9,1./3.))-0.6666667*tf.lnT9)*((1-0.020478*pow(tf.T9,2./3.)+0.211995*pow(tf.T9,4./3.))/(1+0.255059*pow(tf.T9,2./3.)+0.338573*pow(tf.T9,4./3.)))
-	
+	 '''
 
 
     rate_eval.he4_he3__be7 = rate
@@ -2086,7 +2086,7 @@ def p_li7__d_li6(rate_eval, tf):
 def p_li7__he4_he4(rate_eval, tf):
     # li7 + p --> he4 + he4
     rate = 0.0
-    '''
+    
     # de04 
     rate += np.exp(  11.9576 + -8.4727*tf.T913i + 0.417943*tf.T913
                   + 5.34565*tf.T9 + -4.8684*tf.T953 + -0.666667*tf.lnT9)
@@ -2116,7 +2116,7 @@ def p_li7__he4_he4(rate_eval, tf):
         rate=1.53403e6
         rate+=84516.7
 
-    
+    '''
 
 
     rate_eval.p_li7__he4_he4 = rate
@@ -2221,7 +2221,7 @@ def he4_li8__n_b11(rate_eval, tf):
 def n_be7__p_li7(rate_eval, tf):
     # be7 + n --> p + li7
     rate = 0.0
-    '''
+    
     # db18 
     rate += np.exp(  21.7899 + 0.000728098*tf.T9i + -0.30254*tf.T913i + -0.3602*tf.T913
                   + 0.17472*tf.T9 + -0.0223*tf.T953 + -0.4581*tf.lnT9)
@@ -2233,7 +2233,7 @@ def n_be7__p_li7(rate_eval, tf):
         +7.6425157e7*pow(tf.T9,7./2.)-2.282944e7*pow(tf.T9,-3./2.) / np.exp(0.050351813/tf.T9))
 
     else: rate=1.28039e9
-    
+    '''
     rate_eval.n_be7__p_li7 = rate
 
 @numba.njit()

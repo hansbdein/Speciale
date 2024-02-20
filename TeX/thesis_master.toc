@@ -42,6 +42,6 @@
 \contentsline {subsection}{\numberline {3.2.2}Reaction network}{30}{subsection.127}%
 \contentsline {subsubsection}{Modifying the Network with AlterBBN rates}{31}{section*.129}%
 \contentsline {section}{\numberline {3.3}Final abundances}{32}{section.132}%
-\contentsline {section}{\numberline {3.4}Nuclear solutions to the Lithium problem?}{32}{section.133}%
-\contentsline {chapter}{Bibliography}{33}{section*.135}%
-\contentsline {appendix}{\chapternumberline {A}Additional plots}{35}{appendix.136}%
+\contentsline {subsubsection}{$\eta $ and the Lithium problem}{33}{section*.134}%
+\contentsline {chapter}{Bibliography}{35}{section*.137}%
+\contentsline {appendix}{\chapternumberline {A}Additional plots}{37}{appendix.138}%
