@@ -9,9 +9,44 @@
 
 \chapter{Introduction}
 \label{chap:intro}
-This thesis is about nucleosynthesis
 
-\section{A brief history of early nucleosynthesis}
-A second after the Big Bang, the universe is at $10^10$K. Though quite hot, this temperature is low enough that neutrons and protons can no longer maintain thermodynamics equilibrium, freezing their ratio at one to five. At approximately 200 seconds the universe has cooled sufficiently so that high energy photons can no longer destroy deuterium. This causes almost all neutrons to be use in the creation of deuterium, which is rapidly converted to helium. Due to the delay caused by deuterium, the temperature and density of the universe will be to low to create any more than trace amounts of heavier elements. And so a few minutes after it began, primordial nucleosynthesis ends. Barring radioactive decay, the abundance of the various elements will remain unchanged, until the first star appear $10^8$ years later. 
+Everything we see around us is made of atoms, which at their core contain a nucleus. Atomic nuclei are the fundamental building blocks which make up the stars, planets, and the humans that live on them. Understanding the creation of atomic nuclei is to understand the origin of the world itself. 
 
 
+\subsection*{A Brief History of Early Nucleosynthesis}
+When the universe was only a microsecond old, quarks coalesced to form the first protons and neutrons\cite{NASAUniversehistory}. Initially, there was an equal amount of neutrons and protons, but as the universe cooled the slightly lighter protons became favored. The neutrons and protons remained in thermal equilibrium until the universe cooled to around $10^{10}$K, a second after the Big Bang. Here the interaction between neutrinos and baryons becomes too weak to maintain thermodynamic equilibrium, freezing the ratio of neutrons and protons at one to five. The protons and neutrons can fuse to created deuterium, but these nuclei are short-lived as their low binding energy make them vulnerable to destruction by the abundant high energy photons. As these photons cool the average lifetime of deuterium increases,
+giving the deuterium nuclei more time to combine into much more stable helium nuclei. The rate of helium creation increases until where it becomes great enough to rapidly convert all available neutrons into helium at approximately 200 seconds. Due to the delay caused by deuterium, the temperature and density of the universe will be too low to create any more than trace amounts of heavier elements. And so a few minutes after it began, primordial nucleosynthesis ends. Barring radioactive decay, the abundance of the various elements will remain unchanged, until the first stars appear $10^8$ years later\cite{klessen2023firststars}. 
+The first computer code describing this process was created by Robert Wagoner in the late sixties\cite{Wagoner67}. Since then many others have followed, with each implementation having its own advantages and disadvantages.
+\clearpage
+\section{Objective}
+%Predicting the abundance of each element created in this process, and comparing with observations, can grant us valuable insight into the mechanics of the early universe. 
+The objective of this thesis is to create a new state of the art BBN code from first principles. To differentiate this code from existing implementations, it must fulfill these five requirements:
+
+\begin{itemize}
+    \item \textbf{Accessibility}: The code needs to run on any machine without the use of any proprietary software or special environments. %To achieve this, my code will require nothing but Python 3.0 and publicly available packages.
+    \item \textbf{Accuracy}: The results must be consistent with those of contemporary BBN codes. Additionally, the results must be internally consistent with well constrained numerical errors. 
+    \item \textbf{Alacrity}: The code must be as fast as other contemporary BBN codes.
+    \item \textbf{Agnostic reaction rates}: The code should use nuclear reaction rates from a single publicly available database, to avoid any bias in rate selection.
+    \item \textbf{Adaptability}: The code should be flexible, and allow the investigation of various physical processes without changing the basic structure.
+\end{itemize}
+
+\section{Outline}
+
+This thesis has three main parts:
+
+\noindent First we will go over the physics required to describe the Big Bang nucleosynthesis. This will entail deriving every necessary relation from fundamental equations of cosmology, statistical physics, and thermodynamics. 
+
+\noindent Next, we will briefly go over the numerical implementation of BBN. First going over the history and numerical difficulties associated with BBN calculations. \textcolor{orange}{I will then briefly cover how I overcame these, and how this implementation works.}
+
+\noindent Finally, we will look at the results. First exploring how they depend on various choices made to solve the problem of BBN, and then comparing with the results of other codes.
+
+
+
+\subsubsection{Terminology}
+
+In the later sections of the thesis predicted values for various nuclear abundances will be shown. For historical reasons, these are usually given as a molar faction relative to the abundance of hydrogen. That is to say the number of nucleons contained in the particular isotope relative to the amount of free protons. ${}^4$He is an exception and is instead expressed as a fraction of total nucleons and denoted by $Y_p$. Though not entirely accurate both of these molar fractions are often referred to as mass fractions. 
+
+As BBN represents a crossover of nuclear physics and astronomy, temperature is interchangeably measured in MeV and Kelvin. Here it is useful to remember MeV$=11.6\times10^9 $K or simply MeV$\approx 10^{10}$K.
+
+
+\textcolor{orange}{Her skal nok tilføjes mere, afhængigt af hvilke termer DIG, korrekturlæserne ikke kender :)}

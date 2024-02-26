@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/application-exit.png</file>
+        <file>images/arrow-down.png</file>
+        <file>images/arrow-up.png</file>
+        <file>images/delete.png</file>
+        <file>images/dialog-ok-apply.png</file>
+        <file>images/edit.png</file>
+        <file>images/help-about.png</file>
+        <file>images/icon.png</file>
+        <file>images/logofed_trasp.png</file>
+        <file>images/logo_INFN.png</file>
+        <file>images/sirenab.png</file>
+    </qresource>
+</RCC>

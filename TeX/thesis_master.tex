@@ -18,7 +18,7 @@
 
 % Use memoir!!!
 \documentclass[%
-% final,           % Un-comment when finished (to e.g. remove watermark)
+ final,           % Un-comment when finished (to e.g. remove watermark)
 11pt,
 openright,
 twoside,
@@ -29,8 +29,8 @@ a4paper
 
 % Global definition: Name of the project (e.g. for the headers)
 % NOTE: The text of the front page is defined manually!
-\newcommand{\projecttitle}{Big Bang Nucleosynthesis}
-\newcommand{\projecttitledanish}{Big Bang Kernesyntese}
+\newcommand{\projecttitle}{APODORA: A Novel Code for Describing Big Bang Nucleosynthesis}
+\newcommand{\projecttitledanish}{APODORA: En ny kode til at beskrive Big Bang Kernesyntese}
 
 % Read the actual preamble
 \input{preamble}
@@ -73,10 +73,12 @@ a4paper
 
 % Preface (Danish: Forord)
 % [comment-out if not required]
-\include{front/preface}
+% \include{front/preface}
 
 % Table of contents
 \clearpage
+\setcounter{tocdepth}{2}
+%\setcounter{secnumdepth}{4}
 \tableofcontents*
 
 % Introduction (as an actual chapter, but *without* a number)
@@ -100,11 +102,11 @@ a4paper
 \include{main/BBNcodes}
 
 
-% Chapter 1
+% Chapter 3
 \include{main/results}
 
 
-
+\include{main/conclusion}
 % ~~~~~~~~~~~~
 % Bibliography
 % ~~~~~~~~~~~~

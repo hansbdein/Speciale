@@ -317,6 +317,37 @@
       \verb astro-ph/9506015
       \endverb
     \endentry
+    \entry{C_Bessel}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=51b519753f1b78a01c75063940635a6e}{%
+           family={Vogelaar},
+           familyi={V\bibinitperiod},
+           given={M.G.R.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Kapteyn Institute Groningen}%
+      }
+      \strng{namehash}{51b519753f1b78a01c75063940635a6e}
+      \strng{fullhash}{51b519753f1b78a01c75063940635a6e}
+      \strng{bibnamehash}{51b519753f1b78a01c75063940635a6e}
+      \strng{authorbibnamehash}{51b519753f1b78a01c75063940635a6e}
+      \strng{authornamehash}{51b519753f1b78a01c75063940635a6e}
+      \strng{authorfullhash}{51b519753f1b78a01c75063940635a6e}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.atnf.csiro.au/computing/software/gipsy/sub/bessel.c}}
+      \field{title}{{bessel.c}}
+      \field{year}{1998}
+      \verb{urlraw}
+      \verb https://www.atnf.csiro.au/computing/software/gipsy/sub/bessel.c
+      \endverb
+      \verb{url}
+      \verb https://www.atnf.csiro.au/computing/software/gipsy/sub/bessel.c
+      \endverb
+    \endentry
     \entry{Ryden}{book}{}
       \name{author}{1}{}{%
         {{hash=de52e4aaa6f5ba7e54dc5bebc47e8675}{%
@@ -467,6 +498,51 @@
       \verb http://dx.doi.org/10.1088/1475-7516/2004/12/010
       \endverb
     \endentry
+    \entry{IPython:2007}{article}{}
+      \name{author}{2}{}{%
+        {{hash=5de35d0202422daf0351f0bb10387179}{%
+           family={Pérez},
+           familyi={P\bibinitperiod},
+           given={Fernando},
+           giveni={F\bibinitperiod}}}%
+        {{hash=f274556cc2254c7daba814330ce66f81}{%
+           family={Granger},
+           familyi={G\bibinitperiod},
+           given={Brian\bibnamedelima E.},
+           giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE Computer Society}%
+      }
+      \strng{namehash}{2a75ab97ec10470aa2f392e2ae34eb5b}
+      \strng{fullhash}{2a75ab97ec10470aa2f392e2ae34eb5b}
+      \strng{bibnamehash}{2a75ab97ec10470aa2f392e2ae34eb5b}
+      \strng{authorbibnamehash}{2a75ab97ec10470aa2f392e2ae34eb5b}
+      \strng{authornamehash}{2a75ab97ec10470aa2f392e2ae34eb5b}
+      \strng{authorfullhash}{2a75ab97ec10470aa2f392e2ae34eb5b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1521-9615}
+      \field{journaltitle}{Computing in Science and Engineering}
+      \field{month}{5}
+      \field{number}{3}
+      \field{title}{{IP}ython: a System for Interactive Scientific Computing}
+      \field{volume}{9}
+      \field{year}{2007}
+      \field{pages}{21\bibrangedash 29}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1109/MCSE.2007.53
+      \endverb
+      \verb{urlraw}
+      \verb https://ipython.org
+      \endverb
+      \verb{url}
+      \verb https://ipython.org
+      \endverb
+    \endentry
     \entry{REACLIB}{article}{}
       \name{author}{13}{}{%
         {{hash=e66aaca6e35e81108b6e50dc46334994}{%
@@ -557,6 +633,56 @@
       \verb 10.1088/0067-0049/189/1/240
       \endverb
       \keyw{nuclear reactions,nucleosynthesis,abundances,X-rays: bursts}
+    \endentry
+    \entry{CLASS_Diego_Blas_2011}{article}{}
+      \name{author}{3}{}{%
+        {{hash=7c8bf385e0343a63ecd10081c79ce911}{%
+           family={Blas},
+           familyi={B\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+        {{hash=b1d70423463e64684eea42af7f584996}{%
+           family={Lesgourgues},
+           familyi={L\bibinitperiod},
+           given={Julien},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5c39fd1d0edd78184803fd2e8c7cf8a0}{%
+           family={Tram},
+           familyi={T\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{99c1255b62132f55d52790b38871c39c}
+      \strng{fullhash}{99c1255b62132f55d52790b38871c39c}
+      \strng{bibnamehash}{99c1255b62132f55d52790b38871c39c}
+      \strng{authorbibnamehash}{99c1255b62132f55d52790b38871c39c}
+      \strng{authornamehash}{99c1255b62132f55d52790b38871c39c}
+      \strng{authorfullhash}{99c1255b62132f55d52790b38871c39c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1475-7516}
+      \field{journaltitle}{Journal of Cosmology and Astroparticle Physics}
+      \field{month}{7}
+      \field{number}{07}
+      \field{title}{The Cosmic Linear Anisotropy Solving System (CLASS). Part II: Approximation schemes}
+      \field{volume}{2011}
+      \field{year}{2011}
+      \field{pages}{034\bibrangedash 034}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1475-7516/2011/07/034
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1088/1475-7516/2011/07/034
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1088/1475-7516/2011/07/034
+      \endverb
     \endentry
     \entry{Coc_et_al_2015}{article}{}
       \name{author}{7}{}{%
@@ -3346,6 +3472,37 @@
       \verb http://dx.doi.org/10.1016/j.cpc.2021.108205
       \endverb
     \endentry
+    \entry{klessen2023firststars}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=250705693b4e366f618ffff7cdc69889}{%
+           family={Klessen},
+           familyi={K\bibinitperiod},
+           given={Ralf\bibnamedelima S.},
+           giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=108b07949bf08034ae65d7ce8796f24a}{%
+           family={Glover},
+           familyi={G\bibinitperiod},
+           given={Simon\bibnamedelimb C.\bibnamedelimi O.},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+      }
+      \strng{namehash}{4e071097e3b72e3e329315ca23cba641}
+      \strng{fullhash}{4e071097e3b72e3e329315ca23cba641}
+      \strng{bibnamehash}{4e071097e3b72e3e329315ca23cba641}
+      \strng{authorbibnamehash}{4e071097e3b72e3e329315ca23cba641}
+      \strng{authornamehash}{4e071097e3b72e3e329315ca23cba641}
+      \strng{authorfullhash}{4e071097e3b72e3e329315ca23cba641}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{astro-ph.CO}
+      \field{eprinttype}{arXiv}
+      \field{title}{The first stars: formation, properties, and impact}
+      \field{year}{2023}
+      \verb{eprint}
+      \verb 2303.12500
+      \endverb
+    \endentry
     \entry{pynucastro2}{article}{}
       \name{author}{9}{}{%
         {{hash=fed280faec792c98df45c513226bb877}{%
@@ -3424,6 +3581,21 @@
       \endverb
       \verb{url}
       \verb https://dx.doi.org/10.3847/1538-4357/acbaff
+      \endverb
+    \endentry
+    \entry{NASAUniversehistory}{misc}{}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labeltitlesource}{shorttitle}
+      \field{howpublished}{\url{https://science.nasa.gov/universe/overview/}}
+      \field{note}{NASA}
+      \field{shorttitle}{{NASA}}
+      \field{title}{{\textit{Cosmic History}}}
+      \verb{urlraw}
+      \verb https://science.nasa.gov/universe/overview/
+      \endverb
+      \verb{url}
+      \verb https://science.nasa.gov/universe/overview/
       \endverb
     \endentry
     \entry{NIST:DLMF}{misc}{}

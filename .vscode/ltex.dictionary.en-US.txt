@@ -21,3 +21,5 @@ photofission
 ultrarelativistic
 freezeout
 unphysical
+bremsstrahlung
+APODORA
