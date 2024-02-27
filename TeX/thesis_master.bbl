@@ -850,6 +850,40 @@
       \verb http://dx.doi.org/10.3847/1538-4357/aaab53
       \endverb
     \endentry
+    \entry{griffiths_introduction_2018}{book}{}
+      \name{author}{2}{}{%
+        {{hash=a00328547222c4a2a201442ee59dccfd}{%
+           family={Griffiths},
+           familyi={G\bibinitperiod},
+           given={David\bibnamedelima J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=7a89e36dbf4f2fc28b7fa782d433b9e9}{%
+           family={Schroeter},
+           familyi={S\bibinitperiod},
+           given={Darrell\bibnamedelima F.},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cambridge ; New York, NY}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{53401a5b91631c47aa1d458117bf3f6f}
+      \strng{fullhash}{53401a5b91631c47aa1d458117bf3f6f}
+      \strng{bibnamehash}{53401a5b91631c47aa1d458117bf3f6f}
+      \strng{authorbibnamehash}{53401a5b91631c47aa1d458117bf3f6f}
+      \strng{authornamehash}{53401a5b91631c47aa1d458117bf3f6f}
+      \strng{authorfullhash}{53401a5b91631c47aa1d458117bf3f6f}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Third edition}
+      \field{isbn}{978-1-107-18963-8}
+      \field{title}{Introduction to quantum mechanics}
+      \field{year}{2018}
+    \endentry
     \entry{PRIMAT}{article}{}
       \name{author}{4}{}{%
         {{hash=fbf70ec8b88afa41c43992f8cfb10b66}{%
