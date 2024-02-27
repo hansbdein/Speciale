@@ -393,7 +393,7 @@ Though none of the equations describing BBN have any explicit time dependence, i
     \int_{0}^{t_i}dt=\int_{\infty}^{T_i}\left(\diff{T}{t}\right)^{-1}dT=-\int_{\infty}^{T_i}(24\pi G\rho_{tot})^{-1/2}\frac{\diff{\rho_{set}(T)}{T}}{\rho_{set}(T) + P_{set}(T)}dT
     \label{eq:ti_integral}
 \end{align}
-For high temperatures, we can assume that the electrons are completely relativistic. Based on the result for neutrinos \eqref{rhonu}, we know that the energy of a massless fermion differs from that of a boson by a factor of $7/8$. Accounting for the g factors, we get $\rho_e=7/4 \rho_\gamma$. At temperatures above 2 MeV the relativistic approximation deviates by less than 1\%, see figure \ref{fig:rhoegammaT}.
+For high temperatures, we can assume that the electrons are completely relativistic. Based on the result for neutrinos \eqref{rhonu}, we know that the energy of a massless fermion differs from that of a boson by a factor of $7/8$. Accounting for the g factors, we get $\rho_e=7/4 \rho_\gamma$. At temperatures above 2 MeV, the relativistic approximation deviates by less than 1\%, see figure \ref{fig:rhoegammaT}.
 \begin{figure}[ht]
     %\centering
     \includegraphics[width=5.1in]{figures/rhoegammaT.pdf}
@@ -401,7 +401,7 @@ For high temperatures, we can assume that the electrons are completely relativis
     \label{fig:rhoegammaT}
 \end{figure}
 
-At these temperatures we can safely ignore the baryon contribution, which combined with \eqref{Prho3}, allows us to calculate the non-decoupled terms.
+At these temperatures, we can safely ignore the baryon contribution, which, combined with \eqref{Prho3}, allows us to calculate the non-decoupled terms.
 \begin{align}
     \frac{\diff{\rho_{set}(T)}{T}}{\rho_{set}(T) + P_{set}(T)}=\frac{3}{4}\frac{1}{\rho_{set}(T)}\diff{\rho_{set}(T)}{T}=3T^{-1}
 \end{align}
@@ -415,7 +415,7 @@ Inserting into \eqref{eq:ti_integral}, we get the initial time,
     t_i&=\frac{3}{2}( \frac{43}{5}G\pi^3)^{-1/2}T_i^{-2}
     \label{eq:t_ini}
 \end{align}
-This relation is valid at all times before decoupling, and remains approximately true at later times, as shown in figure \ref{fig:Temperature}.
+This relation is valid at all times before decoupling and remains approximately true at later times, as shown in figure \ref{fig:Temperature}.
 \begin{figure}[ht]
     %\centering
     \includegraphics[width=5.1in]{figures/Temperature.pdf}
@@ -423,7 +423,7 @@ This relation is valid at all times before decoupling, and remains approximately
     \label{fig:Temperature}
 \end{figure}
 
-To get a sense of scale for this result we can rewrite it in units of $10^9K$ and seconds.
+To get a sense of scale for this result, we can rewrite it in units of $10^9K$ and seconds.
 \begin{align}
     T_9=( 43 \frac{4}{3}\pi\frac{a_r}{c^2}G)^{-1/4}t^{-1/2}=9.97t^{-1/2},
     \label{eq:T9_ini}
@@ -436,7 +436,7 @@ We note that \eqref{eq:T9_ini} differs significantly from the expression derived
 \begin{align}
     T_9=(12\pi\frac{a_r}{c^2}G)^{1/4}t^{-1/2}=10.4t^{-1/2},
 \end{align}
-The analytical expression is wrong, but the numerical result is correct. A simple error that probably was the result of a small mistake when transcribing the notes used for the paper. Unfortunately, this expression has been reproduced in several later BBN codes such as \texttt{NUC123}\cite{Kawano} and \textsc{AlterBBN} \cite{AlterBBN}. Though Kawano reproduced the equation in the documentation, in the actual \texttt{NUC123} code, he used the numerical result, and as such, the code itself had no errors. In \textsc{AlterBBN} they used natural units, and so couldn't use the numerical value, leading to the error affecting the code. Additionally, they also confused the Stefan–Boltzmann and radiation constants leading to an additional error. Examining the code, one can see that their value is wrong by 14 orders of magnitude. %which they seemly discovered and erroneously corrected by doing an additional conversion from $\hbar/GeV$ to seconds. This brings the final value to a few mi
+The analytical expression is wrong, but the numerical result is correct. A simple error that probably was the result of a small mistake when transcribing the notes used for the paper. Unfortunately, this expression has been reproduced in several later BBN codes such as \texttt{NUC123}\cite{Kawano} and \textsc{AlterBBN} \cite{AlterBBN}. Though Kawano reproduced the equation in the documentation, in the actual \texttt{NUC123} code, he used the numerical result, and as such, the code itself had no errors. In \textsc{AlterBBN}, they used natural units and so couldn't use the numerical value, leading to the error affecting the code. Additionally, they also confused the Stefan–Boltzmann and radiation constants, leading to an additional error. Examining the code, one can see that their value is wrong by 14 orders of magnitude. %which they seemly discovered and erroneously corrected by doing an additional conversion from $\hbar/GeV$ to seconds. This brings the final value to a few mi
 Since it doesn't impact final abundances, this error was only very recently discovered, with the first correction being released in 2021 by Sharpe \cite{sharpe2021big},
 \begin{align}
     T_9=(48\pi\frac{a_r}{c^2}G)^{-1/4}t^{-1/2}=10.4t^{-1/2},
@@ -445,12 +445,11 @@ However, this still differs from \eqref{eq:T9_ini}. This is due to the fact that
 
 
 \subsection{Initial abundances}
-At the initial temperature, the only nuclei with significant abundance are the protons and neutrons, with the closest contender, deuterium having an abundance of $Y_D\approx 10^{-12}$, \cref{fig:lightXevo}. 
-To find the initial abundance of neutrons and protons, we first consider the number density of protons as given by \cref{numberdensity}, 
+At the initial temperature, the only nuclei with significant abundance are the protons and neutrons, with the closest contender, deuterium, having an abundance of $Y_D\approx 10^{-12}$, \cref{fig:lightXevo}. Therefore, we can assume the initial abundance of all nuclei besides free neutrons and protons is zero. To find the initial abundance of neutrons and protons, we first consider the number density of protons as given by \cref{numberdensity}, 
 \begin{align}
     n_p(T)=\frac{1}{\pi^2}\int_{0}^{\infty}\frac{1}{e^{(E-\mu_p)/T}+1} p^2 dp.
 \end{align}
-As previously mentioned, the number density of baryons is very small compared to other particles, implying that $(E-\mu)/T$ must be very large,
+As previously mentioned, the number density of baryons is minimal compared to other particles, implying that $(E-\mu)/T$ must be very large,
 \begin{align}
     n_p(T)=\frac{1}{\pi^2}\int_{0}^{\infty}{e^{(\mu_p-E)/T}} p^2 dp.
 \end{align}
@@ -472,12 +471,12 @@ Neutrons and protons maintain equilibrium via the reactions described in \cref{e
 \begin{align}
     \mu_n+\mu_\nu=\mu_p+\mu_e.
 \end{align}
-Since the chemical potential of leptons, $\mu_\nu$ and $\mu_e$, are comparatively low\cite{kolbturner}, we can assume $\mu_n=\mu_p$. By then combining \cref{eq:n_p,eq:n_n} we can get an expression for the neutron to proton ratio,
+Since the chemical potential of leptons, $\mu_\nu$ and $\mu_e$, are comparatively low\cite{kolbturner}, we can assume $\mu_n=\mu_p$. By then combining \cref{eq:n_p,eq:n_n} we can get an expression for the neutron-to-proton ratio,
 \begin{align}
     \frac{n_n}{n_p}=e^{(m_p-m_n)/T} \left( \frac{m_n}{ m_p} \right)^{3/2}.
     \label{eq:nnnp}
 \end{align}
-As the total number of nucleons is the sum of neutrons and protons and almost all of them are free, we can use the definition of $Y$ to get the following relations,
+As the total number of nucleons is the sum of neutrons and protons, and almost all of them are free, we can use the definition of $Y$ to get the following relations,
 \begin{align}
     Y_n=\frac{n_n}{n_n+n_p}=\frac{1}{1+\frac{n_p}{n_n}}\eqsep Y_p=\frac{n_p}{n_n+n_p}=\frac{1}{1+\frac{n_n}{n_p}}.
     \label{eq:Ynnp}

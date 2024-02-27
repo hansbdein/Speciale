@@ -58,4 +58,4 @@
 \contentsline {section}{\numberline {3.4}Outlook}{40}{section.166}%
 \contentsline {chapter}{\chapternumberline {4}Conclusion}{41}{chapter.167}%
 \contentsline {chapter}{Bibliography}{43}{section*.169}%
-\contentsline {appendix}{\chapternumberline {A}Additional Plots}{47}{appendix.170}%
+\contentsline {appendix}{\chapternumberline {A}Plots of Reaction rates during BBN}{47}{appendix.170}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.10.3)  27 FEB 2024 06:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.10.3)  27 FEB 2024 08:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1588,12 +1588,12 @@ LaTeX Font Info:    Font shape `T1/newtxtt/m/n' will be
 <figures/lillenet.pdf, id=649, 578.16pt x 289.08pt>
 File: figures/lillenet.pdf Graphic file (type pdf)
 <use figures/lillenet.pdf>
-Package pdftex.def Info: figures/lillenet.pdf  used on input line 94.
+Package pdftex.def Info: figures/lillenet.pdf  used on input line 97.
 (pdftex.def)             Requested size: 368.57744pt x 184.28716pt.
 <figures/stornet.pdf, id=651, 722.7pt x 361.35pt>
 File: figures/stornet.pdf Graphic file (type pdf)
 <use figures/stornet.pdf>
-Package pdftex.def Info: figures/stornet.pdf  used on input line 103.
+Package pdftex.def Info: figures/stornet.pdf  used on input line 106.
 (pdftex.def)             Requested size: 368.57744pt x 184.28606pt.
  [18 <./figures/lillenet.pdf>]) [19 <./figures/stornet.pdf>]
 \openout2 = `main/results.aux'.
@@ -1723,27 +1723,74 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 
 
 ]
-<figures/app/Be7destruct.pdf, id=1251, 368.57701pt x 289.08pt>
-File: figures/app/Be7destruct.pdf Graphic file (type pdf)
-<use figures/app/Be7destruct.pdf>
-Package pdftex.def Info: figures/app/Be7destruct.pdf  used on input line 5.
+<figures/app/H2destruct.pdf, id=1251, 368.57701pt x 469.755pt>
+File: figures/app/H2destruct.pdf Graphic file (type pdf)
+<use figures/app/H2destruct.pdf>
+Package pdftex.def Info: figures/app/H2destruct.pdf  used on input line 5.
+(pdftex.def)             Requested size: 368.57744pt x 469.76819pt.
+<figures/app/H2create.pdf, id=1252, 368.57701pt x 505.89pt>
+File: figures/app/H2create.pdf Graphic file (type pdf)
+<use figures/app/H2create.pdf>
+Package pdftex.def Info: figures/app/H2create.pdf  used on input line 11.
+(pdftex.def)             Requested size: 368.57744pt x 505.90417pt.
+<figures/app/H3destruct.pdf, id=1253, 368.57701pt x 289.08pt>
+File: figures/app/H3destruct.pdf Graphic file (type pdf)
+<use figures/app/H3destruct.pdf>
+Package pdftex.def Info: figures/app/H3destruct.pdf  used on input line 17.
 (pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
-<figures/app/Be7create.pdf, id=1252, 368.57701pt x 289.08pt>
-File: figures/app/Be7create.pdf Graphic file (type pdf)
-<use figures/app/Be7create.pdf>
-Package pdftex.def Info: figures/app/Be7create.pdf  used on input line 11.
+<figures/app/H3create.pdf, id=1254, 368.57701pt x 289.08pt>
+File: figures/app/H3create.pdf Graphic file (type pdf)
+<use figures/app/H3create.pdf>
+Package pdftex.def Info: figures/app/H3create.pdf  used on input line 23.
 (pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
-<figures/app/Li7destruct.pdf, id=1253, 368.57701pt x 289.08pt>
+<figures/app/He3destruct.pdf, id=1255, 368.57701pt x 289.08pt>
+File: figures/app/He3destruct.pdf Graphic file (type pdf)
+<use figures/app/He3destruct.pdf>
+Package pdftex.def Info: figures/app/He3destruct.pdf  used on input line 29.
+(pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
+<figures/app/He3create.pdf, id=1256, 368.57701pt x 289.08pt>
+File: figures/app/He3create.pdf Graphic file (type pdf)
+<use figures/app/He3create.pdf>
+Package pdftex.def Info: figures/app/He3create.pdf  used on input line 35.
+(pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
+<figures/app/He4destruct.pdf, id=1257, 368.57701pt x 650.43pt>
+File: figures/app/He4destruct.pdf Graphic file (type pdf)
+<use figures/app/He4destruct.pdf>
+Package pdftex.def Info: figures/app/He4destruct.pdf  used on input line 41.
+(pdftex.def)             Requested size: 368.57744pt x 650.44824pt.
+
+
+LaTeX Warning: Float too large for page by 47.2179pt on input line 44.
+
+<figures/app/He4create.pdf, id=1258, 368.57701pt x 650.43pt>
+File: figures/app/He4create.pdf Graphic file (type pdf)
+<use figures/app/He4create.pdf>
+Package pdftex.def Info: figures/app/He4create.pdf  used on input line 47.
+(pdftex.def)             Requested size: 368.57744pt x 650.44824pt.
+
+LaTeX Warning: Float too large for page by 47.2179pt on input line 50.
+
+<figures/app/Li7destruct.pdf, id=1259, 368.57701pt x 289.08pt>
 File: figures/app/Li7destruct.pdf Graphic file (type pdf)
 <use figures/app/Li7destruct.pdf>
-Package pdftex.def Info: figures/app/Li7destruct.pdf  used on input line 17.
+Package pdftex.def Info: figures/app/Li7destruct.pdf  used on input line 53.
 (pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
-<figures/app/Li7create.pdf, id=1254, 368.57701pt x 289.08pt>
+<figures/app/Li7create.pdf, id=1260, 368.57701pt x 289.08pt>
 File: figures/app/Li7create.pdf Graphic file (type pdf)
 <use figures/app/Li7create.pdf>
-Package pdftex.def Info: figures/app/Li7create.pdf  used on input line 23.
+Package pdftex.def Info: figures/app/Li7create.pdf  used on input line 59.
 (pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
-) [47 <./figures/app/Be7destruct.pdf>] [48 <./figures/app/Be7create.pdf> <./figures/app/Li7destruct.pdf>] [49 <./figures/app/Li7create.pdf>]
+<figures/app/Be7destruct.pdf, id=1261, 368.57701pt x 289.08pt>
+File: figures/app/Be7destruct.pdf Graphic file (type pdf)
+<use figures/app/Be7destruct.pdf>
+Package pdftex.def Info: figures/app/Be7destruct.pdf  used on input line 65.
+(pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
+<figures/app/Be7create.pdf, id=1262, 368.57701pt x 289.08pt>
+File: figures/app/Be7create.pdf Graphic file (type pdf)
+<use figures/app/Be7create.pdf>
+Package pdftex.def Info: figures/app/Be7create.pdf  used on input line 71.
+(pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
+) [47] [48 <./figures/app/H2destruct.pdf>] [49 <./figures/app/H2create.pdf>] [50 <./figures/app/H3destruct.pdf> <./figures/app/H3create.pdf>] [51 <./figures/app/He3destruct.pdf> <./figures/app/He3create.pdf>] [52 <./figures/app/He4destruct.pdf>] [53 <./figures/app/He4create.pdf>] [54 <./figures/app/Li7destruct.pdf> <./figures/app/Li7create.pdf>] [55 <./figures/app/Be7destruct.pdf> <./figures/app/Be7create.pdf>]
 
 FiXme Summary: Number of notes: 0,
 (FiXme)        Number of warnings: 0,
@@ -1758,25 +1805,28 @@ FiXme Summary: Number of notes: 0,
 \openout7 = `thesis_master.toc'.
 
 (./thesis_master.aux (./front/frontpages.aux) (./front/intro.aux) (./main/theory.aux) (./main/BBNcodes.aux) (./main/results.aux) (./main/conclusion.aux) (./app/app.aux))
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `thesis_master.out' has not changed.
-(rerunfilecheck)             Checksum: 66449FD93A609304FFF8FE68FDC04057;7124.
+(rerunfilecheck)             Checksum: 709B16EF5F032A6B769E73A6359D7E9A;7226.
 Package logreq Info: Writing requests to 'thesis_master.run.xml'.
 \openout1 = `thesis_master.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35618 strings out of 478287
- 689857 string characters out of 5849289
- 1558728 words of memory out of 5000000
- 52408 multiletter control sequences out of 15000+600000
- 731619 words of font info for 531 fonts, out of 8000000 for 9000
+ 35716 strings out of 478287
+ 692333 string characters out of 5849289
+ 1559588 words of memory out of 5000000
+ 52472 multiletter control sequences out of 15000+600000
+ 732675 words of font info for 539 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  76i,16n,82p,2132b,2689s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_omcwp2.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtxtt/txttAec.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusSYM.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusEX.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusMI.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusMR.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertinust1math/LibertinusT1Math.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtxtt/newtxtt.pfb>
-Output written on thesis_master.pdf (57 pages, 2197734 bytes).
+Output written on thesis_master.pdf (63 pages, 2286666 bytes).
 PDF statistics:
- 1474 PDF objects out of 1728 (max. 8388607)
- 1325 compressed objects within 14 object streams
- 265 named destinations out of 1000 (max. 500000)
- 138746 words of extra memory for PDF output out of 154059 (max. 10000000)
+ 1671 PDF objects out of 1728 (max. 8388607)
+ 1506 compressed objects within 16 object streams
+ 279 named destinations out of 1000 (max. 500000)
+ 138786 words of extra memory for PDF output out of 154059 (max. 10000000)
 
