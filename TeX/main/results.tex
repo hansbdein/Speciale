@@ -60,7 +60,7 @@ From figure \ref{fig:atolnet}, we see that the absolute tolerance only affects n
 
 
 
-\subsection{Electron energy}
+\subsection{Electron Energy}
 Most calculations for the background have nice analytical expressions that can be computed with arbitrary precision. The electron energy density is the main exception, as it is given by an infinite sum \eqref{eq:rhoelectron} of which a finite number of terms must be calculated. Electrons annihilate very early, so any error in the energy density will only affect the $p\leftrightharpoons n$ rate. This will lead to a small change in neutron abundance, which results in a similar (within one order of magnitude) relative change in the abundance of all subsequent nuclei. 
 Testing shows that small changes to the energy density, cause a change in neutron abundance of roughly the same relative magnitude if not slightly lower. So to achieve the requested accuracy in abundance, I also aimed for a $10^{-5}$ relative error in total energy density. 
 \begin{figure}[ht!]
@@ -76,10 +76,10 @@ Figure \ref{fig:Besselaccuracy} shows the deviation from the reference energy at
 For the interpolation of background variables, an appropriate number of points must be selected. These points are spaced uniformly in log(t). Tests show that $10^4$ points are sufficient to achieve the required accuracy in final abundances. However, a low number of points causes small discontinuities in the derivatives of temperature and scale factor. Due to the stiffness of the system, this leads to instabilities, which have a major impact on the runtime. At the required resolution of $10^4$ the integration routine has to make twice as many calls to the RHS, compared to smoother integration. At $2\times 10^5$ points the interpolation is smooth enough to not cause issues for integration.
 
 
-\subsection{Network timings}
+\subsection{Network Timings}
 \label{sec:networktiming}
 As mentioned in section \ref{sec:pna}, we cannot calculate the abundance of all nuclei from the beginning, and have to add them gradually as they become relevant. To find this point we can plot the deviation in final abundance as a function of the time at which we switch between networks.
-\subsubsection{Full network}
+\subsubsection{Full Network}
 \begin{figure}[ht!]
     \includegraphics[width=5.1in]{figures/Bignettime.pdf}
     \caption{Relative deviation on final abundances based on the time from which heavy nuclei are included in the reaction network. To display both positive and negative changes, relative deviations $ <10^{-8}$ are excluded. The bottom shows negative deviation on a linear scale}
@@ -90,7 +90,7 @@ The reactions involving ${}^{11}$C however come into effect much later than most
 
 The result of this test shows that for standard BBN, heavy nuclei don't actually need to be included at all if one is only interested in the abundances of light nuclei. For completeness, I will choose to include these nuclei anyway, starting at $T>10^9$K. 
 
-\subsubsection{Light network}
+\subsubsection{Light Network}
 
 From figure \ref{fig:midnettime} we see that delaying the calculation of nuclear abundances initially causes an increase in the abundance of protons and the proton-dominated nuclei ${}^3$He and ${}^8$B, with all other abundances dropping. This is due to early nuclear reactions trapping neutrons in the cores of light nuclei such as ${}^4$He and ${}^2$H, preventing their free decay into protons. However, since the vast majority of neutrons are still unbound, this effect will be insignificant until large light nuclei abundances are attained. Therefore, we actually don't need to calculate early abundances to get precise estimates of the final abundance. 
 
@@ -102,7 +102,7 @@ From figure \ref{fig:midnettime} we see that delaying the calculation of nuclear
 Not having to solve the reaction network at high temperatures makes the system much less stiff, potentially allowing future BBN codes to use less complex integration routines than those used by this and older codes. Unfortunately starting abundance calculations presents a major issue due to the initial conditions. When starting light abundance calculation at early times $t<10$s, we can determine the initial abundances by setting the RHS to 0 as described in section \ref{sec:structure}. But at later times reactions destroying ${}^4$He drop off, with ${}^4$He abundances instead being kept in check by the lack of deuterium. As the system is no longer in exact NSE, any method for determining initial conditions that assume a steady-state solution will fail. Given enough time all neutrons will be converted to ${}^4$He, and the estimated initial conditions reflect this by vastly overestimating ${}^4$He abundances. To get around this and produce figure \ref{fig:midnettime}, I instead had to set all initial abundances to 0 when initiating the light network after 3 seconds. This workaround eliminates the problem but creates another in the form of transients, which are created as abundances go from 0 to their appropriate value. Since the system of equations is less stiff at these late times the transients won't break the integration. But dealing with these transients takes just as long as the time required for tracking abundances at early times. 
 
 
-\subsubsection{$p\leftrightharpoons n$ network}
+\subsubsection{$p\leftrightharpoons n$ Network}
 Unlike the heavier nuclei the at which we start calculating neutrons and protons abundances have a very abrupt and significant impact on final abundances. As long as they are still in thermal equilibrium when we begin calculations, the final abundance will be the same. Conversely, if we start after they begin to fall out of thermal equilibrium, all final abundances will be radically different. From figure \ref{fig:npnettime} it's clear that this occurs at around 100 ms or $T=3\times10^{10}$K, and as long as we initiate $p\leftrightharpoons n$ before this we get precise results. This also justifies the use of $T=27\times10^9$K as the initial temperature, which is the point used by among others Wagoner, Kawano, and \textsc{AlterBBN}.
 \begin{figure}[ht]
     \includegraphics[width=5.1in]{figures/npnettime.pdf}
@@ -112,7 +112,7 @@ Unlike the heavier nuclei the at which we start calculating neutrons and protons
 
 
 
-\subsection{Neutrino decoupling}
+\subsection{Neutrino Decoupling}
 \label{sec:decoupling}
 The main source of inaccuracy in APODORA is the assumption of complete neutrino decoupling. This assumption is reasonable as the only net transfer of energy between different particles is the annihilation of electrons and positrons, which begins at around 1 MeV as shown in figure \ref{fig:rhoegammaT}. At this point, neutrinos have mostly decoupled, and therefore the energy is transferred to the photons, which are heated relative to the neutrinos by the well-known factor $\sqrt[3]{11/4}$. There is however a small transfer of energy before the neutrinos completely decouple from the other particles. The result of this is a small increase in neutrino energy density relative to photon energy of around 1\% \cite{Hannestad:1995rs}. As both neutrinos and photons are ultrarelativistic, this change is inconsequential to the time evolution of the early universe, and therefore one might assume that it would not have a significant impact on final abundances. This is however not the case, as is apparent from figure \ref{fig:initime}. The reason for this is that the higher photon temperature caused by instantaneous decoupling, effectively delays the onset of nucleosynthesis, since the baryons take longer to cool sufficiently. This has two main effects, the first being slightly lower baryon density at any given temperature, and the second that the universe will remain in any given temperature range for longer. Additionally, neutrino decoupling also affects the $p\leftrightharpoons n$ reactions directly, as these rely on both the exact temperature and non-thermal energy distribution of the neutrinos. When assuming complete neutrino decoupling, these effects lower the abundance of ${}^4$He by 0.05\%, ${}^3$He by 0.1\%, and deuterium by 0.5\%, and increase ${}^7$Be by 0.5\%, (PRIMAT table V\cite{PRIMAT}). 
 
@@ -137,7 +137,7 @@ From table \ref{tab:earlylatedecoup} we clearly see the impact of neutrino decou
 Though the errors associated with neutrino decoupling are much greater than the achieved numerical error of less than $10^{-5}$, they are still acceptable, since they are completely inconsequential next to the uncertainty associated with reaction rates, as will become apparent in the following section.
 
 
-\section{Comparison with AlterBBN}
+\section{Comparison with \textsc{AlterBBN}}
 \label{sec:Altercompare}
 To compare the results of APODORA to that of other contemporary BBN codes, I have chosen \textsc{AlterBBN}. The main reason for this is that it is more accessible than the other two, with the code being directly available on GitHub, while not requiring a Mathematica license like PRIMAT. 
 \textsc{PArthENoPE} would also be a fine choice, but it uses $z=m_e/T$ as the integration variable rather than time. As a result, it would be difficult to perform the one-to-one comparisons in the following sections.
@@ -146,7 +146,7 @@ Additionally, both APODORA and \textsc{AlterBBN} use natural units for the backg
 \subsection{Speed}
 As \textsc{AlterBBN} is written purely in C, it unsurprisingly runs faster than my Python implementation, despite the "outsourcing" of the reaction network. Using WSL and GCC-11.3 on an Intel i3-1115G4 @ 3.00GHz, I get an average runtime of 0.61 seconds, of which 0.33 seconds are for the background calculation and 0.28 seconds for the network integration. This is slightly slower than the 0.38 seconds for the default routine of \textsc{AlterBBN}. However, the integration method of \textsc{AlterBBN} sacrifices accuracy for speed, with the default method causing numerical deviation on final abundances of up to 0.4\%. \textsc{AlterBBN} can employ alternate methods for more accurate results, but these have a major impact on runtime. To achieve the same numerical accuracy as this implementation, we must use the most precise integration method in \textsc{AlterBBN} which takes 53.91 seconds. So if numerical consistency above $10^{-3}$ is required, this implementation is much faster, despite being implemented in Python rather than C.  Based on this, the requirement of \textbf{Alacrity} has been fulfilled.
 
-\subsection{Predicted abundances}
+\subsection{Predicted Abundances}
 \begin{table}[ht]
     \begin{tabular}{l|llllll}
         & $Y_p \times 10$ & \hspace{-0.34em}$^{2}$H$ \times 10^{5}$ & \hspace{-0.34em}$^{3}$He$ \times 10^{5}$ & \hspace{-0.34em}$^{7}$Li $ \times 10^{10}$& \hspace{-0.34em}$^{6}$Li $ \times 10^{14}$& \hspace{-0.34em}$^{7}$Be $ \times 10^{10}$\\ \hline
@@ -184,7 +184,7 @@ To rule out cosmological differences, we can compare the predicted background pa
 
 The result of using the background parameters of \textsc{AlterBBN} are displayed in Table \ref{tab:longAlterabun}. Though somewhat obscured by the lack of significant digits, the relative change caused by using the \textsc{AlterBBN} background is equal to 90\% of the change caused by changing the timing of instant neutrino decoupling. This is due to the increase in $T_\nu/T_\gamma$ predicted by full incomplete decoupling, being 1.9 times greater than what is achieved by simply delaying instant decoupling. ${}^4$He however only increases by 68\% of that caused by delayed decoupling. This is due to ${}^4$He being governed by the $p\leftrightharpoons n$ reactions, which take place while $T_\nu/T_\gamma$ is still increasing. This supports the previous assumption, that the only major difference between the cosmological calculation of \textsc{AlterBBN} and APODORA, is their inclusion of incomplete neutrino decoupling.
 
-\subsection{Reaction network}
+\subsection{Reaction Network}
 
 Since the difference in background introduces minimal abundance corrections, the discrepancy between the \textsc{AlterBBN} results and mine must unsurprisingly be due to differences in the reaction network. To see where these differences are we can plot the relative difference between abundances as they evolve during BBN, displayed in figure \ref{fig:AlterBBNdeltaY}. 
 \begin{figure}[ht]
@@ -229,7 +229,7 @@ Though the modified rates bring ${}^7\text{Li}$ and ${}^7\text{Be}$ abundances w
 
 
 
-\section{Final abundances}
+\section{Final Abundances}
 \label{sec:finalabun}
 With differences between APODORA and \textsc{AlterBBN} established, we can look at the correlation with the other codes, and more importantly the actual observations. 
 \begin{table}[ht]
@@ -259,7 +259,7 @@ For $^{3}$He my results match those of \textsc{AlterBBN} and \textsc{PArthENoPE}
 ${}^7\text{Li}$ is where we see the largest deviation. Relative to \textsc{AlterBBN} we know this is due to different reaction rates, and this is also the most probable explanation for PRIMAT. \textsc{PArthENoPE} once again shows better agreement, since they, in this case, use many of the same reaction rates as those in REACLIB. There is still a small difference which is likely to be caused by the lack of incomplete decoupling. Yet compared to the difference caused by different rates in PRIMAT and \textsc{AlterBBN}, this is completely inconsequential, which once again justifies the omission of incomplete decoupling. Yet, every single code is still nowhere near the observational value, which is of course the infamous cosmological lithium problem.
 
 
-\subsection[eta and the Lithium problem]{$\eta$ and the Lithium problem}
+\subsection[Eta and the Lithium Problem]{$\eta$ and the Lithium Problem}
 The most well-known illustration of the lithium problem is obtained by plotting the final abundances as a function of the primary free parameter of BBN $\eta$. At any specific time, the balance of various reaction rates is determined by the ratio of baryon density and temperature. Barring radically different physics, any cosmological solution to the lithium problem will involve modifying this ratio, for which $\eta$ is a direct proxy. Since the REACLIB rates don't include the associated uncertainties, I am unable to make a direct estimate of the uncertainty of my results. However, since these uncertainties stem from the same reactions as those in other codes, I can use an average of these to get a reasonable upper bound on the uncertainty. Additionally, the predicted uncertainties of other codes are demonstrably too conservative. For figure \ref{fig:etaplot}, the estimated uncertainties used are $ Y_p=0.1\%$, $^{2}$H=2\%, $^{3}$He=2\%, and $^{7}$Li=8\%.
 
 \begin{figure}[ht]

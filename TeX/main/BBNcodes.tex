@@ -13,14 +13,14 @@
 \section{A Brief History of BBN Codes}
 \label{sec:BBN_history}
 
-The concept of Big Bang nucleosynthesis is almost as old as the Big Bang Theory itself, with it first being proposed in the 1948 paper by \textcite{Gamov48}. This early model used neutron capture and subsequent beta decay as the mechanism for BBN, though its greatest problem was the inability to explain the unusually high abundance of oxygen and carbon in the present universe. And so, it was in large part supplanted by the new theory of stellar nucleosynthesis as the main explanation for the origin of the elements. 
+The concept of Big Bang nucleosynthesis is almost as old as the Big Bang Theory itself, with the idea first being proposed in the 1948 paper by \textcite{Gamov48}. This early model used neutron capture and subsequent beta decay as the mechanism for BBN, though its most significant problem was the inability to explain the unusually high abundance of oxygen and carbon in the present universe. And so, it was largely supplanted by the new theory of stellar nucleosynthesis as the primary explanation for the origin of the elements. 
 
 During the following decades, it became clear that stars could not be the only explanation for the present element abundances, and with the discovery of the CMB in 1965, new attention was brought to the early universe. 
 Only a year later Peebles showed how simple BBN physics could be used to explain the high helium abundance unaccounted for by stellar nucleosynthesis \cite{Peebles66}.
 
 In the following years, Wagoner created and refined the first proper BBN code, which was described in a series of defining papers\cite{Wagoner67}\cite{Wagoner69}\cite{Wagoner72}. The legacy of this code still heavily influences the way BBN calculations are performed today.
 
-By the late 80s the Wagoner code was severely outdated, with multiple inefficiencies due to among other things, the fact that it was originally designed to run on punch cards. This inspired Lawrence Kawano to create the now ubiquitous \texttt{NUC123}, colloquially known as the Kawano code\cite{Kawano}, which set the gold standard for all future BBN codes. 
+By the late 80s, the Wagoner code was severely outdated, with multiple inefficiencies due to, among other things, the fact that it was originally designed to run on punch cards. This inspired Lawrence Kawano to create the now ubiquitous \texttt{NUC123}, colloquially known as the Kawano code\cite{Kawano}, which set the gold standard for all future BBN codes. 
 
 \subsection{Modern Codes}
 \label{sec:newcodes}
@@ -30,11 +30,11 @@ In the current day and age, there exists multiple publicly available BBN codes a
 
 PRIMAT\cite{PRIMAT} is a Mathematica code and unlike \textsc{PArthENoPE} and \textsc{AlterBBN}, it isn't directly based on the older BBN codes. The main focus of PRIMAT is improving the precision of BBN codes, specifically the ${}^4$He abundance, which is mainly determined by the $p\leftrightharpoons n$ rates. 
 
-AlterBBN\cite{AlterBBN} is written in C and based on Kawano's \texttt{NUC123}. It maintains the same basic structure and integration method, though it uses natural units for everything but the reaction network, with energy defined by GeV=1. What separates \textsc{AlterBBN} from other codes is that as the name implies, it allows the use of alternate cosmological models and parameters. Therefore, this code is especially well suited for testing the effects these alterations have on final abundances.
+AlterBBN\cite{AlterBBN} is written in C and based on Kawano's \texttt{NUC123}. It maintains the same basic structure and integration method, though it uses natural units for everything but the reaction network, with energy defined by GeV=1. What separates \textsc{AlterBBN} from other codes is that, as the name implies, it allows the use of alternate cosmological models and parameters. Therefore, this code is especially well suited for testing the effects these alterations have on final abundances.
 
 \subsection{APODORA}
 To fulfill the goal of \textbf{accessibility} stated in the introduction, I have chosen to use Python, as it can run on any system and currently is the most popular programming language\footnote{\url{https://pypl.github.io/PYPL.html}}. To fulfill the goal of \textbf{adaptability}, the core of APODORA will be in the form of an IPython Notebook\cite{IPython:2007}. This provides a flexible interface, allowing the code to be rapidly repurposed, which makes tests and graphics, such as those in section \ref{sec:Accuracy}, much easier to produce. 
-The most obvious issue with this is the increase in runtime since Python is not exactly known for its speed. We can however mitigate this, using the methods presented in the following sections.
+The most obvious issue with this is the increase in runtime since Python is not exactly known for its speed. We can, however, mitigate this using the methods presented in the following sections.
 
 
 
@@ -43,15 +43,15 @@ The most obvious issue with this is the increase in runtime since Python is not 
 
 The objective of any BBN code is to solve the system of differential equations described in Chapter \ref{chap:theory}, which presents some numerical difficulties. 
 
-Most nuclear reactions have a linear or quadratic dependence on density, as well as an often exponential temperature dependence. At high temperatures, this is balanced by the corresponding reverse rate being equally high. The forward and reverse rates will only cancel at the precise abundance required by nuclear statistical equilibrium (NSE). Any slight deviation from NSE, $\delta Y$, will cause one rate to be slightly larger, which due to its magnitude will cause a huge increase in the derivative $Y'$.
+Most nuclear reactions have a linear or quadratic dependence on density, as well as an often exponential temperature dependence. At high temperatures, this is balanced by the corresponding reverse rate being equally high. The forward and reverse rates will only cancel at the precise abundance required by nuclear statistical equilibrium (NSE). Any slight deviation from NSE, $\delta Y$, will cause one rate to be slightly larger, which, due to its magnitude, will cause a huge increase in the derivative $Y'$.
 
-Most numerical methods for solving differential equations are explicit and in their simplest form calculate the next step by adding  $\Delta Y = \Delta t \cdot Y' $. 
-If $\Delta Y>2\delta Y$, the system will become unstable as each step will increase the absolute value of both. To avoid this instability, an explicit method will have to use a minuscule step size $\Delta t$, which in practice makes the problem unsolvable. 
+Most numerical methods for solving differential equations are explicit and, in their simplest form, calculate the next step by adding  $\Delta Y = \Delta t \cdot Y' $. 
+If $\Delta Y>2\delta Y$, the system will become unstable as each step will increase the absolute deviation of the next. To avoid this instability, an explicit method will have to use a minuscule step size $\Delta t$, which in practice makes the problem unsolvable. 
 
 This and similar problems are called stiff since they are very inflexible when faced with slight deviations from the "true" solution. 
 
 
-\subsubsection{Integration Methods}
+\subsection{Integration Methods}
 
 Wagoner and the later codes based on this work handle the stiffness by first linearizing the system, which allows integration in an implicit form:
 \begin{align}
@@ -59,12 +59,13 @@ Wagoner and the later codes based on this work handle the stiffness by first lin
 \end{align}
 This is then followed by a traditional second-order Runge-Kutta integration, with \textsc{AlterBBN} having options for more advanced Runge-Kutta methods. 
 
-PRIMAT on the other hand uses a first-order BDF scheme for $T>\num{1.25e9}$ K, switching to second-order at lower temperatures for faster computation.
+PRIMAT on the other hand, uses a first-order BDF scheme for $T>\num{1.25e9}$ K, switching to second-order at lower temperatures for faster computation.
 
 I have chosen to use an implicit Runge-Kutta method of the Radau IIA family of order 5 as implemented in SciPy\cite{SciPy}. This method is perfectly suited to handle stiff problems such as the reaction network, and based on testing it is the most stable method among those available in SciPy.
 
+\subsection{Initial Conditions}
+As mentioned in section \ref{sec:iniabun}, the initial abundances of heavy nuclei are minuscule and can be set to 0 without affecting the final result. However, doing this creates large transients as the new nuclei rapidly readjust from 0 to the actual abundance required by NSE. Dealing with these transients is very time-consuming for the solver and frequently leads to crashes. To avoid this, we can set the initial abundances by requiring that the resulting right-hand-side (RHS) is 0. This minimizes the size of initial transients, making the solution faster and more stable.
 
-\textcolor{orange}{Explain why we need to set $Y_ini$ for heavy nuclei}
 
 %Based on my testing this ensures maximum stability, while also being able to utilize the analytical Jacobian derived in equations\eqref{eq:jacterms1}\eqref{eq:jacterms2}.
 \subsection{Simplifications of the Problem}
@@ -74,7 +75,7 @@ This is beneficial, as unlike the abundances the equations governing temperature
 
 Compared to the background parameters, evaluating reaction rates is quite simple, with the most time-consuming part being the sheer number of rates. Here the main problem is the aforementioned stiffness, but this is also aided by precomputing the background variables, as this demonstrably improves stability.
 
-
+\clearpage
 \section{Creating the Reaction Network}
 \label{sec:pna}
 To create the reaction network I use pynucastro\cite{pynucastro2}, which is an open-source Python interface designed for nuclear astrophysics. The reaction rates themselves are provided by the REACLIB database\cite{REACLIB}. The purpose of the REACLIB database itself is to provide the best possible collection of reaction rates based on the current state of scientific knowledge. This provides the best possible basis for a reaction network that is \textbf{agnostic} to the biases inherent in rates selected by the same people developing the BBN code. These rates are based on fits of experimental results using the following parametrization 
@@ -107,7 +108,7 @@ When significant amounts of ${}^4$He and heavier nuclei have formed, we switch t
     \caption{Full reaction network for a more precise determination of heavy element abundances at intermediate to low temperatures with arrows representing forward reaction rates}
     \label{fig:bignet}
 \end{figure}
-
+\clearpage
 \section{Running APODORA}
 \label{sec:structure}
 
@@ -116,7 +117,7 @@ When significant amounts of ${}^4$He and heavier nuclei have formed, we switch t
     \item The time evolution of background parameters is calculated and stored.
     \item Initial conditions are set based on the background parameters, with the proton and neutron abundance being determined from NSE.
     \item The first reaction network is integrated from a specified initial time until the switch to the second network. 
-    \item Before beginning integration of the second network, the initial abundance of the added nuclei is determined by requiring that the resulting right-hand-side (RHS) is 0. This minimizes the transients created as the new nuclei rapidly readjust due to the stiffness of the system.
+    \item Before beginning integration of the second network, the initial abundance of the added nuclei is determined by requiring that the resulting right-hand-side (RHS) is 0.
     \item The second reaction network is integrated using these initial conditions, after which the same procedure is used for the third network.
     \item Barring the addition of additional reaction networks, we get the final abundances, as well as their evolution over time. %\textcolor{orange}{Denne sektions skal nok uddybes}
 \end{itemize}

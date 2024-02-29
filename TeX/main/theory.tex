@@ -7,7 +7,7 @@
 %%  Chapter 1: Coffee
 %% ============================================================================
 
-\chapter{BBN physics and cosmology}
+\chapter{BBN Physics and Cosmology}
 \label{chap:theory}
 
 To understand the process of Big Bang nucleosynthesis, we must examine the intersection between cosmology, thermodynamics, particle, nuclear and statistical physics. Though this might seem daunting, it turns out that the unique conditions during this epoch allow for extensive simplifications of this otherwise monumental task. Throughout this thesis, we use $\hbar=c=k_B=1$.
@@ -17,20 +17,20 @@ To understand the process of Big Bang nucleosynthesis, we must examine the inter
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % SECTION
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\section{Determining background parameters}
+\section{Determining Background Parameters}
 \label{sec:Background}
-Nuclear processes in the early universe are governed by two main parameters, the density of the baryons and their temperature. The density will decrease as the universe expands, so we need to track this expansion using the scale factor $a$, which is a simple dimensionless scalar, proportional to the expansion of the universe. In the early universe, baryons were in thermodynamic equilibrium with the photons, so to track their temperature we just need to track the temperature of the photons, $T$. 
+Nuclear processes in the early universe are governed by two main parameters, the density of the baryons and their temperature. The density will decrease as the universe expands, so we need to track this expansion using the scale factor $a$, which is a simple dimensionless scalar, proportional to the expansion of the universe. In the early universe, baryons were in thermodynamic equilibrium with the photons, so to track their temperature, we just need to track the temperature of the photons, $T$. 
 
 
-\subsection{Scale factor}
+\subsection{Scale Factor}
 \label{ssec:cosmology}
 
-BBN takes place after inflation while the universe is still radiation-dominated. The expansion can be described by the Friedman equation, which can be simplified with the reasonable approximation, that both curvature and the cosmological constant are zero \cite[{(4.29)}]{Ryden}. 
+BBN takes place after inflation while the universe is still radiation-dominated. The expansion can be described by the Friedman equation, which can be simplified with the reasonable approximation that both curvature and the cosmological constant are zero \cite[{(4.29)}]{Ryden}. 
 \begin{align}
     H^2=\left(\frac{\dot{a}}{a}\right)^2=\frac{8\pi G}{3}\rho_{tot},
     \label{Friedman}
 \end{align}
-with H being the Hubble parameter, G the gravitational constant and $\rho_{tot}$ referring to the total energy density of photons, leptons and baryons,
+with H being the Hubble parameter, G the gravitational constant, and $\rho_{tot}$ referring to the total energy density of photons, leptons, and baryons,
 \begin{align}
     \rho_{tot}=\rho_{\gamma}+\rho_{\nu}+(\rho_{e^-}+\rho_{e^+})+\rho_{b}.
 \end{align}
@@ -56,8 +56,8 @@ Using the chain rule $\dot{\rho}=\dot{T}\idiff{\rho}{T}$, we can then set up a d
     \label{eq:dTdt}
 \end{align}
 
-\subsection{Additional parameters}
-For this code, the only necessary cosmological parameters are the scale factor and temperature, but other BBN codes often track different parameters. Most BBN codes are based on the original code by Wagoner described in section \ref{sec:BBN_history}. These don't track the scale factor, but instead use the quantity $h$.
+\subsection{Additional Parameters}
+For this code, the only necessary cosmological parameters are the scale factor and temperature, but other BBN codes often track different parameters. Most BBN codes are based on the original code by Wagoner described in section \ref{sec:BBN_history}. These don't track the scale factor but instead use the quantity $h$.
 \begin{align}
     h=M_u\frac{n_{b}}{T^3_9},
 \end{align}
@@ -67,10 +67,10 @@ The electron chemical potential was also tracked by the Wagoner code and its suc
 %\textcolor{orange}{Neutrino temperature?}
 
 
-\section{Energy densities and pressure of different particles}
+\section{Energy Density and Pressure of Different Particles}
 To solve \cref{eq:dTdt,eq:dadt}, we need to know the density and pressure of the components of the early universe. To do this we first need to derive the general equations for the energy and pressure of a collection of relativistic particles, before going over each component.
 
-\subsection{Relativistic gasses}
+\subsection{Relativistic Gasses}
 In the very early universe, most particles were in thermal equilibrium, and can thus be described by the rules of statistical physics. Here the average number of particles in a given state is governed by the Fermi-Dirac distribution for fermions, and the Bose-Einstein distribution for bosons.
 \begin{align}
     \bar{n}_{FD}=\frac{1}{e^{(E-\mu)/T}+1} \eqsep   \bar{n}_{BE}=\frac{1}{e^{(E-\mu)/T}-1},
@@ -102,7 +102,7 @@ The time between collisions can be deduced based on the distance traveled.
 \end{align}
 with distance between collisions $L$, and velocity $\mathrm{v}$. Where we have used $p=m\gamma \mathrm{v}$ and $E=m\gamma$, to relate velocity to momentum.
 
-Next, consider the triangle created by the center of the sphere and two consecutive collision points. Using the law of cosines we can determine $L$,
+Next, consider the triangle created by the center of the sphere and two consecutive collision points. Using the law of cosines, we can determine $L$,
 \begin{align}
     r^2=L^2+r^2+2L r \cos \theta \Rightarrow
     L = 2r \cos \theta.
@@ -167,12 +167,12 @@ This relation only holds if the neutrinos follow a Fermi-Dirac distribution, whi
     \rho_\nu(t)=\frac{\rho_\nu(T_i)}{a(t)^4},
     \label[equation]{realrhonu}
 \end{align}
-with $T_i$ being the initial temperature where neutrinos are still in thermal equilibrium and $a=1$. This has the added advantage of eliminating the need for tracking the neutrino temperature. The major downside is that this does not take into account the small energy transfer from e${^+}$ e${^-}$-annihilation due to incomplete decoupling of neutrinos. To compensate we can replace the number of neutrinos $N_\nu=3$, with an effective neutrino number $N_\nu^\text{eff}=3.045$, (\textcite{de_Salas_2016}), corresponding to the predicted increase in energy. The impact of incomplete neutrino decoupling is discussed further in section \ref{sec:decoupling}.
+with $T_i$ being the initial temperature where neutrinos are still in thermal equilibrium and $a=1$. This has the added advantage of eliminating the need to track neutrino temperature. The major downside is that this does not account for the small energy transfer from e${^+}$ e${^-}$-annihilation due to incomplete decoupling of neutrinos. To compensate, we can replace the number of neutrinos $N_\nu=3$, with an effective neutrino number $N_\nu^\text{eff}=3.045$, (\textcite{de_Salas_2016}), corresponding to the predicted increase in energy. The impact of incomplete neutrino decoupling is discussed further in section \ref{sec:decoupling}.
 
 
 
 
-\subsection{Electrons and positrons}
+\subsection{Electrons and Positrons}
 
 
 Since electrons and positrons have mass, solving for their density and pressure is a lot more intricate than for the massless particles.
@@ -295,13 +295,13 @@ with $T_i$ being the initial temperature. Finally, to get the energy density we 
     \rho_b(a)=n_b(a)\sum_{i}^{}Y_i m_i
     \label{rhob}
 \end{align}
-For each isotope, $m_i$ is the mass, and the abundance, $Y_i$, is the ratio between the number of nuclei and the total number of nucleons. $Y_i$ is often defined as $Y_i=X_i/A_i$, with $X_i$ being the mass fraction, and $A_i$ the atomic weight \cite{Wagoner69}. The difference in per nucleon mass of different isotopes, causes these two definitions to have a relative difference of $10^{-5}$, which can be safely neglected when looking at total mass. Furthermore, we can approximate that all baryons have the same mass as a lone proton which reduces \eqref{rhob} to $\rho_b(a) \approx n_b(a)m_p$. 
+For each isotope, $m_i$ is the mass, and the abundance, $Y_i$, is the ratio between the number of nuclei and the total number of nucleons. $Y_i$ is often defined as $Y_i=X_i/A_i$, with $X_i$ being the mass fraction, and $A_i$ the atomic weight \cite{Wagoner69}. The difference in per nucleon mass of different isotopes, causes these two definitions to have a relative difference of $10^{-5}$, which can be safely neglected when looking at total mass. Furthermore, we can approximate that all baryons have the same mass as a lone proton, which reduces \eqref{rhob} to $\rho_b(a) \approx n_b(a)m_p$. 
 
 Employing the chain rule we can write the temperature derivative as 
 \begin{align}
     \diff{\rho_b(a)}{T} = -3\rho_b(a)\frac{1}{a}\diff{a}{T}.
 \end{align}
-Since the universe is radiation-dominated we can relate the scale factor and temperature as $a\propto T^{-1}$. This is not precise enough to be used for the background as a whole, especially during $e^-$ $e^+$-annihilation, but it will suffice for this already minor term, allowing us to evaluate the derivative
+Since the universe is radiation-dominated, we can relate the scale factor and temperature as $a\propto T^{-1}$. This is not precise enough to be used for the background as a whole, especially during $e^-$ $e^+$-annihilation, but it will suffice for this already minor term, allowing us to evaluate the derivative
 \begin{align}
     \diff{\rho_b(a)}{T} = 3\rho_b(a)T^{-1}.
     \label{drhob}
@@ -332,7 +332,7 @@ Unlike that of the relativistic particles, the baryon pressure is several orders
 % ~~~~~~~~~~
 % SUBSECTION
 % ~~~~~~~~~~
-\section{Nuclear reactions}
+\section{Nuclear Reactions}
 \label{sec:nucleartheory}
 
 All relevant nuclear reactions involve at most 6 different nuclei. Generally, we can write these reactions as
@@ -355,7 +355,7 @@ From \eqref{dYdt} we can quite easily determine the partial derivatives required
 \end{align}
 
 
-\subsection[Proton to neutron rate]{Proton $\leftrightharpoons$ neutron rate}
+\subsection[Proton to neutron rate]{Proton $\leftrightharpoons$ Neutron Rate}
 At $T>10^{10}$K any created nuclei will be instantly destroyed by high-energy photons. This leaves only the conversion between neutrons and positrons, which is governed by the following reactions
 \begin{align}
     n &\leftrightarrow p+e^-+\bar{\nu}_e\label{eq:np1}\\
@@ -363,7 +363,7 @@ At $T>10^{10}$K any created nuclei will be instantly destroyed by high-energy ph
     n+\nu_e &\leftrightarrow p+e^-
     \label{eq:np3}
 \end{align}
-The final reaction $p\leftrightarrow n+e^++\nu_e$ is not possible, as it would violate energy conservation, which is apparent if one considers the reaction from the rest frame of the proton. For most other rates, we can measure $\lambda$ experimentally for the forward rate $Q>0$, and use detailed balance to estimate the corresponding reverse rate. The conditions required for maintaining nuclear statistical equilibrium between neutrons and protons cannot be achieved experimentally, and the rate therefore must be determined theoretically. This involves evaluating several integrals, which depend on both electron and neutrino density, in addition to the temperature and scale factor. Several corrections must also be made to account for the radiative, zero-temperature, corrections, finite nucleon mass corrections, finite temperature radiative corrections, weak-magnetism, and QED plasma effects\cite{PRIMAT}. 
+The final reaction $p\leftrightarrow n+e^++\nu_e$ is not possible, as it would violate energy conservation, which is apparent if one considers the reaction from the rest frame of the proton. For most other rates, we can measure $\lambda$ experimentally for the forward rate $Q>0$, and use detailed balance to estimate the corresponding reverse rate. The conditions required for maintaining nuclear statistical equilibrium between neutrons and protons cannot be achieved experimentally, and the rate must therefore be determined theoretically. This involves evaluating several integrals, which depend on both electron and neutrino density, in addition to the temperature and scale factor. Several corrections must also be made to account for the radiative, zero-temperature, corrections, finite nucleon mass corrections, finite temperature radiative corrections, weak-magnetism, and QED plasma effects\cite{PRIMAT}. 
 The final result mainly depends on temperature and experimentally determined mean neutron lifetime, $\tau_n$. Since it isn't affected by the later reactions, it is sensible to just fit the result as a function of temperature and mean lifetime. 
 For the default network in APODORA, the rate is described by the parameterization given in appendix C of \textcite{Serpico_2004}.
 \begin{align}
@@ -378,14 +378,14 @@ with the fitted parameters being the constants $a_i$ and $b_i$ as well as $q_{np
 
 %\chapter{Nuclear abundances}
 
-\section{Initial conditions}
+\section{Initial Conditions}
 To solve this system of differential equations, we must find the initial conditions for time, the background parameters $a$ and $T$, as well as the abundances $Y_i$.
 The initial value of the scale factor can be set as $a=1$. The temperature and time are directly linked, and as none of the earlier equations have any explicit time dependence, it is more useful to choose an initial temperature, and then determine the initial time based on this. Finally, the initial abundances can be determined using these conditions and nuclear statistical equilibrium (NSE).
 
-\subsection{Initial temperature}
+\subsection{Initial Temperature}
 When performing BBN calculations, it is most sensible to choose an initial temperature, and from it, determine all other initial conditions. The chosen temperature should be sufficiently high so that all particles are in thermal equilibrium. Most BBN codes use $T=27\times10^9$K as the initial temperature. Higher temperatures could be used, but this is unnecessary and will often lead to numerical instabilities, which will be covered in \cref{chap:BBNcode,sec:Accuracy}.
 
-\subsection{Initial time}
+\subsection{Initial Time}
 \label{sec:t_ini}
 Though none of the equations describing BBN have any explicit time dependence, it is still nice to know the age of the universe when it takes place. This can be achieved by integrating equation \eqref{eq:dTdt}, with $T=\infty$ at $t=0$.
 \begin{align}
@@ -431,7 +431,7 @@ To get a sense of scale for this result, we can rewrite it in units of $10^9K$ a
 with $a_r$ being the radiation constant, related to the Stefan–Boltzmann constant by $a=\frac{4}{c}\sigma$. 
 Using this we can justify the omission of particles heavier than electrons. The lightest of these are the muon and pion, which both have masses above 100 MeV. Significant pair creation will occur at $T_9 \geq 10^3$, corresponding to $t\approx10^4$. As such, they will have no significant impact on the initial time. 
 
-\subsection{Initial time in existing literature}
+\subsection{Initial Time in Existing Literature}
 We note that \eqref{eq:T9_ini} differs significantly from the expression derived by Wagoner\cite{Wagoner67},
 \begin{align}
     T_9=(12\pi\frac{a_r}{c^2}G)^{1/4}t^{-1/2}=10.4t^{-1/2},
@@ -444,7 +444,8 @@ Since it doesn't impact final abundances, this error was only very recently disc
 However, this still differs from \eqref{eq:T9_ini}. This is due to the fact that the original derivation was performed by Wagoner in 1967, a decade before the discovery of the tau and corresponding neutrino. Though later projects correctly added the additional neutrino flavor when calculating the neutrino energy, the impact it has on the initial time had been overlooked before this thesis. 
 
 
-\subsection{Initial abundances}
+\subsection{Initial Abundances}
+\label{sec:iniabun}
 At the initial temperature, the only nuclei with significant abundance are the protons and neutrons, with the closest contender, deuterium, having an abundance of $Y_D\approx 10^{-12}$, \cref{fig:lightXevo}. Therefore, we can assume the initial abundance of all nuclei besides free neutrons and protons is zero. To find the initial abundance of neutrons and protons, we first consider the number density of protons as given by \cref{numberdensity}, 
 \begin{align}
     n_p(T)=\frac{1}{\pi^2}\int_{0}^{\infty}\frac{1}{e^{(E-\mu_p)/T}+1} p^2 dp.
@@ -457,9 +458,9 @@ Since protons are largely non-relativistic, we can approximate their energy by t
 \begin{align}
     n_p(T)=\frac{1}{\pi^2}e^{(\mu_p-m_p)/T}\int_{0}^{\infty}{e^{\frac{-p^2}{2m_pT}}} p^2 dp.
 \end{align}
-This is a Gaussian integral, which has a simple solution\cite{griffiths_introduction_2018}
+This is a Gaussian integral, which has a simple solution\cite{griffiths_introduction_2018},
 \begin{align}
-    n_p(T)=\frac{1}{\pi^2} e^{(\mu_p-m_p)/T} \sqrt{\frac{\pi}{2}}\left( { m_p T} \right)^{3/2}
+    n_p(T)=\frac{1}{\pi^2} e^{(\mu_p-m_p)/T} \sqrt{\frac{\pi}{2}}\left( { m_p T} \right)^{3/2}.
     \label{eq:n_p}
 \end{align}
 Since all of this also applies to the neutron, we get an analogous expression

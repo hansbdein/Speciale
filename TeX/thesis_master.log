@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.10.3)  27 FEB 2024 08:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.10.3)  29 FEB 2024 12:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1170,7 +1170,7 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
- (./thesis_master.aux (./front/frontpages.aux) (./front/intro.aux) (./main/theory.aux) (./main/BBNcodes.aux) (./main/results.aux) (./main/conclusion.aux) (./app/app.aux))
+ (./thesis_master.aux (./front/frontpages.aux) (./front/preface.aux) (./front/intro.aux) (./main/theory.aux) (./main/BBNcodes.aux) (./main/results.aux) (./main/conclusion.aux) (./app/app.aux))
 \openout1 = `thesis_master.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
@@ -1314,7 +1314,7 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 21.0pt on input line 38.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 14.0pt on input line 40.
-<figures/smallnet5minutes.pdf, id=196, 578.16pt x 433.62pt>
+<figures/smallnet5minutes.pdf, id=205, 578.16pt x 433.62pt>
 File: figures/smallnet5minutes.pdf Graphic file (type pdf)
 <use figures/smallnet5minutes.pdf>
 Package pdftex.def Info: figures/smallnet5minutes.pdf  used on input line 45.
@@ -1411,6 +1411,13 @@ LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
  [1
 
 ] (./thesis_master.lox)
+\openout2 = `front/preface.aux'.
+
+ (./front/preface.tex) [2
+
+
+
+]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 24.88pt on input line 82.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
@@ -1458,24 +1465,24 @@ LaTeX Font Info:    Font shape `LS1/libertinust1math/b/it' will be
 (Font)              scaled to size 8.0pt on input line 5.
 LaTeX Font Info:    Font shape `LS1/libertinust1math/b/it' will be
 (Font)              scaled to size 6.0pt on input line 5.
- [2
+ [3
 
 
 
-]) [3]
+]) [4]
 \openout2 = `front/intro.aux'.
 
- (./front/intro.tex [4
-
-
-]
+ (./front/intro.tex
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 12.0pt on input line 16.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 16.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 16.
- [5]
+ [5
+
+
+]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 14.4pt on input line 21.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
@@ -1561,7 +1568,7 @@ LaTeX Font Info:    Font shape `LS1/libertinust1math/b/n' will be
 LaTeX Font Info:    Font shape `LS1/libertinust1math/b/it' will be
 (Font)              scaled to size 12.0pt on input line 358.
  [9]
-<figures/rhoegammaT.pdf, id=488, 368.57701pt x 144.54pt>
+<figures/rhoegammaT.pdf, id=498, 368.57701pt x 144.54pt>
 File: figures/rhoegammaT.pdf Graphic file (type pdf)
 <use figures/rhoegammaT.pdf>
 Package pdftex.def Info: figures/rhoegammaT.pdf  used on input line 399.
@@ -1569,7 +1576,7 @@ Package pdftex.def Info: figures/rhoegammaT.pdf  used on input line 399.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/sc' will be
 (Font)              scaled to size 10.95pt on input line 400.
  [10]
-<figures/Temperature.pdf, id=502, 368.57701pt x 216.81pt>
+<figures/Temperature.pdf, id=512, 368.57701pt x 216.81pt>
 File: figures/Temperature.pdf Graphic file (type pdf)
 <use figures/Temperature.pdf>
 Package pdftex.def Info: figures/Temperature.pdf  used on input line 421.
@@ -1585,26 +1592,25 @@ LaTeX Font Info:    Font shape `T1/newtxtt/m/n' will be
 
 
 ] [15] [16] [17]
-<figures/lillenet.pdf, id=649, 578.16pt x 289.08pt>
+<figures/lillenet.pdf, id=657, 578.16pt x 289.08pt>
 File: figures/lillenet.pdf Graphic file (type pdf)
 <use figures/lillenet.pdf>
-Package pdftex.def Info: figures/lillenet.pdf  used on input line 97.
+Package pdftex.def Info: figures/lillenet.pdf  used on input line 98.
 (pdftex.def)             Requested size: 368.57744pt x 184.28716pt.
-<figures/stornet.pdf, id=651, 722.7pt x 361.35pt>
+<figures/stornet.pdf, id=659, 722.7pt x 361.35pt>
 File: figures/stornet.pdf Graphic file (type pdf)
 <use figures/stornet.pdf>
-Package pdftex.def Info: figures/stornet.pdf  used on input line 106.
+Package pdftex.def Info: figures/stornet.pdf  used on input line 107.
 (pdftex.def)             Requested size: 368.57744pt x 184.28606pt.
- [18 <./figures/lillenet.pdf>]) [19 <./figures/stornet.pdf>]
-\openout2 = `main/results.aux'.
+ [18
 
- (./main/results.tex [20
-
-
-
+] [19 <./figures/lillenet.pdf> <./figures/stornet.pdf>]) [20
 
 ]
-<figures/abundancelight.pdf, id=703, 368.57701pt x 289.08pt>
+\openout2 = `main/results.aux'.
+
+ (./main/results.tex
+<figures/abundancelight.pdf, id=713, 368.57701pt x 289.08pt>
 File: figures/abundancelight.pdf Graphic file (type pdf)
 <use figures/abundancelight.pdf>
 Package pdftex.def Info: figures/abundancelight.pdf  used on input line 6.
@@ -1613,72 +1619,80 @@ File: figures/smallnet5minutes.pdf Graphic file (type pdf)
 <use figures/smallnet5minutes.pdf>
 Package pdftex.def Info: figures/smallnet5minutes.pdf  used on input line 15.
 (pdftex.def)             Requested size: 368.57744pt x 276.43074pt.
- [21 <./figures/abundancelight.pdf>] [22]
-<figures/abundanceheavy.pdf, id=727, 368.57701pt x 361.35pt>
+ [21
+
+
+
+
+ <./figures/abundancelight.pdf>] [22]
+<figures/abundanceheavy.pdf, id=737, 368.57701pt x 361.35pt>
 File: figures/abundanceheavy.pdf Graphic file (type pdf)
 <use figures/abundanceheavy.pdf>
 Package pdftex.def Info: figures/abundanceheavy.pdf  used on input line 25.
 (pdftex.def)             Requested size: 368.57744pt x 361.36014pt.
  [23 <./figures/abundanceheavy.pdf>]
-<figures/rtolbackground.pdf, id=753, 368.57701pt x 216.81pt>
+<figures/rtolbackground.pdf, id=763, 368.57701pt x 216.81pt>
 File: figures/rtolbackground.pdf Graphic file (type pdf)
 <use figures/rtolbackground.pdf>
 Package pdftex.def Info: figures/rtolbackground.pdf  used on input line 40.
 (pdftex.def)             Requested size: 368.57744pt x 216.81607pt.
-<figures/rtolnet.pdf, id=757, 368.57701pt x 216.81pt>
+<figures/rtolnet.pdf, id=767, 368.57701pt x 216.81pt>
 File: figures/rtolnet.pdf Graphic file (type pdf)
 <use figures/rtolnet.pdf>
 Package pdftex.def Info: figures/rtolnet.pdf  used on input line 48.
 (pdftex.def)             Requested size: 368.57744pt x 216.81607pt.
-<figures/atolnet.pdf, id=759, 368.57701pt x 216.81pt>
+<figures/atolnet.pdf, id=769, 368.57701pt x 216.81pt>
 File: figures/atolnet.pdf Graphic file (type pdf)
 <use figures/atolnet.pdf>
 Package pdftex.def Info: figures/atolnet.pdf  used on input line 56.
 (pdftex.def)             Requested size: 368.57744pt x 216.81607pt.
-<figures/Besselaccuracy.pdf, id=761, 368.57701pt x 238.49101pt>
+<figures/Besselaccuracy.pdf, id=771, 368.57701pt x 238.49101pt>
 File: figures/Besselaccuracy.pdf Graphic file (type pdf)
 <use figures/Besselaccuracy.pdf>
 Package pdftex.def Info: figures/Besselaccuracy.pdf  used on input line 67.
 (pdftex.def)             Requested size: 368.57744pt x 238.49768pt.
  [24] [25 <./figures/rtolbackground.pdf> <./figures/rtolnet.pdf>] [26 <./figures/atolnet.pdf> <./figures/Besselaccuracy.pdf>]
-<figures/Bignettime.pdf, id=876, 368.57701pt x 252.945pt>
+<figures/Bignettime.pdf, id=886, 368.57701pt x 252.945pt>
 File: figures/Bignettime.pdf Graphic file (type pdf)
 <use figures/Bignettime.pdf>
 Package pdftex.def Info: figures/Bignettime.pdf  used on input line 84.
 (pdftex.def)             Requested size: 368.57744pt x 252.95209pt.
-<figures/midnettime.pdf, id=879, 368.57701pt x 231.26399pt>
+<figures/midnettime.pdf, id=889, 368.57701pt x 231.26399pt>
 File: figures/midnettime.pdf Graphic file (type pdf)
 <use figures/midnettime.pdf>
 Package pdftex.def Info: figures/midnettime.pdf  used on input line 98.
 (pdftex.def)             Requested size: 368.57744pt x 231.27046pt.
  [27]
-<figures/npnettime.pdf, id=891, 368.57701pt x 180.675pt>
+<figures/npnettime.pdf, id=902, 368.57701pt x 180.675pt>
 File: figures/npnettime.pdf Graphic file (type pdf)
 <use figures/npnettime.pdf>
 Package pdftex.def Info: figures/npnettime.pdf  used on input line 108.
 (pdftex.def)             Requested size: 368.57744pt x 180.68005pt.
  [28 <./figures/Bignettime.pdf>] [29 <./figures/midnettime.pdf> <./figures/npnettime.pdf>]
-<figures/initime.pdf, id=979, 368.57701pt x 180.675pt>
+<figures/initime.pdf, id=989, 368.57701pt x 180.675pt>
 File: figures/initime.pdf Graphic file (type pdf)
 <use figures/initime.pdf>
 Package pdftex.def Info: figures/initime.pdf  used on input line 132.
 (pdftex.def)             Requested size: 368.57744pt x 180.68005pt.
- [30] [31 <./figures/initime.pdf>]
+ [30]
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/sc' will be
+(Font)              scaled to size 14.4pt on input line 140.
+ [31 <./figures/initime.pdf>]
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/sc' will be
 (Font)              scaled to size 10.0pt on input line 157.
-<figures/comparetemp.pdf, id=1016, 368.57701pt x 191.5155pt>
+<figures/comparetemp.pdf, id=1027, 368.57701pt x 191.5155pt>
 File: figures/comparetemp.pdf Graphic file (type pdf)
 <use figures/comparetemp.pdf>
 Package pdftex.def Info: figures/comparetemp.pdf  used on input line 166.
 (pdftex.def)             Requested size: 368.57744pt x 191.52086pt.
  [32] [33 <./figures/comparetemp.pdf>]
-<figures/AlterBBNdeltaY.pdf, id=1051, 368.57701pt x 289.08pt>
+<figures/AlterBBNdeltaY.pdf, id=1062, 368.57701pt x 289.08pt>
 File: figures/AlterBBNdeltaY.pdf Graphic file (type pdf)
 <use figures/AlterBBNdeltaY.pdf>
 Package pdftex.def Info: figures/AlterBBNdeltaY.pdf  used on input line 191.
 (pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
  [34 <./figures/AlterBBNdeltaY.pdf>] [35]
-<figures/AlterratesBBNdeltaY.pdf, id=1095, 368.57701pt x 289.08pt>
+<figures/AlterratesBBNdeltaY.pdf, id=1106, 368.57701pt x 289.08pt>
 File: figures/AlterratesBBNdeltaY.pdf Graphic file (type pdf)
 <use figures/AlterratesBBNdeltaY.pdf>
 Package pdftex.def Info: figures/AlterratesBBNdeltaY.pdf  used on input line 225.
@@ -1693,7 +1707,7 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 6.0pt on input line 249.
  [37]
-<figures/etaplot.pdf, id=1155, 368.57701pt x 505.89pt>
+<figures/etaplot.pdf, id=1166, 368.57701pt x 505.89pt>
 File: figures/etaplot.pdf Graphic file (type pdf)
 <use figures/etaplot.pdf>
 Package pdftex.def Info: figures/etaplot.pdf  used on input line 266.
@@ -1723,37 +1737,37 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 
 
 ]
-<figures/app/H2destruct.pdf, id=1251, 368.57701pt x 469.755pt>
+<figures/app/H2destruct.pdf, id=1262, 368.57701pt x 469.755pt>
 File: figures/app/H2destruct.pdf Graphic file (type pdf)
 <use figures/app/H2destruct.pdf>
 Package pdftex.def Info: figures/app/H2destruct.pdf  used on input line 5.
 (pdftex.def)             Requested size: 368.57744pt x 469.76819pt.
-<figures/app/H2create.pdf, id=1252, 368.57701pt x 505.89pt>
+<figures/app/H2create.pdf, id=1263, 368.57701pt x 505.89pt>
 File: figures/app/H2create.pdf Graphic file (type pdf)
 <use figures/app/H2create.pdf>
 Package pdftex.def Info: figures/app/H2create.pdf  used on input line 11.
 (pdftex.def)             Requested size: 368.57744pt x 505.90417pt.
-<figures/app/H3destruct.pdf, id=1253, 368.57701pt x 289.08pt>
+<figures/app/H3destruct.pdf, id=1264, 368.57701pt x 289.08pt>
 File: figures/app/H3destruct.pdf Graphic file (type pdf)
 <use figures/app/H3destruct.pdf>
 Package pdftex.def Info: figures/app/H3destruct.pdf  used on input line 17.
 (pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
-<figures/app/H3create.pdf, id=1254, 368.57701pt x 289.08pt>
+<figures/app/H3create.pdf, id=1265, 368.57701pt x 289.08pt>
 File: figures/app/H3create.pdf Graphic file (type pdf)
 <use figures/app/H3create.pdf>
 Package pdftex.def Info: figures/app/H3create.pdf  used on input line 23.
 (pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
-<figures/app/He3destruct.pdf, id=1255, 368.57701pt x 289.08pt>
+<figures/app/He3destruct.pdf, id=1266, 368.57701pt x 289.08pt>
 File: figures/app/He3destruct.pdf Graphic file (type pdf)
 <use figures/app/He3destruct.pdf>
 Package pdftex.def Info: figures/app/He3destruct.pdf  used on input line 29.
 (pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
-<figures/app/He3create.pdf, id=1256, 368.57701pt x 289.08pt>
+<figures/app/He3create.pdf, id=1267, 368.57701pt x 289.08pt>
 File: figures/app/He3create.pdf Graphic file (type pdf)
 <use figures/app/He3create.pdf>
 Package pdftex.def Info: figures/app/He3create.pdf  used on input line 35.
 (pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
-<figures/app/He4destruct.pdf, id=1257, 368.57701pt x 650.43pt>
+<figures/app/He4destruct.pdf, id=1268, 368.57701pt x 650.43pt>
 File: figures/app/He4destruct.pdf Graphic file (type pdf)
 <use figures/app/He4destruct.pdf>
 Package pdftex.def Info: figures/app/He4destruct.pdf  used on input line 41.
@@ -1762,7 +1776,7 @@ Package pdftex.def Info: figures/app/He4destruct.pdf  used on input line 41.
 
 LaTeX Warning: Float too large for page by 47.2179pt on input line 44.
 
-<figures/app/He4create.pdf, id=1258, 368.57701pt x 650.43pt>
+<figures/app/He4create.pdf, id=1269, 368.57701pt x 650.43pt>
 File: figures/app/He4create.pdf Graphic file (type pdf)
 <use figures/app/He4create.pdf>
 Package pdftex.def Info: figures/app/He4create.pdf  used on input line 47.
@@ -1770,22 +1784,22 @@ Package pdftex.def Info: figures/app/He4create.pdf  used on input line 47.
 
 LaTeX Warning: Float too large for page by 47.2179pt on input line 50.
 
-<figures/app/Li7destruct.pdf, id=1259, 368.57701pt x 289.08pt>
+<figures/app/Li7destruct.pdf, id=1270, 368.57701pt x 289.08pt>
 File: figures/app/Li7destruct.pdf Graphic file (type pdf)
 <use figures/app/Li7destruct.pdf>
 Package pdftex.def Info: figures/app/Li7destruct.pdf  used on input line 53.
 (pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
-<figures/app/Li7create.pdf, id=1260, 368.57701pt x 289.08pt>
+<figures/app/Li7create.pdf, id=1271, 368.57701pt x 289.08pt>
 File: figures/app/Li7create.pdf Graphic file (type pdf)
 <use figures/app/Li7create.pdf>
 Package pdftex.def Info: figures/app/Li7create.pdf  used on input line 59.
 (pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
-<figures/app/Be7destruct.pdf, id=1261, 368.57701pt x 289.08pt>
+<figures/app/Be7destruct.pdf, id=1272, 368.57701pt x 289.08pt>
 File: figures/app/Be7destruct.pdf Graphic file (type pdf)
 <use figures/app/Be7destruct.pdf>
 Package pdftex.def Info: figures/app/Be7destruct.pdf  used on input line 65.
 (pdftex.def)             Requested size: 368.57744pt x 289.0881pt.
-<figures/app/Be7create.pdf, id=1262, 368.57701pt x 289.08pt>
+<figures/app/Be7create.pdf, id=1273, 368.57701pt x 289.08pt>
 File: figures/app/Be7create.pdf Graphic file (type pdf)
 <use figures/app/Be7create.pdf>
 Package pdftex.def Info: figures/app/Be7create.pdf  used on input line 71.
@@ -1804,29 +1818,26 @@ FiXme Summary: Number of notes: 0,
 \tf@toc=\write7
 \openout7 = `thesis_master.toc'.
 
-(./thesis_master.aux (./front/frontpages.aux) (./front/intro.aux) (./main/theory.aux) (./main/BBNcodes.aux) (./main/results.aux) (./main/conclusion.aux) (./app/app.aux))
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+(./thesis_master.aux (./front/frontpages.aux) (./front/preface.aux) (./front/intro.aux) (./main/theory.aux) (./main/BBNcodes.aux) (./main/results.aux) (./main/conclusion.aux) (./app/app.aux))
 Package rerunfilecheck Info: File `thesis_master.out' has not changed.
-(rerunfilecheck)             Checksum: 709B16EF5F032A6B769E73A6359D7E9A;7226.
+(rerunfilecheck)             Checksum: 97BE6DAE61733BC25A15E3E2C364EE0E;7525.
 Package logreq Info: Writing requests to 'thesis_master.run.xml'.
 \openout1 = `thesis_master.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35716 strings out of 478287
- 692333 string characters out of 5849289
- 1559588 words of memory out of 5000000
- 52472 multiletter control sequences out of 15000+600000
- 732675 words of font info for 539 fonts, out of 8000000 for 9000
+ 35773 strings out of 478287
+ 693928 string characters out of 5849289
+ 1563318 words of memory out of 5000000
+ 52499 multiletter control sequences out of 15000+600000
+ 738563 words of font info for 553 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  76i,16n,82p,2132b,2689s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_omcwp2.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtxtt/txttAec.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusSYM.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusEX.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusMI.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusMR.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertinust1math/LibertinusT1Math.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtxtt/newtxtt.pfb>
-Output written on thesis_master.pdf (63 pages, 2286666 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_jtta5h.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_omcwp2.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtxtt/txttAec.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusSYM.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusEX.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusMI.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertinust1math/libusMR.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertinust1math/LibertinusT1Math.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtxtt/newtxtt.pfb>
+Output written on thesis_master.pdf (63 pages, 2289483 bytes).
 PDF statistics:
- 1671 PDF objects out of 1728 (max. 8388607)
- 1506 compressed objects within 16 object streams
- 279 named destinations out of 1000 (max. 500000)
- 138786 words of extra memory for PDF output out of 154059 (max. 10000000)
+ 1685 PDF objects out of 1728 (max. 8388607)
+ 1519 compressed objects within 16 object streams
+ 280 named destinations out of 1000 (max. 500000)
+ 142898 words of extra memory for PDF output out of 154059 (max. 10000000)
 
