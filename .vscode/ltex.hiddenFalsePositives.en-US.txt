@@ -3,3 +3,6 @@
 {"rule":"HYPOTHESIS_TYPOGRAPHY","sentence":"^\\QDespite this \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q is still the strongest reaction, followed by reactions creating He3 and H3.\\E$"}
 {"rule":"COLLECTIVE_NOUN_VERB_AGREEMENT_VBP","sentence":"^\\QThough no particular reaction is exceptionally strong, a disproportionate amount of reactions produce \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\QHe rather\\E$"}
 {"rule":"COLLECTIVE_NOUN_VERB_AGREEMENT_VBP","sentence":"^\\QThough no particular reaction is exceptionally strong, a disproportionate amount of reactions produce rather than consume \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\QHe.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QIn addition, I want to thank all the people in the cosmology group, and 1520-823, particularly Christiane Rahbek, for providing company during the long days and nights of writing this thesis.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QI would also like to thank Erik Steenberg, Camilla Sørensen, Emil Birk, and Marta Jensen for proofreading the first and second drafts of this thesis.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QI would also like to thank Erik Steenberg, Camilla Sørensen, Emil Birk, and Marta Jensen for proofreading this thesis's first and second drafts.\\E$"}

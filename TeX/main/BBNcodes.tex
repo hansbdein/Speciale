@@ -16,7 +16,7 @@
 The concept of Big Bang nucleosynthesis is almost as old as the Big Bang Theory itself, with the idea first being proposed in the 1948 paper by \textcite{Gamov48}. This early model used neutron capture and subsequent beta decay as the mechanism for BBN, though its most significant problem was the inability to explain the unusually high abundance of oxygen and carbon in the present universe. And so, it was largely supplanted by the new theory of stellar nucleosynthesis as the primary explanation for the origin of the elements. 
 
 During the following decades, it became clear that stars could not be the only explanation for the present element abundances, and with the discovery of the CMB in 1965, new attention was brought to the early universe. 
-Only a year later Peebles showed how simple BBN physics could be used to explain the high helium abundance unaccounted for by stellar nucleosynthesis \cite{Peebles66}.
+Only a year later, Peebles showed how simple BBN physics could be used to explain the high helium abundance unaccounted for by stellar nucleosynthesis \cite{Peebles66}.
 
 In the following years, Wagoner created and refined the first proper BBN code, which was described in a series of defining papers\cite{Wagoner67}\cite{Wagoner69}\cite{Wagoner72}. The legacy of this code still heavily influences the way BBN calculations are performed today.
 
@@ -69,11 +69,11 @@ As mentioned in section \ref{sec:iniabun}, the initial abundances of heavy nucle
 
 %Based on my testing this ensures maximum stability, while also being able to utilize the analytical Jacobian derived in equations\eqref{eq:jacterms1}\eqref{eq:jacterms2}.
 \subsection{Simplifications of the Problem}
-Following the example of Wagoner, most BBN codes solve the background variables and abundances concurrently. This is necessary, as they account for the change in baryon energy density and electron chemical potential caused by nucleosynthesis. Accounting for the baryon energy only results in a relative abundance change lower than $10^{-5}$ for the heavier nuclei, and even less for lighter ones. Accounting for baryons at all is questionable, and tracking the abundance of non-thermal electrons and energy changes caused by nucleosynthesis is completely unnecessary. Accordingly, the background variables can be treated as independent of the abundances.
+Following the example of Wagoner, most BBN codes solve the background variables and abundances concurrently. This is necessary, as they account for the change in baryon energy density and electron chemical potential caused by nucleosynthesis. Accounting for the baryon energy only results in a relative abundance change lower than $10^{-5}$ for the heavier nuclei and even less for lighter ones. Accounting for baryons at all is questionable, and tracking the abundance of non-thermal electrons and energy changes caused by nucleosynthesis is completely unnecessary. Accordingly, the background variables can be treated as independent of the abundances.
 
-This is beneficial, as unlike the abundances the equations governing temperature and scale factor are not stiff in the slightest. This allows faster integration with fewer evaluations of computationally demanding terms such as the sum in electron energy density \cref{eq:rhoelectron}. Barring $e^-$ $e^+$ annihilation, $T$ and $a$ follow the simple power laws $T^{-2}\propto t$ and $a^2\propto t$, as seen on figure \ref{fig:Temperature}. This allows for the use of simple linear interpolation in log space, which will have a negligible impact on runtime compared to the evaluation of reaction rates.
+This is beneficial, as unlike the abundances, the equations governing temperature and scale factor are not stiff in the slightest. This allows faster integration with fewer evaluations of computationally demanding terms such as the sum in electron energy density \cref{eq:rhoelectron}. Barring $e^-$ $e^+$ annihilation, $T$ and $a$ follow the simple power laws $T^{-2}\propto t$ and $a^2\propto t$, as seen on figure \ref{fig:Temperature}. This allows for the use of simple linear interpolation in log space, which will have a negligible impact on runtime compared to the evaluation of reaction rates.
 
-Compared to the background parameters, evaluating reaction rates is quite simple, with the most time-consuming part being the sheer number of rates. Here the main problem is the aforementioned stiffness, but this is also aided by precomputing the background variables, as this demonstrably improves stability.
+Compared to the background parameters, evaluating reaction rates is quite simple, with the most time-consuming part being the sheer number of rates. Here, the main problem is the aforementioned stiffness, but this is also aided by precomputing the background variables, as this demonstrably improves stability.
 
 \clearpage
 \section{Creating the Reaction Network}
@@ -85,13 +85,13 @@ To create the reaction network I use pynucastro\cite{pynucastro2}, which is an o
 \end{align}
 $T_9$ is the temperature in \num{1e9} K, and the associated molar density in \cref{dYdt}must be provided in cgs units of $\text{mol}/\text{cm}^3$. Converting from natural units to cgs is a simple matter of multiplying by $\frac{MeV}{\hbar c}^3\frac{1}{N_0}=\SI{2.161e8}{\cm^{-3}}$, with $N_0$ being the Avogadro number. For some reactions, such as those with powerful resonances, a rate can be comprised of multiple terms of the form given in \cref{eq:reacliblambda} to allow for a more accurate fit of the data. 
 
-To create the network, pynucastro must first be provided with the list of included nuclei. It has a built-in method for collecting all reactions between these nuclei, which creates a library object containing the rates and their relations. This can then be used to generate a Python file that takes density, temperature, and abundances as inputs and returns the RHS and Jacobian. This file supports just-in-time compilation using the JIT module from Numba, which takes between a few seconds to a few minutes depending on the size of the network. To avoid having to recompile the networks every time I modify the code, I added a method that compiles the network ahead of time using the Numba CC module. 
+To create the network, pynucastro must first be provided with the list of included nuclei. It has a built-in method for collecting all reactions between these nuclei, which creates a library object containing the rates and their relations. This can then be used to generate a Python file that takes density, temperature, and abundances as inputs and returns the RHS and Jacobian. This file supports just-in-time compilation using the JIT module from Numba, which takes between a few seconds to a few minutes, depending on the size of the network. To avoid having to recompile the networks every time I modify the code, I added a method that compiles the network ahead of time using the Numba CC module. 
 
-At high temperatures, heavy nuclei have extremely low abundances while greatly increasing the stiffness of the system. To increase both stability and performance, it is prudent to extend the network gradually, which can be accomplished by using 3 different reaction networks. 
+At high temperatures, heavy nuclei have extremely low abundances while greatly increasing the stiffness of the system. To increase both stability and performance, it is prudent to extend the network gradually, which can be accomplished by using three different reaction networks. 
 
 At very high temperatures, deuterium is readily destroyed by high-energy photons inhibiting the production of any subsequent nuclei. Here the simplest possible reaction network is employed, comprised of only the proton, neutron, and their forward and reverse rates. 
 
-When temperatures are low enough to allow deuterium production network is extended to include all nuclei with $A\leq 7$, as seen in figure \ref{fig:smallnet}. This accounts for the nuclei involved in ${}^4$He production as well as their immediate fusion products, which are also the only nuclei with observable final abundances. 
+When temperatures are low enough to allow deuterium production, the network is extended to include all nuclei with $A\leq 7$, as seen in figure \ref{fig:smallnet}. This accounts for the nuclei involved in ${}^4$He production as well as their immediate fusion products, which are also the only nuclei with observable final abundances. 
 
 \begin{figure}[ht]
     %\centering
@@ -100,7 +100,7 @@ When temperatures are low enough to allow deuterium production network is extend
     \label{fig:smallnet}
 \end{figure}
 
-When significant amounts of ${}^4$He and heavier nuclei have formed, we switch to the full network which includes every nucleus that could possibly affect BBN, as seen in figure \ref{fig:bignet}. Due to the extreme temperature dependence of reactions such as triple-alpha, this network is very stiff at high temperatures. 
+When significant amounts of ${}^4$He and heavier nuclei have formed, we switch to the full network, which includes every nucleus that could possibly affect BBN, as seen in figure \ref{fig:bignet}. Due to the extreme temperature dependence of reactions such as triple-alpha, this network is very stiff at high temperatures. 
 
 \begin{figure}[ht]
     %\centering

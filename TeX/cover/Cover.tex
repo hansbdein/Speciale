@@ -1,0 +1,235 @@
+% This PhD thesis cover was made by Lars Madsen and Ole S. Sørensen.
+% Permission is granted to use this file to create similar covers.
+% Any questions regarding the construction can be sent to daleif@imf.au.dk
+
+% This version was used for the cover of the Master's thesis of Hans Brüner Dein.
+
+% Do not specify paper size here, this comes later, see the \setstocksize.
+\documentclass{memoir}
+\usepackage[rgb]{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{libertine}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{picture}
+\usepackage{tikz}
+\usepackage{etoolbox}
+\usepackage{microtype}
+\usepackage{fix-cm}
+\usepackage{varwidth}
+\usepackage{textpos}
+
+\frenchspacing
+
+\graphicspath{{Figures/}}
+
+\newtoggle{guidelines}
+\togglefalse{guidelines}
+
+
+\newlength\spinewidth
+\newlength\backpageindent
+\newlength\globalfrontpageindent
+\newlength\cutoff
+\newlength\facewidth
+\newlength\upperbannerheight
+\newlength\lowerbannerheight
+
+\setlength\spinewidth{4mm}   % CHECK THIS WITH SUNTRYK
+\setlength\backpageindent{10mm}
+\setlength\cutoff{3mm}
+\setlength\upperbannerheight{160pt}
+\setlength\lowerbannerheight{120pt}
+
+
+% Here we specify the special paper side. SUN-TRYK wanted it in 'real
+% size', i.e. not as cover printed onto A3 paper.
+%
+% The design is 3mm larger on all sides, to be cut of by SUN-TRYK,
+% otherwise printing to the edge may be difficult.
+% 
+% The height is A4 height plus two cutoff (2x3mm), the width is the
+% width of two A4s plus two cutoff plus the height of the spine.
+%
+% The height of the spine depend on the size of the document, please
+% talk to SUN-TRYK about the approximate size for your document.
+\setstocksize{297mm + 2\cutoff}{420mm + 2\cutoff + \spinewidth}
+% The trimmming then sets the page size used by LaTeX
+\settrimmedsize\stockheight\stockwidth*
+
+\setlength\globalfrontpageindent{0.5\stockwidth + 0.5\spinewidth + \backpageindent}
+\setlength\facewidth{0.5\stockwidth - 0.5\spinewidth - \cutoff}
+
+
+\definecolor{AUBlue}{RGB}{0, 61, 115}
+\checkandfixthelayout
+
+
+% Commands for the front cover.
+% Title.
+\newcommand\Title{
+	\begin{minipage}[b][\upperbannerheight][c]{\facewidth}
+		\centering
+		\HUGE\bfseries\scshape\color{white}
+		\fontsize{24}{33.6} \selectfont 
+		APODORA:\\ 
+		A Novel Code for Describing\\
+		 Big Bang Nucleosynthesis
+	\end{minipage}
+}
+
+% Name and project type.
+\newcommand\NAME{
+	\begin{minipage}[b][\lowerbannerheight][c]{\facewidth}
+		\centering
+		\Huge\bfseries\scshape\color{white}
+		Hans Br{\"u}ner Dein\\
+		\huge\bfseries\scshape\color{white}
+		Master's Thesis
+    \end{minipage}
+}
+
+
+% Commands for the spine.
+\newcommand\SpineTitle{\colorbox{white}{APODORA}: A Novel Code for Describing Big Bang Nucleosynthesis}
+\newcommand\spineTitle{\large\scshape\hspace{0.5cm}\SpineTitle}
+\newcommand\spineName{\large\scshape \hspace{0.4cm}Hans Br{\"u}ner Dein}
+\newcommand\spineOther{\large\scshape Master's Thesis}
+
+
+% Commands for the back cover.
+% The back side text. It is placed globally on the page, so we save it in a box.
+\newcommand\backsidetext{
+	\parbox[b]{15.25cm}{   
+	\bfseries\fontsize{11pt}{13.6pt}\selectfont
+Everything we see around us is made of atoms, which at their core contain a nucleus. Atomic nuclei are the fundamental building blocks that make up the stars, planets, and the humans that live on them. Understanding the creation of atomic nuclei is to understand the origin of the world itself. \\
+
+The goal of this thesis is to present the development of a new BBN code APODORA (Adaptable Python interface Offering Determination Of Relic Abundances). APODORA is designed to be more flexible than existing codes, with an emphasis on the use of modern standardized computing methods. Derivations of the equations describing the time evolution of various components in the early universe are presented. These are implemented in a flexible IPython environment with the reaction network being created using interfaces from pynucastro. The numerical uncertainty associated with every relevant input parameter of the code is systematically examined to ensure a high level of numerical precision. An in-depth comparison between APODORA and \textsc{AlterBBN} is performed, demonstrating equal or superior precision and speed. Finally, the resulting final abundances from APODORA are compared with multiple existing BNN codes as well as observational data.
+\vspace*{5cm}
+	}
+}
+
+
+% Information
+\newcommand\INFO{
+	\begin{minipage}[b][\lowerbannerheight][c]{\facewidth-2\backpageindent}
+		\flushright
+		Department of Physics and Astronomy \\
+		Natural Sciences \\
+		Aarhus University \\
+		Denmark
+	\end{minipage}
+}
+\newcommand\INFOsize{\fontsize{12pt}{14pt}\selectfont}
+
+
+% Setting up the cover.
+\newlength\tmplen
+\AddToShipoutPicture{
+	% The two blue ribbons, need them first so we can typeset ontop later on.
+	% Lower band.
+	\put(0, 0){\color{AUBlue}\rule{\stockwidth}{\lowerbannerheight + \cutoff}}
+	
+	% Upper band.
+	\put(0, \stockheight - \upperbannerheight - \cutoff){%
+		\color{AUBlue}\rule{\stockwidth}{\upperbannerheight + \cutoff}
+	}
+	
+	
+	% FRONT COVER
+	% Figure. The reference point is at the bottom center of the figure, not the lower left.
+		%\put(0.5\stockwidth + 0.5\spinewidth + 105mm, 45mm){%
+	%	\makebox[0pt][c]{\includegraphics[width=0.95\facewidth,]{abundanceshort.pdf}}
+	%}
+	\put(0.5\stockwidth , \lowerbannerheight+\cutoff-0.3mm){%
+	\makebox[0pt][c]{\includegraphics[width=\stockwidth,]{abundancelong.pdf}}
+}
+
+	% Title
+	\put(0.5\stockwidth + 0.5\spinewidth, \stockheight - \upperbannerheight - \cutoff){\Title}
+	
+	% Name  
+	\put(0.5\stockwidth + 0.5\spinewidth, \cutoff){\color{white}\bfseries\INFOsize\NAME}
+	
+	
+	% BACK COVER
+	% AU logo
+	% More info: https://medarbejdere.au.dk/en/administration/communication/guidelines/guidelinesforlogo
+	% Generator: https://medarbejdere.au.dk/en/administration/communication/guidelines/guidelinesforlogo/logo-generator/
+	\put(9.5\cutoff, 5.2\cutoff){%
+		\begin{tikzpicture}
+			\node (0,0) {\includegraphics{au_phys_logo_oneline-1.pdf}};
+		\end{tikzpicture}
+	}
+	
+	% AU seal
+	% More info: https://medarbejdere.au.dk/en/administration/communication/guidelines/seal
+	\put(8.55\cutoff, \stockheight - \cutoff - 0.76\upperbannerheight){%
+		\begin{tikzpicture}
+			\node (0,0) {\includegraphics[width=72pt]{ausegl_hvid.pdf}};
+		\end{tikzpicture}
+	}
+	
+	% Backside text
+	\put(0.5\stockwidth - 0.5\spinewidth - \backpageindent - 2.2cm, 6.7cm){%
+		\makebox[0pt][r]{\backsidetext}
+	}
+	
+	% Info
+	%\put(\backpageindent + \cutoff , \cutoff){\color{white}\bfseries\INFOsize\INFO}
+	
+	
+	% SPINE
+	\settototalheight\tmplen{\strut}
+	
+	% The placement and sizes used here depend greatly on the text being used and the
+	% available space on the spine. SUN TRYK recommend that the text should not come too
+	% close to the edges of the page.
+	
+	% Name on spine in upper band.
+	\put(0.5\stockwidth, \stockheight - 4mm - \cutoff){%
+		\kern - 0.5\tmplen\rotatebox[origin=lb]{-90}{%
+			\strut\fontsize{9pt}{9pt}\color{white}\bfseries\spineName
+		}
+	}
+	
+	% Title on spine.
+	\put(0.5\stockwidth, \stockheight - 1.09\upperbannerheight - \cutoff){%
+		\kern - 0.5\tmplen\rotatebox[origin=lb]{-90}{%
+			\strut\fontsize{9pt}{9pt}\bfseries\spineTitle
+		}
+	}
+	
+	% Project type on spine in lower band.
+	\put(0.5\stockwidth, 9mm + \cutoff){%
+		\kern - 0.5\tmplen\rotatebox[origin=rb]{-90}{%
+			\color{white}\strut\fontsize{9pt}{9pt}\bfseries\spineOther
+		}
+	}
+	
+	
+	% Guidelines
+	\iftoggle{guidelines}{%
+		% Outer edges, these mark where the cutting of the design should ideally be.
+		% SUN TRYK's decision may differ slightly.
+		\put(0, \cutoff){\color{red}\rule{\stockwidth}{0.4pt}}
+		\put(0, \stockheight - \cutoff){\color{red}\rule{\stockwidth}{0.4pt}}
+		\put(\cutoff, 0){\color{red}\rule{0.4pt}{\stockheight}}
+		\put(\stockwidth - \cutoff, 0){\color{red}\rule{0.4pt}{\stockheight}}
+		% Left and right edge of the approx spine.
+		\put(\cutoff + 210mm, 0){\color{red}\rule{0.4pt}{\stockheight}}
+		\put(\cutoff + 210mm + \spinewidth, 0){\color{red}\rule{0.4pt}{\stockheight}}
+		% Vertival center through the spine.
+		\put(0.5\stockwidth, 0){\color{red}\rule{0.4pt}{\stockheight}}
+	}{}
+}
+
+
+\pagestyle{empty}
+\begin{document}
+~ % just to force a shipout
+\end{document}
