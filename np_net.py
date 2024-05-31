@@ -1,5 +1,6 @@
 import numba
 import numpy as np
+from scipy import constants
 from numba.experimental import jitclass
 
 from pynucastro.rates import TableIndex, TableInterpolator, TabularRate, Tfactors
@@ -19,9 +20,15 @@ Z = np.zeros((nnuc), dtype=np.int32)
 Z[jn] = 0
 Z[jp] = 1
 
+# masses in ergs
+mass = np.zeros((nnuc), dtype=np.float64)
+
+mass[jn] = 0.0015053497659156634
+mass[jp] = 0.0015040963030260536
+
 names = []
 names.append("n")
-names.append("h1")
+names.append("H1")
 
 def to_composition(Y):
     """Convert an array of molar fractions to a Composition object."""
@@ -31,6 +38,15 @@ def to_composition(Y):
     for i, nuc in enumerate(nuclei):
         comp.X[nuc] = Y[i] * A[i]
     return comp
+
+
+def energy_release(dY):
+    """return the energy release in erg/g (/s if dY is actually dY/dt)"""
+    enuc = 0.0
+    for i, y in enumerate(dY):
+        enuc += y * mass[i]
+    enuc *= -1*constants.Avogadro
+    return enuc
 
 @jitclass([
     ("p__n", numba.float64),
